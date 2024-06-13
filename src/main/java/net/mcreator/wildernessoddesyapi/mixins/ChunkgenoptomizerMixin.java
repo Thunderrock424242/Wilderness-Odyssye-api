@@ -37,4 +37,4 @@ public abstract class ChunkgenoptomizerMixin {
 
         System.out.println("Optimized chunk loading logic executed for chunk: " + chunkPos);
     }
-} 
+}  
