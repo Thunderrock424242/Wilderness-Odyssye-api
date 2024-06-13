@@ -1,0 +1,6 @@
+{
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "wilderness_oddesy_api:item/lighting"
+  }
+}
