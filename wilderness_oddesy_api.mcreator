@@ -301,19 +301,6 @@
       }
     },
     {
-      "name": "Chunkgenoptomizer",
-      "type": "mixin",
-      "sortid": 20,
-      "compiles": false,
-      "locked_code": true,
-      "registry_name": "chunkgenoptomizer",
-      "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/wildernessoddesyapi/mixins/ChunkgenoptomizerMixin.java"
-        ]
-      }
-    },
-    {
       "name": "Test",
       "type": "biome",
       "sortid": 21,
@@ -356,6 +343,19 @@
         ]
       },
       "path": "~/AI"
+    },
+    {
+      "name": "ModList",
+      "type": "code",
+      "sortid": 25,
+      "compiles": false,
+      "locked_code": true,
+      "registry_name": "mod_list",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/wildernessoddesyapi/ModList.java"
+        ]
+      }
     }
   ],
   "variable_elements": [
