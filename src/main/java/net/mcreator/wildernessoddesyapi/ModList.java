@@ -22,7 +22,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.api.distmarker.OnlyIn;
 import net.neoforged.api.distmarker.Dist;
 
-import net.minecraftforge.event.entity.player.PlayerEvent;
+import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLLoadCompleteEvent;
 import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
 import net.minecraftforge.fml.loading.moddiscovery.ModInfo;
@@ -36,25 +36,29 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 
-@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
-public class ModList {
-	public ModList() {
-	}
+@Mod("modid")
+public class MainModClass {
+    private static final Logger LOGGER = LogManager.getLogger();
 
-	@SubscribeEvent
-	public static void init(FMLCommonSetupEvent event) {
-		new ModList();
-	}
+    public MainModClass() {
+        MinecraftForge.EVENT_BUS.register(this);
+    }
 
-	@OnlyIn(Dist.CLIENT)
-	@SubscribeEvent
-	public static void clientLoad(FMLClientSetupEvent event) {
-	}
+    @SubscribeEvent
+    public void onLoadComplete(FMLLoadCompleteEvent event) {
+        List<ModInfo> mods = ModList.get().getMods();
+        Map<String, List<String>> dependencies = ModList.get().getModContainerById().entrySet().stream()
+                .collect(Collectors.toMap(
+                        e -> e.getKey().getModId(),
+                        e -> e.getValue().getDependencies().stream().map(d -> d.getModId()).collect(Collectors.toList())
+                ));
 
-	@Mod.EventBusSubscriber
-	private static class ForgeBusEvents {
-		@SubscribeEvent
-		public static void serverLoad(ServerStartingEvent event) {
-		}
-	}
+        LOGGER.info("Loaded Mods:");
+        for (ModInfo mod : mods) {
+            LOGGER.info("Mod: {} Version: {}", mod.getModId(), mod.getVersion());
+            if (dependencies.containsKey(mod.getModId())) {
+                LOGGER.info("Dependencies: {}", dependencies.get(mod.getModId()));
+            }
+        }
+    }
 }
