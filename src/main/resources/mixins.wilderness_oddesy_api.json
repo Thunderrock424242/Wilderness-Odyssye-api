@@ -3,7 +3,8 @@
   "package": "net.mcreator.wildernessoddesyapi.mixins",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "EntityAiMixin"
+    "EntityAiMixin",
+    "WolfThunderMixin"
   ],
   "client": [],
   "minVersion": "0.8"

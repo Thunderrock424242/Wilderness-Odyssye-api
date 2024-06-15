@@ -355,7 +355,36 @@
         "files": [
           "src/main/java/net/mcreator/wildernessoddesyapi/ModList.java"
         ]
-      }
+      },
+      "path": "~/custom code"
+    },
+    {
+      "name": "Mobstages",
+      "type": "code",
+      "sortid": 26,
+      "compiles": false,
+      "locked_code": true,
+      "registry_name": "mobstages",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/wildernessoddesyapi/Mobstages.java"
+        ]
+      },
+      "path": "~/custom code"
+    },
+    {
+      "name": "WolfThunder",
+      "type": "mixin",
+      "sortid": 27,
+      "compiles": false,
+      "locked_code": true,
+      "registry_name": "wolf_thunder",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/wildernessoddesyapi/mixins/WolfThunderMixin.java"
+        ]
+      },
+      "path": "~/AI"
     }
   ],
   "variable_elements": [
@@ -410,6 +439,10 @@
       },
       {
         "name": "Blocks",
+        "children": []
+      },
+      {
+        "name": "custom code",
         "children": []
       }
     ]
