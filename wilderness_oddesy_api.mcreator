@@ -385,6 +385,45 @@
           "src/main/java/net/mcreator/wildernessoddesyapi/item/TestinItem.java"
         ]
       }
+    },
+    {
+      "name": "TPtodimesnionCommand",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "t_ptodimesnion_command",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/wildernessoddesyapi/TPtodimesnionCommand.java"
+        ]
+      },
+      "path": "~/custom code"
+    },
+    {
+      "name": "TPdimension",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "t_pdimension",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/wildernessoddesyapi/TPdimension.java"
+        ]
+      },
+      "path": "~/custom code"
+    },
+    {
+      "name": "ModlList",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "modl_list",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/wildernessoddesyapi/ModlList.java"
+        ]
+      },
+      "path": "~/custom code"
     }
   ],
   "variable_elements": [
