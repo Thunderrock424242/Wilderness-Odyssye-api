@@ -30,13 +30,13 @@ import net.neoforged.neoforge.common.NeoForge;
 import net.minecraft.world.entity.MobCategory;
 import org.apache.commons.lang3.tuple.Pair;
 
-@Mod("utility_qol_for_wilderness_mod")
-public class MobStages {
-    public static final String MODID = "utility_qol_for_wilderness_mod";
+@Mod("wilderness_oddesy_api")
+public class Mobstages {
+    public static final String MODID = "wilderness_oddesy_api";
     private static int daysElapsed = 0;
     private static final int BASE_MOB_SPAWN_RATE = 5; // Base rate of mob spawning
 
-    public MobStages() {
+    public Mobstages() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         modEventBus.addListener(this::setup);
 

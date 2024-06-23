@@ -1,55 +1,72 @@
 package net.mcreator.wildernessoddesyapi.mixins;
 
-import org.spongepowered.asm.mixin.Mixin;
 
-import net.minecraft.world.entity.Entity;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.entity.ai.navigation.PathNavigation;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.animal.Wolf;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.phys.AABB;
-import net.minecraftforge.event.world.ThunderEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.neoforge.event.TickEvent.LevelTickEvent;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-
-import java.util.Optional;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.Mod;
 
 @Mixin(Wolf.class)
-public abstract class WolfMixin {
+public abstract class WolfAiMixin extends Animal {
+
+    @Shadow
+    private GoalSelector goalSelector;
 
     @Inject(method = "tick", at = @At("HEAD"))
-    private void onTick(CallbackInfo ci) {
-        Wolf wolf = (Wolf) (Object) this;
-        Level world = wolf.level;
-
-        if (world.isThundering() && !wolf.isInSittingPose() && !wolf.isTame()) {
-            Optional<BlockPos> shelter = findShelter(world, wolf.blockPosition());
-
-            shelter.ifPresent(pos -> {
-                PathNavigation navigation = wolf.getNavigation();
-                navigation.moveTo(pos.getX(), pos.getY(), pos.getZ(), 1.0);
-            });
+    private void onTick(CallbackInfo info) {
+        if (this.level.isThundering()) {
+            this.goalSelector.addGoal(1, new FindShelterGoal((Wolf) (Object) this));
         }
     }
 
-    private Optional<BlockPos> findShelter(Level world, BlockPos start) {
-        int radius = 16;
-        for (int y = -5; y < 5; y++) {
-            for (int x = -radius; x < radius; x++) {
-                for (int z = -radius; z < radius; z++) {
-                    BlockPos pos = start.offset(x, y, z);
-                    if (world.getBlockState(pos).is(Blocks.OAK_LOG) || world.getBlockState(pos).is(Blocks.STONE)) {
-                        return Optional.of(pos);
-                    }
-                }
+    @Mod.EventBusSubscriber
+    public static class EventHandlers {
+
+        @SubscribeEvent
+        public static void onLevelTick(LevelTickEvent event) {
+            Level level = event.getLevel();
+            if (level.isThundering()) {
+                level.getEntities(EntityType.WOLF, Entity::isAlive).forEach(wolf -> {
+                    ((WolfAiMixin) wolf).goalSelector.addGoal(1, new FindShelterGoal((Wolf) wolf));
+                });
             }
         }
-        return Optional.empty();
+    }
+
+    private static class FindShelterGoal extends Goal {
+        private final Wolf wolf;
+
+        public FindShelterGoal(Wolf wolf) {
+            this.wolf = wolf;
+        }
+
+        @Override
+        public boolean canUse() {
+            return wolf.level.isThundering();
+        }
+
+        @Override
+        public void start() {
+            // Find shelter logic
+            // Example: Move towards a specific location or find a nearby shelter
+            BlockPos shelterPos = findNearestShelter();
+            if (shelterPos != null) {
+                wolf.getNavigation().moveTo(shelterPos.getX(), shelterPos.getY(), shelterPos.getZ(), 1.0);
+            }
+        }
+
+        private BlockPos findNearestShelter() {
+            // Implement your logic to find the nearest shelter
+            // For example, find a nearby tree or cave
+            return null;
+        }
     }
 }

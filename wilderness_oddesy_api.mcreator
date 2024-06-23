@@ -331,20 +331,6 @@
       "path": "~/AI"
     },
     {
-      "name": "CustomGoal",
-      "type": "code",
-      "sortid": 24,
-      "compiles": false,
-      "locked_code": true,
-      "registry_name": "custom_goal",
-      "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/wildernessoddesyapi/CustomGoal.java"
-        ]
-      },
-      "path": "~/AI"
-    },
-    {
       "name": "Mobstages",
       "type": "code",
       "sortid": 26,
@@ -385,20 +371,6 @@
           "src/main/java/net/mcreator/wildernessoddesyapi/item/TestinItem.java"
         ]
       }
-    },
-    {
-      "name": "TPtodimesnionCommand",
-      "type": "code",
-      "sortid": 29,
-      "compiles": false,
-      "locked_code": true,
-      "registry_name": "t_ptodimesnion_command",
-      "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/wildernessoddesyapi/TPtodimesnionCommand.java"
-        ]
-      },
-      "path": "~/custom code"
     },
     {
       "name": "TPdimension",
