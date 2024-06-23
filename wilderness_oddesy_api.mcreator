@@ -424,6 +424,18 @@
         ]
       },
       "path": "~/custom code"
+    },
+    {
+      "name": "Note",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "note",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/wildernessoddesyapi/Note.java"
+        ]
+      }
     }
   ],
   "variable_elements": [
