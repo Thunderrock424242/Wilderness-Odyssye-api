@@ -15,35 +15,34 @@
 package net.mcreator.wildernessoddesyapi;
 
 import net.minecraft.world.level.Level;
-import net.minecraftforge.common.ForgeConfigSpec;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.TickEvent;
-import net.minecraftforge.event.entity.living.MobSpawnEvent;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.ModLoadingContext;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.config.ModConfig;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
-import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.neoforged.neoforge.common.ModConfigSpec;
+import net.neoforged.neoforge.event.TickEvent.LevelTickEvent;
+import net.neoforged.neoforge.event.entity.living.MobSpawnEvent;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.ModLoadingContext;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.config.ModConfig;
+import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
+import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.neoforged.neoforge.common.NeoForge;
 import net.minecraft.world.entity.MobCategory;
-import net.minecraft.world.level.Level;
 import org.apache.commons.lang3.tuple.Pair;
 
-@Mod("wilderness_oddesy_api")
-public class Mobstages {
-    public static final String MODID = "wilderness_oddesy_api";
+@Mod("utility_qol_for_wilderness_mod")
+public class MobStages {
+    public static final String MODID = "utility_qol_for_wilderness_mod";
     private static int daysElapsed = 0;
     private static final int BASE_MOB_SPAWN_RATE = 5; // Base rate of mob spawning
 
-    public Mobstages() {
+    public MobStages() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         modEventBus.addListener(this::setup);
 
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, ModConfigHolder.COMMON_SPEC);
 
-        MinecraftForge.EVENT_BUS.register(this);
+        NeoForge.EVENT_BUS.register(this);
     }
 
     private void setup(final FMLCommonSetupEvent event) {
@@ -51,8 +50,8 @@ public class Mobstages {
     }
 
     @SubscribeEvent
-    public static void onWorldTick(TickEvent.LevelTickEvent event) {
-        Level world = event.world;
+    public static void onWorldTick(LevelTickEvent event) {
+        Level world = event.getLevel();
         if (world.dimension() == Level.OVERWORLD && !world.isClientSide) {
             if (world.getDayTime() % 24000 == 0) { // Check if it's a new day
                 daysElapsed++;
@@ -63,17 +62,17 @@ public class Mobstages {
     @SubscribeEvent
     public static void onMobSpawn(MobSpawnEvent.SpawnPlacementCheck event) {
         if (event.getEntity().getType().getCategory() == MobCategory.MONSTER) {
-            Level world = (Level) event.getWorld();
+            Level world = (Level) event.getLevel();
             if (world.dimension() == Level.OVERWORLD) {
                 if (daysElapsed <= 20) {
                     int additionalMobs = daysElapsed / BASE_MOB_SPAWN_RATE;
                     int maxMobs = ModConfigHolder.COMMON.maxMobs.get();
                     if (world.random.nextInt(100) < additionalMobs && additionalMobs < maxMobs) {
-                        event.setResult(LivingSpawnEvent.Result.ALLOW);
+                        event.setResult(MobSpawnEvent.SpawnPlacementCheck.Result.ALLOW);
                     }
                 } else {
                     // Revert to Minecraft's normal spawning system after 20 days
-                    event.setResult(LivingSpawnEvent.Result.DEFAULT);
+                    event.setResult(MobSpawnEvent.SpawnPlacementCheck.Result.DEFAULT);
                 }
             }
         }
@@ -81,18 +80,18 @@ public class Mobstages {
 
     public static class ModConfigHolder {
         public static final Common COMMON;
-        public static final ForgeConfigSpec COMMON_SPEC;
+        public static final ModConfigSpec COMMON_SPEC;
 
         static {
-            Pair<Common, ForgeConfigSpec> commonSpecPair = new ForgeConfigSpec.Builder().configure(Common::new);
+            Pair<Common, ModConfigSpec> commonSpecPair = new ModConfigSpec.Builder().configure(Common::new);
             COMMON = commonSpecPair.getLeft();
             COMMON_SPEC = commonSpecPair.getRight();
         }
 
         public static class Common {
-            public final ForgeConfigSpec.IntValue maxMobs;
+            public final ModConfigSpec.IntValue maxMobs;
 
-            public Common(ForgeConfigSpec.Builder builder) {
+            public Common(ModConfigSpec.Builder builder) {
                 builder.push("general");
                 maxMobs = builder
                         .comment("Maximum number of mobs that can spawn")

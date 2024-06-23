@@ -389,7 +389,8 @@
     {
       "name": "TPtodimesnionCommand",
       "type": "code",
-      "compiles": true,
+      "sortid": 29,
+      "compiles": false,
       "locked_code": true,
       "registry_name": "t_ptodimesnion_command",
       "metadata": {
@@ -402,7 +403,8 @@
     {
       "name": "TPdimension",
       "type": "code",
-      "compiles": true,
+      "sortid": 30,
+      "compiles": false,
       "locked_code": true,
       "registry_name": "t_pdimension",
       "metadata": {
@@ -415,6 +417,7 @@
     {
       "name": "ModlList",
       "type": "code",
+      "sortid": 31,
       "compiles": true,
       "locked_code": true,
       "registry_name": "modl_list",
@@ -424,18 +427,6 @@
         ]
       },
       "path": "~/custom code"
-    },
-    {
-      "name": "Note",
-      "type": "code",
-      "compiles": true,
-      "locked_code": true,
-      "registry_name": "note",
-      "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/wildernessoddesyapi/Note.java"
-        ]
-      }
     }
   ],
   "variable_elements": [
