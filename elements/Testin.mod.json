@@ -1,0 +1,24 @@
+{
+  "_fv": 60,
+  "_type": "musicdisc",
+  "definition": {
+    "name": "Testin",
+    "rarity": "EPIC",
+    "texture": "spacetimeportalignniter",
+    "description": "WIP",
+    "creativeTab": {
+      "value": "CUSTOM:WildernessOddesyAPI"
+    },
+    "specialInformation": {
+      "fixedValue": []
+    },
+    "glowCondition": {
+      "fixedValue": false
+    },
+    "music": {
+      "value": "CUSTOM:i_ran_so_far_away"
+    },
+    "lengthInTicks": 100,
+    "analogOutput": 0
+  }
+}

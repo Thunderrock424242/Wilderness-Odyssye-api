@@ -20,6 +20,7 @@ import net.minecraft.network.FriendlyByteBuf;
 
 import net.mcreator.wildernessoddesyapi.network.WildernessOddesyApiModVariables;
 import net.mcreator.wildernessoddesyapi.init.WildernessOddesyApiModTabs;
+import net.mcreator.wildernessoddesyapi.init.WildernessOddesyApiModSounds;
 import net.mcreator.wildernessoddesyapi.init.WildernessOddesyApiModPotions;
 import net.mcreator.wildernessoddesyapi.init.WildernessOddesyApiModMobEffects;
 import net.mcreator.wildernessoddesyapi.init.WildernessOddesyApiModItems;
@@ -43,7 +44,7 @@ public class WildernessOddesyApiMod {
 		// End of user code block mod constructor
 		NeoForge.EVENT_BUS.register(this);
 		modEventBus.addListener(this::registerNetworking);
-
+		WildernessOddesyApiModSounds.REGISTRY.register(modEventBus);
 		WildernessOddesyApiModBlocks.REGISTRY.register(modEventBus);
 
 		WildernessOddesyApiModItems.register(modEventBus);

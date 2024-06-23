@@ -23,6 +23,7 @@ public class WildernessOddesyApiModTabs {
 				tabData.accept(WildernessOddesyApiModItems.LIGHTNINGBOW.get());
 				tabData.accept(WildernessOddesyApiModBlocks.PORTALFRAME.get().asItem());
 				tabData.accept(WildernessOddesyApiModItems.THEVAULT.get());
+				tabData.accept(WildernessOddesyApiModItems.TESTIN.get());
 			})
 
 			.build());
