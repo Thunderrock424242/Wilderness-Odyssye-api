@@ -389,7 +389,8 @@
     {
       "name": "WorldLoadingScreen",
       "type": "code",
-      "compiles": true,
+      "sortid": 32,
+      "compiles": false,
       "locked_code": true,
       "registry_name": "world_loading_screen",
       "metadata": {
@@ -402,7 +403,8 @@
     {
       "name": "GenericCacheManager",
       "type": "code",
-      "compiles": true,
+      "sortid": 33,
+      "compiles": false,
       "locked_code": true,
       "registry_name": "generic_cache_manager",
       "metadata": {
