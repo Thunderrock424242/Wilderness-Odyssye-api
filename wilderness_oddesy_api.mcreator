@@ -359,20 +359,6 @@
       "path": "~/AI"
     },
     {
-      "name": "Testin",
-      "type": "musicdisc",
-      "sortid": 28,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "testin",
-      "metadata": {
-        "files": [
-          "src/main/resources/assets/wilderness_oddesy_api/models/item/testin.json",
-          "src/main/java/net/mcreator/wildernessoddesyapi/item/TestinItem.java"
-        ]
-      }
-    },
-    {
       "name": "TPdimension",
       "type": "code",
       "sortid": 30,
@@ -422,9 +408,6 @@
   "tag_elements": {
     "BLOCKS:minecraft:overworld_carver_replaceables": [
       "~Blocks.GRASS"
-    ],
-    "ITEMS:minecraft:music_discs": [
-      "~CUSTOM:Testin"
     ]
   },
   "language_map": {
@@ -432,12 +415,10 @@
       "key.wilderness_oddesy_api.crawlkey": "Crawl key",
       "key.wilderness_oddesy_api_neo.crawlkey": "Crawl key",
       "item.wilderness_oddesy_api.thevault": "Thevault Portal Igniter",
-      "item.wilderness_oddesy_api.testin.desc": "WIP",
       "item.wilderness_oddesy_api_neo.lightingbow": "Lightingbow",
       "item_group.wilderness_oddesy_api.wilderness_oddesy_api": "Wilderness Oddesy API",
       "block.wilderness_oddesy_api_neo.lightingenergyblock": "Lightingenergyblock",
       "block.wilderness_oddesy_api.portalframe": "Portalframe",
-      "item.wilderness_oddesy_api.testin": "Testin",
       "item.minecraft.lingering_potion.effect.flash_speed": "Lingering Potion of Flash Speed",
       "block.wilderness_oddesy_api.lightingenergyblock": "Lightingenergyblock",
       "effect.wilderness_oddesy_api.flash_s": "Flash S",
