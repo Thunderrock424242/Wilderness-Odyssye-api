@@ -385,6 +385,32 @@
         ]
       },
       "path": "~/custom code"
+    },
+    {
+      "name": "WorldLoadingScreen",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "world_loading_screen",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/wildernessoddesyapi/WorldLoadingScreen.java"
+        ]
+      },
+      "path": "~/custom code"
+    },
+    {
+      "name": "GenericCacheManager",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "generic_cache_manager",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/wildernessoddesyapi/GenericCacheManager.java"
+        ]
+      },
+      "path": "~/custom code"
     }
   ],
   "variable_elements": [
