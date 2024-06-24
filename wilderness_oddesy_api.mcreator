@@ -306,12 +306,12 @@
       "sortid": 21,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "test",
+      "registry_name": "glitchy",
       "metadata": {
         "files": [
-          "src/main/resources/data/wilderness_oddesy_api/worldgen/configured_feature/test_tree.json",
-          "src/main/resources/data/wilderness_oddesy_api/worldgen/placed_feature/test_tree.json",
-          "src/main/resources/data/wilderness_oddesy_api/worldgen/biome/test.json"
+          "src/main/resources/data/wilderness_oddesy_api/worldgen/configured_feature/glitchy_tree.json",
+          "src/main/resources/data/wilderness_oddesy_api/worldgen/biome/glitchy.json",
+          "src/main/resources/data/wilderness_oddesy_api/worldgen/placed_feature/glitchy_tree.json"
         ]
       },
       "path": "~/biomes"
@@ -435,6 +435,8 @@
   ],
   "tag_elements": {
     "BLOCKS:minecraft:overworld_carver_replaceables": [
+      "~CUSTOM:Portalframe",
+      "~CUSTOM:Lightingenergyblock",
       "~Blocks.GRASS"
     ]
   },
@@ -447,10 +449,10 @@
       "item_group.wilderness_oddesy_api.wilderness_oddesy_api": "Wilderness Oddesy API",
       "block.wilderness_oddesy_api_neo.lightingenergyblock": "Lightingenergyblock",
       "block.wilderness_oddesy_api.portalframe": "Portalframe",
+      "biome.wilderness_oddesy_api.glitchy": "Test",
       "item.minecraft.lingering_potion.effect.flash_speed": "Lingering Potion of Flash Speed",
       "block.wilderness_oddesy_api.lightingenergyblock": "Lightingenergyblock",
       "effect.wilderness_oddesy_api.flash_s": "Flash S",
-      "biome.wilderness_oddesy_api.test": "Test",
       "subtitles.i_ran_so_far_away": "",
       "item.wilderness_oddesy_api.lightningbow": "Lightningbow",
       "item.minecraft.potion.effect.flash_speed": "Potion of Flash Speed",
