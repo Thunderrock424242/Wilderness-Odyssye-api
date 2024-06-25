@@ -6,6 +6,8 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
 import java.util.logging.Level;
 import net.minecraft.core.BlockPos;
@@ -13,38 +15,42 @@ import net.minecraft.core.BlockPos;
 class GenericCacheManager<K, V> {
     private static final Logger LOGGER = Logger.getLogger(GenericCacheManager.class.getName());
     private final Map<K, WeakReference<V>> cache = new ConcurrentHashMap<>();
-    private final ExecutorService cacheCleaner = Executors.newSingleThreadExecutor();
+    private final ScheduledExecutorService cacheCleaner = Executors.newSingleThreadScheduledExecutor();
 
     public GenericCacheManager() {
         // Periodically clean up the cache
-        cacheCleaner.submit(() -> {
-            while (true) {
-                try {
-                    Thread.sleep(60000); // Run every minute
-                    cache.entrySet().removeIf(entry -> entry.getValue().get() == null);
-                    LOGGER.info("Cache cleaned up.");
-                } catch (InterruptedException e) {
-                    LOGGER.log(Level.SEVERE, "Cache cleaner interrupted", e);
-                    Thread.currentThread().interrupt();
-                    break;
-                }
-            }
-        });
+        cacheCleaner.scheduleAtFixedRate(() -> {
+            cache.entrySet().removeIf(entry -> entry.getValue().get() == null);
+            LOGGER.info("Cache cleaned up.");
+        }, 1, 1, TimeUnit.MINUTES);
     }
 
     public void put(K key, V value) {
         cache.put(key, new WeakReference<>(value));
-        LOGGER.info("Added to cache: " + key);
+        LOGGER.fine("Added to cache: " + key); // Use a lower logging level for frequent operations
     }
 
     public V get(K key) {
         WeakReference<V> reference = cache.get(key);
         V value = reference != null ? reference.get() : null;
-        LOGGER.info("Retrieved from cache: " + key + " -> " + value);
+        LOGGER.fine("Retrieved from cache: " + key + " -> " + value);
         return value;
+    }
+
+    public void shutdown() {
+        try {
+            cacheCleaner.shutdown();
+            if (!cacheCleaner.awaitTermination(60, TimeUnit.SECONDS)) {
+                cacheCleaner.shutdownNow();
+            }
+        } catch (InterruptedException e) {
+            cacheCleaner.shutdownNow();
+            Thread.currentThread().interrupt();
+        }
     }
 }
 
+// Custom data classes remain unchanged
 class CustomItemData {
     private final String itemName;
     private final int itemValue;

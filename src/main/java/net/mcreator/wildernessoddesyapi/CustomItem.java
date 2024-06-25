@@ -1,7 +1,7 @@
 package net.mcreator.wildernessoddesyapi;
 
 import java.util.logging.Logger;
-import java.util.logging.Level; // Java logging Level
+import java.util.logging.Level;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.entity.Entity;
@@ -50,7 +50,7 @@ public class CustomItem extends Item {
         if (itemData != null) {
             // Use the custom item data
             applyCustomEffects(entity, itemData);
-            LOGGER.info("Applying custom effects to entity: " + entity.getName().getString());
+            LOGGER.fine("Applying custom effects to entity: " + entity.getName().getString());
         }
 
         // Example of using block data
@@ -58,14 +58,14 @@ public class CustomItem extends Item {
         CustomBlockData blockData = blockCache.get(pos);
         if (blockData != null) {
             // Use custom block data (placeholder logic)
-            LOGGER.info("Block Type: " + blockData.getBlockType() + ", Hardness: " + blockData.getBlockHardness());
+            LOGGER.fine("Block Type: " + blockData.getBlockType() + ", Hardness: " + blockData.getBlockHardness());
         }
     }
 
     private int calculateItemValue(ItemStack stack) {
         // Custom logic to calculate item value
         int value = stack.getCount() * 10;
-        LOGGER.info("Calculated item value: " + value + " for stack: " + stack.getHoverName().getString());
+        LOGGER.fine("Calculated item value: " + value + " for stack: " + stack.getHoverName().getString());
         return value;
     }
 
@@ -73,43 +73,43 @@ public class CustomItem extends Item {
         // Custom logic to apply effects based on item data
         if (entity instanceof Player) {
             ((Player) entity).addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 100, data.getItemValue() / 10));
-            LOGGER.info("Applied DAMAGE_BOOST effect to player: " + ((Player) entity).getName().getString());
+            LOGGER.fine("Applied DAMAGE_BOOST effect to player: " + ((Player) entity).getName().getString());
         }
     }
 
     public static void addBlockData(BlockPos pos, String blockType, int hardness) {
         CustomBlockData blockData = new CustomBlockData(blockType, hardness);
         blockCache.put(pos, blockData);
-        LOGGER.info("Added block data to cache: " + blockType + " at " + pos);
+        LOGGER.fine("Added block data to cache: " + blockType + " at " + pos);
     }
 
     public static void addBiomeData(String biomeId, String biomeName, float temperature, float humidity) {
         CustomBiomeData biomeData = new CustomBiomeData(biomeName, temperature, humidity);
         biomeCache.put(biomeId, biomeData);
-        LOGGER.info("Added biome data to cache: " + biomeName);
+        LOGGER.fine("Added biome data to cache: " + biomeName);
     }
 
     public static void addWorldGenData(String structureId, String structureName, int complexity) {
         CustomWorldGenData worldGenData = new CustomWorldGenData(structureName, complexity);
         worldGenCache.put(structureId, worldGenData);
-        LOGGER.info("Added world gen data to cache: " + structureName);
+        LOGGER.fine("Added world gen data to cache: " + structureName);
     }
 
     public static void addConfigData(String configId, String configName, String configValue) {
         CustomConfigData configData = new CustomConfigData(configName, configValue);
         configCache.put(configId, configData);
-        LOGGER.info("Added config data to cache: " + configName);
+        LOGGER.fine("Added config data to cache: " + configName);
     }
 
     public static void addPathfindingData(String entityId, BlockPos[] path) {
         CustomPathfindingData pathfindingData = new CustomPathfindingData(entityId, path);
         pathfindingCache.put(entityId, pathfindingData);
-        LOGGER.info("Added pathfinding data to cache for entity: " + entityId);
+        LOGGER.fine("Added pathfinding data to cache for entity: " + entityId);
     }
 
     public static void addWeatherData(String weatherId, String weatherType, long duration, boolean isSevere) {
         CustomWeatherData weatherData = new CustomWeatherData(weatherType, duration, isSevere);
         weatherCache.put(weatherId, weatherData);
-        LOGGER.info("Added weather data to cache: " + weatherType);
+        LOGGER.fine("Added weather data to cache: " + weatherType);
     }
 }
