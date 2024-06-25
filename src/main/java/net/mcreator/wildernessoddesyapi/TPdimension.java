@@ -22,9 +22,9 @@ import net.neoforged.api.distmarker.OnlyIn;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import net.minecraft.commands.arguments.EntityArgument;
 
-@Mod("tptodimension")
+@Mod("wilderness_oddesy_api")
 public class TPdimension {
-    public static final String MODID = "tptodimension";
+    public static final String MODID = "wilderness_oddesy_api";
 
     public TPdimension() {
         net.neoforged.neoforge.common.NeoForge.EVENT_BUS.register(this);
