@@ -1,10 +1,8 @@
 package net.mcreator.wildernessoddesyapi;
 
-
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.DoubleArgumentType;
 import com.mojang.brigadier.arguments.StringArgumentType;
-import com.mojang.brigadier.arguments.EntityArgument;
 import com.mojang.brigadier.context.CommandContext;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
@@ -18,18 +16,28 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.neoforged.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
+import net.neoforged.neoforge.event.server.ServerStartingEvent;
+import net.minecraft.commands.arguments.EntityArgument;
 
 @Mod("tptodimension")
 public class TPdimension {
     public static final String MODID = "tptodimension";
 
     public TPdimension() {
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
+        net.neoforged.neoforge.common.NeoForge.EVENT_BUS.register(this);
     }
 
-    private void setup(final FMLCommonSetupEvent event) {
-        CommandRegistration.register(event.getCommandDispatcher());
+    @SubscribeEvent
+    public void setup(final FMLCommonSetupEvent event) {
+        // Setup tasks
+    }
+
+    @SubscribeEvent
+    public void onServerStarting(ServerStartingEvent event) {
+        CommandRegistration.register(event.getServer().getCommands().getDispatcher());
     }
 }
 
@@ -51,7 +59,7 @@ class CommandRegistration {
 
     private static int execute(CommandContext<CommandSourceStack> context, ServerPlayer player, String dimension, double x, double y, double z) {
         MinecraftServer server = context.getSource().getServer();
-        ResourceKey<Level> dimensionKey = ResourceKey.create(Level.DIMENSION, new ResourceLocation(dimension));
+        ResourceKey<Level> dimensionKey = ResourceKey.create(ResourceKey.createRegistryKey(new ResourceLocation("dimension")), new ResourceLocation(dimension));
         ServerLevel targetWorld = server.getLevel(dimensionKey);
 
         if (targetWorld != null) {
