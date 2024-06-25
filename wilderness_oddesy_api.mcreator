@@ -413,6 +413,18 @@
         ]
       },
       "path": "~/custom code"
+    },
+    {
+      "name": "CustomItem",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "custom_item",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/wildernessoddesyapi/CustomItem.java"
+        ]
+      }
     }
   ],
   "variable_elements": [
