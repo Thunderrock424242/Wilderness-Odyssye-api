@@ -404,7 +404,7 @@
       "name": "GenericCacheManager",
       "type": "code",
       "sortid": 33,
-      "compiles": false,
+      "compiles": true,
       "locked_code": true,
       "registry_name": "generic_cache_manager",
       "metadata": {
@@ -417,6 +417,7 @@
     {
       "name": "CustomItem",
       "type": "code",
+      "sortid": 34,
       "compiles": true,
       "locked_code": true,
       "registry_name": "custom_item",
@@ -424,7 +425,8 @@
         "files": [
           "src/main/java/net/mcreator/wildernessoddesyapi/CustomItem.java"
         ]
-      }
+      },
+      "path": "~/custom code"
     }
   ],
   "variable_elements": [

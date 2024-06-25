@@ -6,8 +6,12 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.logging.Logger;
+import java.util.logging.Level;
+import net.minecraft.core.BlockPos;
 
 class GenericCacheManager<K, V> {
+    private static final Logger LOGGER = Logger.getLogger(GenericCacheManager.class.getName());
     private final Map<K, WeakReference<V>> cache = new ConcurrentHashMap<>();
     private final ExecutorService cacheCleaner = Executors.newSingleThreadExecutor();
 
@@ -18,7 +22,9 @@ class GenericCacheManager<K, V> {
                 try {
                     Thread.sleep(60000); // Run every minute
                     cache.entrySet().removeIf(entry -> entry.getValue().get() == null);
+                    LOGGER.info("Cache cleaned up.");
                 } catch (InterruptedException e) {
+                    LOGGER.log(Level.SEVERE, "Cache cleaner interrupted", e);
                     Thread.currentThread().interrupt();
                     break;
                 }
@@ -28,11 +34,14 @@ class GenericCacheManager<K, V> {
 
     public void put(K key, V value) {
         cache.put(key, new WeakReference<>(value));
+        LOGGER.info("Added to cache: " + key);
     }
 
     public V get(K key) {
         WeakReference<V> reference = cache.get(key);
-        return reference != null ? reference.get() : null;
+        V value = reference != null ? reference.get() : null;
+        LOGGER.info("Retrieved from cache: " + key + " -> " + value);
+        return value;
     }
 }
 
