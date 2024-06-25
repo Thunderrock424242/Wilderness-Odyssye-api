@@ -390,7 +390,7 @@
       "name": "WorldLoadingScreen",
       "type": "code",
       "sortid": 32,
-      "compiles": false,
+      "compiles": true,
       "locked_code": true,
       "registry_name": "world_loading_screen",
       "metadata": {
