@@ -443,20 +443,6 @@
       "path": "~/Optimizations"
     },
     {
-      "name": "ChunkOptimizer",
-      "type": "code",
-      "sortid": 37,
-      "compiles": false,
-      "locked_code": true,
-      "registry_name": "chunk_optimizer",
-      "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/wildernessoddesyapi/ChunkOptimizer.java"
-        ]
-      },
-      "path": "~/Optimizations"
-    },
-    {
       "name": "ServerStability",
       "type": "code",
       "sortid": 38,
