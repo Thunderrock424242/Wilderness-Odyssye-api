@@ -4,7 +4,7 @@
   "definition": {
     "name": "Wilderness Oddesy API",
     "icon": {
-      "value": "CUSTOM:Lightingenergyblock"
+      "value": "CUSTOM:Portalframe"
     },
     "showSearch": false
   }

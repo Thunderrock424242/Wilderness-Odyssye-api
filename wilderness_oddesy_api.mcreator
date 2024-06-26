@@ -98,92 +98,6 @@
       "path": "~/Procedures"
     },
     {
-      "name": "Lightingenergyblock",
-      "type": "block",
-      "sortid": 8,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "lightingenergyblock",
-      "metadata": {
-        "files": [
-          "src/main/resources/data/wilderness_oddesy_api/loot_tables/blocks/lightingenergyblock.json",
-          "src/main/resources/assets/wilderness_oddesy_api/blockstates/lightingenergyblock.json",
-          "src/main/java/net/mcreator/wildernessoddesyapi/block/LightingenergyblockBlock.java",
-          "src/main/resources/assets/wilderness_oddesy_api/models/item/lightingenergyblock.json",
-          "src/main/resources/assets/wilderness_oddesy_api/models/block/lightingenergyblock.json"
-        ]
-      },
-      "path": "~/Blocks"
-    },
-    {
-      "name": "Spawnlightningenergyblock",
-      "type": "procedure",
-      "sortid": 9,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "spawnlightningenergyblock",
-      "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/wildernessoddesyapi/procedures/SpawnlightningenergyblockProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "entity",
-            "type": "entity"
-          },
-          {
-            "name": "x",
-            "type": "number"
-          },
-          {
-            "name": "y",
-            "type": "number"
-          },
-          {
-            "name": "z",
-            "type": "number"
-          },
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      },
-      "path": "~/Procedures"
-    },
-    {
-      "name": "Lightingaroww",
-      "type": "procedure",
-      "sortid": 10,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "lightingaroww",
-      "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/wildernessoddesyapi/procedures/LightingarowwProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "x",
-            "type": "number"
-          },
-          {
-            "name": "y",
-            "type": "number"
-          },
-          {
-            "name": "z",
-            "type": "number"
-          },
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      },
-      "path": "~/Procedures"
-    },
-    {
       "name": "WildernessOddesyAPI",
       "type": "tab",
       "sortid": 12,
@@ -255,7 +169,7 @@
       "name": "EntityAi",
       "type": "mixin",
       "sortid": 23,
-      "compiles": false,
+      "compiles": true,
       "locked_code": true,
       "registry_name": "entity_ai",
       "metadata": {
@@ -269,7 +183,7 @@
       "name": "Mobstages",
       "type": "code",
       "sortid": 26,
-      "compiles": false,
+      "compiles": true,
       "locked_code": true,
       "registry_name": "mobstages",
       "metadata": {
@@ -283,7 +197,7 @@
       "name": "WolfThunder",
       "type": "mixin",
       "sortid": 27,
-      "compiles": false,
+      "compiles": true,
       "locked_code": true,
       "registry_name": "wolf_thunder",
       "metadata": {
@@ -353,7 +267,7 @@
       "name": "ServerStability",
       "type": "code",
       "sortid": 38,
-      "compiles": false,
+      "compiles": true,
       "locked_code": true,
       "registry_name": "server_stability",
       "metadata": {
@@ -367,7 +281,7 @@
       "name": "OptimizedWorldGen",
       "type": "code",
       "sortid": 39,
-      "compiles": false,
+      "compiles": true,
       "locked_code": true,
       "registry_name": "optimized_world_gen",
       "metadata": {
@@ -381,14 +295,15 @@
       "name": "Aynchronousprocessing",
       "type": "code",
       "sortid": 40,
-      "compiles": false,
+      "compiles": true,
       "locked_code": true,
       "registry_name": "aynchronousprocessing",
       "metadata": {
         "files": [
           "src/main/java/net/mcreator/wildernessoddesyapi/Aynchronousprocessing.java"
         ]
-      }
+      },
+      "path": "~/Optimizations"
     }
   ],
   "variable_elements": [
@@ -412,22 +327,21 @@
   "tag_elements": {
     "BLOCKS:minecraft:overworld_carver_replaceables": [
       "~CUSTOM:Portalframe",
-      "~CUSTOM:Lightingenergyblock",
+      "~Blocks.CAPSID",
       "~Blocks.GRASS"
     ]
   },
   "language_map": {
     "en_us": {
-      "block.wilderness_oddesy_api.portalframe": "Portalframe",
-      "biome.wilderness_oddesy_api.glitchy": "Test",
       "key.wilderness_oddesy_api.crawlkey": "Crawl key",
-      "block.wilderness_oddesy_api.lightingenergyblock": "Lightingenergyblock",
       "key.wilderness_oddesy_api_neo.crawlkey": "Crawl key",
       "item.wilderness_oddesy_api.thevault": "Thevault Portal Igniter",
       "item.wilderness_oddesy_api_neo.lightingbow": "Lightingbow",
       "item_group.wilderness_oddesy_api.wilderness_oddesy_api": "Wilderness Oddesy API",
-      "subtitles.i_ran_so_far_away": "",
       "block.wilderness_oddesy_api_neo.lightingenergyblock": "Lightingenergyblock",
+      "block.wilderness_oddesy_api.portalframe": "Portalframe",
+      "biome.wilderness_oddesy_api.glitchy": "Test",
+      "subtitles.i_ran_so_far_away": "",
       "item.wilderness_oddesy_api_neo.lightningarrow": "Lightningarrow"
     }
   },

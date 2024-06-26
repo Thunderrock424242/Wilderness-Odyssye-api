@@ -18,7 +18,6 @@ import net.mcreator.wildernessoddesyapi.WildernessOddesyApiMod;
 
 public class WildernessOddesyApiModItems {
 	public static final DeferredRegister<Item> REGISTRY = DeferredRegister.create(BuiltInRegistries.ITEM, WildernessOddesyApiMod.MODID);
-	public static final DeferredHolder<Item, Item> LIGHTINGENERGYBLOCK = block(WildernessOddesyApiModBlocks.LIGHTINGENERGYBLOCK);
 	public static final DeferredHolder<Item, Item> PORTALFRAME = block(WildernessOddesyApiModBlocks.PORTALFRAME);
 	public static final DeferredHolder<Item, Item> THEVAULT = REGISTRY.register("thevault", () -> new ThevaultItem());
 
