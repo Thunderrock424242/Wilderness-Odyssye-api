@@ -12,6 +12,7 @@ import net.minecraft.core.BlockPos;
 
 public class CustomItem extends Item {
     private static final Logger LOGGER = Logger.getLogger(CustomItem.class.getName());
+    
     private static final GenericCacheManager<String, CustomItemData> itemCache = new GenericCacheManager<>();
     private static final GenericCacheManager<String, CustomPlayerData> playerCache = new GenericCacheManager<>();
     private static final GenericCacheManager<BlockPos, CustomBlockData> blockCache = new GenericCacheManager<>();
@@ -86,93 +87,83 @@ public class CustomItem extends Item {
         }
     }
 
+    public static <K, V> void addData(GenericCacheManager<K, V> cache, K id, V data) {
+        cache.put(id, data);
+        LOGGER.fine("Added data to cache: " + data + " with ID: " + id);
+    }
+
     public static void addBlockData(BlockPos pos, String blockType, int hardness) {
         CustomBlockData blockData = new CustomBlockData(blockType, hardness, 5, "Pickaxe");
-        blockCache.put(pos, blockData);
-        LOGGER.fine("Added block data to cache: " + blockType + " at " + pos);
+        addData(blockCache, pos, blockData);
     }
 
     public static void addBiomeData(String biomeId, String biomeName, float temperature, float humidity) {
         CustomBiomeData biomeData = new CustomBiomeData(biomeName, temperature, humidity, 0.5f, 100);
-        biomeCache.put(biomeId, biomeData);
-        LOGGER.fine("Added biome data to cache: " + biomeName);
+        addData(biomeCache, biomeId, biomeData);
     }
 
     public static void addWorldGenData(String structureId, String structureName, int complexity) {
         CustomWorldGenData worldGenData = new CustomWorldGenData(structureName, complexity, 0.1, List.of("Forest", "Plains"));
-        worldGenCache.put(structureId, worldGenData);
-        LOGGER.fine("Added world gen data to cache: " + structureName);
+        addData(worldGenCache, structureId, worldGenData);
     }
 
     public static void addConfigData(String configId, String configName, String configValue) {
         CustomConfigData configData = new CustomConfigData(configName, configValue, "default", true);
-        configCache.put(configId, configData);
-        LOGGER.fine("Added config data to cache: " + configName);
+        addData(configCache, configId, configData);
     }
 
     public static void addPathfindingData(String entityId, BlockPos[] path) {
         CustomPathfindingData pathfindingData = new CustomPathfindingData(entityId, path, false, 0);
-        pathfindingCache.put(entityId, pathfindingData);
-        LOGGER.fine("Added pathfinding data to cache for entity: " + entityId);
+        addData(pathfindingCache, entityId, pathfindingData);
     }
 
     public static void addWeatherData(String weatherId, String weatherType, long duration, boolean isSevere) {
         CustomWeatherData weatherData = new CustomWeatherData(weatherType, duration, isSevere, 5, 20.0);
-        weatherCache.put(weatherId, weatherData);
-        LOGGER.fine("Added weather data to cache: " + weatherType);
+        addData(weatherCache, weatherId, weatherData);
     }
 
     public static void addEntityData(String entityId, String entityType, double health, BlockPos position) {
         CustomEntityData entityData = new CustomEntityData(entityType, health, position);
-        entityCache.put(entityId, entityData);
-        LOGGER.fine("Added entity data to cache for entity: " + entityId);
+        addData(entityCache, entityId, entityData);
     }
 
     public static void addEventData(String eventId, String eventType, String eventDescription, long timestamp) {
         CustomEventData eventData = new CustomEventData(eventType, eventDescription, timestamp);
-        eventCache.put(eventId, eventData);
-        LOGGER.fine("Added event data to cache: " + eventType + " with description: " + eventDescription);
+        addData(eventCache, eventId, eventData);
     }
 
     public static void addQuestData(String questId, String questName, String questDescription, List<String> objectives, List<String> rewards) {
         CustomQuestData questData = new CustomQuestData(questName, questDescription, objectives, rewards);
-        questCache.put(questId, questData);
-        LOGGER.fine("Added quest data to cache: " + questName);
+        addData(questCache, questId, questData);
     }
 
     public static void addSkillData(String skillId, String skillName, int skillLevel, String skillEffect) {
         CustomSkillData skillData = new CustomSkillData(skillName, skillLevel, skillEffect);
-        skillCache.put(skillId, skillData);
-        LOGGER.fine("Added skill data to cache: " + skillName + " with effect: " + skillEffect);
+        addData(skillCache, skillId, skillData);
     }
 
     public static void addStructureData(String structureId, String structureName, String dimension, int size, boolean isGenerated) {
         CustomStructureData structureData = new CustomStructureData(structureName, dimension, size, isGenerated);
-        structureCache.put(structureId, structureData);
-        LOGGER.fine("Added structure data to cache: " + structureName + " in dimension: " + dimension);
+        addData(structureCache, structureId, structureData);
     }
 
     public static void addAchievementData(String achievementId, String achievementName, String description, int points, boolean isUnlocked) {
         CustomAchievementData achievementData = new CustomAchievementData(achievementName, description, points, isUnlocked);
-        achievementCache.put(achievementId, achievementData);
-        LOGGER.fine("Added achievement data to cache: " + achievementName);
+        addData(achievementCache, achievementId, achievementData);
     }
 
     public static void addRecipeData(String recipeId, String recipeName, List<String> ingredients, String resultItem, int resultQuantity) {
         CustomRecipeData recipeData = new CustomRecipeData(recipeName, ingredients, resultItem, resultQuantity);
-        recipeCache.put(recipeId, recipeData);
-        LOGGER.fine("Added recipe data to cache: " + recipeName);
+        addData(recipeCache, recipeId, recipeData);
     }
 
     public static void addDimensionData(String dimensionId, String dimensionName, String environmentType, int difficultyLevel) {
         CustomDimensionData dimensionData = new CustomDimensionData(dimensionName, environmentType, difficultyLevel);
-        dimensionCache.put(dimensionId, dimensionData);
-        LOGGER.fine("Added dimension data to cache: " + dimensionName);
+        addData(dimensionCache, dimensionId, dimensionData);
     }
 
     public static void addNPCData(String npcId, String npcName, String role, String dialogue, double health) {
         CustomNPCData npcData = new CustomNPCData(npcName, role, dialogue, health);
-        npcCache.put(npcId, npcData);
-        LOGGER.fine("Added NPC data to cache: " + npcName);
+        addData(npcCache, npcId, npcData);
     }
 }

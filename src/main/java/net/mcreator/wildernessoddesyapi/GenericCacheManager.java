@@ -1,15 +1,10 @@
 package net.mcreator.wildernessoddesyapi;
 
 import java.lang.ref.WeakReference;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
+import java.util.*;
+import java.util.concurrent.*;
 import java.util.logging.Logger;
-
+import java.util.stream.Collectors;
 import net.minecraft.core.BlockPos;
 
 class GenericCacheManager<K, V> {
@@ -18,7 +13,6 @@ class GenericCacheManager<K, V> {
     private final ScheduledExecutorService cacheCleaner = Executors.newSingleThreadScheduledExecutor();
 
     public GenericCacheManager() {
-        // Periodically clean up the cache
         cacheCleaner.scheduleAtFixedRate(() -> {
             cache.entrySet().removeIf(entry -> entry.getValue().get() == null);
             LOGGER.info("Cache cleaned up.");
@@ -27,7 +21,7 @@ class GenericCacheManager<K, V> {
 
     public void put(K key, V value) {
         cache.put(key, new WeakReference<>(value));
-        LOGGER.fine("Added to cache: " + key); // Use a lower logging level for frequent operations
+        LOGGER.fine("Added to cache: " + key);
     }
 
     public V get(K key) {
@@ -50,7 +44,7 @@ class GenericCacheManager<K, V> {
     }
 }
 
-// Enhanced Custom Data Classes
+// Enhanced Custom Data Classes with improved equals and hashCode methods
 
 class CustomItemData {
     private final String itemName;
@@ -65,52 +59,30 @@ class CustomItemData {
         this.description = description;
     }
 
-    public String getItemName() {
-        return itemName;
-    }
-
-    public int getItemValue() {
-        return itemValue;
-    }
-
-    public String getRarity() {
-        return rarity;
-    }
-
-    public String getDescription() {
-        return description;
-    }
+    public String getItemName() { return itemName; }
+    public int getItemValue() { return itemValue; }
+    public String getRarity() { return rarity; }
+    public String getDescription() { return description; }
 
     @Override
     public String toString() {
-        return "CustomItemData{" +
-                "itemName='" + itemName + '\'' +
-                ", itemValue=" + itemValue +
-                ", rarity='" + rarity + '\'' +
-                ", description='" + description + '\'' +
-                '}';
+        return String.format("CustomItemData{itemName='%s', itemValue=%d, rarity='%s', description='%s'}", itemName, itemValue, rarity, description);
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
+        if (!(o instanceof CustomItemData)) return false;
         CustomItemData that = (CustomItemData) o;
-
-        if (itemValue != that.itemValue) return false;
-        if (!itemName.equals(that.itemName)) return false;
-        if (!rarity.equals(that.rarity)) return false;
-        return description.equals(that.description);
+        return itemValue == that.itemValue &&
+                Objects.equals(itemName, that.itemName) &&
+                Objects.equals(rarity, that.rarity) &&
+                Objects.equals(description, that.description);
     }
 
     @Override
     public int hashCode() {
-        int result = itemName.hashCode();
-        result = 31 * result + itemValue;
-        result = 31 * result + rarity.hashCode();
-        result = 31 * result + description.hashCode();
-        return result;
+        return Objects.hash(itemName, itemValue, rarity, description);
     }
 }
 
@@ -124,55 +96,33 @@ class CustomPlayerData {
         this.playerName = playerName;
         this.playerLevel = playerLevel;
         this.experiencePoints = experiencePoints;
-        this.inventory = inventory;
+        this.inventory = new ArrayList<>(inventory);
     }
 
-    public String getPlayerName() {
-        return playerName;
-    }
-
-    public int getPlayerLevel() {
-        return playerLevel;
-    }
-
-    public int getExperiencePoints() {
-        return experiencePoints;
-    }
-
-    public List<String> getInventory() {
-        return inventory;
-    }
+    public String getPlayerName() { return playerName; }
+    public int getPlayerLevel() { return playerLevel; }
+    public int getExperiencePoints() { return experiencePoints; }
+    public List<String> getInventory() { return new ArrayList<>(inventory); }
 
     @Override
     public String toString() {
-        return "CustomPlayerData{" +
-                "playerName='" + playerName + '\'' +
-                ", playerLevel=" + playerLevel +
-                ", experiencePoints=" + experiencePoints +
-                ", inventory=" + inventory +
-                '}';
+        return String.format("CustomPlayerData{playerName='%s', playerLevel=%d, experiencePoints=%d, inventory=%s}", playerName, playerLevel, experiencePoints, inventory);
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
+        if (!(o instanceof CustomPlayerData)) return false;
         CustomPlayerData that = (CustomPlayerData) o;
-
-        if (playerLevel != that.playerLevel) return false;
-        if (experiencePoints != that.experiencePoints) return false;
-        if (!playerName.equals(that.playerName)) return false;
-        return inventory.equals(that.inventory);
+        return playerLevel == that.playerLevel &&
+                experiencePoints == that.experiencePoints &&
+                Objects.equals(playerName, that.playerName) &&
+                Objects.equals(inventory, that.inventory);
     }
 
     @Override
     public int hashCode() {
-        int result = playerName.hashCode();
-        result = 31 * result + playerLevel;
-        result = 31 * result + experiencePoints;
-        result = 31 * result + inventory.hashCode();
-        return result;
+        return Objects.hash(playerName, playerLevel, experiencePoints, inventory);
     }
 }
 
@@ -189,52 +139,30 @@ class CustomBlockData {
         this.toolRequired = toolRequired;
     }
 
-    public String getBlockType() {
-        return blockType;
-    }
-
-    public int getBlockHardness() {
-        return blockHardness;
-    }
-
-    public int getResistance() {
-        return resistance;
-    }
-
-    public String getToolRequired() {
-        return toolRequired;
-    }
+    public String getBlockType() { return blockType; }
+    public int getBlockHardness() { return blockHardness; }
+    public int getResistance() { return resistance; }
+    public String getToolRequired() { return toolRequired; }
 
     @Override
     public String toString() {
-        return "CustomBlockData{" +
-                "blockType='" + blockType + '\'' +
-                ", blockHardness=" + blockHardness +
-                ", resistance=" + resistance +
-                ", toolRequired='" + toolRequired + '\'' +
-                '}';
+        return String.format("CustomBlockData{blockType='%s', blockHardness=%d, resistance=%d, toolRequired='%s'}", blockType, blockHardness, resistance, toolRequired);
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
+        if (!(o instanceof CustomBlockData)) return false;
         CustomBlockData that = (CustomBlockData) o;
-
-        if (blockHardness != that.blockHardness) return false;
-        if (resistance != that.resistance) return false;
-        if (!blockType.equals(that.blockType)) return false;
-        return toolRequired.equals(that.toolRequired);
+        return blockHardness == that.blockHardness &&
+                resistance == that.resistance &&
+                Objects.equals(blockType, that.blockType) &&
+                Objects.equals(toolRequired, that.toolRequired);
     }
 
     @Override
     public int hashCode() {
-        int result = blockType.hashCode();
-        result = 31 * result + blockHardness;
-        result = 31 * result + resistance;
-        result = 31 * result + toolRequired.hashCode();
-        return result;
+        return Objects.hash(blockType, blockHardness, resistance, toolRequired);
     }
 }
 
@@ -253,59 +181,32 @@ class CustomBiomeData {
         this.altitude = altitude;
     }
 
-    public String getBiomeName() {
-        return biomeName;
-    }
-
-    public float getTemperature() {
-        return temperature;
-    }
-
-    public float getHumidity() {
-        return humidity;
-    }
-
-    public float getRainfall() {
-        return rainfall;
-    }
-
-    public int getAltitude() {
-        return altitude;
-    }
+    public String getBiomeName() { return biomeName; }
+    public float getTemperature() { return temperature; }
+    public float getHumidity() { return humidity; }
+    public float getRainfall() { return rainfall; }
+    public int getAltitude() { return altitude; }
 
     @Override
     public String toString() {
-        return "CustomBiomeData{" +
-                "biomeName='" + biomeName + '\'' +
-                ", temperature=" + temperature +
-                ", humidity=" + humidity +
-                ", rainfall=" + rainfall +
-                ", altitude=" + altitude +
-                '}';
+        return String.format("CustomBiomeData{biomeName='%s', temperature=%.2f, humidity=%.2f, rainfall=%.2f, altitude=%d}", biomeName, temperature, humidity, rainfall, altitude);
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
+        if (!(o instanceof CustomBiomeData)) return false;
         CustomBiomeData that = (CustomBiomeData) o;
-
-        if (Float.compare(that.temperature, temperature) != 0) return false;
-        if (Float.compare(that.humidity, humidity) != 0) return false;
-        if (Float.compare(that.rainfall, rainfall) != 0) return false;
-        if (altitude != that.altitude) return false;
-        return biomeName.equals(that.biomeName);
+        return Float.compare(that.temperature, temperature) == 0 &&
+                Float.compare(that.humidity, humidity) == 0 &&
+                Float.compare(that.rainfall, rainfall) == 0 &&
+                altitude == that.altitude &&
+                Objects.equals(biomeName, that.biomeName);
     }
 
     @Override
     public int hashCode() {
-        int result = biomeName.hashCode();
-        result = 31 * result + (temperature != +0.0f ? Float.floatToIntBits(temperature) : 0);
-        result = 31 * result + (humidity != +0.0f ? Float.floatToIntBits(humidity) : 0);
-        result = 31 * result + (rainfall != +0.0f ? Float.floatToIntBits(rainfall) : 0);
-        result = 31 * result + altitude;
-        return result;
+        return Objects.hash(biomeName, temperature, humidity, rainfall, altitude);
     }
 }
 
@@ -319,58 +220,33 @@ class CustomWorldGenData {
         this.structureName = structureName;
         this.complexity = complexity;
         this.spawnRate = spawnRate;
-        this.biomeTypes = biomeTypes;
+        this.biomeTypes = new ArrayList<>(biomeTypes);
     }
 
-    public String getStructureName() {
-        return structureName;
-    }
-
-    public int getComplexity() {
-        return complexity;
-    }
-
-    public double getSpawnRate() {
-        return spawnRate;
-    }
-
-    public List<String> getBiomeTypes() {
-        return biomeTypes;
-    }
+    public String getStructureName() { return structureName; }
+    public int getComplexity() { return complexity; }
+    public double getSpawnRate() { return spawnRate; }
+    public List<String> getBiomeTypes() { return new ArrayList<>(biomeTypes); }
 
     @Override
     public String toString() {
-        return "CustomWorldGenData{" +
-                "structureName='" + structureName + '\'' +
-                ", complexity=" + complexity +
-                ", spawnRate=" + spawnRate +
-                ", biomeTypes=" + biomeTypes +
-                '}';
+        return String.format("CustomWorldGenData{structureName='%s', complexity=%d, spawnRate=%.2f, biomeTypes=%s}", structureName, complexity, spawnRate, biomeTypes);
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
+        if (!(o instanceof CustomWorldGenData)) return false;
         CustomWorldGenData that = (CustomWorldGenData) o;
-
-        if (complexity != that.complexity) return false;
-        if (Double.compare(that.spawnRate, spawnRate) != 0) return false;
-        if (!structureName.equals(that.structureName)) return false;
-        return biomeTypes.equals(that.biomeTypes);
+        return complexity == that.complexity &&
+                Double.compare(that.spawnRate, spawnRate) == 0 &&
+                Objects.equals(structureName, that.structureName) &&
+                Objects.equals(biomeTypes, that.biomeTypes);
     }
 
     @Override
     public int hashCode() {
-        int result;
-        long temp;
-        result = structureName.hashCode();
-        result = 31 * result + complexity;
-        temp = Double.doubleToLongBits(spawnRate);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        result = 31 * result + biomeTypes.hashCode();
-        return result;
+        return Objects.hash(structureName, complexity, spawnRate, biomeTypes);
     }
 }
 
@@ -387,52 +263,30 @@ class CustomConfigData {
         this.isEnabled = isEnabled;
     }
 
-    public String getConfigName() {
-        return configName;
-    }
-
-    public String getConfigValue() {
-        return configValue;
-    }
-
-    public String getDefaultValue() {
-        return defaultValue;
-    }
-
-    public boolean isEnabled() {
-        return isEnabled;
-    }
+    public String getConfigName() { return configName; }
+    public String getConfigValue() { return configValue; }
+    public String getDefaultValue() { return defaultValue; }
+    public boolean isEnabled() { return isEnabled; }
 
     @Override
     public String toString() {
-        return "CustomConfigData{" +
-                "configName='" + configName + '\'' +
-                ", configValue='" + configValue + '\'' +
-                ", defaultValue='" + defaultValue + '\'' +
-                ", isEnabled=" + isEnabled +
-                '}';
+        return String.format("CustomConfigData{configName='%s', configValue='%s', defaultValue='%s', isEnabled=%b}", configName, configValue, defaultValue, isEnabled);
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
+        if (!(o instanceof CustomConfigData)) return false;
         CustomConfigData that = (CustomConfigData) o;
-
-        if (isEnabled != that.isEnabled) return false;
-        if (!configName.equals(that.configName)) return false;
-        if (!configValue.equals(that.configValue)) return false;
-        return defaultValue.equals(that.defaultValue);
+        return isEnabled == that.isEnabled &&
+                Objects.equals(configName, that.configName) &&
+                Objects.equals(configValue, that.configValue) &&
+                Objects.equals(defaultValue, that.defaultValue);
     }
 
     @Override
     public int hashCode() {
-        int result = configName.hashCode();
-        result = 31 * result + configValue.hashCode();
-        result = 31 * result + defaultValue.hashCode();
-        result = 31 * result + (isEnabled ? 1 : 0);
-        return result;
+        return Objects.hash(configName, configValue, defaultValue, isEnabled);
     }
 }
 
@@ -444,56 +298,36 @@ class CustomPathfindingData {
 
     public CustomPathfindingData(String entityId, BlockPos[] path, boolean isComplete, int currentStep) {
         this.entityId = entityId;
-        this.path = path;
+        this.path = path.clone();
         this.isComplete = isComplete;
         this.currentStep = currentStep;
     }
 
-    public String getEntityId() {
-        return entityId;
-    }
-
-    public BlockPos[] getPath() {
-        return path;
-    }
-
-    public boolean isComplete() {
-        return isComplete;
-    }
-
-    public int getCurrentStep() {
-        return currentStep;
-    }
+    public String getEntityId() { return entityId; }
+    public BlockPos[] getPath() { return path.clone(); }
+    public boolean isComplete() { return isComplete; }
+    public int getCurrentStep() { return currentStep; }
 
     @Override
     public String toString() {
-        return "CustomPathfindingData{" +
-                "entityId='" + entityId + '\'' +
-                ", path=" + Arrays.toString(path) +
-                ", isComplete=" + isComplete +
-                ", currentStep=" + currentStep +
-                '}';
+        return String.format("CustomPathfindingData{entityId='%s', path=%s, isComplete=%b, currentStep=%d}", entityId, Arrays.toString(path), isComplete, currentStep);
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
+        if (!(o instanceof CustomPathfindingData)) return false;
         CustomPathfindingData that = (CustomPathfindingData) o;
-
-        if (isComplete != that.isComplete) return false;
-        if (currentStep != that.currentStep) return false;
-        if (!entityId.equals(that.entityId)) return false;
-        return Arrays.equals(path, that.path);
+        return isComplete == that.isComplete &&
+                currentStep == that.currentStep &&
+                Objects.equals(entityId, that.entityId) &&
+                Arrays.equals(path, that.path);
     }
 
     @Override
     public int hashCode() {
-        int result = entityId.hashCode();
+        int result = Objects.hash(entityId, isComplete, currentStep);
         result = 31 * result + Arrays.hashCode(path);
-        result = 31 * result + (isComplete ? 1 : 0);
-        result = 31 * result + currentStep;
         return result;
     }
 }
@@ -513,62 +347,32 @@ class CustomWeatherData {
         this.windSpeed = windSpeed;
     }
 
-    public String getWeatherType() {
-        return weatherType;
-    }
-
-    public long getDuration() {
-        return duration;
-    }
-
-    public boolean isSevere() {
-        return isSevere;
-    }
-
-    public int getIntensity() {
-        return intensity;
-    }
-
-    public double getWindSpeed() {
-        return windSpeed;
-    }
+    public String getWeatherType() { return weatherType; }
+    public long getDuration() { return duration; }
+    public boolean isSevere() { return isSevere; }
+    public int getIntensity() { return intensity; }
+    public double getWindSpeed() { return windSpeed; }
 
     @Override
     public String toString() {
-        return "CustomWeatherData{" +
-                "weatherType='" + weatherType + '\'' +
-                ", duration=" + duration +
-                ", isSevere=" + isSevere +
-                ", intensity=" + intensity +
-                ", windSpeed=" + windSpeed +
-                '}';
+        return String.format("CustomWeatherData{weatherType='%s', duration=%d, isSevere=%b, intensity=%d, windSpeed=%.2f}", weatherType, duration, isSevere, intensity, windSpeed);
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
+        if (!(o instanceof CustomWeatherData)) return false;
         CustomWeatherData that = (CustomWeatherData) o;
-
-        if (duration != that.duration) return false;
-        if (isSevere != that.isSevere) return false;
-        if (intensity != that.intensity) return false;
-        if (Double.compare(that.windSpeed, windSpeed) != 0) return false;
-        return weatherType.equals(that.weatherType);
+        return duration == that.duration &&
+                isSevere == that.isSevere &&
+                intensity == that.intensity &&
+                Double.compare(that.windSpeed, windSpeed) == 0 &&
+                Objects.equals(weatherType, that.weatherType);
     }
 
     @Override
     public int hashCode() {
-        int result;
-        long temp;
-        result = weatherType.hashCode();
-        result = 31 * result + (int) (duration ^ (duration >>> 32));
-        result = 31 * result + (isSevere ? 1 : 0);
-        result = 31 * result + intensity;
-        temp = Double.doubleToLongBits(windSpeed);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        return result;
+        return Objects.hash(weatherType, duration, isSevere, intensity, windSpeed);
     }
 }
 
@@ -583,48 +387,28 @@ class CustomEntityData {
         this.position = position;
     }
 
-    public String getEntityType() {
-        return entityType;
-    }
-
-    public double getHealth() {
-        return health;
-    }
-
-    public BlockPos getPosition() {
-        return position;
-    }
+    public String getEntityType() { return entityType; }
+    public double getHealth() { return health; }
+    public BlockPos getPosition() { return position; }
 
     @Override
     public String toString() {
-        return "CustomEntityData{" +
-                "entityType='" + entityType + '\'' +
-                ", health=" + health +
-                ", position=" + position +
-                '}';
+        return String.format("CustomEntityData{entityType='%s', health=%.2f, position=%s}", entityType, health, position);
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
+        if (!(o instanceof CustomEntityData)) return false;
         CustomEntityData that = (CustomEntityData) o;
-
-        if (Double.compare(that.health, health) != 0) return false;
-        if (!entityType.equals(that.entityType)) return false;
-        return position.equals(that.position);
+        return Double.compare(that.health, health) == 0 &&
+                Objects.equals(entityType, that.entityType) &&
+                Objects.equals(position, that.position);
     }
 
     @Override
     public int hashCode() {
-        int result;
-        long temp;
-        result = entityType.hashCode();
-        temp = Double.doubleToLongBits(health);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        result = 31 * result + position.hashCode();
-        return result;
+        return Objects.hash(entityType, health, position);
     }
 }
 
@@ -639,45 +423,28 @@ class CustomEventData {
         this.timestamp = timestamp;
     }
 
-    public String getEventType() {
-        return eventType;
-    }
-
-    public String getEventDescription() {
-        return eventDescription;
-    }
-
-    public long getTimestamp() {
-        return timestamp;
-    }
+    public String getEventType() { return eventType; }
+    public String getEventDescription() { return eventDescription; }
+    public long getTimestamp() { return timestamp; }
 
     @Override
     public String toString() {
-        return "CustomEventData{" +
-                "eventType='" + eventType + '\'' +
-                ", eventDescription='" + eventDescription + '\'' +
-                ", timestamp=" + timestamp +
-                '}';
+        return String.format("CustomEventData{eventType='%s', eventDescription='%s', timestamp=%d}", eventType, eventDescription, timestamp);
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
+        if (!(o instanceof CustomEventData)) return false;
         CustomEventData that = (CustomEventData) o;
-
-        if (timestamp != that.timestamp) return false;
-        if (!eventType.equals(that.eventType)) return false;
-        return eventDescription.equals(that.eventDescription);
+        return timestamp == that.timestamp &&
+                Objects.equals(eventType, that.eventType) &&
+                Objects.equals(eventDescription, that.eventDescription);
     }
 
     @Override
     public int hashCode() {
-        int result = eventType.hashCode();
-        result = 31 * result + eventDescription.hashCode();
-        result = 31 * result + (int) (timestamp ^ (timestamp >>> 32));
-        return result;
+        return Objects.hash(eventType, eventDescription, timestamp);
     }
 }
 
@@ -690,56 +457,34 @@ class CustomQuestData {
     public CustomQuestData(String questName, String questDescription, List<String> objectives, List<String> rewards) {
         this.questName = questName;
         this.questDescription = questDescription;
-        this.objectives = objectives;
-        this.rewards = rewards;
+        this.objectives = new ArrayList<>(objectives);
+        this.rewards = new ArrayList<>(rewards);
     }
 
-    public String getQuestName() {
-        return questName;
-    }
-
-    public String getQuestDescription() {
-        return questDescription;
-    }
-
-    public List<String> getObjectives() {
-        return objectives;
-    }
-
-    public List<String> getRewards() {
-        return rewards;
-    }
+    public String getQuestName() { return questName; }
+    public String getQuestDescription() { return questDescription; }
+    public List<String> getObjectives() { return new ArrayList<>(objectives); }
+    public List<String> getRewards() { return new ArrayList<>(rewards); }
 
     @Override
     public String toString() {
-        return "CustomQuestData{" +
-                "questName='" + questName + '\'' +
-                ", questDescription='" + questDescription + '\'' +
-                ", objectives=" + objectives +
-                ", rewards=" + rewards +
-                '}';
+        return String.format("CustomQuestData{questName='%s', questDescription='%s', objectives=%s, rewards=%s}", questName, questDescription, objectives, rewards);
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
+        if (!(o instanceof CustomQuestData)) return false;
         CustomQuestData that = (CustomQuestData) o;
-
-        if (!questName.equals(that.questName)) return false;
-        if (!questDescription.equals(that.questDescription)) return false;
-        if (!objectives.equals(that.objectives)) return false;
-        return rewards.equals(that.rewards);
+        return Objects.equals(questName, that.questName) &&
+                Objects.equals(questDescription, that.questDescription) &&
+                Objects.equals(objectives, that.objectives) &&
+                Objects.equals(rewards, that.rewards);
     }
 
     @Override
     public int hashCode() {
-        int result = questName.hashCode();
-        result = 31 * result + questDescription.hashCode();
-        result = 31 * result + objectives.hashCode();
-        result = 31 * result + rewards.hashCode();
-        return result;
+        return Objects.hash(questName, questDescription, objectives, rewards);
     }
 }
 
@@ -754,45 +499,28 @@ class CustomSkillData {
         this.skillEffect = skillEffect;
     }
 
-    public String getSkillName() {
-        return skillName;
-    }
-
-    public int getSkillLevel() {
-        return skillLevel;
-    }
-
-    public String getSkillEffect() {
-        return skillEffect;
-    }
+    public String getSkillName() { return skillName; }
+    public int getSkillLevel() { return skillLevel; }
+    public String getSkillEffect() { return skillEffect; }
 
     @Override
     public String toString() {
-        return "CustomSkillData{" +
-                "skillName='" + skillName + '\'' +
-                ", skillLevel=" + skillLevel +
-                ", skillEffect='" + skillEffect + '\'' +
-                '}';
+        return String.format("CustomSkillData{skillName='%s', skillLevel=%d, skillEffect='%s'}", skillName, skillLevel, skillEffect);
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
+        if (!(o instanceof CustomSkillData)) return false;
         CustomSkillData that = (CustomSkillData) o;
-
-        if (skillLevel != that.skillLevel) return false;
-        if (!skillName.equals(that.skillName)) return false;
-        return skillEffect.equals(that.skillEffect);
+        return skillLevel == that.skillLevel &&
+                Objects.equals(skillName, that.skillName) &&
+                Objects.equals(skillEffect, that.skillEffect);
     }
 
     @Override
     public int hashCode() {
-        int result = skillName.hashCode();
-        result = 31 * result + skillLevel;
-        result = 31 * result + skillEffect.hashCode();
-        return result;
+        return Objects.hash(skillName, skillLevel, skillEffect);
     }
 }
 
@@ -809,52 +537,30 @@ class CustomStructureData {
         this.isGenerated = isGenerated;
     }
 
-    public String getStructureName() {
-        return structureName;
-    }
-
-    public String getDimension() {
-        return dimension;
-    }
-
-    public int getSize() {
-        return size;
-    }
-
-    public boolean isGenerated() {
-        return isGenerated;
-    }
+    public String getStructureName() { return structureName; }
+    public String getDimension() { return dimension; }
+    public int getSize() { return size; }
+    public boolean isGenerated() { return isGenerated; }
 
     @Override
     public String toString() {
-        return "CustomStructureData{" +
-                "structureName='" + structureName + '\'' +
-                ", dimension='" + dimension + '\'' +
-                ", size=" + size +
-                ", isGenerated=" + isGenerated +
-                '}';
+        return String.format("CustomStructureData{structureName='%s', dimension='%s', size=%d, isGenerated=%b}", structureName, dimension, size, isGenerated);
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
+        if (!(o instanceof CustomStructureData)) return false;
         CustomStructureData that = (CustomStructureData) o;
-
-        if (size != that.size) return false;
-        if (isGenerated != that.isGenerated) return false;
-        if (!structureName.equals(that.structureName)) return false;
-        return dimension.equals(that.dimension);
+        return size == that.size &&
+                isGenerated == that.isGenerated &&
+                Objects.equals(structureName, that.structureName) &&
+                Objects.equals(dimension, that.dimension);
     }
 
     @Override
     public int hashCode() {
-        int result = structureName.hashCode();
-        result = 31 * result + dimension.hashCode();
-        result = 31 * result + size;
-        result = 31 * result + (isGenerated ? 1 : 0);
-        return result;
+        return Objects.hash(structureName, dimension, size, isGenerated);
     }
 }
 
@@ -871,52 +577,30 @@ class CustomAchievementData {
         this.isUnlocked = isUnlocked;
     }
 
-    public String getAchievementName() {
-        return achievementName;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public int getPoints() {
-        return points;
-    }
-
-    public boolean isUnlocked() {
-        return isUnlocked;
-    }
+    public String getAchievementName() { return achievementName; }
+    public String getDescription() { return description; }
+    public int getPoints() { return points; }
+    public boolean isUnlocked() { return isUnlocked; }
 
     @Override
     public String toString() {
-        return "CustomAchievementData{" +
-                "achievementName='" + achievementName + '\'' +
-                ", description='" + description + '\'' +
-                ", points=" + points +
-                ", isUnlocked=" + isUnlocked +
-                '}';
+        return String.format("CustomAchievementData{achievementName='%s', description='%s', points=%d, isUnlocked=%b}", achievementName, description, points, isUnlocked);
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
+        if (!(o instanceof CustomAchievementData)) return false;
         CustomAchievementData that = (CustomAchievementData) o;
-
-        if (points != that.points) return false;
-        if (isUnlocked != that.isUnlocked) return false;
-        if (!achievementName.equals(that.achievementName)) return false;
-        return description.equals(that.description);
+        return points == that.points &&
+                isUnlocked == that.isUnlocked &&
+                Objects.equals(achievementName, that.achievementName) &&
+                Objects.equals(description, that.description);
     }
 
     @Override
     public int hashCode() {
-        int result = achievementName.hashCode();
-        result = 31 * result + description.hashCode();
-        result = 31 * result + points;
-        result = 31 * result + (isUnlocked ? 1 : 0);
-        return result;
+        return Objects.hash(achievementName, description, points, isUnlocked);
     }
 }
 
@@ -928,57 +612,35 @@ class CustomRecipeData {
 
     public CustomRecipeData(String recipeName, List<String> ingredients, String resultItem, int resultQuantity) {
         this.recipeName = recipeName;
-        this.ingredients = ingredients;
+        this.ingredients = new ArrayList<>(ingredients);
         this.resultItem = resultItem;
         this.resultQuantity = resultQuantity;
     }
 
-    public String getRecipeName() {
-        return recipeName;
-    }
-
-    public List<String> getIngredients() {
-        return ingredients;
-    }
-
-    public String getResultItem() {
-        return resultItem;
-    }
-
-    public int getResultQuantity() {
-        return resultQuantity;
-    }
+    public String getRecipeName() { return recipeName; }
+    public List<String> getIngredients() { return new ArrayList<>(ingredients); }
+    public String getResultItem() { return resultItem; }
+    public int getResultQuantity() { return resultQuantity; }
 
     @Override
     public String toString() {
-        return "CustomRecipeData{" +
-                "recipeName='" + recipeName + '\'' +
-                ", ingredients=" + ingredients +
-                ", resultItem='" + resultItem + '\'' +
-                ", resultQuantity=" + resultQuantity +
-                '}';
+        return String.format("CustomRecipeData{recipeName='%s', ingredients=%s, resultItem='%s', resultQuantity=%d}", recipeName, ingredients, resultItem, resultQuantity);
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
+        if (!(o instanceof CustomRecipeData)) return false;
         CustomRecipeData that = (CustomRecipeData) o;
-
-        if (resultQuantity != that.resultQuantity) return false;
-        if (!recipeName.equals(that.recipeName)) return false;
-        if (!ingredients.equals(that.ingredients)) return false;
-        return resultItem.equals(that.resultItem);
+        return resultQuantity == that.resultQuantity &&
+                Objects.equals(recipeName, that.recipeName) &&
+                Objects.equals(ingredients, that.ingredients) &&
+                Objects.equals(resultItem, that.resultItem);
     }
 
     @Override
     public int hashCode() {
-        int result = recipeName.hashCode();
-        result = 31 * result + ingredients.hashCode();
-        result = 31 * result + resultItem.hashCode();
-        result = 31 * result + resultQuantity;
-        return result;
+        return Objects.hash(recipeName, ingredients, resultItem, resultQuantity);
     }
 }
 
@@ -993,45 +655,28 @@ class CustomDimensionData {
         this.difficultyLevel = difficultyLevel;
     }
 
-    public String getDimensionName() {
-        return dimensionName;
-    }
-
-    public String getEnvironmentType() {
-        return environmentType;
-    }
-
-    public int getDifficultyLevel() {
-        return difficultyLevel;
-    }
+    public String getDimensionName() { return dimensionName; }
+    public String getEnvironmentType() { return environmentType; }
+    public int getDifficultyLevel() { return difficultyLevel; }
 
     @Override
     public String toString() {
-        return "CustomDimensionData{" +
-                "dimensionName='" + dimensionName + '\'' +
-                ", environmentType='" + environmentType + '\'' +
-                ", difficultyLevel=" + difficultyLevel +
-                '}';
+        return String.format("CustomDimensionData{dimensionName='%s', environmentType='%s', difficultyLevel=%d}", dimensionName, environmentType, difficultyLevel);
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
+        if (!(o instanceof CustomDimensionData)) return false;
         CustomDimensionData that = (CustomDimensionData) o;
-
-        if (difficultyLevel != that.difficultyLevel) return false;
-        if (!dimensionName.equals(that.dimensionName)) return false;
-        return environmentType.equals(that.environmentType);
+        return difficultyLevel == that.difficultyLevel &&
+                Objects.equals(dimensionName, that.dimensionName) &&
+                Objects.equals(environmentType, that.environmentType);
     }
 
     @Override
     public int hashCode() {
-        int result = dimensionName.hashCode();
-        result = 31 * result + environmentType.hashCode();
-        result = 31 * result + difficultyLevel;
-        return result;
+        return Objects.hash(dimensionName, environmentType, difficultyLevel);
     }
 }
 
@@ -1048,54 +693,29 @@ class CustomNPCData {
         this.health = health;
     }
 
-    public String getNpcName() {
-        return npcName;
-    }
-
-    public String getRole() {
-        return role;
-    }
-
-    public String getDialogue() {
-        return dialogue;
-    }
-
-    public double getHealth() {
-        return health;
-    }
+    public String getNpcName() { return npcName; }
+    public String getRole() { return role; }
+    public String getDialogue() { return dialogue; }
+    public double getHealth() { return health; }
 
     @Override
     public String toString() {
-        return "CustomNPCData{" +
-                "npcName='" + npcName + '\'' +
-                ", role='" + role + '\'' +
-                ", dialogue='" + dialogue + '\'' +
-                ", health=" + health +
-                '}';
+        return String.format("CustomNPCData{npcName='%s', role='%s', dialogue='%s', health=%.2f}", npcName, role, dialogue, health);
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
+        if (!(o instanceof CustomNPCData)) return false;
         CustomNPCData that = (CustomNPCData) o;
-
-        if (Double.compare(that.health, health) != 0) return false;
-        if (!npcName.equals(that.npcName)) return false;
-        if (!role.equals(that.role)) return false;
-        return dialogue.equals(that.dialogue);
+        return Double.compare(that.health, health) == 0 &&
+                Objects.equals(npcName, that.npcName) &&
+                Objects.equals(role, that.role) &&
+                Objects.equals(dialogue, that.dialogue);
     }
 
     @Override
     public int hashCode() {
-        int result;
-        long temp;
-        result = npcName.hashCode();
-        result = 31 * result + role.hashCode();
-        result = 31 * result + dialogue.hashCode();
-        temp = Double.doubleToLongBits(health);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        return result;
+        return Objects.hash(npcName, role, dialogue, health);
     }
 }
