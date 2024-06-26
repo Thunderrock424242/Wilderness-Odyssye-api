@@ -455,6 +455,20 @@
         ]
       },
       "path": "~/custom code"
+    },
+    {
+      "name": "ServerStability",
+      "type": "code",
+      "sortid": 38,
+      "compiles": false,
+      "locked_code": true,
+      "registry_name": "server_stability",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/wildernessoddesyapi/ServerStability.java"
+        ]
+      },
+      "path": "~/custom code"
     }
   ],
   "variable_elements": [
