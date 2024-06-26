@@ -443,20 +443,6 @@
       "path": "~/custom code"
     },
     {
-      "name": "NetworkOptimizer",
-      "type": "code",
-      "sortid": 36,
-      "compiles": false,
-      "locked_code": true,
-      "registry_name": "network_optimizer",
-      "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/wildernessoddesyapi/NetworkOptimizer.java"
-        ]
-      },
-      "path": "~/custom code"
-    },
-    {
       "name": "ChunkOptimizer",
       "type": "code",
       "sortid": 37,
