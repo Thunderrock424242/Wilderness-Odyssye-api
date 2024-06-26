@@ -109,6 +109,47 @@
       }
     },
     {
+      "name": "Lightningarrow",
+      "type": "tool",
+      "sortid": 13,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "lightningarrow",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/wilderness_oddesy_api/models/item/lightningarrow.json",
+          "src/main/java/net/mcreator/wildernessoddesyapi/item/LightningarrowItem.java"
+        ]
+      }
+    },
+    {
+      "name": "Lightningarrowprojectile",
+      "type": "projectile",
+      "sortid": 14,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "lightningarrowprojectile",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/wildernessoddesyapi/entity/LightningarrowprojectileEntity.java"
+        ]
+      }
+    },
+    {
+      "name": "Lightningbow",
+      "type": "item",
+      "sortid": 15,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "lightningbow",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/wildernessoddesyapi/item/LightningbowItem.java",
+          "src/main/resources/assets/wilderness_oddesy_api/models/item/lightningbow.json"
+        ]
+      }
+    },
+    {
       "name": "Portalframe",
       "type": "block",
       "sortid": 16,
@@ -147,6 +188,30 @@
           "src/main/java/net/mcreator/wildernessoddesyapi/world/teleporter/ThevaultPortalShape.java",
           "src/main/java/net/mcreator/wildernessoddesyapi/world/dimension/ThevaultDimension.java"
         ]
+      }
+    },
+    {
+      "name": "FlashS",
+      "type": "potioneffect",
+      "sortid": 18,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "flash_s",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/wildernessoddesyapi/potion/FlashSMobEffect.java"
+        ]
+      }
+    },
+    {
+      "name": "FlashSpeed",
+      "type": "potion",
+      "sortid": 19,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "flash_speed",
+      "metadata": {
+        "files": []
       }
     },
     {
@@ -264,6 +329,20 @@
       "path": "~/Optimizations"
     },
     {
+      "name": "AsynchronousProcessing",
+      "type": "code",
+      "sortid": 35,
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "asynchronous_processing",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/wildernessoddesyapi/AsynchronousProcessing.java"
+        ]
+      },
+      "path": "~/Optimizations"
+    },
+    {
       "name": "ServerStability",
       "type": "code",
       "sortid": 38,
@@ -290,6 +369,7 @@
         ]
       },
       "path": "~/Optimizations"
+<<<<<<< HEAD
     },
     {
       "name": "Aynchronousprocessing",
@@ -304,6 +384,8 @@
         ]
       },
       "path": "~/Optimizations"
+=======
+>>>>>>> parent of b7899b3 (added back some files and deleted lots of things that were not needed)
     }
   ],
   "variable_elements": [
@@ -341,8 +423,21 @@
       "block.wilderness_oddesy_api_neo.lightingenergyblock": "Lightingenergyblock",
       "block.wilderness_oddesy_api.portalframe": "Portalframe",
       "biome.wilderness_oddesy_api.glitchy": "Test",
+<<<<<<< HEAD
       "subtitles.i_ran_so_far_away": "",
       "item.wilderness_oddesy_api_neo.lightningarrow": "Lightningarrow"
+=======
+      "item.minecraft.lingering_potion.effect.flash_speed": "Lingering Potion of Flash Speed",
+      "block.wilderness_oddesy_api.lightingenergyblock": "Lightingenergyblock",
+      "effect.wilderness_oddesy_api.flash_s": "Flash S",
+      "subtitles.i_ran_so_far_away": "",
+      "item.wilderness_oddesy_api.lightningbow": "Lightningbow",
+      "item.minecraft.potion.effect.flash_speed": "Potion of Flash Speed",
+      "item.minecraft.splash_potion.effect.flash_speed": "Splash Potion of Flash Speed",
+      "item.wilderness_oddesy_api_neo.lightningarrow": "Lightningarrow",
+      "item.wilderness_oddesy_api.lightningarrow": "Lightningarrow",
+      "item.minecraft.tipped_arrow.effect.flash_speed": "Arrow of Flash Speed"
+>>>>>>> parent of b7899b3 (added back some files and deleted lots of things that were not needed)
     }
   },
   "foldersRoot": {

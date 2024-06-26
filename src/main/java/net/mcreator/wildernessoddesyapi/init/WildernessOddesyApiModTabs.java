@@ -16,8 +16,16 @@ import net.mcreator.wildernessoddesyapi.WildernessOddesyApiMod;
 
 public class WildernessOddesyApiModTabs {
 	public static final DeferredRegister<CreativeModeTab> REGISTRY = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, WildernessOddesyApiMod.MODID);
+<<<<<<< HEAD
 	public static final DeferredHolder<CreativeModeTab, CreativeModeTab> WILDERNESS_ODDESY_API = REGISTRY.register("wilderness_oddesy_api",
 			() -> CreativeModeTab.builder().title(Component.translatable("item_group.wilderness_oddesy_api.wilderness_oddesy_api")).icon(() -> new ItemStack(WildernessOddesyApiModBlocks.PORTALFRAME.get())).displayItems((parameters, tabData) -> {
+=======
+	public static final DeferredHolder<CreativeModeTab, CreativeModeTab> WILDERNESS_ODDESY_API = REGISTRY.register("wilderness_oddesy_api", () -> CreativeModeTab.builder()
+			.title(Component.translatable("item_group.wilderness_oddesy_api.wilderness_oddesy_api")).icon(() -> new ItemStack(WildernessOddesyApiModBlocks.LIGHTINGENERGYBLOCK.get())).displayItems((parameters, tabData) -> {
+				tabData.accept(WildernessOddesyApiModBlocks.LIGHTINGENERGYBLOCK.get().asItem());
+				tabData.accept(WildernessOddesyApiModItems.LIGHTNINGARROW.get());
+				tabData.accept(WildernessOddesyApiModItems.LIGHTNINGBOW.get());
+>>>>>>> parent of b7899b3 (added back some files and deleted lots of things that were not needed)
 				tabData.accept(WildernessOddesyApiModBlocks.PORTALFRAME.get().asItem());
 				tabData.accept(WildernessOddesyApiModItems.THEVAULT.get());
 			})

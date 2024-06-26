@@ -7,6 +7,19 @@
   "block.wilderness_oddesy_api_neo.lightingenergyblock": "Lightingenergyblock",
   "block.wilderness_oddesy_api.portalframe": "Portalframe",
   "biome.wilderness_oddesy_api.glitchy": "Test",
+<<<<<<< HEAD
   "subtitles.i_ran_so_far_away": "",
   "item.wilderness_oddesy_api_neo.lightningarrow": "Lightningarrow"
+=======
+  "item.minecraft.lingering_potion.effect.flash_speed": "Lingering Potion of Flash Speed",
+  "block.wilderness_oddesy_api.lightingenergyblock": "Lightingenergyblock",
+  "effect.wilderness_oddesy_api.flash_s": "Flash S",
+  "subtitles.i_ran_so_far_away": "",
+  "item.wilderness_oddesy_api.lightningbow": "Lightningbow",
+  "item.minecraft.potion.effect.flash_speed": "Potion of Flash Speed",
+  "item.minecraft.splash_potion.effect.flash_speed": "Splash Potion of Flash Speed",
+  "item.wilderness_oddesy_api_neo.lightningarrow": "Lightningarrow",
+  "item.wilderness_oddesy_api.lightningarrow": "Lightningarrow",
+  "item.minecraft.tipped_arrow.effect.flash_speed": "Arrow of Flash Speed"
+>>>>>>> parent of b7899b3 (added back some files and deleted lots of things that were not needed)
 }
