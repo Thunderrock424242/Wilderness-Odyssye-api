@@ -4,7 +4,7 @@
   "definition": {
     "name": "Test",
     "groundBlock": {
-      "value": "Blocks.CAPSID"
+      "value": "CUSTOM:LightingBlock"
     },
     "undergroundBlock": {
       "value": "CUSTOM:Portalframe"

@@ -20,6 +20,7 @@ public class WildernessOddesyApiModItems {
 	public static final DeferredRegister<Item> REGISTRY = DeferredRegister.create(BuiltInRegistries.ITEM, WildernessOddesyApiMod.MODID);
 	public static final DeferredHolder<Item, Item> PORTALFRAME = block(WildernessOddesyApiModBlocks.PORTALFRAME);
 	public static final DeferredHolder<Item, Item> THEVAULT = REGISTRY.register("thevault", () -> new ThevaultItem());
+	public static final DeferredHolder<Item, Item> LIGHTING_BLOCK = block(WildernessOddesyApiModBlocks.LIGHTING_BLOCK);
 
 	// Start of user code block custom items
 	// End of user code block custom items

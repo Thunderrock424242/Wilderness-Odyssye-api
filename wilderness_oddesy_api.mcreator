@@ -169,7 +169,7 @@
       "name": "EntityAi",
       "type": "mixin",
       "sortid": 23,
-      "compiles": true,
+      "compiles": false,
       "locked_code": true,
       "registry_name": "entity_ai",
       "metadata": {
@@ -183,7 +183,7 @@
       "name": "Mobstages",
       "type": "code",
       "sortid": 26,
-      "compiles": true,
+      "compiles": false,
       "locked_code": true,
       "registry_name": "mobstages",
       "metadata": {
@@ -197,7 +197,7 @@
       "name": "WolfThunder",
       "type": "mixin",
       "sortid": 27,
-      "compiles": true,
+      "compiles": false,
       "locked_code": true,
       "registry_name": "wolf_thunder",
       "metadata": {
@@ -267,7 +267,7 @@
       "name": "ServerStability",
       "type": "code",
       "sortid": 38,
-      "compiles": true,
+      "compiles": false,
       "locked_code": true,
       "registry_name": "server_stability",
       "metadata": {
@@ -281,7 +281,7 @@
       "name": "OptimizedWorldGen",
       "type": "code",
       "sortid": 39,
-      "compiles": true,
+      "compiles": false,
       "locked_code": true,
       "registry_name": "optimized_world_gen",
       "metadata": {
@@ -304,6 +304,24 @@
         ]
       },
       "path": "~/Optimizations"
+    },
+    {
+      "name": "LightingBlock",
+      "type": "block",
+      "sortid": 41,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "lighting_block",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/wilderness_oddesy_api/loot_tables/blocks/lighting_block.json",
+          "src/main/resources/assets/wilderness_oddesy_api/models/block/lighting_block.json",
+          "src/main/java/net/mcreator/wildernessoddesyapi/block/LightingBlockBlock.java",
+          "src/main/resources/assets/wilderness_oddesy_api/models/item/lighting_block.json",
+          "src/main/resources/assets/wilderness_oddesy_api/blockstates/lighting_block.json"
+        ]
+      },
+      "path": "~/Blocks"
     }
   ],
   "variable_elements": [
@@ -327,8 +345,8 @@
   "tag_elements": {
     "BLOCKS:minecraft:overworld_carver_replaceables": [
       "~CUSTOM:Portalframe",
-      "~Blocks.CAPSID",
-      "~Blocks.GRASS"
+      "~Blocks.GRASS",
+      "~CUSTOM:LightingBlock"
     ]
   },
   "language_map": {
@@ -341,6 +359,7 @@
       "item.wilderness_oddesy_api_neo.lightingbow": "Lightingbow",
       "item_group.wilderness_oddesy_api.wilderness_oddesy_api": "Wilderness Oddesy API",
       "subtitles.i_ran_so_far_away": "",
+      "block.wilderness_oddesy_api.lighting_block": "Lighting Block",
       "block.wilderness_oddesy_api_neo.lightingenergyblock": "Lightingenergyblock",
       "item.wilderness_oddesy_api_neo.lightningarrow": "Lightningarrow"
     }

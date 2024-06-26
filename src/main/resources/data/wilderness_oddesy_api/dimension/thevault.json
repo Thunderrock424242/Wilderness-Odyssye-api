@@ -537,7 +537,7 @@
                           "then_run": {
                             "type": "minecraft:block",
                             "result_state": {
-                              "Name": "minecraft:air"
+                              "Name": "wilderness_oddesy_api:lighting_block"
                             }
                           }
                         },

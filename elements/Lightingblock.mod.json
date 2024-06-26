@@ -2,17 +2,17 @@
   "_fv": 60,
   "_type": "block",
   "definition": {
-    "texture": "lightning_ore_bottom",
-    "textureTop": "lightning_ore_top",
-    "textureLeft": "lightning_ore_side",
-    "textureFront": "lightning_ore_side",
-    "textureRight": "lightning_ore_side",
-    "textureBack": "lightning_ore_side",
-    "renderType": 10,
-    "customModelName": "Normal",
+    "texture": "lightning_ore_side",
+    "textureTop": "",
+    "textureLeft": "",
+    "textureFront": "",
+    "textureRight": "",
+    "textureBack": "",
+    "renderType": 11,
+    "customModelName": "Single texture",
     "rotationMode": 0,
     "enablePitch": false,
-    "emissiveRendering": true,
+    "emissiveRendering": false,
     "displayFluidOverlay": false,
     "itemTexture": "",
     "particleTexture": "",
@@ -33,26 +33,26 @@
         "subtract": false
       }
     ],
-    "name": "Lightingblock",
+    "name": "Lighting Block",
     "specialInformation": {
       "fixedValue": []
     },
-    "hardness": 10.0,
+    "hardness": 1.0,
     "resistance": 10.0,
     "hasGravity": false,
     "isWaterloggable": false,
     "creativeTab": {
-      "value": "CUSTOM:Utilitywildernessoddesy"
+      "value": "CUSTOM:WildernessOddesyAPI"
     },
-    "destroyTool": "pickaxe",
+    "destroyTool": "Not specified",
     "customDrop": {
-      "value": "CUSTOM:Lightingblock"
+      "value": ""
     },
     "dropAmount": 1,
     "useLootTableForDrops": false,
-    "requiresCorrectTool": true,
+    "requiresCorrectTool": false,
     "enchantPowerBonus": 0.0,
-    "plantsGrowOn": true,
+    "plantsGrowOn": false,
     "canRedstoneConnect": false,
     "lightOpacity": 15,
     "material": {
@@ -61,11 +61,11 @@
     "tickRate": 0,
     "tickRandomly": false,
     "isReplaceable": false,
-    "canProvidePower": true,
+    "canProvidePower": false,
     "emittedRedstonePower": {
       "fixedValue": 15.0
     },
-    "colorOnMap": "IRON",
+    "colorOnMap": "DEFAULT",
     "creativePickItem": {
       "value": ""
     },
@@ -81,7 +81,7 @@
     "isNotColidable": false,
     "isCustomSoundType": false,
     "soundOnStep": {
-      "value": "ANCIENT_DEBRIS"
+      "value": "GROUND"
     },
     "breakSound": {
       "value": ""
@@ -98,9 +98,9 @@
     "stepSound": {
       "value": ""
     },
-    "luminance": 5,
+    "luminance": 0,
     "unbreakable": false,
-    "breakHarvestLevel": 4,
+    "breakHarvestLevel": 1,
     "isBonemealable": false,
     "hasInventory": false,
     "guiBoundTo": "<NONE>",

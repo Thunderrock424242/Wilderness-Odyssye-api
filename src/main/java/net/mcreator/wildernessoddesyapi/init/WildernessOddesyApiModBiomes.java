@@ -37,153 +37,70 @@ import com.google.common.base.Suppliers;
 
 @Mod.EventBusSubscriber
 public class WildernessOddesyApiModBiomes {
-	@SubscribeEvent public static void onServerAboutToStart(ServerAboutToStartEvent event) {
+	@SubscribeEvent
+	public static void onServerAboutToStart(ServerAboutToStartEvent event) {
 		MinecraftServer server = event.getServer();
 		Registry<DimensionType> dimensionTypeRegistry = server.registryAccess().registryOrThrow(Registries.DIMENSION_TYPE);
 		Registry<LevelStem> levelStemTypeRegistry = server.registryAccess().registryOrThrow(Registries.LEVEL_STEM);
 		Registry<Biome> biomeRegistry = server.registryAccess().registryOrThrow(Registries.BIOME);
 		for (LevelStem levelStem : levelStemTypeRegistry.stream().toList()) {
 			DimensionType dimensionType = levelStem.type().value();
-			if(dimensionType == dimensionTypeRegistry.getOrThrow(BuiltinDimensionTypes.OVERWORLD)) {
+			if (dimensionType == dimensionTypeRegistry.getOrThrow(BuiltinDimensionTypes.OVERWORLD)) {
 				ChunkGenerator chunkGenerator = levelStem.generator();
 				// Inject biomes to biome source
-				if(chunkGenerator.getBiomeSource() instanceof MultiNoiseBiomeSource noiseSource) {
+				if (chunkGenerator.getBiomeSource() instanceof MultiNoiseBiomeSource noiseSource) {
 					List<Pair<Climate.ParameterPoint, Holder<Biome>>> parameters = new ArrayList<>(noiseSource.parameters().values());
-					addParameterPoint(parameters, new Pair<>(
-						new Climate.ParameterPoint(
-							Climate.Parameter.span(-0.5f, 0.5f),
-							Climate.Parameter.span(-0.5f, 0.5f),
-							Climate.Parameter.span(0.3f, 1f),
-							Climate.Parameter.span(-0.5f, 0.5f),
-							Climate.Parameter.point(0.0f),
-							Climate.Parameter.span(-1f, 1f),
-							0 
-						),
-						biomeRegistry.getHolderOrThrow(ResourceKey.create(Registries.BIOME, new ResourceLocation("wilderness_oddesy_api", "glitchy")))
-					));
-					addParameterPoint(parameters, new Pair<>(
-						new Climate.ParameterPoint(
-							Climate.Parameter.span(-0.5f, 0.5f),
-							Climate.Parameter.span(-0.5f, 0.5f),
-							Climate.Parameter.span(0.3f, 1f),
-							Climate.Parameter.span(-0.5f, 0.5f),
-							Climate.Parameter.point(1.0f),
-							Climate.Parameter.span(-1f, 1f),
-							0 
-						),
-						biomeRegistry.getHolderOrThrow(ResourceKey.create(Registries.BIOME, new ResourceLocation("wilderness_oddesy_api", "glitchy")))
-					));
-					addParameterPoint(parameters, new Pair<>(
-						new Climate.ParameterPoint(
-							Climate.Parameter.span(-0.5f, 0.5f),
-							Climate.Parameter.span(-0.5f, 0.5f),
-							Climate.Parameter.span(0.3f, 1f),
-							Climate.Parameter.span(-0.5f, 0.5f),
-							Climate.Parameter.span(0.2f, 0.9f),
-							Climate.Parameter.span(-1f, 1f),
-							0 
-						),
-						biomeRegistry.getHolderOrThrow(ResourceKey.create(Registries.BIOME, new ResourceLocation("wilderness_oddesy_api", "glitchy")))
-					));
+					addParameterPoint(parameters, new Pair<>(new Climate.ParameterPoint(Climate.Parameter.span(-0.5f, 0.5f), Climate.Parameter.span(-0.5f, 0.5f), Climate.Parameter.span(0.3f, 1f), Climate.Parameter.span(-0.5f, 0.5f),
+							Climate.Parameter.point(0.0f), Climate.Parameter.span(-1f, 1f), 0), biomeRegistry.getHolderOrThrow(ResourceKey.create(Registries.BIOME, new ResourceLocation("wilderness_oddesy_api", "glitchy")))));
+					addParameterPoint(parameters, new Pair<>(new Climate.ParameterPoint(Climate.Parameter.span(-0.5f, 0.5f), Climate.Parameter.span(-0.5f, 0.5f), Climate.Parameter.span(0.3f, 1f), Climate.Parameter.span(-0.5f, 0.5f),
+							Climate.Parameter.point(1.0f), Climate.Parameter.span(-1f, 1f), 0), biomeRegistry.getHolderOrThrow(ResourceKey.create(Registries.BIOME, new ResourceLocation("wilderness_oddesy_api", "glitchy")))));
+					addParameterPoint(parameters, new Pair<>(new Climate.ParameterPoint(Climate.Parameter.span(-0.5f, 0.5f), Climate.Parameter.span(-0.5f, 0.5f), Climate.Parameter.span(0.3f, 1f), Climate.Parameter.span(-0.5f, 0.5f),
+							Climate.Parameter.span(0.2f, 0.9f), Climate.Parameter.span(-1f, 1f), 0), biomeRegistry.getHolderOrThrow(ResourceKey.create(Registries.BIOME, new ResourceLocation("wilderness_oddesy_api", "glitchy")))));
 					chunkGenerator.biomeSource = MultiNoiseBiomeSource.createFromList(new Climate.ParameterList<>(parameters));
-					chunkGenerator.featuresPerStep = Suppliers.memoize(() ->
-							FeatureSorter.buildFeaturesPerStep(List.copyOf(chunkGenerator.biomeSource.possibleBiomes()), biome ->
-									chunkGenerator.generationSettingsGetter.apply(biome).features(), true));
+					chunkGenerator.featuresPerStep = Suppliers
+							.memoize(() -> FeatureSorter.buildFeaturesPerStep(List.copyOf(chunkGenerator.biomeSource.possibleBiomes()), biome -> chunkGenerator.generationSettingsGetter.apply(biome).features(), true));
 				}
 				// Inject surface rules
-				if(chunkGenerator instanceof NoiseBasedChunkGenerator noiseGenerator) {
+				if (chunkGenerator instanceof NoiseBasedChunkGenerator noiseGenerator) {
 					NoiseGeneratorSettings noiseGeneratorSettings = noiseGenerator.settings.value();
 					SurfaceRules.RuleSource currentRuleSource = noiseGeneratorSettings.surfaceRule();
 					if (currentRuleSource instanceof SurfaceRules.SequenceRuleSource sequenceRuleSource) {
 						List<SurfaceRules.RuleSource> surfaceRules = new ArrayList<>(sequenceRuleSource.sequence());
-						addSurfaceRule(surfaceRules, 1, anySurfaceRule(
-							ResourceKey.create(Registries.BIOME, new ResourceLocation("wilderness_oddesy_api", "glitchy")),
-							alexsmobs:capsid.defaultBlockState(),
-							WildernessOddesyApiModBlocks.PORTALFRAME.get().defaultBlockState(),
-							WildernessOddesyApiModBlocks.THEVAULT_PORTAL.get().defaultBlockState()
-						));
-						addSurfaceRule(surfaceRules, 1, preliminarySurfaceRule(
-							ResourceKey.create(Registries.BIOME, new ResourceLocation("wilderness_oddesy_api", "glitchy")),
-							alexsmobs:capsid.defaultBlockState(),
-							WildernessOddesyApiModBlocks.PORTALFRAME.get().defaultBlockState(),
-							WildernessOddesyApiModBlocks.THEVAULT_PORTAL.get().defaultBlockState()
-						));
-						NoiseGeneratorSettings moddedNoiseGeneratorSettings = new NoiseGeneratorSettings(
-							noiseGeneratorSettings.noiseSettings(),
-							noiseGeneratorSettings.defaultBlock(),
-							noiseGeneratorSettings.defaultFluid(),
-							noiseGeneratorSettings.noiseRouter(),
-							SurfaceRules.sequence(surfaceRules.toArray(SurfaceRules.RuleSource[]::new)),
-							noiseGeneratorSettings.spawnTarget(),
-							noiseGeneratorSettings.seaLevel(),
-							noiseGeneratorSettings.disableMobGeneration(),
-							noiseGeneratorSettings.aquifersEnabled(),
-							noiseGeneratorSettings.oreVeinsEnabled(),
-							noiseGeneratorSettings.useLegacyRandomSource()
-						);
+						addSurfaceRule(surfaceRules, 1, anySurfaceRule(ResourceKey.create(Registries.BIOME, new ResourceLocation("wilderness_oddesy_api", "glitchy")), WildernessOddesyApiModBlocks.LIGHTING_BLOCK.get().defaultBlockState(),
+								WildernessOddesyApiModBlocks.PORTALFRAME.get().defaultBlockState(), WildernessOddesyApiModBlocks.THEVAULT_PORTAL.get().defaultBlockState()));
+						addSurfaceRule(surfaceRules, 1, preliminarySurfaceRule(ResourceKey.create(Registries.BIOME, new ResourceLocation("wilderness_oddesy_api", "glitchy")), WildernessOddesyApiModBlocks.LIGHTING_BLOCK.get().defaultBlockState(),
+								WildernessOddesyApiModBlocks.PORTALFRAME.get().defaultBlockState(), WildernessOddesyApiModBlocks.THEVAULT_PORTAL.get().defaultBlockState()));
+						NoiseGeneratorSettings moddedNoiseGeneratorSettings = new NoiseGeneratorSettings(noiseGeneratorSettings.noiseSettings(), noiseGeneratorSettings.defaultBlock(), noiseGeneratorSettings.defaultFluid(),
+								noiseGeneratorSettings.noiseRouter(), SurfaceRules.sequence(surfaceRules.toArray(SurfaceRules.RuleSource[]::new)), noiseGeneratorSettings.spawnTarget(), noiseGeneratorSettings.seaLevel(),
+								noiseGeneratorSettings.disableMobGeneration(), noiseGeneratorSettings.aquifersEnabled(), noiseGeneratorSettings.oreVeinsEnabled(), noiseGeneratorSettings.useLegacyRandomSource());
 						noiseGenerator.settings = new Holder.Direct<>(moddedNoiseGeneratorSettings);
 					}
 				}
 			}
-			if(dimensionType == dimensionTypeRegistry.getOrThrow(BuiltinDimensionTypes.NETHER)) {
+			if (dimensionType == dimensionTypeRegistry.getOrThrow(BuiltinDimensionTypes.NETHER)) {
 				ChunkGenerator chunkGenerator = levelStem.generator();
 				// Inject biomes to biome source
-				if(chunkGenerator.getBiomeSource() instanceof MultiNoiseBiomeSource noiseSource) {
+				if (chunkGenerator.getBiomeSource() instanceof MultiNoiseBiomeSource noiseSource) {
 					List<Pair<Climate.ParameterPoint, Holder<Biome>>> parameters = new ArrayList<>(noiseSource.parameters().values());
-					addParameterPoint(parameters, new Pair<>(
-						new Climate.ParameterPoint(
-							Climate.Parameter.span(-0.5f, 0.5f),
-							Climate.Parameter.span(-0.5f, 0.5f),
-							Climate.Parameter.span(0.3f, 1f),
-							Climate.Parameter.span(-0.5f, 0.5f),
-							Climate.Parameter.point(0.0f),
-							Climate.Parameter.span(-1f, 1f),
-							0 
-						),
-						biomeRegistry.getHolderOrThrow(ResourceKey.create(Registries.BIOME, new ResourceLocation("wilderness_oddesy_api", "glitchy")))
-					));
-					addParameterPoint(parameters, new Pair<>(
-						new Climate.ParameterPoint(
-							Climate.Parameter.span(-0.5f, 0.5f),
-							Climate.Parameter.span(-0.5f, 0.5f),
-							Climate.Parameter.span(0.3f, 1f),
-							Climate.Parameter.span(-0.5f, 0.5f),
-							Climate.Parameter.point(1.0f),
-							Climate.Parameter.span(-1f, 1f),
-							0 
-						),
-						biomeRegistry.getHolderOrThrow(ResourceKey.create(Registries.BIOME, new ResourceLocation("wilderness_oddesy_api", "glitchy")))
-					));
+					addParameterPoint(parameters, new Pair<>(new Climate.ParameterPoint(Climate.Parameter.span(-0.5f, 0.5f), Climate.Parameter.span(-0.5f, 0.5f), Climate.Parameter.span(0.3f, 1f), Climate.Parameter.span(-0.5f, 0.5f),
+							Climate.Parameter.point(0.0f), Climate.Parameter.span(-1f, 1f), 0), biomeRegistry.getHolderOrThrow(ResourceKey.create(Registries.BIOME, new ResourceLocation("wilderness_oddesy_api", "glitchy")))));
+					addParameterPoint(parameters, new Pair<>(new Climate.ParameterPoint(Climate.Parameter.span(-0.5f, 0.5f), Climate.Parameter.span(-0.5f, 0.5f), Climate.Parameter.span(0.3f, 1f), Climate.Parameter.span(-0.5f, 0.5f),
+							Climate.Parameter.point(1.0f), Climate.Parameter.span(-1f, 1f), 0), biomeRegistry.getHolderOrThrow(ResourceKey.create(Registries.BIOME, new ResourceLocation("wilderness_oddesy_api", "glitchy")))));
 					chunkGenerator.biomeSource = MultiNoiseBiomeSource.createFromList(new Climate.ParameterList<>(parameters));
-					chunkGenerator.featuresPerStep = Suppliers.memoize(() ->
-							FeatureSorter.buildFeaturesPerStep(List.copyOf(chunkGenerator.biomeSource.possibleBiomes()), biome ->
-									chunkGenerator.generationSettingsGetter.apply(biome).features(), true));
+					chunkGenerator.featuresPerStep = Suppliers
+							.memoize(() -> FeatureSorter.buildFeaturesPerStep(List.copyOf(chunkGenerator.biomeSource.possibleBiomes()), biome -> chunkGenerator.generationSettingsGetter.apply(biome).features(), true));
 				}
 				// Inject surface rules
-				if(chunkGenerator instanceof NoiseBasedChunkGenerator noiseGenerator) {
+				if (chunkGenerator instanceof NoiseBasedChunkGenerator noiseGenerator) {
 					NoiseGeneratorSettings noiseGeneratorSettings = noiseGenerator.settings.value();
 					SurfaceRules.RuleSource currentRuleSource = noiseGeneratorSettings.surfaceRule();
 					if (currentRuleSource instanceof SurfaceRules.SequenceRuleSource sequenceRuleSource) {
 						List<SurfaceRules.RuleSource> surfaceRules = new ArrayList<>(sequenceRuleSource.sequence());
-						addSurfaceRule(surfaceRules, 2, anySurfaceRule(
-							ResourceKey.create(Registries.BIOME, new ResourceLocation("wilderness_oddesy_api", "glitchy")),
-							alexsmobs:capsid.defaultBlockState(),
-							WildernessOddesyApiModBlocks.PORTALFRAME.get().defaultBlockState(),
-							WildernessOddesyApiModBlocks.THEVAULT_PORTAL.get().defaultBlockState()
-						));
-						NoiseGeneratorSettings moddedNoiseGeneratorSettings = new NoiseGeneratorSettings(
-								noiseGeneratorSettings.noiseSettings(),
-								noiseGeneratorSettings.defaultBlock(),
-								noiseGeneratorSettings.defaultFluid(),
-								noiseGeneratorSettings.noiseRouter(),
-								SurfaceRules.sequence(surfaceRules.toArray(SurfaceRules.RuleSource[]::new)),
-								noiseGeneratorSettings.spawnTarget(),
-								noiseGeneratorSettings.seaLevel(),
-								noiseGeneratorSettings.disableMobGeneration(),
-								noiseGeneratorSettings.aquifersEnabled(),
-								noiseGeneratorSettings.oreVeinsEnabled(),
-								noiseGeneratorSettings.useLegacyRandomSource()
-						);
+						addSurfaceRule(surfaceRules, 2, anySurfaceRule(ResourceKey.create(Registries.BIOME, new ResourceLocation("wilderness_oddesy_api", "glitchy")), WildernessOddesyApiModBlocks.LIGHTING_BLOCK.get().defaultBlockState(),
+								WildernessOddesyApiModBlocks.PORTALFRAME.get().defaultBlockState(), WildernessOddesyApiModBlocks.THEVAULT_PORTAL.get().defaultBlockState()));
+						NoiseGeneratorSettings moddedNoiseGeneratorSettings = new NoiseGeneratorSettings(noiseGeneratorSettings.noiseSettings(), noiseGeneratorSettings.defaultBlock(), noiseGeneratorSettings.defaultFluid(),
+								noiseGeneratorSettings.noiseRouter(), SurfaceRules.sequence(surfaceRules.toArray(SurfaceRules.RuleSource[]::new)), noiseGeneratorSettings.spawnTarget(), noiseGeneratorSettings.seaLevel(),
+								noiseGeneratorSettings.disableMobGeneration(), noiseGeneratorSettings.aquifersEnabled(), noiseGeneratorSettings.oreVeinsEnabled(), noiseGeneratorSettings.useLegacyRandomSource());
 						noiseGenerator.settings = new Holder.Direct<>(moddedNoiseGeneratorSettings);
 					}
 				}
