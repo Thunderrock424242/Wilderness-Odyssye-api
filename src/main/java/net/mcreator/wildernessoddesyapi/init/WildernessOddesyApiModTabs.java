@@ -19,8 +19,6 @@ public class WildernessOddesyApiModTabs {
 	public static final DeferredHolder<CreativeModeTab, CreativeModeTab> WILDERNESS_ODDESY_API = REGISTRY.register("wilderness_oddesy_api", () -> CreativeModeTab.builder()
 			.title(Component.translatable("item_group.wilderness_oddesy_api.wilderness_oddesy_api")).icon(() -> new ItemStack(WildernessOddesyApiModBlocks.LIGHTINGENERGYBLOCK.get())).displayItems((parameters, tabData) -> {
 				tabData.accept(WildernessOddesyApiModBlocks.LIGHTINGENERGYBLOCK.get().asItem());
-				tabData.accept(WildernessOddesyApiModItems.LIGHTNINGARROW.get());
-				tabData.accept(WildernessOddesyApiModItems.LIGHTNINGBOW.get());
 				tabData.accept(WildernessOddesyApiModBlocks.PORTALFRAME.get().asItem());
 				tabData.accept(WildernessOddesyApiModItems.THEVAULT.get());
 			})

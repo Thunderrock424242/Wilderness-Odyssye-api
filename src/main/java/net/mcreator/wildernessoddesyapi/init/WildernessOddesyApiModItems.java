@@ -14,15 +14,11 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.core.registries.BuiltInRegistries;
 
 import net.mcreator.wildernessoddesyapi.item.ThevaultItem;
-import net.mcreator.wildernessoddesyapi.item.LightningbowItem;
-import net.mcreator.wildernessoddesyapi.item.LightningarrowItem;
 import net.mcreator.wildernessoddesyapi.WildernessOddesyApiMod;
 
 public class WildernessOddesyApiModItems {
 	public static final DeferredRegister<Item> REGISTRY = DeferredRegister.create(BuiltInRegistries.ITEM, WildernessOddesyApiMod.MODID);
 	public static final DeferredHolder<Item, Item> LIGHTINGENERGYBLOCK = block(WildernessOddesyApiModBlocks.LIGHTINGENERGYBLOCK);
-	public static final DeferredHolder<Item, Item> LIGHTNINGARROW = REGISTRY.register("lightningarrow", () -> new LightningarrowItem());
-	public static final DeferredHolder<Item, Item> LIGHTNINGBOW = REGISTRY.register("lightningbow", () -> new LightningbowItem());
 	public static final DeferredHolder<Item, Item> PORTALFRAME = block(WildernessOddesyApiModBlocks.PORTALFRAME);
 	public static final DeferredHolder<Item, Item> THEVAULT = REGISTRY.register("thevault", () -> new ThevaultItem());
 
