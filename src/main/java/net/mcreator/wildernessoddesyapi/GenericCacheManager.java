@@ -795,3 +795,307 @@ class CustomSkillData {
         return result;
     }
 }
+
+class CustomStructureData {
+    private final String structureName;
+    private final String dimension;
+    private final int size;
+    private final boolean isGenerated;
+
+    public CustomStructureData(String structureName, String dimension, int size, boolean isGenerated) {
+        this.structureName = structureName;
+        this.dimension = dimension;
+        this.size = size;
+        this.isGenerated = isGenerated;
+    }
+
+    public String getStructureName() {
+        return structureName;
+    }
+
+    public String getDimension() {
+        return dimension;
+    }
+
+    public int getSize() {
+        return size;
+    }
+
+    public boolean isGenerated() {
+        return isGenerated;
+    }
+
+    @Override
+    public String toString() {
+        return "CustomStructureData{" +
+                "structureName='" + structureName + '\'' +
+                ", dimension='" + dimension + '\'' +
+                ", size=" + size +
+                ", isGenerated=" + isGenerated +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        CustomStructureData that = (CustomStructureData) o;
+
+        if (size != that.size) return false;
+        if (isGenerated != that.isGenerated) return false;
+        if (!structureName.equals(that.structureName)) return false;
+        return dimension.equals(that.dimension);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = structureName.hashCode();
+        result = 31 * result + dimension.hashCode();
+        result = 31 * result + size;
+        result = 31 * result + (isGenerated ? 1 : 0);
+        return result;
+    }
+}
+
+class CustomAchievementData {
+    private final String achievementName;
+    private final String description;
+    private final int points;
+    private final boolean isUnlocked;
+
+    public CustomAchievementData(String achievementName, String description, int points, boolean isUnlocked) {
+        this.achievementName = achievementName;
+        this.description = description;
+        this.points = points;
+        this.isUnlocked = isUnlocked;
+    }
+
+    public String getAchievementName() {
+        return achievementName;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public int getPoints() {
+        return points;
+    }
+
+    public boolean isUnlocked() {
+        return isUnlocked;
+    }
+
+    @Override
+    public String toString() {
+        return "CustomAchievementData{" +
+                "achievementName='" + achievementName + '\'' +
+                ", description='" + description + '\'' +
+                ", points=" + points +
+                ", isUnlocked=" + isUnlocked +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        CustomAchievementData that = (CustomAchievementData) o;
+
+        if (points != that.points) return false;
+        if (isUnlocked != that.isUnlocked) return false;
+        if (!achievementName.equals(that.achievementName)) return false;
+        return description.equals(that.description);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = achievementName.hashCode();
+        result = 31 * result + description.hashCode();
+        result = 31 * result + points;
+        result = 31 * result + (isUnlocked ? 1 : 0);
+        return result;
+    }
+}
+
+class CustomRecipeData {
+    private final String recipeName;
+    private final List<String> ingredients;
+    private final String resultItem;
+    private final int resultQuantity;
+
+    public CustomRecipeData(String recipeName, List<String> ingredients, String resultItem, int resultQuantity) {
+        this.recipeName = recipeName;
+        this.ingredients = ingredients;
+        this.resultItem = resultItem;
+        this.resultQuantity = resultQuantity;
+    }
+
+    public String getRecipeName() {
+        return recipeName;
+    }
+
+    public List<String> getIngredients() {
+        return ingredients;
+    }
+
+    public String getResultItem() {
+        return resultItem;
+    }
+
+    public int getResultQuantity() {
+        return resultQuantity;
+    }
+
+    @Override
+    public String toString() {
+        return "CustomRecipeData{" +
+                "recipeName='" + recipeName + '\'' +
+                ", ingredients=" + ingredients +
+                ", resultItem='" + resultItem + '\'' +
+                ", resultQuantity=" + resultQuantity +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        CustomRecipeData that = (CustomRecipeData) o;
+
+        if (resultQuantity != that.resultQuantity) return false;
+        if (!recipeName.equals(that.recipeName)) return false;
+        if (!ingredients.equals(that.ingredients)) return false;
+        return resultItem.equals(that.resultItem);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = recipeName.hashCode();
+        result = 31 * result + ingredients.hashCode();
+        result = 31 * result + resultItem.hashCode();
+        result = 31 * result + resultQuantity;
+        return result;
+    }
+}
+
+class CustomDimensionData {
+    private final String dimensionName;
+    private final String environmentType;
+    private final int difficultyLevel;
+
+    public CustomDimensionData(String dimensionName, String environmentType, int difficultyLevel) {
+        this.dimensionName = dimensionName;
+        this.environmentType = environmentType;
+        this.difficultyLevel = difficultyLevel;
+    }
+
+    public String getDimensionName() {
+        return dimensionName;
+    }
+
+    public String getEnvironmentType() {
+        return environmentType;
+    }
+
+    public int getDifficultyLevel() {
+        return difficultyLevel;
+    }
+
+    @Override
+    public String toString() {
+        return "CustomDimensionData{" +
+                "dimensionName='" + dimensionName + '\'' +
+                ", environmentType='" + environmentType + '\'' +
+                ", difficultyLevel=" + difficultyLevel +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        CustomDimensionData that = (CustomDimensionData) o;
+
+        if (difficultyLevel != that.difficultyLevel) return false;
+        if (!dimensionName.equals(that.dimensionName)) return false;
+        return environmentType.equals(that.environmentType);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = dimensionName.hashCode();
+        result = 31 * result + environmentType.hashCode();
+        result = 31 * result + difficultyLevel;
+        return result;
+    }
+}
+
+class CustomNPCData {
+    private final String npcName;
+    private final String role;
+    private final String dialogue;
+    private final double health;
+
+    public CustomNPCData(String npcName, String role, String dialogue, double health) {
+        this.npcName = npcName;
+        this.role = role;
+        this.dialogue = dialogue;
+        this.health = health;
+    }
+
+    public String getNpcName() {
+        return npcName;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public String getDialogue() {
+        return dialogue;
+    }
+
+    public double getHealth() {
+        return health;
+    }
+
+    @Override
+    public String toString() {
+        return "CustomNPCData{" +
+                "npcName='" + npcName + '\'' +
+                ", role='" + role + '\'' +
+                ", dialogue='" + dialogue + '\'' +
+                ", health=" + health +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        CustomNPCData that = (CustomNPCData) o;
+
+        if (Double.compare(that.health, health) != 0) return false;
+        if (!npcName.equals(that.npcName)) return false;
+        if (!role.equals(that.role)) return false;
+        return dialogue.equals(that.dialogue);
+    }
+
+    @Override
+    public int hashCode() {
+        int result;
+        long temp;
+        result = npcName.hashCode();
+        result = 31 * result + role.hashCode();
+        result = 31 * result + dialogue.hashCode();
+        temp = Double.doubleToLongBits(health);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        return result;
+    }
+}

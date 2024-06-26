@@ -24,6 +24,11 @@ public class CustomItem extends Item {
     private static final GenericCacheManager<String, CustomEventData> eventCache = new GenericCacheManager<>();
     private static final GenericCacheManager<String, CustomQuestData> questCache = new GenericCacheManager<>();
     private static final GenericCacheManager<String, CustomSkillData> skillCache = new GenericCacheManager<>();
+    private static final GenericCacheManager<String, CustomStructureData> structureCache = new GenericCacheManager<>();
+    private static final GenericCacheManager<String, CustomAchievementData> achievementCache = new GenericCacheManager<>();
+    private static final GenericCacheManager<String, CustomRecipeData> recipeCache = new GenericCacheManager<>();
+    private static final GenericCacheManager<String, CustomDimensionData> dimensionCache = new GenericCacheManager<>();
+    private static final GenericCacheManager<String, CustomNPCData> npcCache = new GenericCacheManager<>();
 
     public CustomItem(Properties properties) {
         super(properties);
@@ -139,5 +144,35 @@ public class CustomItem extends Item {
         CustomSkillData skillData = new CustomSkillData(skillName, skillLevel, skillEffect);
         skillCache.put(skillId, skillData);
         LOGGER.fine("Added skill data to cache: " + skillName + " with effect: " + skillEffect);
+    }
+
+    public static void addStructureData(String structureId, String structureName, String dimension, int size, boolean isGenerated) {
+        CustomStructureData structureData = new CustomStructureData(structureName, dimension, size, isGenerated);
+        structureCache.put(structureId, structureData);
+        LOGGER.fine("Added structure data to cache: " + structureName + " in dimension: " + dimension);
+    }
+
+    public static void addAchievementData(String achievementId, String achievementName, String description, int points, boolean isUnlocked) {
+        CustomAchievementData achievementData = new CustomAchievementData(achievementName, description, points, isUnlocked);
+        achievementCache.put(achievementId, achievementData);
+        LOGGER.fine("Added achievement data to cache: " + achievementName);
+    }
+
+    public static void addRecipeData(String recipeId, String recipeName, List<String> ingredients, String resultItem, int resultQuantity) {
+        CustomRecipeData recipeData = new CustomRecipeData(recipeName, ingredients, resultItem, resultQuantity);
+        recipeCache.put(recipeId, recipeData);
+        LOGGER.fine("Added recipe data to cache: " + recipeName);
+    }
+
+    public static void addDimensionData(String dimensionId, String dimensionName, String environmentType, int difficultyLevel) {
+        CustomDimensionData dimensionData = new CustomDimensionData(dimensionName, environmentType, difficultyLevel);
+        dimensionCache.put(dimensionId, dimensionData);
+        LOGGER.fine("Added dimension data to cache: " + dimensionName);
+    }
+
+    public static void addNPCData(String npcId, String npcName, String role, String dialogue, double health) {
+        CustomNPCData npcData = new CustomNPCData(npcName, role, dialogue, health);
+        npcCache.put(npcId, npcData);
+        LOGGER.fine("Added NPC data to cache: " + npcName);
     }
 }
