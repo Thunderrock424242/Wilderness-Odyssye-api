@@ -427,6 +427,18 @@
         ]
       },
       "path": "~/custom code"
+    },
+    {
+      "name": "AsynchronousProcessing",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "asynchronous_processing",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/wildernessoddesyapi/AsynchronousProcessing.java"
+        ]
+      }
     }
   ],
   "variable_elements": [
