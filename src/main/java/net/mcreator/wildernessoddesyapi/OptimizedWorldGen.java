@@ -3,7 +3,7 @@ package net.mcreator.wildernessoddesyapi;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 
-import net.neoforged.neoforge.event.world.ChunkEvent;
+import net.neoforged.neoforge.event.level.ChunkEvent;
 import net.neoforged.neoforge.event.TickEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -11,21 +11,21 @@ import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.bus.api.SubscribeEvent;
 
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.chunk.LevelChunk;
 import net.minecraft.world.level.chunk.ChunkStatus;
 
-@Mod(OptimizedWorldGen.MODID)
+@Mod("utility_qol_for_wilderness_mod")
 public class OptimizedWorldGen {
-	public static final String MODID = "optimizedworldgen";
+	public static final String MODID = "utility_qol_for_wilderness_mod";
 	private static final Logger LOGGER = LogManager.getLogger();
 
 	public OptimizedWorldGen() {
-		// Register event handlers
-		NeoForge.EVENT_BUS.register(this);
-		NeoForge.EVENT_BUS.register(new ChunkGenerationOptimizer());
-
 		// Register setup method to the mod event bus
 		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
+		
+		// Register the ChunkGenerationOptimizer class with the NeoForge event bus
+		NeoForge.EVENT_BUS.register(new ChunkGenerationOptimizer());
 	}
 
 	private void setup(final FMLCommonSetupEvent event) {
@@ -38,16 +38,18 @@ public class OptimizedWorldGen {
 
 		@SubscribeEvent
 		public void onChunkLoad(ChunkEvent.Load event) {
-			// Check if we are on the client side, if so, return
-			if (event.getWorld().isClientSide()) {
-				return;
-			}
-			// Cast the chunk to LevelChunk
-			LevelChunk chunk = (LevelChunk) event.getChunk();
-			if (chunk.getStatus() == ChunkStatus.FULL) {
-				LOGGER.info("Chunk loaded: " + chunk.getPos());
-				// Perform optimization on chunk load if necessary
-				optimizeChunk(chunk);
+			if (event.getChunk() instanceof LevelChunk) {
+				LevelChunk chunk = (LevelChunk) event.getChunk();
+				if (chunk.getLevel() instanceof ServerLevel) {
+					ServerLevel world = (ServerLevel) chunk.getLevel();
+					if (!world.isClientSide()) {
+						if (chunk.getStatus() == ChunkStatus.FULL) {
+							LOGGER.info("Chunk loaded: " + chunk.getPos());
+							// Perform optimization on chunk load if necessary
+							optimizeChunk(chunk);
+						}
+					}
+				}
 			}
 		}
 

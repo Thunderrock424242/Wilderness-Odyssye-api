@@ -281,26 +281,12 @@
       "name": "OptimizedWorldGen",
       "type": "code",
       "sortid": 39,
-      "compiles": false,
+      "compiles": true,
       "locked_code": true,
       "registry_name": "optimized_world_gen",
       "metadata": {
         "files": [
           "src/main/java/net/mcreator/wildernessoddesyapi/OptimizedWorldGen.java"
-        ]
-      },
-      "path": "~/Optimizations"
-    },
-    {
-      "name": "Aynchronousprocessing",
-      "type": "code",
-      "sortid": 40,
-      "compiles": true,
-      "locked_code": true,
-      "registry_name": "aynchronousprocessing",
-      "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/wildernessoddesyapi/Aynchronousprocessing.java"
         ]
       },
       "path": "~/Optimizations"
