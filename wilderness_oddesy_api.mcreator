@@ -373,20 +373,6 @@
       "path": "~/custom code"
     },
     {
-      "name": "ModlList",
-      "type": "code",
-      "sortid": 31,
-      "compiles": true,
-      "locked_code": true,
-      "registry_name": "modl_list",
-      "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/wildernessoddesyapi/ModlList.java"
-        ]
-      },
-      "path": "~/custom code"
-    },
-    {
       "name": "WorldLoadingScreen",
       "type": "code",
       "sortid": 32,
