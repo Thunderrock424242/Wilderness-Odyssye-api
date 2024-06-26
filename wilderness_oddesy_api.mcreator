@@ -333,15 +333,15 @@
   },
   "language_map": {
     "en_us": {
+      "block.wilderness_oddesy_api.portalframe": "Portalframe",
+      "biome.wilderness_oddesy_api.glitchy": "Test",
       "key.wilderness_oddesy_api.crawlkey": "Crawl key",
       "key.wilderness_oddesy_api_neo.crawlkey": "Crawl key",
       "item.wilderness_oddesy_api.thevault": "Thevault Portal Igniter",
       "item.wilderness_oddesy_api_neo.lightingbow": "Lightingbow",
       "item_group.wilderness_oddesy_api.wilderness_oddesy_api": "Wilderness Oddesy API",
-      "block.wilderness_oddesy_api_neo.lightingenergyblock": "Lightingenergyblock",
-      "block.wilderness_oddesy_api.portalframe": "Portalframe",
-      "biome.wilderness_oddesy_api.glitchy": "Test",
       "subtitles.i_ran_so_far_away": "",
+      "block.wilderness_oddesy_api_neo.lightingenergyblock": "Lightingenergyblock",
       "item.wilderness_oddesy_api_neo.lightningarrow": "Lightningarrow"
     }
   },
