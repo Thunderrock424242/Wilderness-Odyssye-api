@@ -412,7 +412,7 @@
           "src/main/java/net/mcreator/wildernessoddesyapi/GenericCacheManager.java"
         ]
       },
-      "path": "~/custom code"
+      "path": "~/Optimizations"
     },
     {
       "name": "CustomItem",
@@ -426,7 +426,7 @@
           "src/main/java/net/mcreator/wildernessoddesyapi/CustomItem.java"
         ]
       },
-      "path": "~/custom code"
+      "path": "~/Optimizations"
     },
     {
       "name": "AsynchronousProcessing",
@@ -440,7 +440,7 @@
           "src/main/java/net/mcreator/wildernessoddesyapi/AsynchronousProcessing.java"
         ]
       },
-      "path": "~/custom code"
+      "path": "~/Optimizations"
     },
     {
       "name": "ChunkOptimizer",
@@ -454,7 +454,7 @@
           "src/main/java/net/mcreator/wildernessoddesyapi/ChunkOptimizer.java"
         ]
       },
-      "path": "~/custom code"
+      "path": "~/Optimizations"
     },
     {
       "name": "ServerStability",
@@ -468,7 +468,7 @@
           "src/main/java/net/mcreator/wildernessoddesyapi/ServerStability.java"
         ]
       },
-      "path": "~/custom code"
+      "path": "~/Optimizations"
     }
   ],
   "variable_elements": [
@@ -539,6 +539,10 @@
       },
       {
         "name": "custom code",
+        "children": []
+      },
+      {
+        "name": "Optimizations",
         "children": []
       }
     ]
