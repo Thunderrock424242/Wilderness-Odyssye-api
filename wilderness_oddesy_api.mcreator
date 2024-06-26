@@ -453,7 +453,8 @@
         "files": [
           "src/main/java/net/mcreator/wildernessoddesyapi/OptimizedWorldGen.java"
         ]
-      }
+      },
+      "path": "~/Optimizations"
     }
   ],
   "variable_elements": [
