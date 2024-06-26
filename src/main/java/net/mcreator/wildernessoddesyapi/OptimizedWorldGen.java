@@ -19,8 +19,11 @@ public class OptimizedWorldGen {
     private static final Logger LOGGER = LogManager.getLogger();
 
     public OptimizedWorldGen() {
+        // Register event handlers
         NeoForge.EVENT_BUS.register(this);
         NeoForge.EVENT_BUS.register(new ChunkGenerationOptimizer());
+        
+        // Register setup method to the mod event bus
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
     }
 
@@ -34,23 +37,45 @@ public class OptimizedWorldGen {
 
         @SubscribeEvent
         public void onChunkLoad(ChunkEvent.Load event) {
+            // Check if we are on the client side, if so, return
             if (event.getWorld().isClientSide()) {
                 return;
             }
 
+            // Cast the chunk to LevelChunk
             LevelChunk chunk = (LevelChunk) event.getChunk();
             if (chunk.getStatus() == ChunkStatus.FULL) {
                 LOGGER.info("Chunk loaded: " + chunk.getPos());
                 // Perform optimization on chunk load if necessary
+                optimizeChunk(chunk);
             }
         }
 
         @SubscribeEvent
         public void onServerTick(TickEvent.ServerTickEvent event) {
-            // Handle chunk generation tasks asynchronously to prevent freezing
-            // This is a basic example, you may need more complex logic for your specific use case
+            // Execute only at the end phase of the tick
             if (event.phase == TickEvent.Phase.END) {
-                // Process pending chunk generation tasks
+                LOGGER.debug("Server tick end");
+                // Perform periodic optimization or checks
+                performPeriodicTasks();
+            }
+        }
+
+        private void optimizeChunk(LevelChunk chunk) {
+            try {
+                // Add optimization logic here
+                LOGGER.info("Optimizing chunk: " + chunk.getPos());
+            } catch (Exception e) {
+                LOGGER.error("Error optimizing chunk: " + chunk.getPos(), e);
+            }
+        }
+
+        private void performPeriodicTasks() {
+            try {
+                // Add periodic tasks or optimizations here
+                LOGGER.debug("Performing periodic tasks");
+            } catch (Exception e) {
+                LOGGER.error("Error during periodic tasks", e);
             }
         }
     }
