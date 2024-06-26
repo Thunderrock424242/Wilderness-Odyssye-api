@@ -264,20 +264,6 @@
       "path": "~/Optimizations"
     },
     {
-      "name": "ServerStability",
-      "type": "code",
-      "sortid": 38,
-      "compiles": false,
-      "locked_code": true,
-      "registry_name": "server_stability",
-      "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/wildernessoddesyapi/ServerStability.java"
-        ]
-      },
-      "path": "~/Optimizations"
-    },
-    {
       "name": "OptimizedWorldGen",
       "type": "code",
       "sortid": 39,
