@@ -31,19 +31,19 @@ import java.util.concurrent.Executors;
 import static net.minecraft.commands.Commands.literal;
 
 @Mod("bigmodpack")
-public class BigModPack {
+public class AsynchronousProcessing {
 
     public static final String MODID = "bigmodpack";
     private static final ExecutorService executor = Executors.newFixedThreadPool(8); // Configurable thread pool size
 
-    public BigModPack() {
+    public AsynchronousProcessing() {
         // Register lifecycle events
         net.neoforged.neoforge.common.NeoForge.EVENT_BUS.register(this);
     }
 
     @SubscribeEvent
     public void onCommonSetup(FMLCommonSetupEvent event) {
-        System.out.println("Common setup for BigModPack");
+        System.out.println("Common setup for AsynchronousProcessing");
     }
 
     @SubscribeEvent

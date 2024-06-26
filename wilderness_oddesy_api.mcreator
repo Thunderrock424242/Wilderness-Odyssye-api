@@ -431,14 +431,44 @@
     {
       "name": "AsynchronousProcessing",
       "type": "code",
-      "compiles": true,
+      "sortid": 35,
+      "compiles": false,
       "locked_code": true,
       "registry_name": "asynchronous_processing",
       "metadata": {
         "files": [
           "src/main/java/net/mcreator/wildernessoddesyapi/AsynchronousProcessing.java"
         ]
-      }
+      },
+      "path": "~/custom code"
+    },
+    {
+      "name": "NetworkOptimizer",
+      "type": "code",
+      "sortid": 36,
+      "compiles": false,
+      "locked_code": true,
+      "registry_name": "network_optimizer",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/wildernessoddesyapi/NetworkOptimizer.java"
+        ]
+      },
+      "path": "~/custom code"
+    },
+    {
+      "name": "ChunkOptimizer",
+      "type": "code",
+      "sortid": 37,
+      "compiles": false,
+      "locked_code": true,
+      "registry_name": "chunk_optimizer",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/wildernessoddesyapi/ChunkOptimizer.java"
+        ]
+      },
+      "path": "~/custom code"
     }
   ],
   "variable_elements": [
