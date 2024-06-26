@@ -432,7 +432,7 @@
       "name": "AsynchronousProcessing",
       "type": "code",
       "sortid": 35,
-      "compiles": false,
+      "compiles": true,
       "locked_code": true,
       "registry_name": "asynchronous_processing",
       "metadata": {
@@ -455,6 +455,19 @@
         ]
       },
       "path": "~/Optimizations"
+    },
+    {
+      "name": "OptimizedWorldGen",
+      "type": "code",
+      "sortid": 39,
+      "compiles": false,
+      "locked_code": true,
+      "registry_name": "optimized_world_gen",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/wildernessoddesyapi/OptimizedWorldGen.java"
+        ]
+      }
     }
   ],
   "variable_elements": [

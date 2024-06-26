@@ -15,9 +15,8 @@ import net.neoforged.event.entity.player.PlayerTickEvent;
 import net.neoforged.event.world.WorldTickEvent;
 import net.neoforged.event.server.ServerStartingEvent;
 import net.neoforged.event.server.ServerStoppingEvent;
-import net.neoforged.network.simple.SimpleChannel.MessageBuilder;
 import net.neoforged.network.simple.SimpleChannel;
-import net.minecraftforge.network.NetworkEvent;
+import net.neoforged.network.NetworkEvent;
 
 import java.util.function.Supplier;
 
@@ -45,9 +44,21 @@ public class ServerStabilityMod {
         // Optimized tick handling
         if (event.phase == ServerTickEvent.Phase.START) {
             // Code to run at the start of each tick
+            performServerStartTickTasks();
         } else if (event.phase == ServerTickEvent.Phase.END) {
             // Code to run at the end of each tick
+            performServerEndTickTasks();
         }
+    }
+
+    private void performServerStartTickTasks() {
+        // Example logic for tasks to run at the start of each tick
+        // This could include checking for scheduled tasks, updating server statistics, etc.
+    }
+
+    private void performServerEndTickTasks() {
+        // Example logic for tasks to run at the end of each tick
+        // This could include saving data, clearing caches, etc.
     }
 
     private void setupNetworkChannel() {
@@ -88,6 +99,9 @@ public class ServerStabilityMod {
                 ServerPlayer player = ctx.getSender();
                 if (player != null) {
                     // Handle the message on the server side
+                    // Example: Log the received data
+                    System.out.println("Received data: " + msg.data);
+                    // Add your handling logic here
                 }
             });
             ctx.setPacketHandled(true);
@@ -99,23 +113,53 @@ public class ServerStabilityMod {
 
         @SubscribeEvent
         public void onPlayerTick(PlayerTickEvent event) {
-            ServerPlayer player = (ServerPlayer) event.player;
-            // Optimize player tick handling
+            if (!event.player.level.isClientSide) {
+                ServerPlayer player = (ServerPlayer) event.player;
+                // Optimize player tick handling
+                performPlayerTickTasks(player);
+            }
         }
 
         @SubscribeEvent
         public void onWorldTick(WorldTickEvent event) {
-            // Optimize world tick handling
+            if (!event.world.isClientSide) {
+                // Optimize world tick handling
+                performWorldTickTasks(event.world);
+            }
         }
 
         @SubscribeEvent
         public void onServerStarting(ServerStartingEvent event) {
             // Register server start logic
+            System.out.println("Server is starting...");
+            initializeServerResources();
         }
 
         @SubscribeEvent
         public void onServerStopping(ServerStoppingEvent event) {
             // Register server stop logic
+            System.out.println("Server is stopping...");
+            cleanupServerResources();
+        }
+
+        private void performPlayerTickTasks(ServerPlayer player) {
+            // Example logic for tasks to run on each player tick
+            // This could include checking player stats, updating cooldowns, etc.
+        }
+
+        private void performWorldTickTasks(ServerWorld world) {
+            // Example logic for tasks to run on each world tick
+            // This could include managing world events, updating entities, etc.
+        }
+
+        private void initializeServerResources() {
+            // Example logic for initializing server resources on start
+            // This could include loading configurations, setting up data structures, etc.
+        }
+
+        private void cleanupServerResources() {
+            // Example logic for cleaning up server resources on stop
+            // This could include saving data, releasing resources, etc.
         }
     }
 
@@ -126,21 +170,25 @@ public class ServerStabilityMod {
         @SubscribeEvent
         public static void onServerStarting(ServerStartingEvent event) {
             // Register server start logic
+            System.out.println("Server is starting...");
         }
 
         @SubscribeEvent
         public static void onServerStopping(ServerStoppingEvent event) {
             // Register server stop logic
+            System.out.println("Server is stopping...");
         }
 
         @SubscribeEvent
         public static void onCommonSetup(FMLCommonSetupEvent event) {
             // Register common setup logic
+            System.out.println("Common setup...");
         }
 
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
             // Register client setup logic
+            System.out.println("Client setup...");
         }
     }
 }
