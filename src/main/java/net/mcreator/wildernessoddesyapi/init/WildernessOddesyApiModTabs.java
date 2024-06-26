@@ -25,6 +25,9 @@ public class WildernessOddesyApiModTabs {
 				tabData.accept(WildernessOddesyApiModBlocks.LIGHTINGENERGYBLOCK.get().asItem());
 				tabData.accept(WildernessOddesyApiModItems.LIGHTNINGARROW.get());
 				tabData.accept(WildernessOddesyApiModItems.LIGHTNINGBOW.get());
+<<<<<<< HEAD
+>>>>>>> parent of b7899b3 (added back some files and deleted lots of things that were not needed)
+=======
 >>>>>>> parent of b7899b3 (added back some files and deleted lots of things that were not needed)
 				tabData.accept(WildernessOddesyApiModBlocks.PORTALFRAME.get().asItem());
 				tabData.accept(WildernessOddesyApiModItems.THEVAULT.get());
