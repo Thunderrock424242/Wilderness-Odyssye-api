@@ -112,34 +112,6 @@
       "path": "~/custom code"
     },
     {
-      "name": "TPdimension",
-      "type": "code",
-      "sortid": 30,
-      "compiles": true,
-      "locked_code": true,
-      "registry_name": "t_pdimension",
-      "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/wildernessoddesyapi/TPdimension.java"
-        ]
-      },
-      "path": "~/custom code"
-    },
-    {
-      "name": "WorldLoadingScreen",
-      "type": "code",
-      "sortid": 32,
-      "compiles": true,
-      "locked_code": true,
-      "registry_name": "world_loading_screen",
-      "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/wildernessoddesyapi/WorldLoadingScreen.java"
-        ]
-      },
-      "path": "~/custom code"
-    },
-    {
       "name": "GenericCacheManager",
       "type": "code",
       "sortid": 33,
@@ -168,20 +140,6 @@
       "path": "~/Optimizations"
     },
     {
-      "name": "OptimizedWorldGen",
-      "type": "code",
-      "sortid": 39,
-      "compiles": true,
-      "locked_code": true,
-      "registry_name": "optimized_world_gen",
-      "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/wildernessoddesyapi/OptimizedWorldGen.java"
-        ]
-      },
-      "path": "~/Optimizations"
-    },
-    {
       "name": "AsynchronousProcessing",
       "type": "code",
       "sortid": 42,
@@ -194,6 +152,19 @@
         ]
       },
       "path": "~/Optimizations"
+    },
+    {
+      "name": "DayNightCycle",
+      "type": "mixin",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "day_night_cycle",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/wildernessoddesyapi/mixins/DayNightCycleMixin.java"
+        ]
+      },
+      "path": "~/Mixins"
     }
   ],
   "variable_elements": [
@@ -218,20 +189,12 @@
   "language_map": {
     "en_us": {
       "key.wilderness_oddesy_api.crawlkey": "Crawl key",
-      "key.wilderness_oddesy_api_neo.crawlkey": "Crawl key",
-      "item.wilderness_oddesy_api_neo.lightingbow": "Lightingbow",
-      "subtitles.i_ran_so_far_away": "",
-      "block.wilderness_oddesy_api_neo.lightingenergyblock": "Lightingenergyblock",
-      "item.wilderness_oddesy_api_neo.lightningarrow": "Lightningarrow"
+      "key.wilderness_oddesy_api_neo.crawlkey": "Crawl key"
     }
   },
   "foldersRoot": {
     "name": "~",
     "children": [
-      {
-        "name": "AI",
-        "children": []
-      },
       {
         "name": "Procedures",
         "children": []
@@ -242,6 +205,10 @@
       },
       {
         "name": "Optimizations",
+        "children": []
+      },
+      {
+        "name": "Mixins",
         "children": []
       }
     ]

@@ -105,56 +105,6 @@ class CustomItemData {
 	}
 }
 
-class CustomPlayerData {
-	private final String playerName;
-	private final int playerLevel;
-	private final int experiencePoints;
-	private final List<String> inventory;
-
-	public CustomPlayerData(String playerName, int playerLevel, int experiencePoints, List<String> inventory) {
-		this.playerName = playerName;
-		this.playerLevel = playerLevel;
-		this.experiencePoints = experiencePoints;
-		this.inventory = new ArrayList<>(inventory);
-	}
-
-	public String getPlayerName() {
-		return playerName;
-	}
-
-	public int getPlayerLevel() {
-		return playerLevel;
-	}
-
-	public int getExperiencePoints() {
-		return experiencePoints;
-	}
-
-	public List<String> getInventory() {
-		return new ArrayList<>(inventory);
-	}
-
-	@Override
-	public String toString() {
-		return String.format("CustomPlayerData{playerName='%s', playerLevel=%d, experiencePoints=%d, inventory=%s}", playerName, playerLevel, experiencePoints, inventory);
-	}
-
-	@Override
-	public boolean equals(Object o) {
-		if (this == o)
-			return true;
-		if (!(o instanceof CustomPlayerData))
-			return false;
-		CustomPlayerData that = (CustomPlayerData) o;
-		return playerLevel == that.playerLevel && experiencePoints == that.experiencePoints && Objects.equals(playerName, that.playerName) && Objects.equals(inventory, that.inventory);
-	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(playerName, playerLevel, experiencePoints, inventory);
-	}
-}
-
 class CustomBlockData {
 	private final String blockType;
 	private final int blockHardness;

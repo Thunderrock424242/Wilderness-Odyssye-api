@@ -6,8 +6,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.core.BlockPos;
 
 import java.util.logging.Logger;
@@ -18,7 +16,6 @@ public class CustomItem extends Item {
 	private static final Logger LOGGER = Logger.getLogger(CustomItem.class.getName());
 
 	private static final GenericCacheManager<String, CustomItemData> itemCache = new GenericCacheManager<>();
-	private static final GenericCacheManager<String, CustomPlayerData> playerCache = new GenericCacheManager<>();
 	private static final GenericCacheManager<BlockPos, CustomBlockData> blockCache = new GenericCacheManager<>();
 	private static final GenericCacheManager<String, CustomBiomeData> biomeCache = new GenericCacheManager<>();
 	private static final GenericCacheManager<String, CustomWorldGenData> worldGenCache = new GenericCacheManager<>();
@@ -46,10 +43,7 @@ public class CustomItem extends Item {
 		// Store custom item data in the cache
 		CustomItemData itemData = new CustomItemData(stack.getHoverName().getString(), calculateItemValue(stack), "Common", "A special crafted item.");
 		itemCache.put(stack.getDescriptionId(), itemData);
-		// Store custom player data in the cache
-		CustomPlayerData playerData = new CustomPlayerData(player.getName().getString(), player.experienceLevel, player.totalExperience, List.of("item1", "item2"));
-		playerCache.put(player.getStringUUID(), playerData);
-		LOGGER.info("Item crafted: " + stack.getHoverName().getString() + " by player: " + player.getName().getString());
+		LOGGER.info("Item crafted: " + stack.getHoverName().getString());
 	}
 
 	@Override
@@ -80,10 +74,7 @@ public class CustomItem extends Item {
 
 	private void applyCustomEffects(Entity entity, CustomItemData data) {
 		// Custom logic to apply effects based on item data
-		if (entity instanceof Player) {
-			((Player) entity).addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 100, data.getItemValue() / 10));
-			LOGGER.fine("Applied DAMAGE_BOOST effect to player: " + ((Player) entity).getName().getString());
-		}
+		// Implementation can vary depending on the game mechanics
 	}
 
 	public static <K, V> void addData(GenericCacheManager<K, V> cache, K id, V data) {
