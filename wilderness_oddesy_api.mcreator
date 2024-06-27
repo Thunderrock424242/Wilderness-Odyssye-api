@@ -166,20 +166,6 @@
       "path": "~/biomes"
     },
     {
-      "name": "EntityAi",
-      "type": "mixin",
-      "sortid": 23,
-      "compiles": true,
-      "locked_code": true,
-      "registry_name": "entity_ai",
-      "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/wildernessoddesyapi/mixins/EntityAiMixin.java"
-        ]
-      },
-      "path": "~/AI"
-    },
-    {
       "name": "Mobstages",
       "type": "code",
       "sortid": 26,
@@ -308,6 +294,20 @@
         ]
       },
       "path": "~/Optimizations"
+    },
+    {
+      "name": "WolfThunderMixinEventHandler",
+      "type": "code",
+      "sortid": 43,
+      "compiles": false,
+      "locked_code": true,
+      "registry_name": "wolf_thunder_mixin_event_handler",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/wildernessoddesyapi/WolfThunderMixinEventHandler.java"
+        ]
+      },
+      "path": "~/AI"
     }
   ],
   "variable_elements": [

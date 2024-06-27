@@ -15,9 +15,9 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.chunk.LevelChunk;
 import net.minecraft.world.level.chunk.ChunkStatus;
 
-@Mod("utility_qol_for_wilderness_mod")
+@Mod("wilderness_oddesy_api")
 public class OptimizedWorldGen {
-	public static final String MODID = "utility_qol_for_wilderness_mod";
+	public static final String MODID = "wilderness_oddesy_api";
 	private static final Logger LOGGER = LogManager.getLogger();
 
 	public OptimizedWorldGen() {
