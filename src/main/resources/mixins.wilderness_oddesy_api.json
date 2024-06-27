@@ -5,7 +5,10 @@
   "mixins": [
     "DayNightCycleMixin",
     "MobStagesMixinMixin",
-    "MobSpawnMixin"
+    "MobSpawnMixin",
+    "DynamicWeatherEffectsMixin",
+    "AnimalMixinMixin",
+    "EntityMixinMixin"
   ],
   "client": [],
   "minVersion": "0.8"

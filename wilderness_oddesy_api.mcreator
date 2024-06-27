@@ -190,6 +190,58 @@
         ]
       },
       "path": "~/custom code"
+    },
+    {
+      "name": "DynamicWeatherEffects",
+      "type": "mixin",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "dynamic_weather_effects",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/wildernessoddesyapi/mixins/DynamicWeatherEffectsMixin.java"
+        ]
+      },
+      "path": "~/mixins"
+    },
+    {
+      "name": "AnimalMixin",
+      "type": "mixin",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "animal_mixin",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/wildernessoddesyapi/mixins/AnimalMixinMixin.java"
+        ]
+      },
+      "path": "~/mixins"
+    },
+    {
+      "name": "LevelAccessor",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "level_accessor",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/wildernessoddesyapi/LevelAccessor.java"
+        ]
+      },
+      "path": "~/custom code"
+    },
+    {
+      "name": "EntityMixin",
+      "type": "mixin",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "entity_mixin",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/wildernessoddesyapi/mixins/EntityMixinMixin.java"
+        ]
+      },
+      "path": "~/mixins"
     }
   ],
   "variable_elements": [
