@@ -169,7 +169,7 @@
       "name": "EntityAi",
       "type": "mixin",
       "sortid": 23,
-      "compiles": false,
+      "compiles": true,
       "locked_code": true,
       "registry_name": "entity_ai",
       "metadata": {
@@ -183,7 +183,7 @@
       "name": "Mobstages",
       "type": "code",
       "sortid": 26,
-      "compiles": false,
+      "compiles": true,
       "locked_code": true,
       "registry_name": "mobstages",
       "metadata": {
@@ -197,7 +197,7 @@
       "name": "WolfThunder",
       "type": "mixin",
       "sortid": 27,
-      "compiles": false,
+      "compiles": true,
       "locked_code": true,
       "registry_name": "wolf_thunder",
       "metadata": {

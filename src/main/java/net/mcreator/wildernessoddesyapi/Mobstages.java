@@ -36,17 +36,19 @@ public class Mobstages {
 
 	@SubscribeEvent
 	public static void onWorldTick(LevelTickEvent event) {
-		Level world = event.getLevel();
-		if (world.dimension() == Level.OVERWORLD && !world.isClientSide) {
-			if (world.getDayTime() % 24000 == 0) { // Check if it's a new day
-				daysElapsed++;
+		if (event.level instanceof Level) {
+			Level world = (Level) event.level;
+			if (world.dimension() == Level.OVERWORLD && !world.isClientSide) {
+				if (world.getDayTime() % 24000 == 0) { // Check if it's a new day
+					daysElapsed++;
+				}
 			}
 		}
 	}
 
 	@SubscribeEvent
 	public static void onMobSpawn(MobSpawnEvent.SpawnPlacementCheck event) {
-		if (event.getEntity().getType().getCategory() == MobCategory.MONSTER) {
+		if (event.getEntityType().getCategory() == MobCategory.MONSTER) {
 			Level world = (Level) event.getLevel();
 			if (world.dimension() == Level.OVERWORLD) {
 				if (daysElapsed <= 20) {
