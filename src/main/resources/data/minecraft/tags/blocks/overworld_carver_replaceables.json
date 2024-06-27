@@ -2,7 +2,6 @@
   "replace": false,
   "values": [
     "wilderness_oddesy_api:portalframe",
-    "minecraft:grass_block",
     "wilderness_oddesy_api:lighting_block"
   ]
 }

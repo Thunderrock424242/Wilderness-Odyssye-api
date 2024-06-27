@@ -98,74 +98,6 @@
       "path": "~/Procedures"
     },
     {
-      "name": "WildernessOddesyAPI",
-      "type": "tab",
-      "sortid": 12,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "wilderness_oddesy_api",
-      "metadata": {
-        "files": []
-      }
-    },
-    {
-      "name": "Portalframe",
-      "type": "block",
-      "sortid": 16,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "portalframe",
-      "metadata": {
-        "files": [
-          "src/main/resources/data/wilderness_oddesy_api/loot_tables/blocks/portalframe.json",
-          "src/main/resources/assets/wilderness_oddesy_api/blockstates/portalframe.json",
-          "src/main/java/net/mcreator/wildernessoddesyapi/block/PortalframeBlock.java",
-          "src/main/resources/assets/wilderness_oddesy_api/models/block/portalframe.json",
-          "src/main/resources/assets/wilderness_oddesy_api/models/item/portalframe.json"
-        ]
-      },
-      "path": "~/Blocks"
-    },
-    {
-      "name": "Thevault",
-      "type": "dimension",
-      "sortid": 17,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "thevault",
-      "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/wildernessoddesyapi/item/ThevaultItem.java",
-          "src/main/java/net/mcreator/wildernessoddesyapi/world/teleporter/ThevaultTeleporter.java",
-          "src/main/resources/data/wilderness_oddesy_api/dimension/thevault.json",
-          "src/main/resources/assets/wilderness_oddesy_api/models/block/thevault_portal_ew.json",
-          "src/main/java/net/mcreator/wildernessoddesyapi/block/ThevaultPortalBlock.java",
-          "src/main/resources/data/wilderness_oddesy_api/dimension_type/thevault.json",
-          "src/main/resources/assets/wilderness_oddesy_api/models/block/thevault_portal_ns.json",
-          "src/main/resources/assets/wilderness_oddesy_api/models/item/thevault.json",
-          "src/main/resources/assets/wilderness_oddesy_api/blockstates/thevault_portal.json",
-          "src/main/java/net/mcreator/wildernessoddesyapi/world/teleporter/ThevaultPortalShape.java",
-          "src/main/java/net/mcreator/wildernessoddesyapi/world/dimension/ThevaultDimension.java"
-        ]
-      }
-    },
-    {
-      "name": "Test",
-      "type": "biome",
-      "sortid": 21,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "glitchy",
-      "metadata": {
-        "files": [
-          "src/main/resources/data/wilderness_oddesy_api/worldgen/configured_feature/glitchy_tree.json",
-          "src/main/resources/data/wilderness_oddesy_api/worldgen/biome/glitchy.json",
-          "src/main/resources/data/wilderness_oddesy_api/worldgen/placed_feature/glitchy_tree.json"
-        ]
-      },
-      "path": "~/biomes"
-    },
-    {
       "name": "Mobstages",
       "type": "code",
       "sortid": 26,
@@ -178,20 +110,6 @@
         ]
       },
       "path": "~/custom code"
-    },
-    {
-      "name": "WolfThunder",
-      "type": "mixin",
-      "sortid": 27,
-      "compiles": true,
-      "locked_code": true,
-      "registry_name": "wolf_thunder",
-      "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/wildernessoddesyapi/mixins/WolfThunderMixin.java"
-        ]
-      },
-      "path": "~/AI"
     },
     {
       "name": "TPdimension",
@@ -264,24 +182,6 @@
       "path": "~/Optimizations"
     },
     {
-      "name": "LightingBlock",
-      "type": "block",
-      "sortid": 41,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "lighting_block",
-      "metadata": {
-        "files": [
-          "src/main/resources/data/wilderness_oddesy_api/loot_tables/blocks/lighting_block.json",
-          "src/main/resources/assets/wilderness_oddesy_api/models/block/lighting_block.json",
-          "src/main/java/net/mcreator/wildernessoddesyapi/block/LightingBlockBlock.java",
-          "src/main/resources/assets/wilderness_oddesy_api/models/item/lighting_block.json",
-          "src/main/resources/assets/wilderness_oddesy_api/blockstates/lighting_block.json"
-        ]
-      },
-      "path": "~/Blocks"
-    },
-    {
       "name": "AsynchronousProcessing",
       "type": "code",
       "sortid": 42,
@@ -294,20 +194,6 @@
         ]
       },
       "path": "~/Optimizations"
-    },
-    {
-      "name": "WolfThunderMixinEventHandler",
-      "type": "code",
-      "sortid": 43,
-      "compiles": false,
-      "locked_code": true,
-      "registry_name": "wolf_thunder_mixin_event_handler",
-      "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/wildernessoddesyapi/WolfThunderMixinEventHandler.java"
-        ]
-      },
-      "path": "~/AI"
     }
   ],
   "variable_elements": [
@@ -328,24 +214,13 @@
       "subtitle": ""
     }
   ],
-  "tag_elements": {
-    "BLOCKS:minecraft:overworld_carver_replaceables": [
-      "~CUSTOM:Portalframe",
-      "~Blocks.GRASS",
-      "~CUSTOM:LightingBlock"
-    ]
-  },
+  "tag_elements": {},
   "language_map": {
     "en_us": {
-      "block.wilderness_oddesy_api.portalframe": "Portalframe",
-      "biome.wilderness_oddesy_api.glitchy": "Test",
       "key.wilderness_oddesy_api.crawlkey": "Crawl key",
       "key.wilderness_oddesy_api_neo.crawlkey": "Crawl key",
-      "item.wilderness_oddesy_api.thevault": "Thevault Portal Igniter",
       "item.wilderness_oddesy_api_neo.lightingbow": "Lightingbow",
-      "item_group.wilderness_oddesy_api.wilderness_oddesy_api": "Wilderness Oddesy API",
       "subtitles.i_ran_so_far_away": "",
-      "block.wilderness_oddesy_api.lighting_block": "Lighting Block",
       "block.wilderness_oddesy_api_neo.lightingenergyblock": "Lightingenergyblock",
       "item.wilderness_oddesy_api_neo.lightningarrow": "Lightningarrow"
     }
@@ -358,15 +233,7 @@
         "children": []
       },
       {
-        "name": "biomes",
-        "children": []
-      },
-      {
         "name": "Procedures",
-        "children": []
-      },
-      {
-        "name": "Blocks",
         "children": []
       },
       {

@@ -1,8 +1,0 @@
-{
-  "parent": "block/cube_all",
-  "textures": {
-    "all": "wilderness_oddesy_api:block/lightning_ore_side",
-    "particle": "wilderness_oddesy_api:block/lightning_ore_side"
-  },
-  "render_type": "solid"
-}
