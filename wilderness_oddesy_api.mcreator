@@ -218,6 +218,18 @@
         ]
       },
       "path": "~/mixins"
+    },
+    {
+      "name": "VaribbleMain",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "varibble_main",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/wildernessoddesyapi/VaribbleMain.java"
+        ]
+      }
     }
   ],
   "variable_elements": [
