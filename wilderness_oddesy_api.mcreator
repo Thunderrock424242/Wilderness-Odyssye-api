@@ -98,20 +98,6 @@
       "path": "~/Procedures"
     },
     {
-      "name": "Mobstages",
-      "type": "code",
-      "sortid": 26,
-      "compiles": true,
-      "locked_code": true,
-      "registry_name": "mobstages",
-      "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/wildernessoddesyapi/Mobstages.java"
-        ]
-      },
-      "path": "~/custom code"
-    },
-    {
       "name": "GenericCacheManager",
       "type": "code",
       "sortid": 33,
@@ -165,6 +151,45 @@
         ]
       },
       "path": "~/Mixins"
+    },
+    {
+      "name": "MobStagesMixin",
+      "type": "mixin",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "mob_stages_mixin",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/wildernessoddesyapi/mixins/MobStagesMixinMixin.java"
+        ]
+      },
+      "path": "~/Mixins"
+    },
+    {
+      "name": "MobSpawn",
+      "type": "mixin",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "mob_spawn",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/wildernessoddesyapi/mixins/MobSpawnMixin.java"
+        ]
+      },
+      "path": "~/Mixins"
+    },
+    {
+      "name": "MobStages",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "mob_stages",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/wildernessoddesyapi/MobStages.java"
+        ]
+      },
+      "path": "~/custom code"
     }
   ],
   "variable_elements": [

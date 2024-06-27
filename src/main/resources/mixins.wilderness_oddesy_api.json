@@ -3,7 +3,9 @@
   "package": "net.mcreator.wildernessoddesyapi.mixins",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "DayNightCycleMixin"
+    "DayNightCycleMixin",
+    "MobStagesMixinMixin",
+    "MobSpawnMixin"
   ],
   "client": [],
   "minVersion": "0.8"
