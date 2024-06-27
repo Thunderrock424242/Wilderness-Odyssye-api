@@ -8,16 +8,17 @@ import org.spongepowered.asm.mixin.Mixin;
 
 import net.minecraft.world.entity.ai.goal.GoalSelector;
 import net.minecraft.world.entity.ai.goal.Goal;
-import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.Mob;
 
 import java.util.Random;
 
-@Mixin(Entity.class)
+@Mixin(Mob.class)
 public abstract class EntityAiMixin {
 	@Shadow
 	private GoalSelector goalSelector;
 	@Shadow
-	private int age;
+	private int tickCount; // Ensure this field exists in the Mob class
+
 	private static int daysElapsed = 0;
 	private static final Random RANDOM = new Random();
 
@@ -28,7 +29,7 @@ public abstract class EntityAiMixin {
 	}
 
 	private void evolveAI() {
-		if (this.age % 24000 == 0) { // Every in-game day
+		if (this.tickCount % 24000 == 0) { // Every in-game day
 			daysElapsed++;
 			// Evolve AI by adding new goals or modifying existing ones
 			if (daysElapsed % 5 == 0) { // Evolve every 5 days as an example
