@@ -150,7 +150,7 @@
           "src/main/java/net/mcreator/wildernessoddesyapi/mixins/DayNightCycleMixin.java"
         ]
       },
-      "path": "~/Mixins"
+      "path": "~/mixins"
     },
     {
       "name": "MobStagesMixin",
@@ -163,7 +163,7 @@
           "src/main/java/net/mcreator/wildernessoddesyapi/mixins/MobStagesMixinMixin.java"
         ]
       },
-      "path": "~/Mixins"
+      "path": "~/mixins"
     },
     {
       "name": "MobSpawn",
@@ -176,7 +176,7 @@
           "src/main/java/net/mcreator/wildernessoddesyapi/mixins/MobSpawnMixin.java"
         ]
       },
-      "path": "~/Mixins"
+      "path": "~/mixins"
     },
     {
       "name": "MobStages",
@@ -233,7 +233,7 @@
         "children": []
       },
       {
-        "name": "Mixins",
+        "name": "mixins",
         "children": []
       }
     ]
