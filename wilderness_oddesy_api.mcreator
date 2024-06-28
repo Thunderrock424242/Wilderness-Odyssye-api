@@ -1,79 +1,6 @@
 {
   "mod_elements": [
     {
-      "name": "Crawlkey",
-      "type": "keybind",
-      "sortid": 1,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "crawlkey",
-      "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/wildernessoddesyapi/network/CrawlkeyMessage.java"
-        ]
-      }
-    },
-    {
-      "name": "Crawl",
-      "type": "procedure",
-      "sortid": 3,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "crawl",
-      "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/wildernessoddesyapi/procedures/CrawlProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "entity",
-            "type": "entity"
-          }
-        ]
-      },
-      "path": "~/Procedures"
-    },
-    {
-      "name": "Setupcrawl",
-      "type": "procedure",
-      "sortid": 4,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "setupcrawl",
-      "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/wildernessoddesyapi/procedures/SetupcrawlProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "entity",
-            "type": "entity"
-          }
-        ]
-      },
-      "path": "~/Procedures"
-    },
-    {
-      "name": "Stopcrawling",
-      "type": "procedure",
-      "sortid": 5,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "stopcrawling",
-      "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/wildernessoddesyapi/procedures/StopcrawlingProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "entity",
-            "type": "entity"
-          }
-        ]
-      },
-      "path": "~/Procedures"
-    },
-    {
       "name": "GenericCacheManager",
       "type": "code",
       "sortid": 33,
@@ -97,20 +24,6 @@
       "metadata": {
         "files": [
           "src/main/java/net/mcreator/wildernessoddesyapi/CustomItem.java"
-        ]
-      },
-      "path": "~/Optimizations"
-    },
-    {
-      "name": "AsynchronousProcessing",
-      "type": "code",
-      "sortid": 42,
-      "compiles": true,
-      "locked_code": true,
-      "registry_name": "asynchronous_processing",
-      "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/wildernessoddesyapi/AsynchronousProcessing.java"
         ]
       },
       "path": "~/Optimizations"
@@ -181,19 +94,6 @@
       "path": "~/mixins"
     },
     {
-      "name": "AnimalMixin",
-      "type": "mixin",
-      "compiles": true,
-      "locked_code": true,
-      "registry_name": "animal_mixin",
-      "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/wildernessoddesyapi/mixins/AnimalMixinMixin.java"
-        ]
-      },
-      "path": "~/mixins"
-    },
-    {
       "name": "LevelAccessor",
       "type": "code",
       "compiles": true,
@@ -220,26 +120,20 @@
       "path": "~/mixins"
     },
     {
-      "name": "VaribbleMain",
+      "name": "MultiThreading",
       "type": "code",
       "compiles": true,
       "locked_code": true,
-      "registry_name": "varibble_main",
+      "registry_name": "multi_threading",
       "metadata": {
         "files": [
-          "src/main/java/net/mcreator/wildernessoddesyapi/VaribbleMain.java"
+          "src/main/java/net/mcreator/wildernessoddesyapi/MultiThreading.java"
         ]
-      }
+      },
+      "path": "~/Optimizations"
     }
   ],
-  "variable_elements": [
-    {
-      "name": "is_player_crawling",
-      "type": "logic",
-      "scope": "player_persistent",
-      "value": "false"
-    }
-  ],
+  "variable_elements": [],
   "sound_elements": [
     {
       "name": "i_ran_so_far_away",
@@ -253,7 +147,6 @@
   "tag_elements": {},
   "language_map": {
     "en_us": {
-      "key.wilderness_oddesy_api.crawlkey": "Crawl key",
       "key.wilderness_oddesy_api_neo.crawlkey": "Crawl key"
     }
   },

@@ -7,7 +7,6 @@
     "MobStagesMixinMixin",
     "MobSpawnMixin",
     "DynamicWeatherEffectsMixin",
-    "AnimalMixinMixin",
     "EntityMixinMixin"
   ],
   "client": [],

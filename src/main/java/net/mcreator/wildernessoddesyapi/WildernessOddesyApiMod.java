@@ -18,7 +18,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.network.FriendlyByteBuf;
 
-import net.mcreator.wildernessoddesyapi.network.WildernessOddesyApiModVariables;
 import net.mcreator.wildernessoddesyapi.init.WildernessOddesyApiModSounds;
 
 import java.util.concurrent.ConcurrentLinkedQueue;
@@ -39,8 +38,6 @@ public class WildernessOddesyApiMod {
 		NeoForge.EVENT_BUS.register(this);
 		modEventBus.addListener(this::registerNetworking);
 		WildernessOddesyApiModSounds.REGISTRY.register(modEventBus);
-
-		WildernessOddesyApiModVariables.ATTACHMENT_TYPES.register(modEventBus);
 
 		// Start of user code block mod init
 		// End of user code block mod init
