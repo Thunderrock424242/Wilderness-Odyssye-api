@@ -9,36 +9,40 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.WeakHashMap;
 import java.util.Objects;
 import java.util.Map;
 import java.util.List;
 import java.util.Arrays;
 import java.util.ArrayList;
 
-import java.lang.ref.WeakReference;
-
 class GenericCacheManager<K, V> {
 	private static final Logger LOGGER = Logger.getLogger(GenericCacheManager.class.getName());
-	private final Map<K, WeakReference<V>> cache = new ConcurrentHashMap<>();
+	private final Map<K, V> cache = new WeakHashMap<>();
 	private final ScheduledExecutorService cacheCleaner = Executors.newSingleThreadScheduledExecutor();
 
 	public GenericCacheManager() {
 		cacheCleaner.scheduleAtFixedRate(() -> {
-			cache.entrySet().removeIf(entry -> entry.getValue().get() == null);
-			LOGGER.info("Cache cleaned up.");
+			synchronized (cache) {
+				cache.entrySet().removeIf(entry -> entry.getValue() == null);
+				LOGGER.info("Cache cleaned up.");
+			}
 		}, 1, 1, TimeUnit.MINUTES);
 	}
 
 	public void put(K key, V value) {
-		cache.put(key, new WeakReference<>(value));
+		synchronized (cache) {
+			cache.put(key, value);
+		}
 		LOGGER.fine("Added to cache: " + key);
 	}
 
 	public V get(K key) {
-		WeakReference<V> reference = cache.get(key);
-		V value = reference != null ? reference.get() : null;
-		LOGGER.fine("Retrieved from cache: " + key + " -> " + value);
-		return value;
+		synchronized (cache) {
+			V value = cache.get(key);
+			LOGGER.fine("Retrieved from cache: " + key + " -> " + value);
+			return value;
+		}
 	}
 
 	public void shutdown() {
@@ -51,6 +55,57 @@ class GenericCacheManager<K, V> {
 			cacheCleaner.shutdownNow();
 			Thread.currentThread().interrupt();
 		}
+	}
+}
+
+// Custom player data class
+class CustomPlayerData {
+	private final String playerName;
+	private final int playerLevel;
+	private final double playerHealth;
+	private final Map<String, Integer> skills;
+
+	public CustomPlayerData(String playerName, int playerLevel, double playerHealth, Map<String, Integer> skills) {
+		this.playerName = playerName;
+		this.playerLevel = playerLevel;
+		this.playerHealth = playerHealth;
+		this.skills = new ConcurrentHashMap<>(skills);
+	}
+
+	public String getPlayerName() {
+		return playerName;
+	}
+
+	public int getPlayerLevel() {
+		return playerLevel;
+	}
+
+	public double getPlayerHealth() {
+		return playerHealth;
+	}
+
+	public Map<String, Integer> getSkills() {
+		return new ConcurrentHashMap<>(skills);
+	}
+
+	@Override
+	public String toString() {
+		return String.format("CustomPlayerData{playerName='%s', playerLevel=%d, playerHealth=%.2f, skills=%s}", playerName, playerLevel, playerHealth, skills);
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o)
+			return true;
+		if (!(o instanceof CustomPlayerData))
+			return false;
+		CustomPlayerData that = (CustomPlayerData) o;
+		return playerLevel == that.playerLevel && Double.compare(that.playerHealth, playerHealth) == 0 && Objects.equals(playerName, that.playerName) && Objects.equals(skills, that.skills);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(playerName, playerLevel, playerHealth, skills);
 	}
 }
 

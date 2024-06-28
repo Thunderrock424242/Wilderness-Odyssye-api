@@ -120,17 +120,30 @@
       "path": "~/mixins"
     },
     {
-      "name": "MultiThreading",
+      "name": "SeekShelterDuringStormGoal",
       "type": "code",
       "compiles": true,
       "locked_code": true,
-      "registry_name": "multi_threading",
+      "registry_name": "seek_shelter_during_storm_goal",
       "metadata": {
         "files": [
-          "src/main/java/net/mcreator/wildernessoddesyapi/MultiThreading.java"
+          "src/main/java/net/mcreator/wildernessoddesyapi/SeekShelterDuringStormGoal.java"
         ]
       },
-      "path": "~/Optimizations"
+      "path": "~/custom code"
+    },
+    {
+      "name": "WolfShelterGoal",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "wolf_shelter_goal",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/wildernessoddesyapi/WolfShelterGoal.java"
+        ]
+      },
+      "path": "~/custom code"
     }
   ],
   "variable_elements": [],
@@ -146,9 +159,7 @@
   ],
   "tag_elements": {},
   "language_map": {
-    "en_us": {
-      "key.wilderness_oddesy_api_neo.crawlkey": "Crawl key"
-    }
+    "en_us": {}
   },
   "foldersRoot": {
     "name": "~",
@@ -174,7 +185,7 @@
   "workspaceSettings": {
     "modid": "wilderness_oddesy_api",
     "modName": "Wilderness Oddesy API",
-    "version": "0.9.0-beta.2",
+    "version": "0.9.0-beta.3",
     "description": "this is a mod made for the modpack wilderness odessy. it has lots of tools and things in it.",
     "author": "thunderrock424242",
     "websiteURL": "https://mcreator.net",
