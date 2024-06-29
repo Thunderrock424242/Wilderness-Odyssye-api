@@ -144,6 +144,18 @@
         ]
       },
       "path": "~/DynamicWeatherEvent"
+    },
+    {
+      "name": "Note",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "note",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/wildernessoddesyapi/Note.java"
+        ]
+      }
     }
   ],
   "variable_elements": [],
@@ -190,7 +202,7 @@
     "modid": "wilderness_oddesy_api",
     "modName": "Wilderness Oddesy API",
     "version": "0.9.0-beta.3",
-    "description": "this is a mod made for the modpack wilderness odessy. it has lots of tools and things in it.",
+    "description": "this is a mod made for the modpack wilderness odessy. it has opomizations and mixins to make your experince better.",
     "author": "thunderrock424242",
     "websiteURL": "https://mcreator.net",
     "license": "All Rights Reserved",
