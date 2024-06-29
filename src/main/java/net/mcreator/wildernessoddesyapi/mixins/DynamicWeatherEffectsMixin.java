@@ -19,19 +19,19 @@ import net.mcreator.wildernessoddesyapi.goals.SeekShelterDuringStormGoal;
 
 @Mixin(Animal.class)
 public abstract class DynamicWeatherEffectsMixin extends PathfinderMob {
-	private static final Logger LOGGER = LoggerFactory.getLogger(DynamicWeatherEffectsMixin.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(DynamicWeatherEffectsMixin.class);
 
-	protected DynamicWeatherEffectsMixin(EntityType<? extends PathfinderMob> type, Level level) {
-		super(type, level);
-	}
+    protected DynamicWeatherEffectsMixin(EntityType<? extends PathfinderMob> type, Level level) {
+        super(type, level);
+    }
 
-	@Inject(method = "registerGoals", at = @At("HEAD"))
-	private void addShelterSeekingGoal(CallbackInfo info) {
-		LOGGER.warn("Registering shelter seeking goal for: " + this.getType().toString());
-		if ((Object) this instanceof Wolf) {
-			this.goalSelector.addGoal(1, new WolfShelterGoal((Animal) (Object) this));
-		} else {
-			this.goalSelector.addGoal(1, new SeekShelterDuringStormGoal((Animal) (Object) this));
-		}
-	}
+    @Inject(method = "registerGoals", at = @At("HEAD"))
+    private void addShelterSeekingGoal(CallbackInfo info) {
+        LOGGER.warn("Registering shelter seeking goal for: " + this.getType().toString());
+        if ((Object) this instanceof Wolf) {
+            this.goalSelector.addGoal(1, new WolfShelterGoal((Animal) (Object) this));
+        } else {
+            this.goalSelector.addGoal(1, new SeekShelterDuringStormGoal((Animal) (Object) this));
+        }
+    }
 }

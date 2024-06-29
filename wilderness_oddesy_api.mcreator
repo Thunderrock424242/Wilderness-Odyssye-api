@@ -91,7 +91,7 @@
           "src/main/java/net/mcreator/wildernessoddesyapi/mixins/DynamicWeatherEffectsMixin.java"
         ]
       },
-      "path": "~/mixins"
+      "path": "~/DynamicWeatherEvent"
     },
     {
       "name": "LevelAccessor",
@@ -104,7 +104,7 @@
           "src/main/java/net/mcreator/wildernessoddesyapi/LevelAccessor.java"
         ]
       },
-      "path": "~/custom code"
+      "path": "~/DynamicWeatherEvent"
     },
     {
       "name": "EntityMixin",
@@ -117,7 +117,7 @@
           "src/main/java/net/mcreator/wildernessoddesyapi/mixins/EntityMixinMixin.java"
         ]
       },
-      "path": "~/mixins"
+      "path": "~/DynamicWeatherEvent"
     },
     {
       "name": "SeekShelterDuringStormGoal",
@@ -130,7 +130,7 @@
           "src/main/java/net/mcreator/wildernessoddesyapi/SeekShelterDuringStormGoal.java"
         ]
       },
-      "path": "~/custom code"
+      "path": "~/DynamicWeatherEvent"
     },
     {
       "name": "WolfShelterGoal",
@@ -143,7 +143,7 @@
           "src/main/java/net/mcreator/wildernessoddesyapi/WolfShelterGoal.java"
         ]
       },
-      "path": "~/custom code"
+      "path": "~/DynamicWeatherEvent"
     }
   ],
   "variable_elements": [],
@@ -178,6 +178,10 @@
       },
       {
         "name": "mixins",
+        "children": []
+      },
+      {
+        "name": "DynamicWeatherEvent",
         "children": []
       }
     ]

@@ -10,11 +10,11 @@ import net.mcreator.wildernessoddesyapi.accessor.LevelAccessor;
 
 @Mixin(Entity.class)
 public abstract class EntityMixinMixin implements LevelAccessor {
-	@Shadow
-	private Level level;
+    @Shadow
+    private Level level;
 
-	@Override
-	public Level getLevel() {
-		return this.level;
-	}
+    @Override
+    public Level getLevel() {
+        return this.level;
+    }
 }
