@@ -83,7 +83,7 @@
     {
       "name": "MixinErrorLogger",
       "type": "code",
-      "compiles": false,
+      "compiles": true,
       "locked_code": true,
       "registry_name": "mixin_error_logger",
       "metadata": {
@@ -95,7 +95,7 @@
     {
       "name": "MixinErrorHandler",
       "type": "code",
-      "compiles": false,
+      "compiles": true,
       "locked_code": true,
       "registry_name": "mixin_error_handler",
       "metadata": {
