@@ -146,14 +146,14 @@
       "path": "~/DynamicWeatherEvent"
     },
     {
-      "name": "Note",
+      "name": "MixinErrorLogger",
       "type": "code",
-      "compiles": true,
+      "compiles": false,
       "locked_code": true,
-      "registry_name": "note",
+      "registry_name": "mixin_error_logger",
       "metadata": {
         "files": [
-          "src/main/java/net/mcreator/wildernessoddesyapi/Note.java"
+          "src/main/java/net/mcreator/wildernessoddesyapi/MixinErrorLogger.java"
         ]
       }
     }
@@ -194,6 +194,10 @@
       },
       {
         "name": "DynamicWeatherEvent",
+        "children": []
+      },
+      {
+        "name": "AI",
         "children": []
       }
     ]
