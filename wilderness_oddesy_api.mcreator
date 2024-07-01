@@ -156,6 +156,18 @@
           "src/main/java/net/mcreator/wildernessoddesyapi/MixinErrorLogger.java"
         ]
       }
+    },
+    {
+      "name": "MixinErrorHandler",
+      "type": "code",
+      "compiles": false,
+      "locked_code": true,
+      "registry_name": "mixin_error_handler",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/wildernessoddesyapi/MixinErrorHandler.java"
+        ]
+      }
     }
   ],
   "variable_elements": [],
