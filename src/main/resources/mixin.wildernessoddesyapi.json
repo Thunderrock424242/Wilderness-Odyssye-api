@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "net.mcreator.wildernessoddesyapi.mixins",
+  "refmap": "mixins.mixinerrorlogger.refmap.json",
+  "mixins": [
+  	"DayNightCycleMixin"
+  	"MobStagesMixin"
+  	"MobSpawnMixin"
+  	"EntityMixin"
+  	"DynamicWeatherEffectsMixin"
+  ],
+  "client": [],
+  "server": [],
+}

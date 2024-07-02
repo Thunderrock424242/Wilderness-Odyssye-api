@@ -83,7 +83,7 @@
     {
       "name": "MixinErrorLogger",
       "type": "code",
-      "compiles": false,
+      "compiles": true,
       "locked_code": true,
       "registry_name": "mixin_error_logger",
       "metadata": {
@@ -95,7 +95,7 @@
     {
       "name": "MixinErrorHandler",
       "type": "code",
-      "compiles": false,
+      "compiles": true,
       "locked_code": true,
       "registry_name": "mixin_error_handler",
       "metadata": {
@@ -224,7 +224,7 @@
     "dependants": [],
     "mcreatorDependencies": [],
     "currentGenerator": "neoforge-1.20.4",
-    "credits": "Created using mod maker MCreator but mostly 99% made by me thunder",
+    "credits": "Created using mod maker MCreator but i codded all the parts to the mod",
     "modElementsPackage": "net.mcreator.wildernessoddesyapi"
   },
   "mcreatorVersion": 202400118518
