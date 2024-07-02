@@ -30,7 +30,6 @@ runs {
 
 dependencies {
     implementation 'net.neoforged:neoforge:20.4.223'
-    implementation 'org.spongepowered:mixin:0.8.4'
     
 }
 
