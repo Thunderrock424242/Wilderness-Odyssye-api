@@ -31,6 +31,7 @@
     {
       "name": "MobStages",
       "type": "code",
+      "sortid": 35,
       "compiles": true,
       "locked_code": true,
       "registry_name": "mob_stages",
@@ -44,6 +45,7 @@
     {
       "name": "LevelAccessor",
       "type": "code",
+      "sortid": 36,
       "compiles": true,
       "locked_code": true,
       "registry_name": "level_accessor",
@@ -57,6 +59,7 @@
     {
       "name": "SeekShelterDuringStormGoal",
       "type": "code",
+      "sortid": 37,
       "compiles": true,
       "locked_code": true,
       "registry_name": "seek_shelter_during_storm_goal",
@@ -70,6 +73,7 @@
     {
       "name": "WolfShelterGoal",
       "type": "code",
+      "sortid": 38,
       "compiles": true,
       "locked_code": true,
       "registry_name": "wolf_shelter_goal",
@@ -83,6 +87,7 @@
     {
       "name": "MixinErrorLogger",
       "type": "code",
+      "sortid": 39,
       "compiles": true,
       "locked_code": true,
       "registry_name": "mixin_error_logger",
@@ -95,6 +100,7 @@
     {
       "name": "MixinErrorHandler",
       "type": "code",
+      "sortid": 40,
       "compiles": true,
       "locked_code": true,
       "registry_name": "mixin_error_handler",
@@ -107,6 +113,7 @@
     {
       "name": "DayNightCycleMixin",
       "type": "code",
+      "sortid": 41,
       "compiles": true,
       "locked_code": true,
       "registry_name": "day_night_cycle_mixin",
@@ -120,6 +127,7 @@
     {
       "name": "MobStagesMixin",
       "type": "code",
+      "sortid": 42,
       "compiles": true,
       "locked_code": true,
       "registry_name": "mob_stages_mixin",
@@ -133,6 +141,7 @@
     {
       "name": "MobSpawnMixin",
       "type": "code",
+      "sortid": 43,
       "compiles": true,
       "locked_code": true,
       "registry_name": "mob_spawn_mixin",
@@ -146,6 +155,7 @@
     {
       "name": "EntityMixin",
       "type": "code",
+      "sortid": 44,
       "compiles": true,
       "locked_code": true,
       "registry_name": "entity_mixin",
@@ -159,6 +169,7 @@
     {
       "name": "DynamicWeatherEffectsMixin",
       "type": "code",
+      "sortid": 45,
       "compiles": true,
       "locked_code": true,
       "registry_name": "dynamic_weather_effects_mixin",
@@ -168,6 +179,20 @@
         ]
       },
       "path": "~/DynamicWeatherEvent"
+    },
+    {
+      "name": "Fed",
+      "type": "tool",
+      "sortid": 46,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "fed",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/wildernessoddesyapi/item/FedItem.java",
+          "src/main/resources/assets/wilderness_oddesy_api/models/item/fed.json"
+        ]
+      }
     }
   ],
   "variable_elements": [],
@@ -183,7 +208,9 @@
   ],
   "tag_elements": {},
   "language_map": {
-    "en_us": {}
+    "en_us": {
+      "item.wilderness_oddesy_api.fed": "Fed"
+    }
   },
   "foldersRoot": {
     "name": "~",
