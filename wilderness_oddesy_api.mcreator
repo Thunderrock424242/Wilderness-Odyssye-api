@@ -85,100 +85,69 @@
       "path": "~/DynamicWeatherEvent"
     },
     {
-      "name": "MixinErrorLogger",
-      "type": "code",
-      "sortid": 39,
+      "name": "EntityMixin",
+      "type": "mixin",
       "compiles": true,
       "locked_code": true,
-      "registry_name": "mixin_error_logger",
+      "registry_name": "entity_mixin",
       "metadata": {
         "files": [
-          "src/main/java/net/mcreator/wildernessoddesyapi/MixinErrorLogger.java"
+          "src/main/java/net/mcreator/wildernessoddesyapi/mixins/EntityMixinMixin.java"
         ]
-      }
+      },
+      "path": "~/DynamicWeatherEvent"
     },
     {
-      "name": "MixinErrorHandler",
-      "type": "code",
-      "sortid": 40,
+      "name": "DynamicWeatherEffects",
+      "type": "mixin",
       "compiles": true,
       "locked_code": true,
-      "registry_name": "mixin_error_handler",
+      "registry_name": "dynamic_weather_effects",
       "metadata": {
         "files": [
-          "src/main/java/net/mcreator/wildernessoddesyapi/MixinErrorHandler.java"
+          "src/main/java/net/mcreator/wildernessoddesyapi/mixins/DynamicWeatherEffectsMixin.java"
         ]
-      }
+      },
+      "path": "~/DynamicWeatherEvent"
     },
     {
-      "name": "DayNightCycleMixin",
-      "type": "code",
-      "sortid": 41,
+      "name": "MobSpawn",
+      "type": "mixin",
       "compiles": true,
       "locked_code": true,
-      "registry_name": "day_night_cycle_mixin",
+      "registry_name": "mob_spawn",
       "metadata": {
         "files": [
-          "src/main/java/net/mcreator/wildernessoddesyapi/DayNightCycleMixin.java"
+          "src/main/java/net/mcreator/wildernessoddesyapi/mixins/MobSpawnMixin.java"
         ]
       },
       "path": "~/mixins"
     },
     {
       "name": "MobStagesMixin",
-      "type": "code",
-      "sortid": 42,
+      "type": "mixin",
       "compiles": true,
       "locked_code": true,
       "registry_name": "mob_stages_mixin",
       "metadata": {
         "files": [
-          "src/main/java/net/mcreator/wildernessoddesyapi/MobStagesMixin.java"
+          "src/main/java/net/mcreator/wildernessoddesyapi/mixins/MobStagesMixinMixin.java"
         ]
       },
       "path": "~/mixins"
     },
     {
-      "name": "MobSpawnMixin",
-      "type": "code",
-      "sortid": 43,
+      "name": "DayNightCycle",
+      "type": "mixin",
       "compiles": true,
       "locked_code": true,
-      "registry_name": "mob_spawn_mixin",
+      "registry_name": "day_night_cycle",
       "metadata": {
         "files": [
-          "src/main/java/net/mcreator/wildernessoddesyapi/MobSpawnMixin.java"
+          "src/main/java/net/mcreator/wildernessoddesyapi/mixins/DayNightCycleMixin.java"
         ]
       },
       "path": "~/mixins"
-    },
-    {
-      "name": "EntityMixin",
-      "type": "code",
-      "sortid": 44,
-      "compiles": true,
-      "locked_code": true,
-      "registry_name": "entity_mixin",
-      "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/wildernessoddesyapi/EntityMixin.java"
-        ]
-      },
-      "path": "~/DynamicWeatherEvent"
-    },
-    {
-      "name": "DynamicWeatherEffectsMixin",
-      "type": "code",
-      "sortid": 45,
-      "compiles": true,
-      "locked_code": true,
-      "registry_name": "dynamic_weather_effects_mixin",
-      "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/wildernessoddesyapi/DynamicWeatherEffectsMixin.java"
-        ]
-      },
-      "path": "~/DynamicWeatherEvent"
     }
   ],
   "variable_elements": [],

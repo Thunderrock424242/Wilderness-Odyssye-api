@@ -9,7 +9,7 @@ import net.minecraft.world.entity.Entity;
 import net.mcreator.wildernessoddesyapi.accessor.LevelAccessor;
 
 @Mixin(Entity.class)
-public abstract class EntityMixin implements LevelAccessor {
+public abstract class EntityMixinMixin implements LevelAccessor {
     @Shadow
     private Level level;
 
