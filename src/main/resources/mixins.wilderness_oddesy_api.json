@@ -3,8 +3,6 @@
   "package": "net.mcreator.wildernessoddesyapi.mixins",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "EntityMixinMixin",
-    "DynamicWeatherEffectsMixin",
     "MobSpawnMixin",
     "MobStagesMixinMixin",
     "DayNightCycleMixin"
