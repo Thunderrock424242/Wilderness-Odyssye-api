@@ -179,20 +179,6 @@
         ]
       },
       "path": "~/DynamicWeatherEvent"
-    },
-    {
-      "name": "Fed",
-      "type": "tool",
-      "sortid": 46,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "fed",
-      "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/wildernessoddesyapi/item/FedItem.java",
-          "src/main/resources/assets/wilderness_oddesy_api/models/item/fed.json"
-        ]
-      }
     }
   ],
   "variable_elements": [],
@@ -208,9 +194,7 @@
   ],
   "tag_elements": {},
   "language_map": {
-    "en_us": {
-      "item.wilderness_oddesy_api.fed": "Fed"
-    }
+    "en_us": {}
   },
   "foldersRoot": {
     "name": "~",
