@@ -43,40 +43,40 @@
       "path": "~/custom code"
     },
     {
-      "name": "MobSpawn",
-      "type": "mixin",
+      "name": "DayNightCycleMixin",
+      "type": "code",
       "compiles": true,
       "locked_code": true,
-      "registry_name": "mob_spawn",
+      "registry_name": "day_night_cycle_mixin",
       "metadata": {
         "files": [
-          "src/main/java/net/mcreator/wildernessoddesyapi/mixins/MobSpawnMixin.java"
+          "src/main/java/net/mcreator/wildernessoddesyapi/DayNightCycleMixin.java"
+        ]
+      },
+      "path": "~/mixins"
+    },
+    {
+      "name": "MobSpawnMixin",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "mob_spawn_mixin",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/wildernessoddesyapi/MobSpawnMixin.java"
         ]
       },
       "path": "~/mixins"
     },
     {
       "name": "MobStagesMixin",
-      "type": "mixin",
+      "type": "code",
       "compiles": true,
       "locked_code": true,
       "registry_name": "mob_stages_mixin",
       "metadata": {
         "files": [
-          "src/main/java/net/mcreator/wildernessoddesyapi/mixins/MobStagesMixinMixin.java"
-        ]
-      },
-      "path": "~/mixins"
-    },
-    {
-      "name": "DayNightCycle",
-      "type": "mixin",
-      "compiles": true,
-      "locked_code": true,
-      "registry_name": "day_night_cycle",
-      "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/wildernessoddesyapi/mixins/DayNightCycleMixin.java"
+          "src/main/java/net/mcreator/wildernessoddesyapi/MobStagesMixin.java"
         ]
       },
       "path": "~/mixins"

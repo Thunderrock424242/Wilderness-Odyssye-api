@@ -10,7 +10,7 @@ import net.minecraft.world.level.Level;
 import net.mcreator.wildernessoddesyapi.MobStages;
 
 @Mixin(Level.class)
-public class MobStagesMixinMixin {
+public class MobStagesMixin {
 	/**
 	 * Injects into the world tick method to increment the days elapsed in the MobStages class.
 	 *
