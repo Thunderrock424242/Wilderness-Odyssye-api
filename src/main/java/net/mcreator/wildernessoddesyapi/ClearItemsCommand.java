@@ -12,13 +12,14 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.phys.AABB;
-
 import java.util.List;
+import java.util.function.Supplier;
 
 public class ClearItemsCommand {
     public static void register(CommandDispatcher<CommandSourceStack> dispatcher) {
         dispatcher.register(
             LiteralArgumentBuilder.<CommandSourceStack>literal("clearitems")
+                .requires(source -> source.hasPermission(2)) // Requires at least level 2 permission
                 .executes(context -> clearDroppedItems(context.getSource()))
         );
     }
@@ -52,13 +53,11 @@ public class ClearItemsCommand {
             }
         }
 
-        final int finalItemsCleared = itemsCleared; // Ensure variable is effectively final for lambda
-
-        Component message = Component.literal("Cleared " + finalItemsCleared + " dropped items in a 50 chunk radius.");
+        Component message = Component.literal("Cleared " + itemsCleared + " dropped items in a 50 chunk radius.");
         if (isServer) {
             source.getServer().getPlayerList().broadcastSystemMessage(message, false);
         } else {
-            source.sendSuccess(() -> message, true);
+            source.sendSuccess(() -> message, true); // Use Supplier for the message
         }
 
         return itemsCleared;
