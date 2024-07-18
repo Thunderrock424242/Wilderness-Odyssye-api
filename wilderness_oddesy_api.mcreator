@@ -3,7 +3,6 @@
     {
       "name": "GenericCacheManager",
       "type": "code",
-      "sortid": 33,
       "compiles": true,
       "locked_code": true,
       "registry_name": "generic_cache_manager",
@@ -17,7 +16,6 @@
     {
       "name": "CustomItem",
       "type": "code",
-      "sortid": 34,
       "compiles": true,
       "locked_code": true,
       "registry_name": "custom_item",
@@ -31,7 +29,6 @@
     {
       "name": "MobStages",
       "type": "code",
-      "sortid": 35,
       "compiles": true,
       "locked_code": true,
       "registry_name": "mob_stages",
@@ -41,19 +38,6 @@
         ]
       },
       "path": "~/custom code"
-    },
-    {
-      "name": "DayNightCycleMixin",
-      "type": "code",
-      "compiles": true,
-      "locked_code": true,
-      "registry_name": "day_night_cycle_mixin",
-      "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/wildernessoddesyapi/DayNightCycleMixin.java"
-        ]
-      },
-      "path": "~/mixins"
     },
     {
       "name": "MobSpawnMixin",
@@ -80,9 +64,72 @@
         ]
       },
       "path": "~/mixins"
+    },
+    {
+      "name": "WildernessOddessyApi",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "wilderness_oddessy_api",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/wildernessoddesyapi/WildernessOddessyApi.java"
+        ]
+      }
+    },
+    {
+      "name": "ClearItemsCommand",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "clear_items_command",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/wildernessoddesyapi/ClearItemsCommand.java"
+        ]
+      },
+      "path": "~/Commands"
+    },
+    {
+      "name": "ClearItemsOnWorldStart",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "clear_items_on_world_start",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/wildernessoddesyapi/procedures/ClearItemsOnWorldStartProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/Procedures"
     }
   ],
-  "variable_elements": [],
+  "variable_elements": [
+    {
+      "name": "Is_this_a_new_world",
+      "type": "logic",
+      "scope": "world",
+      "value": "true"
+    }
+  ],
   "sound_elements": [
     {
       "name": "i_ran_so_far_away",
@@ -94,6 +141,7 @@
     }
   ],
   "tag_elements": {},
+  "tab_element_order": {},
   "language_map": {
     "en_us": {}
   },
@@ -117,7 +165,7 @@
         "children": []
       },
       {
-        "name": "DynamicWeatherEvent",
+        "name": "Commands",
         "children": []
       }
     ]
@@ -135,9 +183,9 @@
     "dependencies": [],
     "dependants": [],
     "mcreatorDependencies": [],
-    "currentGenerator": "neoforge-1.20.4",
+    "currentGenerator": "neoforge-1.20.6",
     "credits": "Created using mod maker MCreator but i codded all the parts to the mod",
     "modElementsPackage": "net.mcreator.wildernessoddesyapi"
   },
-  "mcreatorVersion": 202400118518
+  "mcreatorVersion": 202400228714
 }

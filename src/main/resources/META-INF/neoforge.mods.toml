@@ -15,18 +15,23 @@ description="this is a mod made for the modpack wilderness odessy. it has opomiz
 # End of user code block mod configuration
 
 [[dependencies.wilderness_oddesy_api]]
-    modId="neoforge"
-    type="required"
-    versionRange="[20.4.223,)"
-    ordering="NONE"
-    side="BOTH"
+modId="neoforge"
+type="required"
+versionRange="[20.6.117,)"
+ordering="AFTER"
+side="BOTH"
 
 [[dependencies.wilderness_oddesy_api]]
-    modId="minecraft"
-    type="required"
-    versionRange="[1.20.4]"
-    ordering="NONE"
-    side="BOTH"
+modId="minecraft"
+type="required"
+versionRange="[1.20.6]"
+ordering="AFTER"
+side="BOTH"
 
 
 
+
+# Start of user code block dependencies configuration
+[[mixins]]
+config = "wilderness_oddesy_api.mixins.json"
+# End of user code block dependencies configuration
