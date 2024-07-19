@@ -32,4 +32,6 @@ description="this is a mod made for the modpack wilderness odessy. it has opomiz
 
 
 # Start of user code block dependencies configuration
+[[mixins]]
+config = "wilderness_oddesy_api.mixins.json"
 # End of user code block dependencies configuration
