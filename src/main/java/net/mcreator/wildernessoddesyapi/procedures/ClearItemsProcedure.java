@@ -19,7 +19,7 @@ import net.mcreator.wildernessoddesyapi.WildernessOddesyApiMod;
 import javax.annotation.Nullable;
 
 @EventBusSubscriber
-public class ClearItemsOnWorldStartProcedure {
+public class ClearItemsProcedure {
 	@SubscribeEvent
 	public static void onPlayerLoggedIn(PlayerEvent.PlayerLoggedInEvent event) {
 		execute(event, event.getEntity().level(), event.getEntity().getX(), event.getEntity().getY(), event.getEntity().getZ());
@@ -31,7 +31,7 @@ public class ClearItemsOnWorldStartProcedure {
 
 	private static void execute(@Nullable Event event, LevelAccessor world, double x, double y, double z) {
 		if (WildernessOddesyApiModVariables.WorldVariables.get(world).Is_this_a_new_world == true) {
-			WildernessOddesyApiMod.queueServerWork(200, () -> {
+			WildernessOddesyApiMod.queueServerWork(400, () -> {
 				if (world instanceof ServerLevel _level)
 					_level.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, new Vec3(x, y, z), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(),
 							"clearitems");
@@ -39,5 +39,6 @@ public class ClearItemsOnWorldStartProcedure {
 		}
 		WildernessOddesyApiModVariables.WorldVariables.get(world).Is_this_a_new_world = false;
 		WildernessOddesyApiModVariables.WorldVariables.get(world).syncData(world);
+		assert Boolean.TRUE; //#dbg:ClearItems:marker1
 	}
 }

@@ -75,7 +75,8 @@
         "files": [
           "src/main/java/net/mcreator/wildernessoddesyapi/WildernessOddessyApi.java"
         ]
-      }
+      },
+      "path": "~/Main Mod Class"
     },
     {
       "name": "ClearItemsCommand",
@@ -91,14 +92,84 @@
       "path": "~/Commands"
     },
     {
-      "name": "ClearItemsOnWorldStart",
+      "name": "CrawlKey",
+      "type": "keybind",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "crawl_key",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/wildernessoddesyapi/network/CrawlKeyMessage.java"
+        ]
+      },
+      "path": "~/Crawling"
+    },
+    {
+      "name": "StopCrawling",
       "type": "procedure",
       "compiles": true,
       "locked_code": false,
-      "registry_name": "clear_items_on_world_start",
+      "registry_name": "stop_crawling",
       "metadata": {
         "files": [
-          "src/main/java/net/mcreator/wildernessoddesyapi/procedures/ClearItemsOnWorldStartProcedure.java"
+          "src/main/java/net/mcreator/wildernessoddesyapi/procedures/StopCrawlingProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      },
+      "path": "~/Crawling"
+    },
+    {
+      "name": "SetupCrawl",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "setup_crawl",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/wildernessoddesyapi/procedures/SetupCrawlProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      },
+      "path": "~/Crawling"
+    },
+    {
+      "name": "Crawl",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "crawl",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/wildernessoddesyapi/procedures/CrawlProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      },
+      "path": "~/Crawling"
+    },
+    {
+      "name": "ClearItems",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "clear_items",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/wildernessoddesyapi/procedures/ClearItemsProcedure.java"
         ],
         "dependencies": [
           {
@@ -128,6 +199,12 @@
       "type": "logic",
       "scope": "world",
       "value": "true"
+    },
+    {
+      "name": "Is_player_crawling",
+      "type": "logic",
+      "scope": "player_persistent",
+      "value": "false"
     }
   ],
   "sound_elements": [
@@ -143,7 +220,9 @@
   "tag_elements": {},
   "tab_element_order": {},
   "language_map": {
-    "en_us": {}
+    "en_us": {
+      "key.wilderness_oddesy_api.crawl_key": "Crawl Key"
+    }
   },
   "foldersRoot": {
     "name": "~",
@@ -162,6 +241,18 @@
       },
       {
         "name": "mixins",
+        "children": []
+      },
+      {
+        "name": "AI",
+        "children": []
+      },
+      {
+        "name": "Main Mod Class",
+        "children": []
+      },
+      {
+        "name": "Crawling",
         "children": []
       },
       {

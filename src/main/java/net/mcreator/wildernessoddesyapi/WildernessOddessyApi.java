@@ -9,31 +9,32 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.bus.api.SubscribeEvent;
 
 import net.mcreator.wildernessoddesyapi.command.ClearItemsCommand;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 @Mod(WildernessOddessyApi.MOD_ID)
 public class WildernessOddessyApi {
-	public static final String MOD_ID = "wilderness_oddesy_api";
+    public static final String MOD_ID = "wilderness_oddesy_api";
+    private static final Logger LOGGER = LogManager.getLogger();
 
-	public WildernessOddessyApi() {
-		// Register the setup methods for different mod loading stages
-		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::commonSetup);
-		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::clientSetup);
-		// Register other events (e.g., item registration)
-		NeoForge.EVENT_BUS.register(this);
-		// Initialize the MobStages to set up configuration
-		new MobStages();
-	}
+    public WildernessOddessyApi() {
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::commonSetup);
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::clientSetup);
+        NeoForge.EVENT_BUS.register(this);
+        new MobStages();
+    }
 
-	private void commonSetup(final FMLCommonSetupEvent event) {
-		// Common setup code
-	}
+    private void commonSetup(final FMLCommonSetupEvent event) {
+        LOGGER.info("Common setup complete");
+    }
 
-	private void clientSetup(final FMLClientSetupEvent event) {
-		// Client-only setup code
-	}
+    private void clientSetup(final FMLClientSetupEvent event) {
+        LOGGER.info("Client setup complete");
+    }
 
-	@SubscribeEvent
-	public void onServerStarting(ServerStartingEvent event) {
-		ClearItemsCommand.register(event.getServer().getCommands().getDispatcher());
-	}
+    @SubscribeEvent
+    public void onServerStarting(ServerStartingEvent event) {
+        ClearItemsCommand.register(event.getServer().getCommands().getDispatcher());
+        LOGGER.info("Server starting setup complete");
+    }
 }
