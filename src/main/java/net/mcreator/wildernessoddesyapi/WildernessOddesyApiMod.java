@@ -39,9 +39,10 @@ public class WildernessOddesyApiMod {
 		NeoForge.EVENT_BUS.register(this);
 		modEventBus.addListener(this::registerNetworking);
 		WildernessOddesyApiModSounds.REGISTRY.register(modEventBus);
+
 		WildernessOddesyApiModVariables.ATTACHMENT_TYPES.register(modEventBus);
+
 		// Start of user code block mod init
-		// test data
 		// End of user code block mod init
 	}
 
