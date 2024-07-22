@@ -191,6 +191,33 @@
         ]
       },
       "path": "~/Procedures"
+    },
+    {
+      "name": "Tptodimesnion",
+      "type": "command",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "tptodimesnion",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/wildernessoddesyapi/command/TptodimesnionCommand.java"
+        ]
+      },
+      "path": "~/Commands"
+    },
+    {
+      "name": "TP",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "tp",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/wildernessoddesyapi/procedures/TPProcedure.java"
+        ],
+        "dependencies": []
+      },
+      "path": "~/Procedures"
     }
   ],
   "variable_elements": [
