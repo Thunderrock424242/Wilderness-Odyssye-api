@@ -244,13 +244,7 @@
       "subtitle": ""
     }
   ],
-  "tag_elements": {
-    "ENTITIES:the_stonefist_tribe:tag": [],
-    "ENTITIES:the_frostheart_clan:tag": [],
-    "ENTITIES:the_verdantleaf_clan:tag": [],
-    "ENTITIES:the_emberfang_tribe:tag": [],
-    "ENTITIES:the_stormrider_tribe:tag": []
-  },
+  "tag_elements": {},
   "tab_element_order": {},
   "language_map": {
     "en_us": {
