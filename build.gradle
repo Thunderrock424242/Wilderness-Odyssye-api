@@ -1,17 +1,14 @@
 plugins {
     id 'java-library'
     id 'eclipse'
-    id 'idea'
-    id 'maven-publish'
-    id 'net.neoforged.gradle.userdev' version '7.0.142'
-    id "net.neoforged.gradleutils" version "3.0.0-alpha.13"
+    id 'net.neoforged.gradle.userdev' version '7.0.152'
 }
 
 version = '1.0'
-group = 'com.thunderrock424242.wilderness_oddesy_api'
-base.archivesName = "wilderness_oddesy_api"
+group = 'com.yourname.modid'
+base.archivesName = "modid"
 
-java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+java.toolchain.languageVersion = JavaLanguageVersion.of(21)
 
 def at_file = rootProject.file('src/main/resources/META-INF/accesstransformer.cfg')
 if (at_file.exists()) minecraft.accessTransformers.file at_file
@@ -28,26 +25,11 @@ runs {
 }
 
 dependencies {
-    implementation 'net.neoforged:neoforge:20.4.223'
-    
+    implementation 'net.neoforged:neoforge:20.6.117'
 }
-
 
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
 }
 
-
-publishing {
-    repositories {
-        maven {
-            // change to point to your repo, e.g. http://my.org/repo
-            url = layout.buildDirectory.dir('https://github.com/Thunderrock424242/Wilderness-Oddesy-api')
-        }
-    }
-}
-
-
 apply from: 'mcreator.gradle'
-
-
