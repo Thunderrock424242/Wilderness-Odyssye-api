@@ -12,7 +12,7 @@ import net.mcreator.wildernessoddesyapi.procedures.FireClanSpiritPProcedure;
 
 public class FireclanSpiritItem extends Item implements ICurioItem {
 	public FireclanSpiritItem() {
-		super(new Item.Properties().stacksTo(64).rarity(Rarity.COMMON));
+		super(new Item.Properties().stacksTo(1).fireResistant().rarity(Rarity.RARE));
 	}
 
 	@Override

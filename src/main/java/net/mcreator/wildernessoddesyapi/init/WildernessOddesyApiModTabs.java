@@ -5,24 +5,21 @@
 package net.mcreator.wildernessoddesyapi.init;
 
 import net.neoforged.neoforge.registries.DeferredRegister;
-import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
-import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.neoforge.registries.DeferredHolder;
 
-import net.minecraft.world.item.CreativeModeTabs;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.network.chat.Component;
 import net.minecraft.core.registries.Registries;
 
 import net.mcreator.wildernessoddesyapi.WildernessOddesyApiMod;
 
-@EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD)
 public class WildernessOddesyApiModTabs {
 	public static final DeferredRegister<CreativeModeTab> REGISTRY = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, WildernessOddesyApiMod.MODID);
+	public static final DeferredHolder<CreativeModeTab, CreativeModeTab> WILDERNESS_ODESSY_API = REGISTRY.register("wilderness_odessy_api",
+			() -> CreativeModeTab.builder().title(Component.translatable("item_group.wilderness_oddesy_api.wilderness_odessy_api")).icon(() -> new ItemStack(WildernessOddesyApiModItems.FIRECLAN_SPIRIT.get())).displayItems((parameters, tabData) -> {
+				tabData.accept(WildernessOddesyApiModItems.FIRECLAN_SPIRIT.get());
+			})
 
-	@SubscribeEvent
-	public static void buildTabContentsVanilla(BuildCreativeModeTabContentsEvent tabData) {
-		if (tabData.getTabKey() == CreativeModeTabs.SPAWN_EGGS) {
-			tabData.accept(WildernessOddesyApiModItems.FIRECLAN_SPIRIT.get());
-		}
-	}
+					.build());
 }

@@ -1,4 +1,5 @@
 {
   "key.wilderness_oddesy_api.crawl_key": "Crawl Key",
-  "item.wilderness_oddesy_api.fireclan_spirit": "Fireclan Spirit"
+  "item.wilderness_oddesy_api.fireclan_spirit": "Fireclan Spirit",
+  "item_group.wilderness_oddesy_api.wilderness_odessy_api": "Wilderness Odessy API"
 }

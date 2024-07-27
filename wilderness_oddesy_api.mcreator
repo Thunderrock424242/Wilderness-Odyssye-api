@@ -222,7 +222,8 @@
             "type": "entity"
           }
         ]
-      }
+      },
+      "path": "~/Procedures"
     },
     {
       "name": "FireclanSpirit",
@@ -235,6 +236,17 @@
           "src/main/java/net/mcreator/wildernessoddesyapi/item/FireclanSpiritItem.java",
           "src/main/resources/assets/wilderness_oddesy_api/models/item/fireclan_spirit.json"
         ]
+      },
+      "path": "~/bubaubles"
+    },
+    {
+      "name": "WildernessOdessyAPI",
+      "type": "tab",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "wilderness_odessy_api",
+      "metadata": {
+        "files": []
       }
     }
   ],
@@ -267,7 +279,8 @@
   "language_map": {
     "en_us": {
       "key.wilderness_oddesy_api.crawl_key": "Crawl Key",
-      "item.wilderness_oddesy_api.fireclan_spirit": "Fireclan Spirit"
+      "item.wilderness_oddesy_api.fireclan_spirit": "Fireclan Spirit",
+      "item_group.wilderness_oddesy_api.wilderness_odessy_api": "Wilderness Odessy API"
     }
   },
   "foldersRoot": {
