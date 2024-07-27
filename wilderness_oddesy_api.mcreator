@@ -193,19 +193,6 @@
       "path": "~/Procedures"
     },
     {
-      "name": "Tptodimesnion",
-      "type": "command",
-      "compiles": true,
-      "locked_code": true,
-      "registry_name": "tptodimesnion",
-      "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/wildernessoddesyapi/command/TptodimesnionCommand.java"
-        ]
-      },
-      "path": "~/Commands"
-    },
-    {
       "name": "TP",
       "type": "procedure",
       "compiles": true,
@@ -218,6 +205,37 @@
         "dependencies": []
       },
       "path": "~/Procedures"
+    },
+    {
+      "name": "FireClanSpiritP",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "fire_clan_spirit_p",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/wildernessoddesyapi/procedures/FireClanSpiritPProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "FireclanSpirit",
+      "type": "curiosbauble",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "fireclan_spirit",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/wildernessoddesyapi/item/FireclanSpiritItem.java",
+          "src/main/resources/assets/wilderness_oddesy_api/models/item/fireclan_spirit.json"
+        ]
+      }
     }
   ],
   "variable_elements": [
@@ -248,7 +266,8 @@
   "tab_element_order": {},
   "language_map": {
     "en_us": {
-      "key.wilderness_oddesy_api.crawl_key": "Crawl Key"
+      "key.wilderness_oddesy_api.crawl_key": "Crawl Key",
+      "item.wilderness_oddesy_api.fireclan_spirit": "Fireclan Spirit"
     }
   },
   "foldersRoot": {
@@ -285,6 +304,10 @@
       {
         "name": "Commands",
         "children": []
+      },
+      {
+        "name": "bubaubles",
+        "children": []
       }
     ]
   },
@@ -300,7 +323,9 @@
     "requiredMods": [],
     "dependencies": [],
     "dependants": [],
-    "mcreatorDependencies": [],
+    "mcreatorDependencies": [
+      "curios_api"
+    ],
     "currentGenerator": "neoforge-1.20.6",
     "credits": "Created using mod maker MCreator but i codded all the parts to the mod",
     "modElementsPackage": "net.mcreator.wildernessoddesyapi"
