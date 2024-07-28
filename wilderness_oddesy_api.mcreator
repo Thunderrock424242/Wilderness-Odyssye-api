@@ -264,16 +264,7 @@
       "value": "false"
     }
   ],
-  "sound_elements": [
-    {
-      "name": "i_ran_so_far_away",
-      "files": [
-        "i_ran_so_far_away"
-      ],
-      "category": "music",
-      "subtitle": ""
-    }
-  ],
+  "sound_elements": [],
   "tag_elements": {},
   "tab_element_order": {},
   "language_map": {

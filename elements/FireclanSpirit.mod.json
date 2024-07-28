@@ -6,7 +6,7 @@
     "texture": "fire_spirit_gem",
     "customModelName": "Normal",
     "name": "Fireclan Spirit",
-    "rarity": "RARE",
+    "rarity": "EPIC",
     "slotType": "CHARM",
     "baubleModel": "Default",
     "baubleModelTexture": "",
@@ -16,7 +16,7 @@
     "stackSize": 1,
     "enchantability": 0,
     "useDuration": 0,
-    "toolType": 1.0,
+    "toolType": 0.1,
     "damageCount": 0,
     "recipeRemainder": {
       "value": ""
