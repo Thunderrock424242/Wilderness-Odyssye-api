@@ -312,6 +312,26 @@
       {
         "name": "bubaubles",
         "children": []
+      },
+      {
+        "name": "Emberfang Tribe",
+        "children": []
+      },
+      {
+        "name": "Frostheart Clan",
+        "children": []
+      },
+      {
+        "name": "Stormrider Tribe",
+        "children": []
+      },
+      {
+        "name": "Verdantleaf Clan",
+        "children": []
+      },
+      {
+        "name": "Stonefist Tribe",
+        "children": []
       }
     ]
   },
