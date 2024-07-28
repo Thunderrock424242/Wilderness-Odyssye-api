@@ -3,7 +3,7 @@
   "_type": "curiosbauble",
   "definition": {
     "renderType": 0,
-    "texture": "firegem",
+    "texture": "fire_spirit_gem",
     "customModelName": "Normal",
     "name": "Fireclan Spirit",
     "rarity": "RARE",
