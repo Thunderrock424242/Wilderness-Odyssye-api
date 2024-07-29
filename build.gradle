@@ -5,8 +5,8 @@ plugins {
 }
 
 version = '1.0'
-group = 'com.yourname.modid'
-base.archivesName = "modid"
+group = 'com.thunderrock424242.wilderness_oddesy_api'
+base.archivesName = "wilderness_oddesy_api"
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(21)
 
