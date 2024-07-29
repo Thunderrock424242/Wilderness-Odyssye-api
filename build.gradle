@@ -4,7 +4,7 @@ plugins {
     id 'net.neoforged.gradle.userdev' version '7.0.152'
 }
 
-version = '1.0'
+version = '0.9.0.3'
 group = 'com.thunderrock424242.wilderness_oddesy_api'
 base.archivesName = "wilderness_oddesy_api"
 
