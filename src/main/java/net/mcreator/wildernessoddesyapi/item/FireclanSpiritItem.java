@@ -9,7 +9,7 @@ import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Item;
 
-import net.mcreator.wildernessoddesyapi.procedures.FireClanSpiritPProcedure;
+import net.mcreator.wildernessoddesyapi.procedures.FireclanSpiritWhileBaubleIsEquippedTickProcedure;
 
 public class FireclanSpiritItem extends Item implements ICurioItem {
 	public FireclanSpiritItem() {
@@ -23,6 +23,6 @@ public class FireclanSpiritItem extends Item implements ICurioItem {
 
 	@Override
 	public void curioTick(SlotContext slotContext, ItemStack stack) {
-		FireClanSpiritPProcedure.execute(slotContext.entity());
+		FireclanSpiritWhileBaubleIsEquippedTickProcedure.execute(slotContext.entity());
 	}
 }

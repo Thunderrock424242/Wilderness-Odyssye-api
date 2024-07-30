@@ -181,25 +181,6 @@
       "path": "~/Procedures"
     },
     {
-      "name": "FireClanSpiritP",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "fire_clan_spirit_p",
-      "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/wildernessoddesyapi/procedures/FireClanSpiritPProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "entity",
-            "type": "entity"
-          }
-        ]
-      },
-      "path": "~/Procedures"
-    },
-    {
       "name": "FireclanSpirit",
       "type": "curiosbauble",
       "compiles": true,
@@ -301,6 +282,39 @@
         ]
       },
       "path": "~/bubaubles"
+    },
+    {
+      "name": "FireclanSpiritWhileBaubleIsEquippedTick",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "fireclan_spirit_while_bauble_is_equipped_tick",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/wildernessoddesyapi/procedures/FireclanSpiritWhileBaubleIsEquippedTickProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      },
+      "path": "~/Procedures"
+    },
+    {
+      "name": "FrostHeartClanSpiritGemWhileBaubleIsEquippedTick",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "frost_heart_clan_spirit_gem_while_bauble_is_equipped_tick",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/wildernessoddesyapi/procedures/FrostHeartClanSpiritGemWhileBaubleIsEquippedTickProcedure.java"
+        ],
+        "dependencies": []
+      },
+      "path": "~/Procedures"
     }
   ],
   "variable_elements": [
