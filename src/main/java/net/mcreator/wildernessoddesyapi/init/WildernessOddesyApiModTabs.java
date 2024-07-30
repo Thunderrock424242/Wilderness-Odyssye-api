@@ -19,6 +19,7 @@ public class WildernessOddesyApiModTabs {
 	public static final DeferredHolder<CreativeModeTab, CreativeModeTab> WILDERNESS_ODESSY_API = REGISTRY.register("wilderness_odessy_api",
 			() -> CreativeModeTab.builder().title(Component.translatable("item_group.wilderness_oddesy_api.wilderness_odessy_api")).icon(() -> new ItemStack(WildernessOddesyApiModItems.FIRECLAN_SPIRIT.get())).displayItems((parameters, tabData) -> {
 				tabData.accept(WildernessOddesyApiModItems.FIRECLAN_SPIRIT.get());
+				tabData.accept(WildernessOddesyApiModItems.FROST_HEART_CLAN_SPIRIT_GEM.get());
 			})
 
 					.build());

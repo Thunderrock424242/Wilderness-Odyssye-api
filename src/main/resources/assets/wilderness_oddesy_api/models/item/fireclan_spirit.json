@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "wilderness_oddesy_api:item/fire_spirit_gem"
+    "layer0": "wilderness_oddesy_api:item/emberfang_tribe_spirit_gem"
   }
 }

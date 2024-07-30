@@ -287,6 +287,20 @@
         ]
       },
       "path": "~/custom code"
+    },
+    {
+      "name": "FrostHeartClanSpiritGem",
+      "type": "curiosbauble",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "frost_heart_clan_spirit_gem",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/wilderness_oddesy_api/models/item/frost_heart_clan_spirit_gem.json",
+          "src/main/java/net/mcreator/wildernessoddesyapi/item/FrostHeartClanSpiritGemItem.java"
+        ]
+      },
+      "path": "~/bubaubles"
     }
   ],
   "variable_elements": [
@@ -309,7 +323,8 @@
   "language_map": {
     "en_us": {
       "key.wilderness_oddesy_api.crawl_key": "Crawl Key",
-      "item.wilderness_oddesy_api.fireclan_spirit": "Fireclan Spirit",
+      "item.wilderness_oddesy_api.fireclan_spirit": "EmberFang Clan Spirit Gem",
+      "item.wilderness_oddesy_api.frost_heart_clan_spirit_gem": "Frost Heart Clan Spirit Gem",
       "item_group.wilderness_oddesy_api.wilderness_odessy_api": "Wilderness Odessy API"
     }
   },
