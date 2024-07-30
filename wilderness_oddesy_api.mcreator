@@ -248,6 +248,18 @@
       "metadata": {
         "files": []
       }
+    },
+    {
+      "name": "Dimensionlogger",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "dimensionlogger",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/wildernessoddesyapi/Dimensionlogger.java"
+        ]
+      }
     }
   ],
   "variable_elements": [
