@@ -4,6 +4,7 @@ import com.mojang.logging.LogUtils;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.biome.Biome;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModLoadingContext;
 import net.neoforged.fml.common.Mod;
@@ -24,6 +25,7 @@ public class DimensionLogger {
     private static final Logger LOGGER = LogUtils.getLogger();
 
     public DimensionLogger() {
+        // Register the common configuration
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, ConfigHolder.COMMON_SPEC);
     }
 
@@ -32,32 +34,41 @@ public class DimensionLogger {
         MinecraftServer server = event.getServer();
         Set<ResourceKey<Level>> dimensions = server.levelKeys();
 
+        // Get the path from the config and convert it to Path
         Path outputPath = Path.of(ConfigHolder.COMMON.dimensionLogPath.get());
 
         try {
+            // Ensure the config directory exists
             if (!Files.exists(outputPath.getParent())) {
                 Files.createDirectories(outputPath.getParent());
             }
             Files.writeString(outputPath, "Dimensions in the game:\n", StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
             for (ResourceKey<Level> dimension : dimensions) {
-                Files.writeString(outputPath, dimension.location().toString() + "\n", StandardOpenOption.APPEND);
+                Files.writeString(outputPath, "---\n" + dimension.location().toString() + "\n", StandardOpenOption.APPEND);
+                Set<ResourceKey<Biome>> biomes = ChunkBiomeHelper.getBiomesInDimension(server, dimension);
+                for (ResourceKey<Biome> biome : biomes) {
+                    Files.writeString(outputPath, "  - " + biome.location().toString() + "\n", StandardOpenOption.APPEND);
+                }
             }
-            LOGGER.info("Dimensions logged to {}", outputPath.toString());
+            LOGGER.info("Dimensions and biomes logged to {}", outputPath.toString());
         } catch (IOException e) {
             LOGGER.error("Failed to write dimensions to file", e);
         }
     }
 
+    // Holder class for configuration settings
     public static class ConfigHolder {
         public static final Common COMMON;
         public static final ModConfigSpec COMMON_SPEC;
 
         static {
+            // Pair to hold the common config and its spec
             Pair<Common, ModConfigSpec> commonSpecPair = new ModConfigSpec.Builder().configure(Common::new);
             COMMON = commonSpecPair.getLeft();
             COMMON_SPEC = commonSpecPair.getRight();
         }
 
+        // Configuration settings for the mod
         public static class Common {
             public final ModConfigSpec.ConfigValue<String> dimensionLogPath;
 

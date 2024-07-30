@@ -10,7 +10,7 @@ import net.minecraft.world.level.Level;
 import net.mcreator.wildernessoddesyapi.MobStages;
 
 @Mixin(Level.class)
-public class MobStagesMixin {
+public class MobStagesMixinMixin {
 
     @Inject(method = "tick", at = @At("HEAD"))
     private void onWorldTick(CallbackInfo ci) {
