@@ -328,10 +328,10 @@
       "item_group.wilderness_oddesy_api.wilderness_odessy_api": "Wilderness Odessy API"
     },
     "el_cy": {
-      "key.wilderness_oddesy_api.crawl_key": "Crawl Key",
-      "item.wilderness_oddesy_api.fireclan_spirit": "EmberFang Clan Spirit Gem",
-      "item.wilderness_oddesy_api.frost_heart_clan_spirit_gem": "Frost Heart Clan Spirit Gem",
-      "item_group.wilderness_oddesy_api.wilderness_odessy_api": "Wilderness Odessy API"
+      "key.wilderness_oddesy_api.crawl_key": "κλειδί ανίχνευσης",
+      "item.wilderness_oddesy_api.fireclan_spirit": "Χόβολη Δόντι ζώου στολίδι του πνεύματος της φυλής",
+      "item.wilderness_oddesy_api.frost_heart_clan_spirit_gem": "Καρδιά παγετού Φυλή πνεύμα Κόσμημα",
+      "item_group.wilderness_oddesy_api.wilderness_odessy_api": "Ερημιά Οδύσσεια API"
     }
   },
   "foldersRoot": {
