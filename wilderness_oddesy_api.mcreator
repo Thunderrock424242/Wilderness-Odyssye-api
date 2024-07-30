@@ -250,16 +250,17 @@
       }
     },
     {
-      "name": "Dimensionlogger",
+      "name": "DimensionLogger",
       "type": "code",
       "compiles": true,
       "locked_code": true,
-      "registry_name": "dimensionlogger",
+      "registry_name": "dimension_logger",
       "metadata": {
         "files": [
-          "src/main/java/net/mcreator/wildernessoddesyapi/Dimensionlogger.java"
+          "src/main/java/net/mcreator/wildernessoddesyapi/DimensionLogger.java"
         ]
-      }
+      },
+      "path": "~/custom code"
     }
   ],
   "variable_elements": [

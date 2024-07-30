@@ -1,10 +1,9 @@
 package net.mcreator.wildernessoddesyapi;
 
 import org.apache.commons.lang3.tuple.Pair;
-
-import net.neoforged.neoforge.common.ModConfigSpec;
-import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.ModLoadingContext;
+import net.neoforged.fml.config.ModConfig;
+import net.neoforged.neoforge.common.ModConfigSpec;
 
 public class MobStages {
     public static final String MODID = "wilderness_oddesy_api";
@@ -12,22 +11,17 @@ public class MobStages {
     public static final int BASE_MOB_SPAWN_RATE = 5; // Base rate of mob spawning
 
     public MobStages() {
-        // Registering the common configuration
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, ModConfigHolder.COMMON_SPEC);
     }
-
-    // Holder class for configuration settings
     public static class ModConfigHolder {
         public static final Common COMMON;
         public static final ModConfigSpec COMMON_SPEC;
         static {
-            // Pair to hold the common config and its spec
             Pair<Common, ModConfigSpec> commonSpecPair = new ModConfigSpec.Builder().configure(Common::new);
             COMMON = commonSpecPair.getLeft();
             COMMON_SPEC = commonSpecPair.getRight();
         }
 
-        // Configuration settings for the mod
         public static class Common {
             public final ModConfigSpec.IntValue maxMobs;
 
@@ -40,4 +34,3 @@ public class MobStages {
         }
     }
 }
-/// hopefully this works

@@ -22,6 +22,7 @@ public class WildernessOddessyApi {
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::clientSetup);
         NeoForge.EVENT_BUS.register(this);
         new MobStages();
+        new DimensionLogger();
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
