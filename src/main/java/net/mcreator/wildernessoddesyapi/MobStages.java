@@ -13,9 +13,11 @@ public class MobStages {
     public MobStages() {
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, ModConfigHolder.COMMON_SPEC);
     }
+
     public static class ModConfigHolder {
         public static final Common COMMON;
         public static final ModConfigSpec COMMON_SPEC;
+
         static {
             Pair<Common, ModConfigSpec> commonSpecPair = new ModConfigSpec.Builder().configure(Common::new);
             COMMON = commonSpecPair.getLeft();
@@ -24,11 +26,16 @@ public class MobStages {
 
         public static class Common {
             public final ModConfigSpec.IntValue maxMobs;
+            public final ModConfigSpec.BooleanValue enableFeature;
 
             public Common(ModConfigSpec.Builder builder) {
                 builder.push("general");
                 maxMobs = builder.comment("Maximum number of mobs that can spawn")
                     .defineInRange("maxMobs", 100, 1, 1000);
+
+                enableFeature = builder.comment("Enable or disable the feature")
+                    .define("enableFeature", false);
+
                 builder.pop();
             }
         }
