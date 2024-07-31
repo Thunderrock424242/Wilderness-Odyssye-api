@@ -1,4 +1,4 @@
-package net.mcreator.wildernessoddesyapi.mixins;
+package net.mcreator.wildernessoddesyapi.mixin;
 
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.Inject;
