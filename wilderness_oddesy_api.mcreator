@@ -167,20 +167,6 @@
       "path": "~/Procedures"
     },
     {
-      "name": "TP",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": true,
-      "registry_name": "tp",
-      "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/wildernessoddesyapi/procedures/TPProcedure.java"
-        ],
-        "dependencies": []
-      },
-      "path": "~/Procedures"
-    },
-    {
       "name": "FireclanSpirit",
       "type": "curiosbauble",
       "compiles": true,
@@ -312,7 +298,12 @@
         "files": [
           "src/main/java/net/mcreator/wildernessoddesyapi/procedures/FrostHeartClanSpiritGemWhileBaubleIsEquippedTickProcedure.java"
         ],
-        "dependencies": []
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
       },
       "path": "~/Procedures"
     }
