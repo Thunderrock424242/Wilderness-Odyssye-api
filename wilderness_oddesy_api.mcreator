@@ -319,6 +319,18 @@
         ]
       },
       "path": "~/tools and hacks "
+    },
+    {
+      "name": "SeePlayersCommand",
+      "type": "code",
+      "compiles": false,
+      "locked_code": true,
+      "registry_name": "see_players_command",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/wildernessoddesyapi/SeePlayersCommand.java"
+        ]
+      }
     }
   ],
   "variable_elements": [
@@ -409,6 +421,10 @@
       },
       {
         "name": "tools and hacks ",
+        "children": []
+      },
+      {
+        "name": "multiplayer tools",
         "children": []
       }
     ]

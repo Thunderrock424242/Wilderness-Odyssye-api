@@ -9,6 +9,7 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.bus.api.SubscribeEvent;
 
 import net.mcreator.wildernessoddesyapi.command.ClearItemsCommand;
+import net.mcreator.wildernessoddesyapi.command.SeePlayersCommand;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -16,7 +17,7 @@ import org.apache.logging.log4j.Logger;
 public class WildernessOddessyApi {
     public static final String MOD_ID = "wilderness_oddesy_api";
     private static final Logger LOGGER = LogManager.getLogger();
-    public static boolean ENABLE_OUTLINE = false; // Default is false
+    public static boolean ENABLE_OUTLINE = true; // Default is false meant to be used in dev environment.
 
     public WildernessOddessyApi() {
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::commonSetup);
@@ -37,6 +38,7 @@ public class WildernessOddessyApi {
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event) {
         ClearItemsCommand.register(event.getServer().getCommands().getDispatcher());
+        SeePlayersCommand.register(event.getServer().getCommands().getDispatcher());
         LOGGER.info("Server starting setup complete");
     }
 }
