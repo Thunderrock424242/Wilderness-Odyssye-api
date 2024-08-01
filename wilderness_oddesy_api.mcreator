@@ -440,14 +440,8 @@
     "websiteURL": "https://mcreator.net",
     "license": "All Rights Reserved",
     "serverSideOnly": false,
-    "requiredMods": [
-      "curios",
-      "geckolib"
-    ],
-    "dependencies": [
-      "curios",
-      "geckolib"
-    ],
+    "requiredMods": [],
+    "dependencies": [],
     "dependants": [],
     "mcreatorDependencies": [
       "curios_api",
