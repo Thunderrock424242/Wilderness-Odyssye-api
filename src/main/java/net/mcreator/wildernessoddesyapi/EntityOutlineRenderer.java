@@ -14,6 +14,7 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.client.event.RenderLevelStageEvent;
+import net.mcreator.wildernessoddesyapi.WildernessOddessyApi;
 import net.neoforged.fml.common.Mod;
 
 @Mod ("wilderness_oddesy_api")
@@ -24,7 +25,7 @@ public class EntityOutlineRenderer {
     @SubscribeEvent
     @OnlyIn(Dist.CLIENT)
     public static void onRenderWorldLast(RenderLevelStageEvent event) {
-        if (WildernessOddessyApi.DEV_ENVIRONMENT) {
+        if (WildernessOddessyApi.ENABLE_OUTLINE) { // Check the flag
             Minecraft mc = Minecraft.getInstance();
             Player player = mc.player;
             if (player != null) {

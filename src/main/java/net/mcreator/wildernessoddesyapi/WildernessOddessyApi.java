@@ -16,6 +16,7 @@ import org.apache.logging.log4j.Logger;
 public class WildernessOddessyApi {
     public static final String MOD_ID = "wilderness_oddesy_api";
     private static final Logger LOGGER = LogManager.getLogger();
+    public static boolean ENABLE_OUTLINE = false; // Default is false
 
     public WildernessOddessyApi() {
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::commonSetup);
