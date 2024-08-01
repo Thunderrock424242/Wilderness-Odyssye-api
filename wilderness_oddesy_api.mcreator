@@ -331,7 +331,7 @@
           "src/main/java/net/mcreator/wildernessoddesyapi/SeePlayersCommand.java"
         ]
       },
-      "path": "~/multiplayer tools"
+      "path": "~/Commands/multiplayer tools"
     }
   ],
   "variable_elements": [
@@ -394,7 +394,12 @@
       },
       {
         "name": "Commands",
-        "children": []
+        "children": [
+          {
+            "name": "multiplayer tools",
+            "children": []
+          }
+        ]
       },
       {
         "name": "bubaubles",
@@ -422,10 +427,6 @@
       },
       {
         "name": "tools and hacks ",
-        "children": []
-      },
-      {
-        "name": "multiplayer tools",
         "children": []
       }
     ]
