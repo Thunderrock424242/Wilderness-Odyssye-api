@@ -321,17 +321,16 @@
       "path": "~/tools and hacks "
     },
     {
-      "name": "SeePlayersCommand",
+      "name": "AdminCommand",
       "type": "code",
       "compiles": true,
       "locked_code": true,
-      "registry_name": "see_players_command",
+      "registry_name": "admin_command",
       "metadata": {
         "files": [
-          "src/main/java/net/mcreator/wildernessoddesyapi/SeePlayersCommand.java"
+          "src/main/java/net/mcreator/wildernessoddesyapi/AdminCommand.java"
         ]
-      },
-      "path": "~/Commands/multiplayer tools"
+      }
     }
   ],
   "variable_elements": [

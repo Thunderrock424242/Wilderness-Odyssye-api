@@ -9,7 +9,7 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.bus.api.SubscribeEvent;
 
 import net.mcreator.wildernessoddesyapi.command.ClearItemsCommand;
-import net.mcreator.wildernessoddesyapi.command.SeePlayersCommand;
+import net.mcreator.wildernessoddesyapi.command.AdminCommand;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -38,7 +38,7 @@ public class WildernessOddessyApi {
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event) {
         ClearItemsCommand.register(event.getServer().getCommands().getDispatcher());
-        SeePlayersCommand.register(event.getServer().getCommands().getDispatcher());
+        AdminCommand.register(event.getServer().getCommands().getDispatcher());
         LOGGER.info("Server starting setup complete");
     }
 }
