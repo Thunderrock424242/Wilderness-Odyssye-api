@@ -10,6 +10,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.scores.PlayerTeam;
 
 import java.util.UUID;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
 
 public class SeePlayersCommand {
 
@@ -28,9 +29,13 @@ public class SeePlayersCommand {
     private static int spectatePlayer(CommandSourceStack source, String playerId) {
         ServerPlayer targetPlayer = source.getServer().getPlayerList().getPlayer(UUID.fromString(playerId));
         if (targetPlayer != null) {
-            ServerPlayer player = source.getPlayerOrException();
-            player.setCamera(targetPlayer);
-            source.sendSuccess(Component.literal("You are now spectating " + targetPlayer.getName().getString()), false);
+            try {
+                ServerPlayer player = source.getPlayerOrException();
+                player.setCamera(targetPlayer);
+                source.sendSuccess(() -> Component.literal("You are now spectating " + targetPlayer.getName().getString()), false);
+            } catch (CommandSyntaxException e) {
+                source.sendFailure(Component.literal("Error: " + e.getMessage()));
+            }
         } else {
             source.sendFailure(Component.literal("Player with ID " + playerId + " not found."));
         }
@@ -49,7 +54,7 @@ public class SeePlayersCommand {
 
     private static int showPlayers(CommandSourceStack source) {
         for (ServerPlayer player : source.getServer().getPlayerList().getPlayers()) {
-            source.sendSuccess(Component.literal("Player: " + player.getName().getString() + " ID: " + player.getUUID().toString()), false);
+            source.sendSuccess(() -> Component.literal("Player: " + player.getName().getString() + " ID: " + player.getUUID().toString()), false);
             makePlayersVisible(player);
         }
         return 1;
