@@ -306,6 +306,18 @@
         ]
       },
       "path": "~/Procedures"
+    },
+    {
+      "name": "EntityOutlineRenderer",
+      "type": "code",
+      "compiles": false,
+      "locked_code": true,
+      "registry_name": "entity_outline_renderer",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/wildernessoddesyapi/EntityOutlineRenderer.java"
+        ]
+      }
     }
   ],
   "variable_elements": [
