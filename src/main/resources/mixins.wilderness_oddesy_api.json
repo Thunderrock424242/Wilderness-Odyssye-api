@@ -3,9 +3,9 @@
   "package": "net.mcreator.wildernessoddesyapi.mixins",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "ChunkSourceAccessorMixin",
     "MobSpawnMixin",
-    "MobStagesMixinMixin",
-    "ChunkSourceAccessorMixin"
+    "MobStagesMixinMixin"
   ],
   "client": [],
   "minVersion": "0.8"
