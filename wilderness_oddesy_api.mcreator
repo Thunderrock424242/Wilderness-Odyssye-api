@@ -317,7 +317,8 @@
         "files": [
           "src/main/java/net/mcreator/wildernessoddesyapi/mixins/MobSpawnMixin.java"
         ]
-      }
+      },
+      "path": "~/mixins"
     },
     {
       "name": "MobStagesMixin",
@@ -329,7 +330,8 @@
         "files": [
           "src/main/java/net/mcreator/wildernessoddesyapi/mixins/MobStagesMixinMixin.java"
         ]
-      }
+      },
+      "path": "~/mixins"
     }
   ],
   "variable_elements": [
