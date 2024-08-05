@@ -237,6 +237,10 @@
           {
             "name": "entity",
             "type": "entity"
+          },
+          {
+            "name": "itemstack",
+            "type": "itemstack"
           }
         ]
       },
@@ -267,71 +271,6 @@
         ]
       },
       "path": "~/Commands/multiplayer tools"
-    },
-    {
-      "name": "ChunkBiomeHelper",
-      "type": "code",
-      "compiles": true,
-      "locked_code": true,
-      "registry_name": "chunk_biome_helper",
-      "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/wildernessoddesyapi/ChunkBiomeHelper.java"
-        ]
-      },
-      "path": "~/custom code"
-    },
-    {
-      "name": "DimensionLogger",
-      "type": "code",
-      "compiles": true,
-      "locked_code": true,
-      "registry_name": "dimension_logger",
-      "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/wildernessoddesyapi/DimensionLogger.java"
-        ]
-      },
-      "path": "~/custom code"
-    },
-    {
-      "name": "ChunkSourceAccessor",
-      "type": "mixin",
-      "compiles": true,
-      "locked_code": true,
-      "registry_name": "chunk_source_accessor",
-      "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/wildernessoddesyapi/mixins/ChunkSourceAccessorMixin.java"
-        ]
-      },
-      "path": "~/mixins"
-    },
-    {
-      "name": "MobSpawn",
-      "type": "mixin",
-      "compiles": true,
-      "locked_code": true,
-      "registry_name": "mob_spawn",
-      "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/wildernessoddesyapi/mixins/MobSpawnMixin.java"
-        ]
-      },
-      "path": "~/mixins"
-    },
-    {
-      "name": "MobStagesMixin",
-      "type": "mixin",
-      "compiles": true,
-      "locked_code": true,
-      "registry_name": "mob_stages_mixin",
-      "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/wildernessoddesyapi/mixins/MobStagesMixinMixin.java"
-        ]
-      },
-      "path": "~/mixins"
     }
   ],
   "variable_elements": [
@@ -451,5 +390,5 @@
     "credits": "Created using mod maker MCreator but i codded all the parts to the mod",
     "modElementsPackage": "net.mcreator.wildernessoddesyapi"
   },
-  "mcreatorVersion": 202400229712
+  "mcreatorVersion": 202400232117
 }

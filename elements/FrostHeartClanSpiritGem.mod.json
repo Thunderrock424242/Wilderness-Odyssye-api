@@ -14,7 +14,7 @@
       "value": "CUSTOM:WildernessOdessyAPI"
     },
     "stackSize": 1,
-    "enchantability": 0,
+    "enchantability": 1,
     "useDuration": 0,
     "toolType": 1.0,
     "damageCount": 0,
@@ -38,6 +38,9 @@
     "inventorySize": 9,
     "inventoryStackSize": 64,
     "slotAmount": 1,
+    "curioTick": {
+      "name": "FrostHeartClanSpiritGemWhileBaubleIsEquippedTick"
+    },
     "isFood": false,
     "friendlyPigs": false,
     "enderMask": false,
