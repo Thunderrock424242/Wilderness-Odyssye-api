@@ -10,21 +10,20 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRenderers;
+import net.neoforged.fml.common.Mod.EventBusSubscriber;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.world.phys.Vec3;
-import net.neoforged.neoforge.client.event.RenderLevelStageEvent;
-import net.mcreator.wildernessoddesyapi.WildernessOddessyApi;
-import net.neoforged.fml.common.Mod;
+import net.minecraftforge.client.event.RenderLevelLastEvent;
 
-@Mod ("wilderness_oddesy_api")
+@EventBusSubscriber(modid = WildernessOddessyApi.MOD_ID, bus = EventBusSubscriber.Bus.FORGE, value = Dist.CLIENT)
 public class EntityOutlineRenderer {
 
     private static final double CHUNK_RADIUS = 30 * 16; // 30 chunks radius
 
     @SubscribeEvent
     @OnlyIn(Dist.CLIENT)
-    public static void onRenderWorldLast(RenderLevelStageEvent event) {
+    public static void onRenderWorldLast(RenderLevelLastEvent event) {
         if (WildernessOddessyApi.ENABLE_OUTLINE) { // Check the flag
             Minecraft mc = Minecraft.getInstance();
             Player player = mc.player;

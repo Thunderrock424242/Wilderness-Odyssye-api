@@ -236,7 +236,7 @@
     {
       "name": "EntityOutlineRenderer",
       "type": "code",
-      "compiles": true,
+      "compiles": false,
       "locked_code": true,
       "registry_name": "entity_outline_renderer",
       "metadata": {
@@ -258,6 +258,18 @@
         ]
       },
       "path": "~/Commands/multiplayer tools"
+    },
+    {
+      "name": "ModCommands",
+      "type": "code",
+      "compiles": false,
+      "locked_code": true,
+      "registry_name": "mod_commands",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/wildernessoddesyapi/ModCommands.java"
+        ]
+      }
     }
   ],
   "variable_elements": [
