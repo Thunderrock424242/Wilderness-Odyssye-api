@@ -269,7 +269,8 @@
         "files": [
           "src/main/java/net/mcreator/wildernessoddesyapi/ModCommands.java"
         ]
-      }
+      },
+      "path": "~/Commands"
     }
   ],
   "variable_elements": [
