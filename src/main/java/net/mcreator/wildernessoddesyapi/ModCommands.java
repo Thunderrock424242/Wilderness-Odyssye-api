@@ -1,4 +1,5 @@
 /*
+*
 package net.mcreator.wildernessoddesyapi.command;
 
 import com.mojang.brigadier.CommandDispatcher;
