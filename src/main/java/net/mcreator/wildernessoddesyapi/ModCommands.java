@@ -1,4 +1,4 @@
-package net.mcreator.wildernessoddesyapi.command;
+/*package net.mcreator.wildernessoddesyapi.command;
 
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.BoolArgumentType;
@@ -31,3 +31,4 @@ public class ModCommands {
         );
     }
 }
+*\
