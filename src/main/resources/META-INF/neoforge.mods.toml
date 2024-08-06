@@ -4,7 +4,7 @@ license="All Rights Reserved"
 
 [[mods]]
 modId="wilderness_oddesy_api"
-version="0.9.1"
+version="0.9.2"
 displayName="Wilderness Oddesy API"
 displayURL="https://mcreator.net"
 credits="Created using mod maker MCreator but i codded all the parts to the mod"
