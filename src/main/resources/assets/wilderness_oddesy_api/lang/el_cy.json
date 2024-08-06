@@ -1,6 +1,3 @@
 {
-  "key.wilderness_oddesy_api.crawl_key": "κλειδί ανίχνευσης",
-  "item.wilderness_oddesy_api.fireclan_spirit": "Χόβολη Δόντι ζώου στολίδι του πνεύματος της φυλής",
-  "item.wilderness_oddesy_api.frost_heart_clan_spirit_gem": "Καρδιά παγετού Φυλή πνεύμα Κόσμημα",
-  "item_group.wilderness_oddesy_api.wilderness_odessy_api": "Ερημιά Οδύσσεια API"
+  "key.wilderness_oddesy_api.crawl_key": "κλειδί ανίχνευσης"
 }

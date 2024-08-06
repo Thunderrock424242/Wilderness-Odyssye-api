@@ -30,12 +30,6 @@ description="this is a mod made for the modpack wilderness odessy. it has opomiz
 
 
 [[dependencies.wilderness_oddesy_api]]
-    modId="curios_api"
-    type="optional"
-    versionRange="[0,)"
-    ordering="NONE"
-    side="BOTH"
-[[dependencies.wilderness_oddesy_api]]
     modId="geckolib"
     type="optional"
     versionRange="[0,)"

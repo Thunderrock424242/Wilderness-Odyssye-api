@@ -19,8 +19,6 @@ import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.FriendlyByteBuf;
 
 import net.mcreator.wildernessoddesyapi.network.WildernessOddesyApiModVariables;
-import net.mcreator.wildernessoddesyapi.init.WildernessOddesyApiModTabs;
-import net.mcreator.wildernessoddesyapi.init.WildernessOddesyApiModItems;
 
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.Map;
@@ -40,9 +38,6 @@ public class WildernessOddesyApiMod {
 		NeoForge.EVENT_BUS.register(this);
 		modEventBus.addListener(this::registerNetworking);
 
-		WildernessOddesyApiModItems.REGISTRY.register(modEventBus);
-
-		WildernessOddesyApiModTabs.REGISTRY.register(modEventBus);
 		WildernessOddesyApiModVariables.ATTACHMENT_TYPES.register(modEventBus);
 
 		// Start of user code block mod init

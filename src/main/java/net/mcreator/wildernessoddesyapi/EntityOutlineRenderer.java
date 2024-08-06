@@ -1,4 +1,4 @@
-package net.mcreator.wildernessoddesyapi;
+/*package net.mcreator.wildernessoddesyapi;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.entity.Entity;
@@ -49,3 +49,5 @@ public class EntityOutlineRenderer {
         }
     }
 }
+*/
+// put it like this since code is broken waiting for help.
