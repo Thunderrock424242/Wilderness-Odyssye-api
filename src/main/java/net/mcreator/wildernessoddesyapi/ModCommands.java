@@ -9,7 +9,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.event.server.FMLServerStartingEvent;
 import net.neoforged.fml.common.Mod.EventBusSubscriber;
 
-@EventBusSubscriber(modid = WildernessOddessyApi.MOD_ID, bus = EventBusSubscriber.Bus.FORGE)
+@EventBusSubscriber(modid = WildernessOddessyApi.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
 public class ModCommands {
 
     @SubscribeEvent
@@ -24,7 +24,7 @@ public class ModCommands {
                             boolean enabled = BoolArgumentType.getBool(context, "enabled");
                             WildernessOddessyApi.ENABLE_OUTLINE = enabled;
                             context.getSource().sendSuccess(
-                                    net.minecraft.network.chat.Component.literal("Entity outline feature set to: " + enabled), true);
+                                    () -> net.minecraft.network.chat.Component.literal("Entity outline feature set to: " + enabled), true);
                             return 1;
                         })
                 )
