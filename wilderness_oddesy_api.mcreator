@@ -195,12 +195,24 @@
     {
       "name": "AIUtil",
       "type": "code",
-      "compiles": false,
+      "compiles": true,
       "locked_code": true,
       "registry_name": "ai_util",
       "metadata": {
         "files": [
           "src/main/java/net/mcreator/wildernessoddesyapi/AIUtil.java"
+        ]
+      }
+    },
+    {
+      "name": "DimensionLogger",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "dimension_logger",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/wildernessoddesyapi/DimensionLogger.java"
         ]
       }
     }
