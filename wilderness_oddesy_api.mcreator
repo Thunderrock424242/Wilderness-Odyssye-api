@@ -191,6 +191,18 @@
         ]
       },
       "path": "~/Commands"
+    },
+    {
+      "name": "AIUtil",
+      "type": "code",
+      "compiles": false,
+      "locked_code": true,
+      "registry_name": "ai_util",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/wildernessoddesyapi/AIUtil.java"
+        ]
+      }
     }
   ],
   "variable_elements": [
