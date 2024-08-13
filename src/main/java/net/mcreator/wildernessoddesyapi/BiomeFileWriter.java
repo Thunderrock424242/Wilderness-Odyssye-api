@@ -1,4 +1,4 @@
-package net.mcreator.wildernessoddesyapi;
+/*package net.mcreator.wildernessoddesyapi;
 
 import com.mojang.logging.LogUtils;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -44,3 +44,4 @@ public class BiomeFileWriter {
         }
     }
 }
+*/

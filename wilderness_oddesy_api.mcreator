@@ -207,7 +207,7 @@
     {
       "name": "BiomeFileWriter",
       "type": "code",
-      "compiles": false,
+      "compiles": true,
       "locked_code": true,
       "registry_name": "biome_file_writer",
       "metadata": {

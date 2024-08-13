@@ -14,7 +14,7 @@ import org.apache.logging.log4j.Logger;
 
 import net.mcreator.wildernessoddesyapi.command.ClearItemsCommand;
 import net.mcreator.wildernessoddesyapi.command.AdminCommand;
-import net.mcreator.wildernessoddesyapi.BiomeFileWriter;
+///import net.mcreator.wildernessoddesyapi.BiomeFileWriter;
 
 @Mod(WildernessOddessyApi.MOD_ID)
 public class WildernessOddessyApi {
@@ -47,6 +47,6 @@ public class WildernessOddessyApi {
     @SubscribeEvent
     public void onLoadComplete(FMLLoadCompleteEvent event) {
         LOGGER.info("Load Complete Event");
-        BiomeFileWriter.writeBiomesToFile();
+        ///BiomeFileWriter.writeBiomesToFile();
     }
 }
