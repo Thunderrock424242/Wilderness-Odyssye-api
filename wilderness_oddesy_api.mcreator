@@ -191,30 +191,6 @@
         ]
       },
       "path": "~/Commands"
-    },
-    {
-      "name": "BiomeFileWriter",
-      "type": "code",
-      "compiles": true,
-      "locked_code": true,
-      "registry_name": "biome_file_writer",
-      "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/wildernessoddesyapi/BiomeFileWriter.java"
-        ]
-      }
-    },
-    {
-      "name": "TPToDimesnions",
-      "type": "code",
-      "compiles": true,
-      "locked_code": true,
-      "registry_name": "tp_to_dimesnions",
-      "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/wildernessoddesyapi/TPToDimesnions.java"
-        ]
-      }
     }
   ],
   "variable_elements": [

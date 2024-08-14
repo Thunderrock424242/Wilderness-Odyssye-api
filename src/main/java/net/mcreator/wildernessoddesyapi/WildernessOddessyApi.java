@@ -40,7 +40,6 @@ public class WildernessOddessyApi {
 
     private void onLoadComplete(final FMLLoadCompleteEvent event) {
         LOGGER.info("Load Complete Event");
-        ///BiomeFileWriter.writeBiomesToFile();
     }
 
     @SubscribeEvent
