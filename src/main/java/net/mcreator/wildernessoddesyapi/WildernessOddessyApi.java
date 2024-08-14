@@ -1,6 +1,7 @@
 package net.mcreator.wildernessoddesyapi;
 
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
+import net.neoforged.neoforge.event.server.ServerStoppingEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
@@ -44,8 +45,18 @@ public class WildernessOddessyApi {
 
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event) {
+        // Load cache when the server starts
+        CacheSystem.loadCache();
+
         ClearItemsCommand.register(event.getServer().getCommands().getDispatcher());
         AdminCommand.register(event.getServer().getCommands().getDispatcher());
-        LOGGER.info("Server starting setup complete");
+        LOGGER.info("Server starting setup complete, cache loaded");
+    }
+
+    @SubscribeEvent
+    public void onServerStopping(ServerStoppingEvent event) {
+        // Save cache when the server stops
+        CacheSystem.saveCache();
+        LOGGER.info("Server stopping, cache saved");
     }
 }
