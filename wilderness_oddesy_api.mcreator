@@ -193,18 +193,6 @@
       "path": "~/Commands"
     },
     {
-      "name": "AIUtil",
-      "type": "code",
-      "compiles": true,
-      "locked_code": true,
-      "registry_name": "ai_util",
-      "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/wildernessoddesyapi/AIUtil.java"
-        ]
-      }
-    },
-    {
       "name": "BiomeFileWriter",
       "type": "code",
       "compiles": true,

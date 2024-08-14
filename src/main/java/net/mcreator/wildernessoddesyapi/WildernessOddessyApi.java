@@ -6,15 +6,13 @@ import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLLoadCompleteEvent;
 import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.neoforged.bus.api.SubscribeEvent;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.core.registries.Registries;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import net.mcreator.wildernessoddesyapi.command.ClearItemsCommand;
 import net.mcreator.wildernessoddesyapi.command.AdminCommand;
-///import net.mcreator.wildernessoddesyapi.BiomeFileWriter;
 
 @Mod(WildernessOddessyApi.MOD_ID)
 public class WildernessOddessyApi {
@@ -23,9 +21,12 @@ public class WildernessOddessyApi {
     public static boolean ENABLE_OUTLINE = false; // Default is false meant to be used in dev environment.
 
     public WildernessOddessyApi() {
-        NeoForge.EVENT_BUS.addListener(this::commonSetup);
-        NeoForge.EVENT_BUS.addListener(this::clientSetup);
-        NeoForge.EVENT_BUS.addListener(this::onLoadComplete);
+        // Register mod lifecycle events on the mod event bus
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::commonSetup);
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::clientSetup);
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::onLoadComplete);
+
+        // Register server events on the NeoForge event bus
         NeoForge.EVENT_BUS.register(this);
     }
 
@@ -37,16 +38,15 @@ public class WildernessOddessyApi {
         LOGGER.info("Client setup complete");
     }
 
+    private void onLoadComplete(final FMLLoadCompleteEvent event) {
+        LOGGER.info("Load Complete Event");
+        ///BiomeFileWriter.writeBiomesToFile();
+    }
+
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event) {
         ClearItemsCommand.register(event.getServer().getCommands().getDispatcher());
         AdminCommand.register(event.getServer().getCommands().getDispatcher());
         LOGGER.info("Server starting setup complete");
-    }
-
-    @SubscribeEvent
-    public void onLoadComplete(FMLLoadCompleteEvent event) {
-        LOGGER.info("Load Complete Event");
-        ///BiomeFileWriter.writeBiomesToFile();
     }
 }
