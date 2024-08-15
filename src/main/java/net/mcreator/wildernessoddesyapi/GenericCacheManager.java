@@ -1,46 +1,36 @@
 package net.mcreator.wildernessoddesyapi;
 
 import net.minecraft.core.BlockPos;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
+import java.util.concurrent.*;
 import java.util.logging.Logger;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.WeakHashMap;
-import java.util.Objects;
-import java.util.Map;
-import java.util.WeakHashMap;
 
 class GenericCacheManager<K, V> {
     private static final Logger LOGGER = Logger.getLogger(GenericCacheManager.class.getName());
-    private final Map<K, V> cache = new WeakHashMap<>();
+    private final Map<K, V> cache = new ConcurrentHashMap<>();
     private final ScheduledExecutorService cacheCleaner = Executors.newSingleThreadScheduledExecutor();
 
     public GenericCacheManager() {
         cacheCleaner.scheduleAtFixedRate(() -> {
-            synchronized (cache) {
-                cache.entrySet().removeIf(entry -> entry.getValue() == null);
-                LOGGER.info("Cache cleaned up.");
-            }
+            cache.keySet().removeIf(key -> cache.get(key) == null);
+            LOGGER.info("Cache cleaned up.");
         }, 1, 1, TimeUnit.MINUTES);
     }
 
     public void put(K key, V value) {
-        synchronized (cache) {
-            cache.put(key, value);
-        }
+        cache.put(key, value);
         LOGGER.fine("Added to cache: " + key);
     }
 
     public V get(K key) {
-        synchronized (cache) {
-            V value = cache.get(key);
-            LOGGER.warning("Retrieved from cache: " + key + " -> " + value);
-            return value;
-        }
+        V value = cache.get(key);
+        LOGGER.fine("Retrieved from cache: " + key + " -> " + value);
+        return value;
+    }
+
+    public void remove(K key) {
+        cache.remove(key);
+        LOGGER.fine("Removed from cache: " + key);
     }
 
     public void shutdown() {
@@ -64,7 +54,7 @@ class CustomPlayerData {
     private final Map<String, Integer> skills;
 
     public CustomPlayerData(String playerName, int playerLevel, double playerHealth, Map<String, Integer> skills) {
-        this.playerName = playerName;
+        this.playerName = Objects.requireNonNull(playerName, "Player name cannot be null");
         this.playerLevel = playerLevel;
         this.playerHealth = playerHealth;
         this.skills = new ConcurrentHashMap<>(skills);
@@ -88,7 +78,8 @@ class CustomPlayerData {
 
     @Override
     public String toString() {
-        return String.format("CustomPlayerData{playerName='%s', playerLevel=%d, playerHealth=%.2f, skills=%s}", playerName, playerLevel, playerHealth, skills);
+        return String.format("CustomPlayerData{playerName='%s', playerLevel=%d, playerHealth=%.2f, skills=%s}",
+                playerName, playerLevel, playerHealth, skills);
     }
 
     @Override
@@ -96,7 +87,10 @@ class CustomPlayerData {
         if (this == o) return true;
         if (!(o instanceof CustomPlayerData)) return false;
         CustomPlayerData that = (CustomPlayerData) o;
-        return playerLevel == that.playerLevel && Double.compare(that.playerHealth, playerHealth) == 0 && Objects.equals(playerName, that.playerName) && Objects.equals(skills, that.skills);
+        return playerLevel == that.playerLevel &&
+                Double.compare(that.playerHealth, playerHealth) == 0 &&
+                Objects.equals(playerName, that.playerName) &&
+                Objects.equals(skills, that.skills);
     }
 
     @Override
@@ -113,10 +107,10 @@ class CustomItemData {
     private final String description;
 
     public CustomItemData(String itemName, int itemValue, String rarity, String description) {
-        this.itemName = itemName;
+        this.itemName = Objects.requireNonNull(itemName, "Item name cannot be null");
         this.itemValue = itemValue;
-        this.rarity = rarity;
-        this.description = description;
+        this.rarity = Objects.requireNonNull(rarity, "Rarity cannot be null");
+        this.description = Objects.requireNonNull(description, "Description cannot be null");
     }
 
     public String getItemName() {
@@ -137,7 +131,8 @@ class CustomItemData {
 
     @Override
     public String toString() {
-        return String.format("CustomItemData{itemName='%s', itemValue=%d, rarity='%s', description='%s'}", itemName, itemValue, rarity, description);
+        return String.format("CustomItemData{itemName='%s', itemValue=%d, rarity='%s', description='%s'}",
+                itemName, itemValue, rarity, description);
     }
 
     @Override
@@ -145,7 +140,10 @@ class CustomItemData {
         if (this == o) return true;
         if (!(o instanceof CustomItemData)) return false;
         CustomItemData that = (CustomItemData) o;
-        return itemValue == that.itemValue && Objects.equals(itemName, that.itemName) && Objects.equals(rarity, that.rarity) && Objects.equals(description, that.description);
+        return itemValue == that.itemValue &&
+                Objects.equals(itemName, that.itemName) &&
+                Objects.equals(rarity, that.rarity) &&
+                Objects.equals(description, that.description);
     }
 
     @Override
@@ -161,10 +159,10 @@ class CustomBlockData {
     private final String toolRequired;
 
     public CustomBlockData(String blockType, int blockHardness, int resistance, String toolRequired) {
-        this.blockType = blockType;
+        this.blockType = Objects.requireNonNull(blockType, "Block type cannot be null");
         this.blockHardness = blockHardness;
         this.resistance = resistance;
-        this.toolRequired = toolRequired;
+        this.toolRequired = Objects.requireNonNull(toolRequired, "Tool required cannot be null");
     }
 
     public String getBlockType() {
@@ -185,7 +183,8 @@ class CustomBlockData {
 
     @Override
     public String toString() {
-        return String.format("CustomBlockData{blockType='%s', blockHardness=%d, resistance=%d, toolRequired='%s'}", blockType, blockHardness, resistance, toolRequired);
+        return String.format("CustomBlockData{blockType='%s', blockHardness=%d, resistance=%d, toolRequired='%s'}",
+                blockType, blockHardness, resistance, toolRequired);
     }
 
     @Override
@@ -193,7 +192,10 @@ class CustomBlockData {
         if (this == o) return true;
         if (!(o instanceof CustomBlockData)) return false;
         CustomBlockData that = (CustomBlockData) o;
-        return blockHardness == that.blockHardness && resistance == that.resistance && Objects.equals(blockType, that.blockType) && Objects.equals(toolRequired, that.toolRequired);
+        return blockHardness == that.blockHardness &&
+                resistance == that.resistance &&
+                Objects.equals(blockType, that.blockType) &&
+                Objects.equals(toolRequired, that.toolRequired);
     }
 
     @Override
@@ -210,7 +212,7 @@ class CustomBiomeData {
     private final int altitude;
 
     public CustomBiomeData(String biomeName, float temperature, float humidity, float rainfall, int altitude) {
-        this.biomeName = biomeName;
+        this.biomeName = Objects.requireNonNull(biomeName, "Biome name cannot be null");
         this.temperature = temperature;
         this.humidity = humidity;
         this.rainfall = rainfall;
@@ -239,7 +241,8 @@ class CustomBiomeData {
 
     @Override
     public String toString() {
-        return String.format("CustomBiomeData{biomeName='%s', temperature=%.2f, humidity=%.2f, rainfall=%.2f, altitude=%d}", biomeName, temperature, humidity, rainfall, altitude);
+        return String.format("CustomBiomeData{biomeName='%s', temperature=%.2f, humidity=%.2f, rainfall=%.2f, altitude=%d}",
+                biomeName, temperature, humidity, rainfall, altitude);
     }
 
     @Override
@@ -247,7 +250,11 @@ class CustomBiomeData {
         if (this == o) return true;
         if (!(o instanceof CustomBiomeData)) return false;
         CustomBiomeData that = (CustomBiomeData) o;
-        return Float.compare(that.temperature, temperature) == 0 && Float.compare(that.humidity, humidity) == 0 && Float.compare(that.rainfall, rainfall) == 0 && altitude == that.altitude && Objects.equals(biomeName, that.biomeName);
+        return Float.compare(that.temperature, temperature) == 0 &&
+                Float.compare(that.humidity, humidity) == 0 &&
+                Float.compare(that.rainfall, rainfall) == 0 &&
+                altitude == that.altitude &&
+                Objects.equals(biomeName, that.biomeName);
     }
 
     @Override
@@ -263,10 +270,10 @@ class CustomWorldGenData {
     private final List<String> biomeTypes;
 
     public CustomWorldGenData(String structureName, int complexity, double spawnRate, List<String> biomeTypes) {
-        this.structureName = structureName;
+        this.structureName = Objects.requireNonNull(structureName, "Structure name cannot be null");
         this.complexity = complexity;
         this.spawnRate = spawnRate;
-        this.biomeTypes = new ArrayList<>(biomeTypes);
+        this.biomeTypes = new ArrayList<>(Objects.requireNonNull(biomeTypes, "Biome types cannot be null"));
     }
 
     public String getStructureName() {
@@ -287,15 +294,21 @@ class CustomWorldGenData {
 
     @Override
     public String toString() {
-        return String.format("CustomWorldGenData{structureName='%s', complexity=%d, spawnRate=%.2f, biomeTypes=%s}", structureName, complexity, spawnRate, biomeTypes);
+        return String.format("CustomWorldGenData{structureName='%s', complexity=%d, spawnRate=%.2f, biomeTypes=%s}",
+                structureName, complexity, spawnRate, biomeTypes);
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof CustomWorldGenData)) return false;
+        if (!(o instanceof
+
+ CustomWorldGenData)) return false;
         CustomWorldGenData that = (CustomWorldGenData) o;
-        return complexity == that.complexity && Double.compare(that.spawnRate, spawnRate) == 0 && Objects.equals(structureName, that.structureName) && Objects.equals(biomeTypes, that.biomeTypes);
+        return complexity == that.complexity &&
+                Double.compare(that.spawnRate, spawnRate) == 0 &&
+                Objects.equals(structureName, that.structureName) &&
+                Objects.equals(biomeTypes, that.biomeTypes);
     }
 
     @Override
@@ -311,9 +324,9 @@ class CustomConfigData {
     private final boolean isEnabled;
 
     public CustomConfigData(String configName, String configValue, String defaultValue, boolean isEnabled) {
-        this.configName = configName;
-        this.configValue = configValue;
-        this.defaultValue = defaultValue;
+        this.configName = Objects.requireNonNull(configName, "Config name cannot be null");
+        this.configValue = Objects.requireNonNull(configValue, "Config value cannot be null");
+        this.defaultValue = Objects.requireNonNull(defaultValue, "Default value cannot be null");
         this.isEnabled = isEnabled;
     }
 
@@ -335,7 +348,8 @@ class CustomConfigData {
 
     @Override
     public String toString() {
-        return String.format("CustomConfigData{configName='%s', configValue='%s', defaultValue='%s', isEnabled=%b}", configName, configValue, defaultValue, isEnabled);
+        return String.format("CustomConfigData{configName='%s', configValue='%s', defaultValue='%s', isEnabled=%b}",
+                configName, configValue, defaultValue, isEnabled);
     }
 
     @Override
@@ -343,7 +357,10 @@ class CustomConfigData {
         if (this == o) return true;
         if (!(o instanceof CustomConfigData)) return false;
         CustomConfigData that = (CustomConfigData) o;
-        return isEnabled == that.isEnabled && Objects.equals(configName, that.configName) && Objects.equals(configValue, that.configValue) && Objects.equals(defaultValue, that.defaultValue);
+        return isEnabled == that.isEnabled &&
+                Objects.equals(configName, that.configName) &&
+                Objects.equals(configValue, that.configValue) &&
+                Objects.equals(defaultValue, that.defaultValue);
     }
 
     @Override
@@ -359,7 +376,7 @@ class CustomPathfindingData {
     private final int currentStep;
 
     public CustomPathfindingData(String entityId, BlockPos[] path, boolean isComplete, int currentStep) {
-        this.entityId = entityId;
+        this.entityId = Objects.requireNonNull(entityId, "Entity ID cannot be null");
         this.path = path.clone();
         this.isComplete = isComplete;
         this.currentStep = currentStep;
@@ -383,7 +400,8 @@ class CustomPathfindingData {
 
     @Override
     public String toString() {
-        return String.format("CustomPathfindingData{entityId='%s', path=%s, isComplete=%b, currentStep=%d}", entityId, Arrays.toString(path), isComplete, currentStep);
+        return String.format("CustomPathfindingData{entityId='%s', path=%s, isComplete=%b, currentStep=%d}",
+                entityId, Arrays.toString(path), isComplete, currentStep);
     }
 
     @Override
@@ -391,7 +409,10 @@ class CustomPathfindingData {
         if (this == o) return true;
         if (!(o instanceof CustomPathfindingData)) return false;
         CustomPathfindingData that = (CustomPathfindingData) o;
-        return isComplete == that.isComplete && currentStep == that.currentStep && Objects.equals(entityId, that.entityId) && Arrays.equals(path, that.path);
+        return isComplete == that.isComplete &&
+                currentStep == that.currentStep &&
+                Objects.equals(entityId, that.entityId) &&
+                Arrays.equals(path, that.path);
     }
 
     @Override
@@ -410,7 +431,7 @@ class CustomWeatherData {
     private final double windSpeed;
 
     public CustomWeatherData(String weatherType, long duration, boolean isSevere, int intensity, double windSpeed) {
-        this.weatherType = weatherType;
+        this.weatherType = Objects.requireNonNull(weatherType, "Weather type cannot be null");
         this.duration = duration;
         this.isSevere = isSevere;
         this.intensity = intensity;
@@ -439,7 +460,8 @@ class CustomWeatherData {
 
     @Override
     public String toString() {
-        return String.format("CustomWeatherData{weatherType='%s', duration=%d, isSevere=%b, intensity=%d, windSpeed=%.2f}", weatherType, duration, isSevere, intensity, windSpeed);
+        return String.format("CustomWeatherData{weatherType='%s', duration=%d, isSevere=%b, intensity=%d, windSpeed=%.2f}",
+                weatherType, duration, isSevere, intensity, windSpeed);
     }
 
     @Override
@@ -447,7 +469,11 @@ class CustomWeatherData {
         if (this == o) return true;
         if (!(o instanceof CustomWeatherData)) return false;
         CustomWeatherData that = (CustomWeatherData) o;
-        return duration == that.duration && isSevere == that.isSevere && intensity == that.intensity && Double.compare(that.windSpeed, windSpeed) == 0 && Objects.equals(weatherType, that.weatherType);
+        return duration == that.duration &&
+                isSevere == that.isSevere &&
+                intensity == that.intensity &&
+                Double.compare(that.windSpeed, windSpeed) == 0 &&
+                Objects.equals(weatherType, that.weatherType);
     }
 
     @Override
@@ -462,9 +488,9 @@ class CustomEntityData {
     private final BlockPos position;
 
     public CustomEntityData(String entityType, double health, BlockPos position) {
-        this.entityType = entityType;
+        this.entityType = Objects.requireNonNull(entityType, "Entity type cannot be null");
         this.health = health;
-        this.position = position;
+        this.position = Objects.requireNonNull(position, "Position cannot be null");
     }
 
     public String getEntityType() {
@@ -481,7 +507,8 @@ class CustomEntityData {
 
     @Override
     public String toString() {
-        return String.format("CustomEntityData{entityType='%s', health=%.2f, position=%s}", entityType, health, position);
+        return String.format("CustomEntityData{entityType='%s', health=%.2f, position=%s}",
+                entityType, health, position);
     }
 
     @Override
@@ -489,7 +516,9 @@ class CustomEntityData {
         if (this == o) return true;
         if (!(o instanceof CustomEntityData)) return false;
         CustomEntityData that = (CustomEntityData) o;
-        return Double.compare(that.health, health) == 0 && Objects.equals(entityType, that.entityType) && Objects.equals(position, that.position);
+        return Double.compare(that.health, health) == 0 &&
+                Objects.equals(entityType, that.entityType) &&
+                Objects.equals(position, that.position);
     }
 
     @Override
@@ -504,8 +533,8 @@ class CustomEventData {
     private final long timestamp;
 
     public CustomEventData(String eventType, String eventDescription, long timestamp) {
-        this.eventType = eventType;
-        this.eventDescription = eventDescription;
+        this.eventType = Objects.requireNonNull(eventType, "Event type cannot be null");
+        this.eventDescription = Objects.requireNonNull(eventDescription, "Event description cannot be null");
         this.timestamp = timestamp;
     }
 
@@ -523,7 +552,8 @@ class CustomEventData {
 
     @Override
     public String toString() {
-        return String.format("CustomEventData{eventType='%s', eventDescription='%s', timestamp=%d}", eventType, eventDescription, timestamp);
+        return String.format("CustomEventData{eventType='%s', eventDescription='%s', timestamp=%d}",
+                eventType, eventDescription, timestamp);
     }
 
     @Override
@@ -531,102 +561,14 @@ class CustomEventData {
         if (this == o) return true;
         if (!(o instanceof CustomEventData)) return false;
         CustomEventData that = (CustomEventData) o;
-        return timestamp == that.timestamp && Objects.equals(eventType, that.eventType) && Objects.equals(eventDescription, that.eventDescription);
+        return timestamp == that.timestamp &&
+                Objects.equals(eventType, that.eventType) &&
+                Objects.equals(eventDescription, that.eventDescription);
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(eventType, eventDescription, timestamp);
-    }
-}
-
-class CustomQuestData {
-    private final String questName;
-    private final String questDescription;
-    private final List<String> objectives;
-    private final List<String> rewards;
-
-    public CustomQuestData(String questName, String questDescription, List<String> objectives, List<String> rewards) {
-        this.questName = questName;
-        this.questDescription = questDescription;
-        this.objectives = new ArrayList<>(objectives);
-        this.rewards = new ArrayList<>(rewards);
-    }
-
-    public String getQuestName() {
-        return questName;
-    }
-
-    public String getQuestDescription() {
-        return questDescription;
-    }
-
-    public List<String> getObjectives() {
-        return new ArrayList<>(objectives);
-    }
-
-    public List<String> getRewards() {
-        return new ArrayList<>(rewards);
-    }
-
-    @Override
-    public String toString() {
-        return String.format("CustomQuestData{questName='%s', questDescription='%s', objectives=%s, rewards=%s}", questName, questDescription, objectives, rewards);
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof CustomQuestData)) return false;
-        CustomQuestData that = (CustomQuestData) o;
-        return Objects.equals(questName, that.questName) && Objects.equals(questDescription, that.questDescription) && Objects.equals(objectives, that.objectives) && Objects.equals(rewards, that.rewards);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(questName, questDescription, objectives, rewards);
-    }
-}
-
-class CustomSkillData {
-    private final String skillName;
-    private final int skillLevel;
-    private final String skillEffect;
-
-    public CustomSkillData(String skillName, int skillLevel, String skillEffect) {
-        this.skillName = skillName;
-        this.skillLevel = skillLevel;
-        this.skillEffect = skillEffect;
-    }
-
-    public String getSkillName() {
-        return skillName;
-    }
-
-    public int getSkillLevel() {
-        return skillLevel;
-    }
-
-    public String getSkillEffect() {
-        return skillEffect;
-    }
-
-    @Override
-    public String toString() {
-        return String.format("CustomSkillData{skillName='%s', skillLevel=%d, skillEffect='%s'}", skillName, skillLevel, skillEffect);
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof CustomSkillData)) return false;
-        CustomSkillData that = (CustomSkillData) o;
-        return skillLevel == that.skillLevel && Objects.equals(skillName, that.skillName) && Objects.equals(skillEffect, that.skillEffect);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(skillName, skillLevel, skillEffect);
     }
 }
 
@@ -637,8 +579,8 @@ class CustomStructureData {
     private final boolean isGenerated;
 
     public CustomStructureData(String structureName, String dimension, int size, boolean isGenerated) {
-        this.structureName = structureName;
-        this.dimension = dimension;
+        this.structureName = Objects.requireNonNull(structureName, "Structure name cannot be null");
+        this.dimension = Objects.requireNonNull(dimension, "Dimension cannot be null");
         this.size = size;
         this.isGenerated = isGenerated;
     }
@@ -661,7 +603,8 @@ class CustomStructureData {
 
     @Override
     public String toString() {
-        return String.format("CustomStructureData{structureName='%s', dimension='%s', size=%d, isGenerated=%b}", structureName, dimension, size, isGenerated);
+        return String.format("CustomStructureData{structureName='%s', dimension='%s', size=%d, isGenerated=%b}",
+                structureName, dimension, size, isGenerated);
     }
 
     @Override
@@ -669,10 +612,15 @@ class CustomStructureData {
         if (this == o) return true;
         if (!(o instanceof CustomStructureData)) return false;
         CustomStructureData that = (CustomStructureData) o;
-        return size == that.size && isGenerated == that.isGenerated && Objects.equals(structureName, that.structureName) && Objects.equals(dimension, that.dimension);
+        return size == that.size &&
+                isGenerated == that.isGenerated &&
+                Objects.equals(structureName, that.structureName) &&
+                Objects.equals(dimension, that.dimension);
     }
 
     @Override
+
+
     public int hashCode() {
         return Objects.hash(structureName, dimension, size, isGenerated);
     }
@@ -685,8 +633,8 @@ class CustomAchievementData {
     private final boolean isUnlocked;
 
     public CustomAchievementData(String achievementName, String description, int points, boolean isUnlocked) {
-        this.achievementName = achievementName;
-        this.description = description;
+        this.achievementName = Objects.requireNonNull(achievementName, "Achievement name cannot be null");
+        this.description = Objects.requireNonNull(description, "Description cannot be null");
         this.points = points;
         this.isUnlocked = isUnlocked;
     }
@@ -709,7 +657,8 @@ class CustomAchievementData {
 
     @Override
     public String toString() {
-        return String.format("CustomAchievementData{achievementName='%s', description='%s', points=%d, isUnlocked=%b}", achievementName, description, points, isUnlocked);
+        return String.format("CustomAchievementData{achievementName='%s', description='%s', points=%d, isUnlocked=%b}",
+                achievementName, description, points, isUnlocked);
     }
 
     @Override
@@ -717,7 +666,10 @@ class CustomAchievementData {
         if (this == o) return true;
         if (!(o instanceof CustomAchievementData)) return false;
         CustomAchievementData that = (CustomAchievementData) o;
-        return points == that.points && isUnlocked == that.isUnlocked && Objects.equals(achievementName, that.achievementName) && Objects.equals(description, that.description);
+        return points == that.points &&
+                isUnlocked == that.isUnlocked &&
+                Objects.equals(achievementName, that.achievementName) &&
+                Objects.equals(description, that.description);
     }
 
     @Override
@@ -733,9 +685,9 @@ class CustomRecipeData {
     private final int resultQuantity;
 
     public CustomRecipeData(String recipeName, List<String> ingredients, String resultItem, int resultQuantity) {
-        this.recipeName = recipeName;
-        this.ingredients = new ArrayList<>(ingredients);
-        this.resultItem = resultItem;
+        this.recipeName = Objects.requireNonNull(recipeName, "Recipe name cannot be null");
+        this.ingredients = new ArrayList<>(Objects.requireNonNull(ingredients, "Ingredients cannot be null"));
+        this.resultItem = Objects.requireNonNull(resultItem, "Result item cannot be null");
         this.resultQuantity = resultQuantity;
     }
 
@@ -757,7 +709,8 @@ class CustomRecipeData {
 
     @Override
     public String toString() {
-        return String.format("CustomRecipeData{recipeName='%s', ingredients=%s, resultItem='%s', resultQuantity=%d}", recipeName, ingredients, resultItem, resultQuantity);
+        return String.format("CustomRecipeData{recipeName='%s', ingredients=%s, resultItem='%s', resultQuantity=%d}",
+                recipeName, ingredients, resultItem, resultQuantity);
     }
 
     @Override
@@ -765,7 +718,10 @@ class CustomRecipeData {
         if (this == o) return true;
         if (!(o instanceof CustomRecipeData)) return false;
         CustomRecipeData that = (CustomRecipeData) o;
-        return resultQuantity == that.resultQuantity && Objects.equals(recipeName, that.recipeName) && Objects.equals(ingredients, that.ingredients) && Objects.equals(resultItem, that.resultItem);
+        return resultQuantity == that.resultQuantity &&
+                Objects.equals(recipeName, that.recipeName) &&
+                Objects.equals(ingredients, that.ingredients) &&
+                Objects.equals(resultItem, that.resultItem);
     }
 
     @Override
@@ -780,8 +736,8 @@ class CustomDimensionData {
     private final int difficultyLevel;
 
     public CustomDimensionData(String dimensionName, String environmentType, int difficultyLevel) {
-        this.dimensionName = dimensionName;
-        this.environmentType = environmentType;
+        this.dimensionName = Objects.requireNonNull(dimensionName, "Dimension name cannot be null");
+        this.environmentType = Objects.requireNonNull(environmentType, "Environment type cannot be null");
         this.difficultyLevel = difficultyLevel;
     }
 
@@ -799,7 +755,8 @@ class CustomDimensionData {
 
     @Override
     public String toString() {
-        return String.format("CustomDimensionData{dimensionName='%s', environmentType='%s', difficultyLevel=%d}", dimensionName, environmentType, difficultyLevel);
+        return String.format("CustomDimensionData{dimensionName='%s', environmentType='%s', difficultyLevel=%d}",
+                dimensionName, environmentType, difficultyLevel);
     }
 
     @Override
@@ -807,7 +764,9 @@ class CustomDimensionData {
         if (this == o) return true;
         if (!(o instanceof CustomDimensionData)) return false;
         CustomDimensionData that = (CustomDimensionData) o;
-        return difficultyLevel == that.difficultyLevel && Objects.equals(dimensionName, that.dimensionName) && Objects.equals(environmentType, that.environmentType);
+        return difficultyLevel == that.difficultyLevel &&
+                Objects.equals(dimensionName, that.dimensionName) &&
+                Objects.equals(environmentType, that.environmentType);
     }
 
     @Override
@@ -823,9 +782,9 @@ class CustomNPCData {
     private final double health;
 
     public CustomNPCData(String npcName, String role, String dialogue, double health) {
-        this.npcName = npcName;
-        this.role = role;
-        this.dialogue = dialogue;
+        this.npcName = Objects.requireNonNull(npcName, "NPC name cannot be null");
+        this.role = Objects.requireNonNull(role, "Role cannot be null");
+        this.dialogue = Objects.requireNonNull(dialogue, "Dialogue cannot be null");
         this.health = health;
     }
 
@@ -847,7 +806,8 @@ class CustomNPCData {
 
     @Override
     public String toString() {
-        return String.format("CustomNPCData{npcName='%s', role='%s', dialogue='%s', health=%.2f}", npcName, role, dialogue, health);
+        return String.format("CustomNPCData{npcName='%s', role='%s', dialogue='%s', health=%.2f}",
+                npcName, role, dialogue, health);
     }
 
     @Override
@@ -855,7 +815,10 @@ class CustomNPCData {
         if (this == o) return true;
         if (!(o instanceof CustomNPCData)) return false;
         CustomNPCData that = (CustomNPCData) o;
-        return Double.compare(that.health, health) == 0 && Objects.equals(npcName, that.npcName) && Objects.equals(role, that.role) && Objects.equals(dialogue, that.dialogue);
+        return Double.compare(that.health, health) == 0 &&
+                Objects.equals(npcName, that.npcName) &&
+                Objects.equals(role, that.role) &&
+                Objects.equals(dialogue, that.dialogue);
     }
 
     @Override
