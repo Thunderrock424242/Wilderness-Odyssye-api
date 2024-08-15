@@ -145,4 +145,4 @@ public class CustomItem extends Item {
         CustomNPCData npcData = new CustomNPCData(npcName, role, dialogue, health);
         addData((GenericCacheManager<String, CustomNPCData>) getCache("npc"), npcId, npcData);
     }
-}
+} // mark this whole file for removel as it does not make a diffrence will be replaced
