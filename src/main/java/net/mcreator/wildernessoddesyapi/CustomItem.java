@@ -25,8 +25,6 @@ public class CustomItem extends Item {
         caches.put("weather", new GenericCacheManager<String, CustomWeatherData>());
         caches.put("entity", new GenericCacheManager<String, CustomEntityData>());
         caches.put("event", new GenericCacheManager<String, CustomEventData>());
-        caches.put("quest", new GenericCacheManager<String, CustomQuestData>());
-        caches.put("skill", new GenericCacheManager<String, CustomSkillData>());
         caches.put("structure", new GenericCacheManager<String, CustomStructureData>());
         caches.put("achievement", new GenericCacheManager<String, CustomAchievementData>());
         caches.put("recipe", new GenericCacheManager<String, CustomRecipeData>());
@@ -121,16 +119,6 @@ public class CustomItem extends Item {
     public static void addEventData(String eventId, String eventType, String eventDescription, long timestamp) {
         CustomEventData eventData = new CustomEventData(eventType, eventDescription, timestamp);
         addData((GenericCacheManager<String, CustomEventData>) getCache("event"), eventId, eventData);
-    }
-
-    public static void addQuestData(String questId, String questName, String questDescription, List<String> objectives, List<String> rewards) {
-        CustomQuestData questData = new CustomQuestData(questName, questDescription, objectives, rewards);
-        addData((GenericCacheManager<String, CustomQuestData>) getCache("quest"), questId, questData);
-    }
-
-    public static void addSkillData(String skillId, String skillName, int skillLevel, String skillEffect) {
-        CustomSkillData skillData = new CustomSkillData(skillName, skillLevel, skillEffect);
-        addData((GenericCacheManager<String, CustomSkillData>) getCache("skill"), skillId, skillData);
     }
 
     public static void addStructureData(String structureId, String structureName, String dimension, int size, boolean isGenerated) {
