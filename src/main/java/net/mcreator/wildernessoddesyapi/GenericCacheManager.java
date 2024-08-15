@@ -825,4 +825,4 @@ class CustomNPCData {
     public int hashCode() {
         return Objects.hash(npcName, role, dialogue, health);
     }
-}// mark npc cache and config and also block cache for removal as these are not needed
+}// mark this whole file for removel as it does not make a diffrence will be replaced
