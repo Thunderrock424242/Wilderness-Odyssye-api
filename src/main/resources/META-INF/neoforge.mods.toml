@@ -4,7 +4,7 @@ license="All Rights Reserved"
 
 [[mods]]
 modId="wilderness_oddesy_api"
-version="0.9.2"
+version="0.9.5"
 displayName="Wilderness Oddesy API"
 displayURL="https://mcreator.net"
 credits="Created using mod maker MCreator but i codded all the parts to the mod"
@@ -29,12 +29,6 @@ description="this is a mod made for the modpack wilderness odessy. it has opomiz
     side="BOTH"
 
 
-[[dependencies.wilderness_oddesy_api]]
-    modId="geckolib"
-    type="optional"
-    versionRange="[0,)"
-    ordering="NONE"
-    side="BOTH"
 
 
 [[mixins]]

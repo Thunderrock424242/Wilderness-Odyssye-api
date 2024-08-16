@@ -272,7 +272,7 @@
   "workspaceSettings": {
     "modid": "wilderness_oddesy_api",
     "modName": "Wilderness Oddesy API",
-    "version": "0.9.2",
+    "version": "0.9.5",
     "description": "this is a mod made for the modpack wilderness odessy. it has opomizations and mixins to make your experince better.",
     "author": "thunderrock424242",
     "websiteURL": "https://mcreator.net",
@@ -281,9 +281,7 @@
     "requiredMods": [],
     "dependencies": [],
     "dependants": [],
-    "mcreatorDependencies": [
-      "geckolib"
-    ],
+    "mcreatorDependencies": [],
     "currentGenerator": "neoforge-1.20.6",
     "credits": "Created using mod maker MCreator but i codded all the parts to the mod",
     "modElementsPackage": "net.mcreator.wildernessoddesyapi"
