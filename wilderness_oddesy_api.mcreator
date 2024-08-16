@@ -165,6 +165,45 @@
         ]
       },
       "path": "~/Commands"
+    },
+    {
+      "name": "AssetCacheManager",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "asset_cache_manager",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/wildernessoddesyapi/AssetCacheManager.java"
+        ]
+      },
+      "path": "~/Cache System"
+    },
+    {
+      "name": "CustomAssetLoader",
+      "type": "code",
+      "compiles": false,
+      "locked_code": true,
+      "registry_name": "custom_asset_loader",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/wildernessoddesyapi/CustomAssetLoader.java"
+        ]
+      },
+      "path": "~/Cache System"
+    },
+    {
+      "name": "LifecycleEvents",
+      "type": "code",
+      "compiles": false,
+      "locked_code": true,
+      "registry_name": "lifecycle_events",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/wildernessoddesyapi/LifecycleEvents.java"
+        ]
+      },
+      "path": "~/Cache System"
     }
   ],
   "variable_elements": [
@@ -226,6 +265,10 @@
       },
       {
         "name": "tools and hacks ",
+        "children": []
+      },
+      {
+        "name": "Cache System",
         "children": []
       }
     ]
