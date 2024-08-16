@@ -46,7 +46,7 @@ public class WildernessOddessyApi {
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event) {
         // Load cache when the server starts
-        CacheSystem.loadCache();
+        
 
         ClearItemsCommand.register(event.getServer().getCommands().getDispatcher());
         AdminCommand.register(event.getServer().getCommands().getDispatcher());
@@ -56,7 +56,7 @@ public class WildernessOddessyApi {
     @SubscribeEvent
     public void onServerStopping(ServerStoppingEvent event) {
         // Save cache when the server stops
-        CacheSystem.saveCache();
+        
         LOGGER.info("Server stopping, cache saved");
     }
 }

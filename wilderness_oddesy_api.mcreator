@@ -1,32 +1,6 @@
 {
   "mod_elements": [
     {
-      "name": "GenericCacheManager",
-      "type": "code",
-      "compiles": true,
-      "locked_code": true,
-      "registry_name": "generic_cache_manager",
-      "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/wildernessoddesyapi/GenericCacheManager.java"
-        ]
-      },
-      "path": "~/Optimizations"
-    },
-    {
-      "name": "CustomItem",
-      "type": "code",
-      "compiles": true,
-      "locked_code": true,
-      "registry_name": "custom_item",
-      "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/wildernessoddesyapi/CustomItem.java"
-        ]
-      },
-      "path": "~/Optimizations"
-    },
-    {
       "name": "WildernessOddessyApi",
       "type": "code",
       "compiles": true,
@@ -191,19 +165,6 @@
         ]
       },
       "path": "~/Commands"
-    },
-    {
-      "name": "CacheSystem",
-      "type": "code",
-      "compiles": true,
-      "locked_code": true,
-      "registry_name": "cache_system",
-      "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/wildernessoddesyapi/CacheSystem.java"
-        ]
-      },
-      "path": "~/Optimizations"
     }
   ],
   "variable_elements": [
