@@ -66,7 +66,6 @@ public class AssetCacheManager {
         try {
             MessageDigest digest = MessageDigest.getInstance("SHA-256");
             // Hash the files for mods, resource packs, and configs
-            // This is a simple example, you might need to adjust it based on your specific needs
             digest.update(Files.readAllBytes(Paths.get("mods")));
             digest.update(Files.readAllBytes(Paths.get("resourcepacks")));
             digest.update(Files.readAllBytes(Paths.get("config")));
