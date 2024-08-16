@@ -1,3 +1,4 @@
+// ModInitializer.java
 package net.mcreator.wildernessoddesyapi;
 
 import net.minecraft.client.Minecraft;
@@ -6,13 +7,12 @@ import net.minecraft.server.packs.repository.PackRepository;
 import net.minecraft.server.packs.repository.RepositorySource;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.server.packs.resources.ResourceProvider;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.RegisterClientReloadListenersEvent;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.server.ServerStartingEvent;
-import net.minecraftforge.event.server.ServerStoppingEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.client.event.RegisterClientReloadListenersEvent;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.event.server.FMLServerStartingEvent;
+import net.neoforged.fml.event.server.FMLServerStoppingEvent;
 
 @Mod.EventBusSubscriber(modid = MyMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ModInitializer {
@@ -20,13 +20,13 @@ public class ModInitializer {
     private static AssetCacheManager cacheManager;
 
     @SubscribeEvent
-    public static void onServerStarting(ServerStartingEvent event) {
+    public static void onServerStarting(FMLServerStartingEvent event) {
         cacheManager = new AssetCacheManager();
-        MinecraftForge.EVENT_BUS.register(new ResourceManagerListener(cacheManager));
+        NeoForge.EVENT_BUS.register(new ResourceManagerListener(cacheManager));
     }
 
     @SubscribeEvent
-    public static void onServerStopping(ServerStoppingEvent event) {
+    public static void onServerStopping(FMLServerStoppingEvent event) {
         cacheManager.shutdown();
     }
 }

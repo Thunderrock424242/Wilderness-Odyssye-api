@@ -1,3 +1,4 @@
+// AssetCacheManager.java
 package net.mcreator.wildernessoddesyapi;
 
 import java.io.*;
@@ -51,7 +52,6 @@ public class AssetCacheManager {
     private String calculateCurrentHash() {
         try {
             MessageDigest digest = MessageDigest.getInstance("SHA-256");
-            // Hash the files for mods, resource packs, and configs
             digest.update(Files.readAllBytes(Paths.get("mods")));
             digest.update(Files.readAllBytes(Paths.get("resourcepacks")));
             digest.update(Files.readAllBytes(Paths.get("config")));

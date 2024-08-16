@@ -1,9 +1,10 @@
+// LifecycleEvents.java
 package net.mcreator.wildernessoddesyapi;
 
-import net.minecraftforge.event.server.ServerStartingEvent;
-import net.minecraftforge.event.server.ServerStoppingEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.event.server.FMLServerStartingEvent;
+import net.neoforged.fml.event.server.FMLServerStoppingEvent;
 
 @Mod.EventBusSubscriber(modid = MyMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class LifecycleEvents {
@@ -11,12 +12,12 @@ public class LifecycleEvents {
     private static AssetCacheManager cacheManager;
 
     @SubscribeEvent
-    public static void onServerStarting(ServerStartingEvent event) {
+    public static void onServerStarting(FMLServerStartingEvent event) {
         cacheManager = new AssetCacheManager();
     }
 
     @SubscribeEvent
-    public static void onServerStopping(ServerStoppingEvent event) {
+    public static void onServerStopping(FMLServerStoppingEvent event) {
         cacheManager.shutdown();
     }
 }
