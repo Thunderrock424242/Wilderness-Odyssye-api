@@ -1,4 +1,3 @@
-// LifecycleEvents.java
 package net.mcreator.wildernessoddesyapi;
 
 import net.neoforged.bus.api.SubscribeEvent;
@@ -6,7 +5,7 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import net.neoforged.neoforge.event.server.ServerStoppingEvent;
 
-@Mod.EventBusSubscriber(modid = MyMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(bus = Bus.MOD, modid = "wilderness_oddesy_api")
 public class LifecycleEvents {
 
     private static AssetCacheManager cacheManager;

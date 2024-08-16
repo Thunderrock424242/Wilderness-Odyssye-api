@@ -1,9 +1,11 @@
-// CustomAssetLoader.java
 package net.mcreator.wildernessoddesyapi;
 
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.Resource;
 import net.minecraft.server.packs.resources.ResourceManager;
+import net.minecraft.server.packs.resources.SimpleResource;
+import net.minecraft.server.packs.repository.Pack;
+import net.minecraft.server.packs.repository.RepositorySource;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -24,30 +26,13 @@ public class CustomAssetLoader {
         byte[] cachedData = cacheManager.getAsset(key);
 
         if (cachedData != null) {
-            return new ByteArrayResource(cachedData);
+            return new SimpleResource(new Pack(key, false, () -> cachedData, new RepositorySource() {
+            }, null, null), () -> new ByteArrayInputStream(cachedData));
         } else {
             Resource resource = resourceManager.getResource(location).orElseThrow(IOException::new);
             byte[] data = resource.open().readAllBytes();
             cacheManager.cacheAsset(key, data);
             return resource;
-        }
-    }
-
-    private static class ByteArrayResource implements Resource {
-        private final byte[] data;
-
-        public ByteArrayResource(byte[] data) {
-            this.data = data;
-        }
-
-        @Override
-        public InputStream open() {
-            return new ByteArrayInputStream(data);
-        }
-
-        @Override
-        public String getSourceName() {
-            return "ByteArrayResource";
         }
     }
 }
