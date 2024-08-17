@@ -234,7 +234,7 @@
     {
       "name": "StructureTPCommand",
       "type": "code",
-      "compiles": false,
+      "compiles": true,
       "locked_code": true,
       "registry_name": "structure_tp_command",
       "metadata": {

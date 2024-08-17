@@ -17,10 +17,6 @@ import net.minecraft.world.level.levelgen.structure.Structure;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.world.level.levelgen.structure.StructureManager;
-import net.minecraft.world.level.levelgen.structure.StructureCheck;
-import net.minecraft.world.level.levelgen.structure.BuiltinStructures;
-import net.minecraft.world.level.levelgen.structure.Structure;
 import net.minecraft.world.phys.Vec3;
 
 import java.util.Optional;
@@ -57,14 +53,15 @@ public class StructureTPCommand {
 
         ServerLevel level = context.getSource().getLevel();
         BlockPos playerPos = player.blockPosition();
-        BlockPos structurePos = level.findNearestStructure(structure, playerPos, 1000, false);
 
-        if (structurePos == null) {
+        Optional<BlockPos> structurePos = level.findNearestMapFeature(structure, playerPos, 1000, false);
+
+        if (!structurePos.isPresent()) {
             context.getSource().sendFailure(Component.literal("Structure not found within 1000 blocks."));
             return Command.SINGLE_SUCCESS;
         }
 
-        teleportPlayer(player, structurePos);
+        teleportPlayer(player, structurePos.get());
         context.getSource().sendSuccess(() -> Component.literal("Teleported to " + structureName + "."), false);
         return Command.SINGLE_SUCCESS;
     }
