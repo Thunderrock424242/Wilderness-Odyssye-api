@@ -3,7 +3,7 @@
     {
       "name": "WildernessOddessyApi",
       "type": "code",
-      "compiles": true,
+      "compiles": false,
       "locked_code": true,
       "registry_name": "wilderness_oddessy_api",
       "metadata": {
@@ -182,7 +182,7 @@
     {
       "name": "CustomAssetLoader",
       "type": "code",
-      "compiles": false,
+      "compiles": true,
       "locked_code": true,
       "registry_name": "custom_asset_loader",
       "metadata": {
@@ -195,7 +195,7 @@
     {
       "name": "LifecycleEvents",
       "type": "code",
-      "compiles": false,
+      "compiles": true,
       "locked_code": true,
       "registry_name": "lifecycle_events",
       "metadata": {
@@ -208,7 +208,7 @@
     {
       "name": "CustomResourcePack",
       "type": "code",
-      "compiles": false,
+      "compiles": true,
       "locked_code": true,
       "registry_name": "custom_resource_pack",
       "metadata": {
@@ -221,7 +221,7 @@
     {
       "name": "ModInitializer",
       "type": "code",
-      "compiles": false,
+      "compiles": true,
       "locked_code": true,
       "registry_name": "mod_initializer",
       "metadata": {
@@ -230,6 +230,18 @@
         ]
       },
       "path": "~/Cache System"
+    },
+    {
+      "name": "StructureTPCommand",
+      "type": "code",
+      "compiles": false,
+      "locked_code": true,
+      "registry_name": "structure_tp_command",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/wildernessoddesyapi/StructureTPCommand.java"
+        ]
+      }
     }
   ],
   "variable_elements": [

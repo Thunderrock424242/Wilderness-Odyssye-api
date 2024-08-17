@@ -1,4 +1,4 @@
-package net.mcreator.wildernessoddesyapi;
+/*package net.mcreator.wildernessoddesyapi;
 
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.Resource;
@@ -36,3 +36,4 @@ public class CustomAssetLoader {
         }
     }
 }
+*/

@@ -1,5 +1,5 @@
 // AssetCacheManager.java
-package net.mcreator.wildernessoddesyapi;
+/*package net.mcreator.wildernessoddesyapi;
 
 import java.io.*;
 import java.nio.file.Files;
@@ -140,3 +140,4 @@ public class AssetCacheManager {
         saveCache();
     }
 }
+*/

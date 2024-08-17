@@ -14,6 +14,7 @@ import org.apache.logging.log4j.Logger;
 
 import net.mcreator.wildernessoddesyapi.command.ClearItemsCommand;
 import net.mcreator.wildernessoddesyapi.command.AdminCommand;
+import net.mcreator.wildernessoddesyapi.command.StructureTPCommand;
 
 @Mod(WildernessOddessyApi.MOD_ID)
 public class WildernessOddessyApi {
@@ -50,13 +51,7 @@ public class WildernessOddessyApi {
 
         ClearItemsCommand.register(event.getServer().getCommands().getDispatcher());
         AdminCommand.register(event.getServer().getCommands().getDispatcher());
-        LOGGER.info("Server starting setup complete, cache loaded");
-    }
-
-    @SubscribeEvent
-    public void onServerStopping(ServerStoppingEvent event) {
-        // Save cache when the server stops
-        
-        LOGGER.info("Server stopping, cache saved");
+        StructureTPCommand.register(event.getServer().getCommands().getDispatcher());
+        LOGGER.info("Server starting setup complete,");
     }
 }

@@ -1,4 +1,4 @@
-package net.mcreator.wildernessoddesyapi;
+/*package net.mcreator.wildernessoddesyapi;
 
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.Mod;
@@ -20,3 +20,4 @@ public class LifecycleEvents {
         cacheManager.shutdown();
     }
 }
+*/
