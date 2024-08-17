@@ -3,7 +3,7 @@
     {
       "name": "WildernessOddessyApi",
       "type": "code",
-      "compiles": false,
+      "compiles": true,
       "locked_code": true,
       "registry_name": "wilderness_oddessy_api",
       "metadata": {
