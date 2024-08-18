@@ -17,6 +17,9 @@ import net.minecraft.world.level.levelgen.structure.Structure;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.world.level.levelgen.structure.StructureType;
+import net.minecraft.world.level.levelgen.structure.StructureCheck;
+import net.minecraft.world.level.levelgen.structure.StructureManager;
 import net.minecraft.world.phys.Vec3;
 
 import java.util.Optional;
@@ -44,9 +47,9 @@ public class StructureTPCommand {
         String structureName = StringArgumentType.getString(context, "structure");
 
         ResourceLocation structureKey = new ResourceLocation(structureName);
-        Structure structure = context.getSource().getLevel().registryAccess().registryOrThrow(Registries.STRUCTURE).get(structureKey);
+        StructureType<?> structureType = context.getSource().getLevel().registryAccess().registryOrThrow(Registries.STRUCTURE_TYPE).get(structureKey);
 
-        if (structure == null) {
+        if (structureType == null) {
             context.getSource().sendFailure(Component.literal("Structure not found."));
             return Command.SINGLE_SUCCESS;
         }
@@ -54,7 +57,8 @@ public class StructureTPCommand {
         ServerLevel level = context.getSource().getLevel();
         BlockPos playerPos = player.blockPosition();
 
-        Optional<BlockPos> structurePos = level.findNearestMapFeature(structure, playerPos, 1000, false);
+        // Use findNearestStructure to find the nearest structure of this type
+        Optional<BlockPos> structurePos = level.findNearestStructure(structureType, playerPos, 1000, false);
 
         if (!structurePos.isPresent()) {
             context.getSource().sendFailure(Component.literal("Structure not found within 1000 blocks."));
@@ -67,7 +71,7 @@ public class StructureTPCommand {
     }
 
     private static CompletableFuture<Suggestions> suggestStructures(CommandContext<CommandSourceStack> context, SuggestionsBuilder builder) {
-        context.getSource().getLevel().registryAccess().registryOrThrow(Registries.STRUCTURE).keySet().forEach(key -> builder.suggest(key.toString()));
+        context.getSource().getLevel().registryAccess().registryOrThrow(Registries.STRUCTURE_TYPE).keySet().forEach(key -> builder.suggest(key.toString()));
         return builder.buildFuture();
     }
 
