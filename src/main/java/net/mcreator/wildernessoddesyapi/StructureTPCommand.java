@@ -40,7 +40,7 @@ public class StructureTPCommand {
                 })
             )
         );
-    }
+    } 
 
     private static int execute(CommandContext<CommandSourceStack> context) {
         ServerPlayer player = context.getSource().getPlayerOrException();
