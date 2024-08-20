@@ -1,4 +1,4 @@
-package net.mcreator.wildernessoddesyapi.command;
+/*package net.mcreator.wildernessoddesyapi.command;
 
 import com.mojang.brigadier.Command;
 import com.mojang.brigadier.CommandDispatcher;
@@ -79,4 +79,4 @@ public class StructureTPCommand {
         Vec3 destination = Vec3.atBottomCenterOf(pos);
         entity.teleportTo(destination.x, destination.y, destination.z);
     }
-}
+}*/

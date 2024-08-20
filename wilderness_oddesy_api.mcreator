@@ -234,12 +234,24 @@
     {
       "name": "StructureTPCommand",
       "type": "code",
-      "compiles": false,
+      "compiles": true,
       "locked_code": true,
       "registry_name": "structure_tp_command",
       "metadata": {
         "files": [
           "src/main/java/net/mcreator/wildernessoddesyapi/StructureTPCommand.java"
+        ]
+      }
+    },
+    {
+      "name": "WelcomeToWildernessOddessy",
+      "type": "toast",
+      "compiles": false,
+      "locked_code": false,
+      "registry_name": "welcome_to_wilderness_oddessy",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/wildernessoddesyapi/client/toasts/WelcomeToWildernessOddessyToast.java"
         ]
       }
     }
@@ -258,15 +270,40 @@
       "value": "false"
     }
   ],
-  "sound_elements": [],
+  "sound_elements": [
+    {
+      "name": "playing_with_light",
+      "files": [
+        "roie_shpigler_-_playing_with_light"
+      ],
+      "category": "ambient",
+      "subtitle": "playing with light"
+    },
+    {
+      "name": "bubbles_drop",
+      "files": [
+        "cosmonkey_-_bubbles_drop"
+      ],
+      "category": "ambient",
+      "subtitle": "bubbles_drop"
+    }
+  ],
   "tag_elements": {},
   "tab_element_order": {},
   "language_map": {
     "en_us": {
-      "key.wilderness_oddesy_api.crawl_key": "Crawl Key"
+      "subtitles.playing_with_light": "playing with light",
+      "subtitles.bubbles_drop": "bubbles_drop",
+      "toasts.wilderness_oddesy_api.welcome_to_wilderness_oddessy.title": "e",
+      "key.wilderness_oddesy_api.crawl_key": "Crawl Key",
+      "toasts.wilderness_oddesy_api.welcome_to_wilderness_oddessy.description": "e"
     },
     "el_cy": {
-      "key.wilderness_oddesy_api.crawl_key": "κλειδί ανίχνευσης"
+      "subtitles.playing_with_light": "playing with light",
+      "subtitles.bubbles_drop": "bubbles_drop",
+      "toasts.wilderness_oddesy_api.welcome_to_wilderness_oddessy.title": "e",
+      "key.wilderness_oddesy_api.crawl_key": "κλειδί ανίχνευσης",
+      "toasts.wilderness_oddesy_api.welcome_to_wilderness_oddessy.description": "e"
     }
   },
   "foldersRoot": {
@@ -307,6 +344,10 @@
       },
       {
         "name": "Cache System",
+        "children": []
+      },
+      {
+        "name": "Toasts",
         "children": []
       }
     ]

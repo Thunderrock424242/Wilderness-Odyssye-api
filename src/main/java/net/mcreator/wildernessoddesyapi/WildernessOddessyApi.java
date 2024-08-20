@@ -14,7 +14,7 @@ import org.apache.logging.log4j.Logger;
 
 import net.mcreator.wildernessoddesyapi.command.ClearItemsCommand;
 import net.mcreator.wildernessoddesyapi.command.AdminCommand;
-import net.mcreator.wildernessoddesyapi.command.StructureTPCommand;
+/*import net.mcreator.wildernessoddesyapi.command.StructureTPCommand;*/
 
 @Mod(WildernessOddessyApi.MOD_ID)
 public class WildernessOddessyApi {
@@ -51,7 +51,7 @@ public class WildernessOddessyApi {
 
         ClearItemsCommand.register(event.getServer().getCommands().getDispatcher());
         AdminCommand.register(event.getServer().getCommands().getDispatcher());
-        StructureTPCommand.register(event.getServer().getCommands().getDispatcher());
+        /*StructureTPCommand.register(event.getServer().getCommands().getDispatcher());*/
         LOGGER.info("Server starting setup complete,");
     }
 }
