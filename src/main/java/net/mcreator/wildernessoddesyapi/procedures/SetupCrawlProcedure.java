@@ -1,7 +1,5 @@
 package net.mcreator.wildernessoddesyapi.procedures;
 
-import net.minecraft.world.entity.Entity;
-
 import net.mcreator.wildernessoddesyapi.network.WildernessOddesyApiModVariables;
 
 public class SetupCrawlProcedure {

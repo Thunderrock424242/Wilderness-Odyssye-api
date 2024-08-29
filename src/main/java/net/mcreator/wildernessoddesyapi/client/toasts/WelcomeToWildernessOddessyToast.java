@@ -1,14 +1,5 @@
 package net.mcreator.wildernessoddesyapi.client.toasts;
 
-import net.minecraft.world.level.entity.Visibility;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.network.chat.Component;
-import net.minecraft.client.gui.components.toasts.ToastComponent;
-import net.minecraft.client.gui.components.toasts.Toast;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.systems.RenderSystem;
-
 public class WelcomeToWildernessOddessyToast implements Toast {
 	@Override
 	public Visibility render(PoseStack poseStack, ToastComponent component, long lastChanged) {

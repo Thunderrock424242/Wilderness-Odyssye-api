@@ -1,22 +1,9 @@
 package net.mcreator.wildernessoddesyapi.procedures;
 
-import net.neoforged.neoforge.event.entity.player.PlayerEvent;
-import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.bus.api.Event;
-
-import net.minecraft.world.phys.Vec3;
-import net.minecraft.world.phys.Vec2;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.network.chat.Component;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.CommandSource;
 
 import net.mcreator.wildernessoddesyapi.network.WildernessOddesyApiModVariables;
 import net.mcreator.wildernessoddesyapi.WildernessOddesyApiMod;
-
-import javax.annotation.Nullable;
 
 @EventBusSubscriber
 public class ClearItemsProcedure {
