@@ -1,7 +1,5 @@
 {
   "subtitles.playing_with_light": "playing with light",
   "subtitles.bubbles_drop": "bubbles_drop",
-  "toasts.wilderness_oddesy_api.welcome_to_wilderness_oddessy.title": "Wilderness Odyssey",
-  "key.wilderness_oddesy_api.crawl_key": "Crawl Key",
-  "toasts.wilderness_oddesy_api.welcome_to_wilderness_oddessy.description": "welcome to Wilderness Odyssey"
+  "key.wilderness_oddesy_api.crawl_key": "Crawl Key"
 }

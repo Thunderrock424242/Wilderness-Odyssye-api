@@ -244,32 +244,6 @@
       }
     },
     {
-      "name": "WelcomeToWildernessOddessy",
-      "type": "toast",
-      "compiles": false,
-      "locked_code": false,
-      "registry_name": "welcome_to_wilderness_oddessy",
-      "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/wildernessoddesyapi/client/toasts/WelcomeToWildernessOddessyToast.java"
-        ]
-      },
-      "path": "~/Toasts"
-    },
-    {
-      "name": "ToastsWelcome",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "toasts_welcome",
-      "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/wildernessoddesyapi/procedures/ToastsWelcomeProcedure.java"
-        ],
-        "dependencies": []
-      }
-    },
-    {
       "name": "ChunkEventHandler",
       "type": "code",
       "compiles": true,
@@ -334,16 +308,12 @@
     "en_us": {
       "subtitles.playing_with_light": "playing with light",
       "subtitles.bubbles_drop": "bubbles_drop",
-      "toasts.wilderness_oddesy_api.welcome_to_wilderness_oddessy.title": "Wilderness Odyssey",
-      "key.wilderness_oddesy_api.crawl_key": "Crawl Key",
-      "toasts.wilderness_oddesy_api.welcome_to_wilderness_oddessy.description": "welcome to Wilderness Odyssey"
+      "key.wilderness_oddesy_api.crawl_key": "Crawl Key"
     },
     "el_cy": {
       "subtitles.playing_with_light": "playing with light",
       "subtitles.bubbles_drop": "bubbles_drop",
-      "toasts.wilderness_oddesy_api.welcome_to_wilderness_oddessy.title": "e",
-      "key.wilderness_oddesy_api.crawl_key": "κλειδί ανίχνευσης",
-      "toasts.wilderness_oddesy_api.welcome_to_wilderness_oddessy.description": "e"
+      "key.wilderness_oddesy_api.crawl_key": "κλειδί ανίχνευσης"
     }
   },
   "foldersRoot": {
