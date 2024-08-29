@@ -4,6 +4,13 @@
  */
 package net.mcreator.wildernessoddesyapi.init;
 
+import net.neoforged.neoforge.registries.DeferredRegister;
+import net.neoforged.neoforge.registries.DeferredHolder;
+
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.core.registries.Registries;
+
 import net.mcreator.wildernessoddesyapi.WildernessOddesyApiMod;
 
 public class WildernessOddesyApiModSounds {

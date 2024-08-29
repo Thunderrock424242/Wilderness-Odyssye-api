@@ -4,6 +4,18 @@
  */
 package net.mcreator.wildernessoddesyapi.init;
 
+import org.lwjgl.glfw.GLFW;
+
+import net.neoforged.neoforge.network.PacketDistributor;
+import net.neoforged.neoforge.client.event.RegisterKeyMappingsEvent;
+import net.neoforged.neoforge.client.event.ClientTickEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.api.distmarker.Dist;
+
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.KeyMapping;
+
 import net.mcreator.wildernessoddesyapi.network.CrawlKeyMessage;
 
 @EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD, value = {Dist.CLIENT})
