@@ -1,4 +1,4 @@
-/*package net.mcreator.wildernessoddesyapi.command;
+package net.mcreator.wildernessoddesyapi.command;
 
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.BoolArgumentType;
@@ -6,14 +6,14 @@ import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.mcreator.wildernessoddesyapi.WildernessOddessyApi;
 import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.event.server.FMLServerStartingEvent;
-import net.neoforged.fml.common.Mod.EventBusSubscriber;
+import net.neoforged.neoforge.event.server.ServerStartingEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
 
-@EventBusSubscriber(modid = WildernessOddessyApi.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = "yourmodid")
 public class ModCommands {
 
     @SubscribeEvent
-    public static void onServerStarting(FMLServerStartingEvent event) {
+    public static void onServerStarting(ServerStartingEvent event) {
         registerCommands(event.getServer().getCommands().getDispatcher());
     }
 
@@ -31,5 +31,3 @@ public class ModCommands {
         );
     }
 }
-*/
-///  put it like this since code is broken waiting for help.

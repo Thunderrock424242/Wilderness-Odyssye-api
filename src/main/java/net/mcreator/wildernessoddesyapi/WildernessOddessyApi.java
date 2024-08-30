@@ -20,7 +20,7 @@ import net.mcreator.wildernessoddesyapi.command.AdminCommand;
 public class WildernessOddessyApi {
     public static final String MOD_ID = "wilderness_oddesy_api";
     private static final Logger LOGGER = LogManager.getLogger();
-    public static boolean ENABLE_OUTLINE = false; // Default is false meant to be used in dev environment.
+    public static boolean ENABLE_OUTLINE = true; // Default is false meant to be used in dev environment.
 
     public WildernessOddessyApi() {
         // Register mod lifecycle events on the mod event bus
