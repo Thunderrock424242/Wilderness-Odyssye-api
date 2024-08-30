@@ -232,18 +232,6 @@
       "path": "~/Cache System"
     },
     {
-      "name": "StructureTPCommand",
-      "type": "code",
-      "compiles": true,
-      "locked_code": true,
-      "registry_name": "structure_tp_command",
-      "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/wildernessoddesyapi/StructureTPCommand.java"
-        ]
-      }
-    },
-    {
       "name": "ChunkEventHandler",
       "type": "code",
       "compiles": true,
