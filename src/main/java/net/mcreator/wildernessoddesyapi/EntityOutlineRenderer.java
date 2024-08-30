@@ -1,4 +1,4 @@
-/*package net.mcreator.wildernessoddesyapi;
+package net.mcreator.wildernessoddesyapi;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.entity.Entity;
@@ -7,23 +7,23 @@ import net.minecraft.world.phys.AABB;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRenderers;
-import net.neoforged.fml.common.Mod.EventBusSubscriber;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.client.event.RenderLevelLastEvent;
+import net.neoforged.neoforge.client.event.RenderLevelStageEvent;
 
-@EventBusSubscriber(modid = WildernessOddessyApi.MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+@EventBusSubscriber(modid = "yourmodid")
 public class EntityOutlineRenderer {
 
     private static final double CHUNK_RADIUS = 30 * 16; // 30 chunks radius
 
     @SubscribeEvent
     @OnlyIn(Dist.CLIENT)
-    public static void onRenderWorldLast(RenderLevelLastEvent event) {
+    public static void onRenderWorldLast(RenderLevelStageEvent event) {
         if (WildernessOddessyApi.ENABLE_OUTLINE) { // Check the flag
             Minecraft mc = Minecraft.getInstance();
             Player player = mc.player;
@@ -49,5 +49,3 @@ public class EntityOutlineRenderer {
         }
     }
 }
-*/
-// put it like this since code is broken waiting for help.
