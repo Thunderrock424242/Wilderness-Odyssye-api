@@ -167,71 +167,6 @@
       "path": "~/Commands"
     },
     {
-      "name": "AssetCacheManager",
-      "type": "code",
-      "compiles": true,
-      "locked_code": true,
-      "registry_name": "asset_cache_manager",
-      "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/wildernessoddesyapi/AssetCacheManager.java"
-        ]
-      },
-      "path": "~/Cache System"
-    },
-    {
-      "name": "CustomAssetLoader",
-      "type": "code",
-      "compiles": true,
-      "locked_code": true,
-      "registry_name": "custom_asset_loader",
-      "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/wildernessoddesyapi/CustomAssetLoader.java"
-        ]
-      },
-      "path": "~/Cache System"
-    },
-    {
-      "name": "LifecycleEvents",
-      "type": "code",
-      "compiles": true,
-      "locked_code": true,
-      "registry_name": "lifecycle_events",
-      "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/wildernessoddesyapi/LifecycleEvents.java"
-        ]
-      },
-      "path": "~/Cache System"
-    },
-    {
-      "name": "CustomResourcePack",
-      "type": "code",
-      "compiles": true,
-      "locked_code": true,
-      "registry_name": "custom_resource_pack",
-      "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/wildernessoddesyapi/CustomResourcePack.java"
-        ]
-      },
-      "path": "~/Cache System"
-    },
-    {
-      "name": "ModInitializer",
-      "type": "code",
-      "compiles": true,
-      "locked_code": true,
-      "registry_name": "mod_initializer",
-      "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/wildernessoddesyapi/ModInitializer.java"
-        ]
-      },
-      "path": "~/Cache System"
-    },
-    {
       "name": "ChunkEventHandler",
       "type": "code",
       "compiles": true,
@@ -341,10 +276,6 @@
         "children": []
       },
       {
-        "name": "Cache System",
-        "children": []
-      },
-      {
         "name": "Toasts",
         "children": []
       },
@@ -357,7 +288,7 @@
   "workspaceSettings": {
     "modid": "wilderness_oddesy_api",
     "modName": "Wilderness Oddesy API",
-    "version": "0.9.5",
+    "version": "0.9.8",
     "description": "this is a mod made for the modpack wilderness odessy. it has opomizations and mixins to make your experince better.",
     "author": "thunderrock424242",
     "websiteURL": "https://mcreator.net",
