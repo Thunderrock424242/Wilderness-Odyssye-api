@@ -13,7 +13,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.phys.AABB;
 import java.util.List;
-import java.util.function.Supplier;
+import java.util.function.Supplier; 
 
 public class ClearItemsCommand {
     public static void register(CommandDispatcher<CommandSourceStack> dispatcher) {
