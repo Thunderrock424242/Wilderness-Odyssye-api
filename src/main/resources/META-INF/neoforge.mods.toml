@@ -1,10 +1,10 @@
 modLoader="javafml"
-loaderVersion="[2,)"
+loaderVersion="[4,)"
 license="All Rights Reserved"
 
 [[mods]]
 modId="wilderness_oddesy_api"
-version="0.9.8"
+version="0.9.9"
 displayName="Wilderness Oddesy API"
 displayURL="https://mcreator.net"
 credits="Created using mod maker MCreator but i codded all the parts to the mod"
@@ -17,22 +17,19 @@ description="this is a mod made for the modpack wilderness odessy. it has opomiz
 [[dependencies.wilderness_oddesy_api]]
     modId="neoforge"
     type="required"
-    versionRange="[20.6.117,)"
+    versionRange="[21.1.65,)"
     ordering="AFTER"
     side="BOTH"
 
 [[dependencies.wilderness_oddesy_api]]
     modId="minecraft"
     type="required"
-    versionRange="[1.20.6]"
+    versionRange="[1.21.1]"
     ordering="AFTER"
     side="BOTH"
 
 
 
-
-[[mixins]]
-    config="mixins.wilderness_oddesy_api.json"
 
 # Start of user code block dependencies configuration
 # End of user code block dependencies configuration
