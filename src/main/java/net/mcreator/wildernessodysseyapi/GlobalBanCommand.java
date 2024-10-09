@@ -14,7 +14,7 @@
 */
 package net.mcreator.wildernessodysseyapi.command;
 
-import net.mcreator.wildernessoddesyapi.GlobalBanManager;
+import net.mcreator.wildernessodysseyapi.GlobalBanManager;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.StringArgumentType;
 import net.minecraft.commands.CommandSourceStack;

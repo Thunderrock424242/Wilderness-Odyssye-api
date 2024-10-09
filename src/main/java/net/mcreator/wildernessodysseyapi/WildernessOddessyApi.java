@@ -12,15 +12,15 @@ import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 /// don't forget to add command imports.
-import net.mcreator.wildernessoddesyapi.command.GlobalUnbanCommand;
-import net.mcreator.wildernessoddesyapi.command.GlobalBanCommand;
-import net.mcreator.wildernessoddesyapi.command.ClearItemsCommand;
-import net.mcreator.wildernessoddesyapi.command.AdminCommand;
+import net.mcreator.wildernessodysseyapi.command.GlobalUnbanCommand;
+import net.mcreator.wildernessodysseyapi.command.GlobalBanCommand;
+import net.mcreator.wildernessodysseyapi.command.ClearItemsCommand;
+import net.mcreator.wildernessodysseyapi.command.AdminCommand;
 
 
 import java.util.Set;
 
-@Mod(WildernessOddessyApi.MOD_ID)
+@Mod(wilderness_odyssey_api.MOD_ID)
 public class WildernessOddessyApi {
 
     public static final String MOD_ID = "wilderness_oddesy_api";
