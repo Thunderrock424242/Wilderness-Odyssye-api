@@ -13,10 +13,8 @@ import net.minecraft.world.scores.PlayerTeam;
 import net.minecraft.world.level.GameType;
 
 import java.io.*;
-import java.util.HashMap;
-import java.util.List;
-import java.util.ArrayList;
-import java.util.UUID;
+import java.util.*;
+
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 
 public class AdminCommand {
@@ -27,16 +25,16 @@ public class AdminCommand {
 
     public static void register(CommandDispatcher<CommandSourceStack> dispatcher) {
         loadWarnings();
-        
+
         LiteralArgumentBuilder<CommandSourceStack> adminBuilder = Commands.literal("admin")
-            .requires(source -> source.hasPermission(2)) // Requires op level 2
-            .then(Commands.literal("seeplayers")
-                .then(Commands.argument("enabled", BoolArgumentType.bool())
-                    .executes(context -> toggleAdminMode(context.getSource(), BoolArgumentType.getBool(context, "enabled")))))
-            .then(Commands.literal("warn")
-                .then(Commands.argument("player", StringArgumentType.string())
-                    .then(Commands.argument("message", StringArgumentType.string())
-                        .executes(context -> warnPlayer(context, StringArgumentType.getString(context, "player"), StringArgumentType.getString(context, "message"))))));
+                .requires(source -> source.hasPermission(2)) // Requires op level 2
+                .then(Commands.literal("seeplayers")
+                        .then(Commands.argument("enabled", BoolArgumentType.bool())
+                                .executes(context -> toggleAdminMode(context.getSource(), BoolArgumentType.getBool(context, "enabled")))))
+                .then(Commands.literal("warn")
+                        .then(Commands.argument("player", StringArgumentType.string())
+                                .then(Commands.argument("message", StringArgumentType.string())
+                                        .executes(context -> warnPlayer(context, StringArgumentType.getString(context, "player"), StringArgumentType.getString(context, "message"))))));
 
         dispatcher.register(adminBuilder);
     }
@@ -47,6 +45,7 @@ public class AdminCommand {
             try {
                 ServerPlayer player = source.getPlayerOrException();
                 player.setGameMode(GameType.SPECTATOR);
+                EntityOutlineRenderer.addPlayerWithGlowingEffect(player.getUUID()); // Add player to see glowing effect
                 showPlayers(source);
                 source.sendSuccess(() -> Component.literal("Admin mode enabled: All players are now visible, and you are in spectate mode."), false);
             } catch (CommandSyntaxException e) {
@@ -56,6 +55,7 @@ public class AdminCommand {
             try {
                 ServerPlayer player = source.getPlayerOrException();
                 player.setGameMode(GameType.SURVIVAL); // Reset the player to survival or their original game mode
+                EntityOutlineRenderer.removePlayerWithGlowingEffect(player.getUUID()); // Remove player from glowing effect
                 hidePlayers(source);
                 source.sendSuccess(() -> Component.literal("Admin mode disabled: Players visibility reset."), false);
             } catch (CommandSyntaxException e) {
@@ -105,7 +105,7 @@ public class AdminCommand {
         team.setNameTagVisibility(PlayerTeam.Visibility.ALWAYS);
         team.setSeeFriendlyInvisibles(true); // This is a workaround to make players outline visible
 
-        for (ServerPlayer otherPlayer : player.getServer().getPlayerList().getPlayers()) {
+        for (ServerPlayer otherPlayer : Objects.requireNonNull(player.getServer()).getPlayerList().getPlayers()) {
             player.getScoreboard().addPlayerToTeam(otherPlayer.getName().getString(), team);
         }
     }

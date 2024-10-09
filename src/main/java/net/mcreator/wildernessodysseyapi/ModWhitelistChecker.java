@@ -14,86 +14,66 @@
 */
 package net.mcreator.wildernessodysseyapi;
 
-import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.neoforge.event.entity.player.PlayerEvent;
-import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.ModList;
-import net.neoforged.fml.common.Mod;
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import net.minecraft.commands.CommandSourceStack;
+import net.minecraft.commands.Commands;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.phys.AABB;
+import java.util.List;
+import java.util.function.Supplier;
 
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.HashSet;
-import java.util.Set;
-
-@EventBusSubscriber(modid = "yourmodid")
-public class ModWhitelistChecker {
-
-    private static final Set<String> MOD_WHITELIST = Set.of("example_mod_1", "example_mod_2", "required_mod_3");
-    private static final Set<String> RESOURCE_PACK_BLACKLIST = Set.of("malicious_pack_1", "cheat_resource_pack");
-    private static final String LOCAL_LOG_FILE_PATH = "logs/anticheat-violations.log";
-
-    @SubscribeEvent
-    public static void onPlayerLogin(PlayerEvent.PlayerLoggedInEvent event) {
-        if (!WildernessOddessyApi.antiCheatEnabled) {
-            return; // Do nothing if anti-cheat is disabled
-        }
-
-        if (!(event.getPlayer() instanceof ServerPlayer player)) {
-            return;
-        }
-
-        Set<String> loadedMods = ModList.get().getMods().stream().map(mod -> mod.getModId()).collect(Collectors.toSet());
-        checkMods(player, loadedMods);
-        checkResourcePacks(player);
+public class ClearItemsCommand {
+    public static void register(CommandDispatcher<CommandSourceStack> dispatcher) {
+        dispatcher.register(
+            LiteralArgumentBuilder.<CommandSourceStack>literal("clearitems")
+                .requires(source -> source.hasPermission(2)) // Requires at least level 2 permission
+                .executes(context -> clearDroppedItems(context.getSource()))
+        );
     }
 
-    private static void checkMods(ServerPlayer player, Set<String> loadedMods) {
-        Set<String> missingMods = new HashSet<>(MOD_WHITELIST);
-        missingMods.removeAll(loadedMods);
+    private static int clearDroppedItems(CommandSourceStack source) {
+        ServerLevel world;
+        BlockPos centerPos;
+        boolean isServer = false;
 
-        Set<String> unauthorizedMods = new HashSet<>(loadedMods);
-        unauthorizedMods.removeAll(MOD_WHITELIST);
-
-        if (!missingMods.isEmpty()) {
-            player.sendSystemMessage(Component.literal("Missing required mods: " + String.join(", ", missingMods)));
-            player.connection.disconnect(Component.literal("Missing required mods: " + String.join(", ", missingMods)));
-            return;
+        try {
+            ServerPlayer player = source.getPlayerOrException();
+            world = player.serverLevel();
+            centerPos = player.blockPosition();
+        } catch (CommandSyntaxException e) {
+            // If not a player, use the server's overworld and coordinates 0, 0, 0
+            world = source.getServer().getLevel(ServerLevel.OVERWORLD);
+            centerPos = new BlockPos(0, world.getSharedSpawnPos().getY(), 0);
+            isServer = true;
         }
 
-        if (!unauthorizedMods.isEmpty()) {
-            player.sendSystemMessage(Component.literal("Unauthorized mods detected: " + String.join(", ", unauthorizedMods)));
-            player.connection.disconnect(Component.literal("Unauthorized mods detected: " + String.join(", ", unauthorizedMods)));
+        int radius = 50 * 16; // 50 chunks in blocks (1 chunk = 16 blocks)
+        int itemsCleared = 0;
+
+        AABB boundingBox = new AABB(centerPos).inflate(radius);
+
+        List<Entity> entities = world.getEntities((Entity) null, boundingBox, e -> e instanceof ItemEntity);
+        for (Entity entity : entities) {
+            if (entity instanceof ItemEntity) {
+                entity.remove(Entity.RemovalReason.KILLED);
+                itemsCleared++;
+            }
         }
-    }
 
-    private static void checkResourcePacks(ServerPlayer player) {
-        Set<String> activeResourcePacks = getPlayerActiveResourcePacks(player);
-        Set<String> blacklistedPacksDetected = new HashSet<>(activeResourcePacks);
-        blacklistedPacksDetected.retainAll(RESOURCE_PACK_BLACKLIST);
-
-        if (!blacklistedPacksDetected.isEmpty()) {
-            String message = "You are using blacklisted resource packs: " + String.join(", ", blacklistedPacksDetected);
-            logViolation(player, blacklistedPacksDetected);
-            player.sendSystemMessage(Component.literal(message));
-            player.connection.disconnect(Component.literal("Blacklisted resource packs detected: " + String.join(", ", blacklistedPacksDetected)));
+        Component message = Component.literal("Cleared " + itemsCleared + " dropped items in a 50 chunk radius.");
+        if (isServer) {
+            source.getServer().getPlayerList().broadcastSystemMessage(message, false);
+        } else {
+            source.sendSuccess(() -> message, true); // Use Supplier for the message
         }
-    }
 
-    private static Set<String> getPlayerActiveResourcePacks(ServerPlayer player) {
-        // Placeholder logic for active resource packs
-        return Set.of("cheat_resource_pack");
-    }
-
-    private static void logViolation(ServerPlayer player, Set<String> blacklistedPacks) {
-        String logEntry = "Player: " + player.getName().getString() + " | UUID: " + player.getStringUUID() +
-                " | Detected blacklisted resource packs: " + String.join(", ", blacklistedPacks) + "\n";
-
-        try (FileWriter writer = new FileWriter(LOCAL_LOG_FILE_PATH, true)) {
-            writer.write(logEntry);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        return itemsCleared;
     }
 }
