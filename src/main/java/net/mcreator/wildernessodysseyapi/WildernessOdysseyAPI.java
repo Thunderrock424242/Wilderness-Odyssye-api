@@ -20,8 +20,8 @@ import net.mcreator.wildernessodysseyapi.command.AdminCommand;
 
 import java.util.Set;
 
-@Mod(wilderness_odyssey_api.MOD_ID)
-public class WildernessOddessyApi {
+@Mod(WildernessOdysseyAPI.MOD_ID)
+public class WildernessOdysseyAPI {
 
     public static final String MOD_ID = "wilderness_oddesy_api";
     private static final Logger LOGGER = LogManager.getLogger();
@@ -39,7 +39,7 @@ public class WildernessOddessyApi {
     public static boolean globalLoggingEnabled;
     public static boolean globalBanEnabled;
 
-    public WildernessOddessyApi(IEventBus modBus) {
+    public WildernessOdysseyAPI(IEventBus modBus) {
         // Register mod lifecycle events on the mod event bus
         modBus.addListener(this::commonSetup);
         modBus.addListener(this::clientSetup);

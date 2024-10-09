@@ -1,19 +1,6 @@
 {
   "mod_elements": [
     {
-      "name": "WildernessOddessyApi",
-      "type": "code",
-      "compiles": true,
-      "locked_code": true,
-      "registry_name": "wilderness_oddessy_api",
-      "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/wildernessoddesyapi/WildernessOddessyApi.java"
-        ]
-      },
-      "path": "~/Anti Cheat/build errros /Main Mod Class"
-    },
-    {
       "name": "ClearItemsCommand",
       "type": "code",
       "compiles": true,
@@ -283,6 +270,19 @@
         ]
       },
       "path": "~/Anti Cheat"
+    },
+    {
+      "name": "WildernessOdysseyAPI",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "wilderness_odyssey_api",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/wildernessodysseyapi/WildernessOdysseyAPI.java"
+        ]
+      },
+      "path": "~/Anti Cheat/build errros /Main Mod Class"
     }
   ],
   "variable_elements": [
