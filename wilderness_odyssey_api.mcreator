@@ -155,9 +155,9 @@
       "registry_name": "bunker",
       "metadata": {
         "files": [
-          "src/main/resources/data/wilderness_odyssey_api/worldgen/template_pool/bunker.json",
           "src/main/resources/data/wilderness_odyssey_api/worldgen/structure_set/bunker.json",
-          "src/main/resources/data/wilderness_odyssey_api/worldgen/structure/bunker.json"
+          "src/main/resources/data/wilderness_odyssey_api/worldgen/structure/bunker.json",
+          "src/main/resources/data/wilderness_odyssey_api/worldgen/template_pool/bunker.json"
         ]
       }
     },
