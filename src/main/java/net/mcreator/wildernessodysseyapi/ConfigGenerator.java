@@ -1,17 +1,3 @@
-/*
- * The code of this mod element is always locked.
- *
- * You can register new events in this class too.
- *
- * If you want to make a plain independent class, create it using
- * Project Browser -> New... and make sure to make the class
- * outside net.mcreator.wildernessoddesyapi as this package is managed by MCreator.
- *
- * If you change workspace package, modid or prefix, you will need
- * to manually adapt this file to these changes or remake it.
- *
- * This class will be added in the mod root package.
-*/
 package net.mcreator.wildernessodysseyapi;
 
 import net.neoforged.fml.ModLoadingContext;
@@ -29,7 +15,7 @@ public class ConfigGenerator {
     public static final ModConfigSpec.BooleanValue GLOBAL_LOGGING_ENABLED;
 
     static {
-        COMMON_BUILDER.comment("Wilderness Oddessy API Anti-Cheat Configuration").push("anti_cheat");
+        COMMON_BUILDER.comment("Wilderness Odyssey API Anti-Cheat Configuration").push("anti_cheat");
 
         // Agreement to Terms and Privacy Policy
         AGREE_TO_TERMS = COMMON_BUILDER
@@ -58,6 +44,6 @@ public class ConfigGenerator {
     public static final ModConfigSpec COMMON_CONFIG = COMMON_BUILDER.build();
 
     public static void register() {
-        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, COMMON_CONFIG);
+        modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }
 }

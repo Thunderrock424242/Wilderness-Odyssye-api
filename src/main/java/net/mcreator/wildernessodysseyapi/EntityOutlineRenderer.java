@@ -44,6 +44,7 @@ public class EntityOutlineRenderer {
             Vec3 playerPos = player.position();
             AABB boundingBox = new AABB(playerPos.x - CHUNK_RADIUS, playerPos.y - CHUNK_RADIUS, playerPos.z - CHUNK_RADIUS,
                     playerPos.x + CHUNK_RADIUS, playerPos.y + CHUNK_RADIUS, playerPos.z + CHUNK_RADIUS);
+            assert mc.level != null;
             for (Entity entity : mc.level.getEntities(null, boundingBox)) {
                 if (entity instanceof Player && !entity.equals(player)) { // Only render other players
                     outlineEntity(entity, event.getPartialTick());
@@ -55,11 +56,9 @@ public class EntityOutlineRenderer {
     private static void outlineEntity(Entity entity, DeltaTracker partialTicks) {
         Minecraft mc = Minecraft.getInstance();
         EntityRenderer<? super Entity> renderer = mc.getEntityRenderDispatcher().getRenderer(entity);
-        if (renderer != null) {
-            PoseStack poseStack = new PoseStack();
-            MultiBufferSource.BufferSource bufferSource = mc.renderBuffers().bufferSource();
-            renderer.render(entity, entity.getYRot(), partialTicks, poseStack, bufferSource, mc.getEntityRenderDispatcher().getPackedLightCoords(entity, partialTicks));
-            bufferSource.endBatch(RenderType.outline(renderer.getTextureLocation(entity)));
-        }
+        PoseStack poseStack = new PoseStack();
+        MultiBufferSource.BufferSource bufferSource = mc.renderBuffers().bufferSource();
+        renderer.render(entity, entity.getYRot(), partialTicks, poseStack, bufferSource, mc.getEntityRenderDispatcher().getPackedLightCoords(entity, partialTicks));
+        bufferSource.endBatch(RenderType.outline(renderer.getTextureLocation(entity)));
     }
 }
