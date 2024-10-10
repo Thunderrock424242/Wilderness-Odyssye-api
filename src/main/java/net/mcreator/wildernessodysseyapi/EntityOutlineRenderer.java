@@ -1,4 +1,4 @@
-package net.mcreator.wildernessodysseyapi;
+/*package net.mcreator.wildernessodysseyapi;
 
 import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.Minecraft;
@@ -61,4 +61,4 @@ public class EntityOutlineRenderer {
         renderer.render(entity, entity.getYRot(), partialTicks, poseStack, bufferSource, mc.getEntityRenderDispatcher().getPackedLightCoords(entity, partialTicks));
         bufferSource.endBatch(RenderType.outline(renderer.getTextureLocation(entity)));
     }
-}
+}*/
