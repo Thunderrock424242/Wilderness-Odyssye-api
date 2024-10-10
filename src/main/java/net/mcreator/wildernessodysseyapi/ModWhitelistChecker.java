@@ -21,11 +21,15 @@ import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.Mod;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.network.chat.Component;
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Unmodifiable;
 
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @EventBusSubscriber(modid = "yourmodid")
 public class ModWhitelistChecker {
@@ -36,7 +40,7 @@ public class ModWhitelistChecker {
 
     @SubscribeEvent
     public static void onPlayerLogin(PlayerEvent.PlayerLoggedInEvent event) {
-        if (!WildernessOddessyApi.antiCheatEnabled) {
+        if (!WildernessOdysseyAPI.antiCheatEnabled) {
             return; // Do nothing if anti-cheat is disabled
         }
 
@@ -81,12 +85,13 @@ public class ModWhitelistChecker {
         }
     }
 
-    private static Set<String> getPlayerActiveResourcePacks(ServerPlayer player) {
+    @Contract(value = "_ -> new", pure = true)
+    private static @NotNull @Unmodifiable Set<String> getPlayerActiveResourcePacks(ServerPlayer player) {
         // Placeholder logic for active resource packs
         return Set.of("cheat_resource_pack");
     }
 
-    private static void logViolation(ServerPlayer player, Set<String> blacklistedPacks) {
+    private static void logViolation(@NotNull ServerPlayer player, Set<String> blacklistedPacks) {
         String logEntry = "Player: " + player.getName().getString() + " | UUID: " + player.getStringUUID() +
                 " | Detected blacklisted resource packs: " + String.join(", ", blacklistedPacks) + "\n";
 

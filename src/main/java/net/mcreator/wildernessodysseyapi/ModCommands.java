@@ -22,7 +22,7 @@ public class ModCommands {
                 .then(Commands.argument("enabled", BoolArgumentType.bool())
                         .executes(context -> {
                             boolean enabled = BoolArgumentType.getBool(context, "enabled");
-                            WildernessOddessyApi.ENABLE_OUTLINE = enabled;
+                            WildernessOdysseyAPI.ENABLE_OUTLINE = enabled;
                             context.getSource().sendSuccess(
                                     () -> net.minecraft.network.chat.Component.literal("Entity outline feature set to: " + enabled), true);
                             return 1;

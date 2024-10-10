@@ -38,7 +38,7 @@ public class GlobalBanManager {
     private static final Gson gson = new Gson();
 
     public static void banPlayerGlobally(String playerUUID, String reason) {
-        if (!AntiCheatHandler.antiCheatEnabled) {
+        if (!WildernessOdysseyAPI.antiCheatEnabled) {
             System.out.println("Anti-cheat is disabled. Ban action is not executed.");
             return;
         }
@@ -53,7 +53,7 @@ public class GlobalBanManager {
     }
 
     public static void unbanPlayerGlobally(String playerUUID) {
-        if (!AntiCheatHandler.antiCheatEnabled) {
+        if (!WildernessOdysseyAPI.antiCheatEnabled) {
             System.out.println("Anti-cheat is disabled. Unban action is not executed.");
             return;
         }

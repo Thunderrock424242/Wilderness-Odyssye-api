@@ -1,5 +1,6 @@
 package net.mcreator.wildernessodysseyapi;
 
+import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
@@ -51,7 +52,7 @@ public class EntityOutlineRenderer {
         }
     }
 
-    private static void outlineEntity(Entity entity, float partialTicks) {
+    private static void outlineEntity(Entity entity, DeltaTracker partialTicks) {
         Minecraft mc = Minecraft.getInstance();
         EntityRenderer<? super Entity> renderer = mc.getEntityRenderDispatcher().getRenderer(entity);
         if (renderer != null) {

@@ -16,6 +16,7 @@ package net.mcreator.wildernessodysseyapi.command;
 
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.StringArgumentType;
+import net.mcreator.wildernessodysseyapi.GlobalBanManager;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.network.chat.Component;
