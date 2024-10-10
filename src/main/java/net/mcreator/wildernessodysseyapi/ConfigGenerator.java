@@ -5,7 +5,6 @@ import net.neoforged.fml.ModLoadingContext;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.neoforge.common.ModConfigSpec;
 
-
 public class ConfigGenerator {
 
     private static final ModConfigSpec.Builder COMMON_BUILDER = new ModConfigSpec.Builder();
@@ -45,7 +44,21 @@ public class ConfigGenerator {
 
     public static final ModConfigSpec COMMON_CONFIG = COMMON_BUILDER.build();
 
+    // Method to register the configuration with the mod container
     public static void register() {
-        modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
+        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, COMMON_CONFIG);
+    }
+
+    // New method to retrieve the ModContainer
+    public static ModContainer getModContainer() {
+        // Retrieve the current ModContainer from the ModLoadingContext
+        return ModLoadingContext.get().getActiveContainer();
+    }
+
+    // Example usage method
+    public void someMethod() {
+        // Retrieve the ModContainer
+        ModContainer container = ConfigGenerator.getModContainer();
+        // Add any additional logic here if needed
     }
 }
