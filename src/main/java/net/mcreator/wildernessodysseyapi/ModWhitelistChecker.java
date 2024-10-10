@@ -44,11 +44,14 @@ public class ModWhitelistChecker {
             return; // Do nothing if anti-cheat is disabled
         }
 
-        if (!(event.getPlayer() instanceof ServerPlayer player)) {
+        if (!(event.getEntity() instanceof ServerPlayer player)) {
             return;
         }
 
-        Set<String> loadedMods = ModList.get().getMods().stream().map(mod -> mod.getModId()).collect(Collectors.toSet());
+        Set<String> loadedMods = ModList.get().getMods().stream()
+                .map(mod -> mod.getModId())
+                .collect(Collectors.toSet());
+
         checkMods(player, loadedMods);
         checkResourcePacks(player);
     }
