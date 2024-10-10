@@ -1,6 +1,7 @@
 package net.mcreator.wildernessodysseyapi;
 
 import net.neoforged.fml.ModContainer;
+import net.neoforged.fml.ModLoadingContext;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
@@ -23,7 +24,7 @@ import java.util.Set;
 
 @Mod(WildernessOdysseyAPI.MOD_ID)
 public class WildernessOdysseyAPI {
-
+    private static ModContainer modContainer;
     public static final String MOD_ID = "wilderness_oddesy_api";
     private static final Logger LOGGER = LogManager.getLogger();
      public static boolean ENABLE_OUTLINE = true; // Default is false meant to be used in dev environment.
@@ -55,6 +56,10 @@ public class WildernessOdysseyAPI {
 
         // Load config settings
         loadConfig();
+
+        //store mod container.
+        modContainer = ModLoadingContext.get().getActiveContainer();
+
 
         // If terms are not agreed to, terminate server startup
         if (!ConfigGenerator.AGREE_TO_TERMS.get()) {
