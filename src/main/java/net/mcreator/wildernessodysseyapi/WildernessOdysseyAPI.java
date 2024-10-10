@@ -1,5 +1,6 @@
 package net.mcreator.wildernessodysseyapi;
 
+import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
@@ -39,7 +40,7 @@ public class WildernessOdysseyAPI {
     public static boolean globalLoggingEnabled;
     public static boolean globalBanEnabled;
 
-    public WildernessOdysseyAPI(IEventBus modBus) {
+    public WildernessOdysseyAPI(IEventBus modBus, ModContainer container) {
         // Register mod lifecycle events on the mod event bus
         modBus.addListener(this::commonSetup);
         modBus.addListener(this::clientSetup);
