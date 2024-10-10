@@ -54,11 +54,4 @@ public class ConfigGenerator {
         // Retrieve the current ModContainer from the ModLoadingContext
         return ModLoadingContext.get().getActiveContainer();
     }
-
-    // Example usage method
-    public void someMethod() {
-        // Retrieve the ModContainer
-        ModContainer container = ConfigGenerator.getModContainer();
-        // Add any additional logic here if needed
-    }
 }
