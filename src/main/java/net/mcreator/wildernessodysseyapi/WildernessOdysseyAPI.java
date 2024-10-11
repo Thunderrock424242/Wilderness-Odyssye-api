@@ -1,5 +1,6 @@
 package net.mcreator.wildernessoddesyapi;
 
+import net.mcreator.wildernessodysseyapi.ModWhitelistChecker;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
