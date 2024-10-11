@@ -1,4 +1,4 @@
-package net.mcreator.wildernessoddesyapi;
+package net.mcreator.wildernessodysseyapi;
 
 import net.mcreator.wildernessodysseyapi.ModWhitelistChecker;
 import net.neoforged.fml.common.Mod;
@@ -13,7 +13,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 // Imports for commands
-import net.mcreator.wildernessoddesyapi.command.BanCommand;
+import net.mcreator.wildernessodysseyapi.command.BanCommand;
 import net.mcreator.wildernessodysseyapi.command.ClearItemsCommand;
 import net.mcreator.wildernessodysseyapi.command.AdminCommand;
 
