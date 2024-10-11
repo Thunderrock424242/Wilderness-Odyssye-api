@@ -283,6 +283,23 @@
         ]
       },
       "path": "~/Anti Cheat/build errros /Main Mod Class"
+    },
+    {
+      "name": "LeakyNether",
+      "type": "biome",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "leaky_nether",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/wildernessodysseyapi/world/features/treedecorators/LeakyNetherLeaveDecorator.java",
+          "src/main/resources/data/wilderness_odyssey_api/worldgen/configured_feature/leaky_nether_tree.json",
+          "src/main/resources/data/wilderness_odyssey_api/worldgen/placed_feature/leaky_nether_tree.json",
+          "src/main/resources/data/wilderness_odyssey_api/worldgen/biome/leaky_nether.json",
+          "src/main/java/net/mcreator/wildernessodysseyapi/world/features/treedecorators/LeakyNetherFruitDecorator.java",
+          "src/main/java/net/mcreator/wildernessodysseyapi/world/features/treedecorators/LeakyNetherTrunkDecorator.java"
+        ]
+      }
     }
   ],
   "variable_elements": [
@@ -317,20 +334,35 @@
       "subtitle": "bubbles_drop"
     }
   ],
-  "tag_elements": {},
+  "tag_elements": {
+    "BIOMES:minecraft:has_structure/nether_fortress": [
+      "~CUSTOM:LeakyNether"
+    ],
+    "BIOMES:minecraft:has_structure/nether_fossil": [
+      "~CUSTOM:LeakyNether"
+    ],
+    "BIOMES:minecraft:has_structure/bastion_remnant": [
+      "~CUSTOM:LeakyNether"
+    ],
+    "BIOMES:minecraft:has_structure/ruined_portal_nether": [
+      "~CUSTOM:LeakyNether"
+    ]
+  },
   "tab_element_order": {},
   "language_map": {
     "en_us": {
       "subtitles.playing_with_light": "playing with light",
       "subtitles.bubbles_drop": "bubbles_drop",
       "key.wilderness_oddesy_api.crawl_key": "Crawl Key",
-      "key.wilderness_odyssey_api.crawl_key": "Crawl Key"
+      "key.wilderness_odyssey_api.crawl_key": "Crawl Key",
+      "biome.wilderness_odyssey_api.leaky_nether": "Leaky Nether"
     },
     "el_cy": {
       "subtitles.playing_with_light": "playing with light",
       "subtitles.bubbles_drop": "bubbles_drop",
       "key.wilderness_oddesy_api.crawl_key": "κλειδί ανίχνευσης",
-      "key.wilderness_odyssey_api.crawl_key": "Crawl Key"
+      "key.wilderness_odyssey_api.crawl_key": "Crawl Key",
+      "biome.wilderness_odyssey_api.leaky_nether": "Leaky Nether"
     }
   },
   "foldersRoot": {
