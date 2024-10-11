@@ -194,45 +194,6 @@
       "path": "~/Anti Cheat"
     },
     {
-      "name": "GlobalBanManager",
-      "type": "code",
-      "compiles": true,
-      "locked_code": true,
-      "registry_name": "global_ban_manager",
-      "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/wildernessoddesyapi/GlobalBanManager.java"
-        ]
-      },
-      "path": "~/Anti Cheat/Moderation"
-    },
-    {
-      "name": "GlobalUnbanCommand",
-      "type": "code",
-      "compiles": true,
-      "locked_code": true,
-      "registry_name": "global_unban_command",
-      "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/wildernessoddesyapi/GlobalUnbanCommand.java"
-        ]
-      },
-      "path": "~/Anti Cheat/build errros "
-    },
-    {
-      "name": "PlayerLoginEventListener",
-      "type": "code",
-      "compiles": true,
-      "locked_code": true,
-      "registry_name": "player_login_event_listener",
-      "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/wildernessoddesyapi/PlayerLoginEventListener.java"
-        ]
-      },
-      "path": "~/Anti Cheat/build errros "
-    },
-    {
       "name": "READMEGenerator",
       "type": "code",
       "compiles": true,
@@ -244,19 +205,6 @@
         ]
       },
       "path": "~/Anti Cheat/Readme"
-    },
-    {
-      "name": "GlobalBanCommand",
-      "type": "code",
-      "compiles": true,
-      "locked_code": true,
-      "registry_name": "global_ban_command",
-      "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/wildernessoddesyapi/GlobalBanCommand.java"
-        ]
-      },
-      "path": "~/Anti Cheat"
     },
     {
       "name": "ConfigGenerator",
@@ -274,7 +222,7 @@
     {
       "name": "WildernessOdysseyAPI",
       "type": "code",
-      "compiles": true,
+      "compiles": false,
       "locked_code": true,
       "registry_name": "wilderness_odyssey_api",
       "metadata": {
@@ -300,6 +248,32 @@
           "src/main/java/net/mcreator/wildernessodysseyapi/world/features/treedecorators/LeakyNetherTrunkDecorator.java"
         ]
       }
+    },
+    {
+      "name": "BanCommand",
+      "type": "code",
+      "compiles": false,
+      "locked_code": true,
+      "registry_name": "ban_command",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/wildernessodysseyapi/BanCommand.java"
+        ]
+      },
+      "path": "~/Anti Cheat/Moderation"
+    },
+    {
+      "name": "BanManager",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "ban_manager",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/wildernessodysseyapi/BanManager.java"
+        ]
+      },
+      "path": "~/Anti Cheat/Moderation"
     }
   ],
   "variable_elements": [
