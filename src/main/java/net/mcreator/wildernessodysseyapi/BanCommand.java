@@ -59,7 +59,7 @@ public class BanCommand {
 
     private static void uploadLogToGitHub(String logEntry) {
         // GitHub integration logic goes here.
-        LOGGER.info("Uploading ban log to GitHub: " + logEntry);
+        LOGGER.info("Uploading ban log to GitHub: {}", logEntry);
         // Implementation for uploading the log entry to the GitHub repository.
     }
 }
