@@ -3,7 +3,7 @@ package net.mcreator.wildernessodysseyapi.command;
 import com.mojang.brigadier.Command;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.StringArgumentType;
-import net.mcreator.wildernessoddesyapi.BanManager;
+import net.mcreator.wildernessodysseyapi.BanManager;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.network.chat.Component;
@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.util.function.Supplier;
 
 public class BanCommand {
 
@@ -31,7 +32,7 @@ public class BanCommand {
 
                                     // Ban the player and log the information
                                     banPlayer(playerName, reason);
-                                    context.getSource().sendSuccess(Component.literal("Player " + playerName + " has been banned for: " + reason), true);
+                                    context.getSource().sendSuccess((Supplier<Component>) Component.literal("Player " + playerName + " has been banned for: " + reason), true);
                                     return Command.SINGLE_SUCCESS;
                                 }))));
     }
