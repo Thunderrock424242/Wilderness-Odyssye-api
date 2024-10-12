@@ -1,6 +1,5 @@
 package net.mcreator.wildernessodysseyapi;
 
-import net.mcreator.wildernessodysseyapi.ModWhitelistChecker;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
@@ -22,11 +21,12 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-@Mod(WildernessOddessyApi.MOD_ID)
-public class WildernessOddessyApi {
+@Mod(WildernessOdysseyAPI.MOD_ID)
+public  class WildernessOdysseyAPI {
 
     public static final String MOD_ID = "wilderness_oddesy_api";
     private static final Logger LOGGER = LogManager.getLogger();
+    public static boolean ENABLE_OUTLINE = true; // Default is false meant to be used in dev environment.
 
     // Hardcoded Server Whitelist - Only these servers can use the anti-cheat feature
     private static final Set<String> SERVER_WHITELIST = Set.of(
@@ -42,7 +42,7 @@ public class WildernessOddessyApi {
     // Scheduled Executor for periodic checks
     private final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
 
-    public WildernessOddessyApi(IEventBus modBus) {
+    public void WildernessOddessyApi(IEventBus modBus) {
         // Register mod lifecycle events on the mod event bus
         modBus.addListener(this::commonSetup);
         modBus.addListener(this::clientSetup);
