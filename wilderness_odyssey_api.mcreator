@@ -257,6 +257,45 @@
         ]
       },
       "path": "~/Anti Cheat/Moderation"
+    },
+    {
+      "name": "NetherBiomes",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "nether_biomes",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/wildernessodysseyapi/NetherBiomes.java"
+        ]
+      },
+      "path": "~/Nether in overworld"
+    },
+    {
+      "name": "ModPlacedFeatures",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "mod_placed_features",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/wildernessodysseyapi/ModPlacedFeatures.java"
+        ]
+      },
+      "path": "~/Nether in overworld"
+    },
+    {
+      "name": "NetherOverworldWorldGeneration",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "nether_overworld_world_generation",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/wildernessodysseyapi/NetherOverworldWorldGeneration.java"
+        ]
+      },
+      "path": "~/Nether in overworld"
     }
   ],
   "variable_elements": [
@@ -361,6 +400,10 @@
             ]
           }
         ]
+      },
+      {
+        "name": "Nether in overworld",
+        "children": []
       }
     ]
   },
