@@ -21,12 +21,16 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
+// Imports for Nether-like biome generation
+import com.example.netherincaves.ModBiomes;
+import com.example.netherincaves.ModWorldGeneration;
+
 @Mod(WildernessOdysseyAPI.MOD_ID)
-public  class WildernessOdysseyAPI {
+public class WildernessOdysseyAPI {
 
     public static final String MOD_ID = "wilderness_oddesy_api";
     private static final Logger LOGGER = LogManager.getLogger();
-    public static boolean ENABLE_OUTLINE = true; // Default is false meant to be used in dev environment.
+    public static boolean ENABLE_OUTLINE = true; // Default is false, meant to be used in dev environment.
 
     // Hardcoded Server Whitelist - Only these servers can use the anti-cheat feature
     private static final Set<String> SERVER_WHITELIST = Set.of(
@@ -42,8 +46,11 @@ public  class WildernessOdysseyAPI {
     // Scheduled Executor for periodic checks
     private final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
 
-    public void WildernessOddessyApi(IEventBus modBus) {
-        // Register mod lifecycle events on the mod event bus
+    public WildernessOdysseyAPI() {
+        IEventBus modBus = NeoForge.EVENT_BUS;
+        modBus.register(this);
+
+        // Register mod lifecycle events
         modBus.addListener(this::commonSetup);
         modBus.addListener(this::clientSetup);
         modBus.addListener(this::onLoadComplete);
@@ -65,7 +72,7 @@ public  class WildernessOdysseyAPI {
         }
 
         // Enable anti-cheat only if the server is whitelisted
-        String currentServerId = "server-unique-id";  // Replace with the logic to fetch the current server's unique ID
+        String currentServerId = "server-unique-id";  // Replace with logic to fetch the current server's unique ID
         antiCheatEnabled = SERVER_WHITELIST.contains(currentServerId);
 
         // Generate README file during initialization
@@ -79,6 +86,10 @@ public  class WildernessOdysseyAPI {
 
     private void commonSetup(final FMLCommonSetupEvent event) {
         LOGGER.info("Common setup complete");
+
+        // Initialize custom biomes and world generation for Nether-like biomes in caves
+        ModBiomes.createBiomes();
+        ModWorldGeneration.addBiomeFeatures();
     }
 
     private void clientSetup(final FMLClientSetupEvent event) {
