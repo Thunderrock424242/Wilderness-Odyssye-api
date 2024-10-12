@@ -15,18 +15,23 @@
 package net.mcreator.wildernessodysseyapi;
 
 import net.minecraft.core.Holder;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.Music;
 import net.minecraft.sounds.Musics;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.BiomeSpecialEffects;
 import net.minecraft.world.level.biome.MobSpawnSettings;
 import net.minecraft.world.level.biome.BiomeGenerationSettings;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.levelgen.GenerationStep;
 
-public class ModBiomes {
+public class NetherBiomes {
     public static final ResourceKey<Biome> NETHER_CAVE_BIOME = ResourceKey.create(Registries.BIOME, new ResourceLocation("netherincaves", "nether_cave"));
     public static final ResourceKey<Biome> CRIMSON_FOREST_BIOME = ResourceKey.create(Registries.BIOME, new ResourceLocation("netherincaves", "crimson_forest_cave"));
     public static final ResourceKey<Biome> WARPED_FOREST_BIOME = ResourceKey.create(Registries.BIOME, new ResourceLocation("netherincaves", "warped_forest_cave"));
