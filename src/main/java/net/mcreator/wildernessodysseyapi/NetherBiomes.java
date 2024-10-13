@@ -20,9 +20,9 @@ import net.minecraft.world.level.biome.AmbientParticleSettings;
 import net.neoforged.neoforge.common.world.BiomeModifiers;
 
 public class NetherBiomes {
-    public static final ResourceKey<Biome> NETHER_CAVE_BIOME = ResourceKey.create(Registries.BIOME, new ResourceLocation("netherincaves:nether_cave"));
-    public static final ResourceKey<Biome> CRIMSON_FOREST_BIOME = ResourceKey.create(Registries.BIOME, new ResourceLocation("netherincaves:crimson_forest_cave"));
-    public static final ResourceKey<Biome> WARPED_FOREST_BIOME = ResourceKey.create(Registries.BIOME, new ResourceLocation("netherincaves:warped_forest_cave"));
+    public static final ResourceKey<Biome> NETHER_CAVE_BIOME = ResourceKey.create(Registries.BIOME, new ResourceLocation("wildernessodysseyapi:nether_cave"));
+    public static final ResourceKey<Biome> CRIMSON_FOREST_BIOME = ResourceKey.create(Registries.BIOME, new ResourceLocation("wildernessodysseyapi:crimson_forest_cave"));
+    public static final ResourceKey<Biome> WARPED_FOREST_BIOME = ResourceKey.create(Registries.BIOME, new ResourceLocation("wildernessodysseyapi:warped_forest_cave"));
 
     public static void createBiomes() {
         // Register the base Nether Cave biome

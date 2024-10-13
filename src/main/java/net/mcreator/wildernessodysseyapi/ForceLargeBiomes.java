@@ -18,9 +18,10 @@ import net.minecraft.world.level.biome.BiomeSourceSettings;
 import net.minecraft.world.level.levelgen.WorldGenSettings;
 import net.minecraft.client.gui.screens.worldselection.CreateWorldScreen;
 import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
 
-@Mod.EventBusSubscriber(modid = "modid", bus = Mod.EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = "yourmodid")
 public class ForceLargeBiomes {
 
     @SubscribeEvent
