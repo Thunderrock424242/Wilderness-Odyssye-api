@@ -261,7 +261,7 @@
     {
       "name": "NetherBiomes",
       "type": "code",
-      "compiles": true,
+      "compiles": false,
       "locked_code": true,
       "registry_name": "nether_biomes",
       "metadata": {
@@ -274,7 +274,7 @@
     {
       "name": "ModPlacedFeatures",
       "type": "code",
-      "compiles": true,
+      "compiles": false,
       "locked_code": true,
       "registry_name": "mod_placed_features",
       "metadata": {
@@ -287,7 +287,7 @@
     {
       "name": "NetherOverworldWorldGeneration",
       "type": "code",
-      "compiles": true,
+      "compiles": false,
       "locked_code": true,
       "registry_name": "nether_overworld_world_generation",
       "metadata": {
@@ -296,6 +296,44 @@
         ]
       },
       "path": "~/Nether in overworld"
+    },
+    {
+      "name": "HealCommand",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "heal_command",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/wildernessodysseyapi/HealCommand.java"
+        ]
+      },
+      "path": "~/Commands"
+    },
+    {
+      "name": "DimensionTPCommand",
+      "type": "code",
+      "compiles": false,
+      "locked_code": true,
+      "registry_name": "dimension_tp_command",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/wildernessodysseyapi/DimensionTPCommand.java"
+        ]
+      },
+      "path": "~/Commands"
+    },
+    {
+      "name": "ForceLargeBiomes",
+      "type": "code",
+      "compiles": false,
+      "locked_code": true,
+      "registry_name": "force_large_biomes",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/wildernessodysseyapi/ForceLargeBiomes.java"
+        ]
+      }
     }
   ],
   "variable_elements": [

@@ -106,6 +106,8 @@ public class WildernessOdysseyAPI {
         BanCommand.register(event.getServer().getCommands().getDispatcher());
         ClearItemsCommand.register(event.getServer().getCommands().getDispatcher());
         AdminCommand.register(event.getServer().getCommands().getDispatcher());
+        HealCommand.register(event.getServer().getCommands().getDispatcher());
+        DimensionTPCommand.register(event.getServer().getCommands().getDispatcher());
         LOGGER.info("Ban command registered");
 
         LOGGER.info("Server starting setup complete. Anti-cheat enabled: " + antiCheatEnabled);
