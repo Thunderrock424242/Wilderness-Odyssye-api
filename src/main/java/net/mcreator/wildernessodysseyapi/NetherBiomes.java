@@ -16,11 +16,13 @@ import net.minecraft.world.level.biome.MobSpawnSettings;
 import net.minecraft.world.level.biome.BiomeGenerationSettings;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.GenerationStep;
+import net.minecraft.world.level.biome.AmbientParticleSettings;
+import net.neoforged.neoforge.common.world.BiomeModifiers;
 
 public class NetherBiomes {
-    public static final ResourceKey<Biome> NETHER_CAVE_BIOME = ResourceKey.create(Registries.BIOME, new ResourceLocation("netherincaves", "nether_cave"));
-    public static final ResourceKey<Biome> CRIMSON_FOREST_BIOME = ResourceKey.create(Registries.BIOME, new ResourceLocation("netherincaves", "crimson_forest_cave"));
-    public static final ResourceKey<Biome> WARPED_FOREST_BIOME = ResourceKey.create(Registries.BIOME, new ResourceLocation("netherincaves", "warped_forest_cave"));
+    public static final ResourceKey<Biome> NETHER_CAVE_BIOME = ResourceKey.create(Registries.BIOME, new ResourceLocation("netherincaves:nether_cave"));
+    public static final ResourceKey<Biome> CRIMSON_FOREST_BIOME = ResourceKey.create(Registries.BIOME, new ResourceLocation("netherincaves:crimson_forest_cave"));
+    public static final ResourceKey<Biome> WARPED_FOREST_BIOME = ResourceKey.create(Registries.BIOME, new ResourceLocation("netherincaves:warped_forest_cave"));
 
     public static void createBiomes() {
         // Register the base Nether Cave biome
