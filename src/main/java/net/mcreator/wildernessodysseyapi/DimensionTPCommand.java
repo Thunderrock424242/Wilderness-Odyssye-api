@@ -29,7 +29,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.minecraft.server.MinecraftServer;
-import net.minecraftforge.event.RegisterCommandsEvent;
+import net.neoforged.neoforge.event.RegisterCommandsEvent;
 
 @EventBusSubscriber(modid = "yourmodid")
 public class DimensionTPCommand {
@@ -64,7 +64,10 @@ public class DimensionTPCommand {
     }
 
     private static ServerLevel getDimensionByName(ResourceLocation dimensionLocation, MinecraftServer server) {
-        ResourceKey<ServerLevel> targetDimension = ResourceKey.create(Registries.DIMENSION, dimensionLocation);
+        ResourceKey<ServerLevel> targetDimension = ResourceKey.create((ResourceKey<? extends net.minecraft.core.Registry<ServerLevel>>) Registries.DIMENSION, dimensionLocation);
         return server.getLevel(targetDimension);
+    }
+
+    public static void register(CommandDispatcher<CommandSourceStack> dispatcher) {
     }
 }
