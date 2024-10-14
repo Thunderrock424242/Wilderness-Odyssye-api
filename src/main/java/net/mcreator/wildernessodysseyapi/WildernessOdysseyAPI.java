@@ -21,9 +21,6 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-// Imports for Nether-like biome generation
-import net.mcreator.wildernessodysseyapi.NetherBiomes;
-import net.mcreator.wildernessodysseyapi.NetherOverworldWorldGeneration;
 
 @Mod(WildernessOdysseyAPI.MOD_ID)
 public class WildernessOdysseyAPI {
@@ -86,10 +83,6 @@ public class WildernessOdysseyAPI {
 
     private void commonSetup(final FMLCommonSetupEvent event) {
         LOGGER.info("Common setup complete");
-
-        // Initialize custom biomes and world generation for Nether-like biomes in caves
-        NetherBiomes.createBiomes();
-        NetherOverworldWorldGeneration.addBiomeFeatures();
     }
 
     private void clientSetup(final FMLClientSetupEvent event) {
