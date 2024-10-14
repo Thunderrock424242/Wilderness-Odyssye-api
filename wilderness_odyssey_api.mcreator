@@ -307,6 +307,19 @@
         "files": [
           "src/main/java/net/mcreator/wildernessodysseyapi/ClientConfig.java"
         ]
+      },
+      "path": "~/DefaultWorldType"
+    },
+    {
+      "name": "DefaultLargeBiomes",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "default_large_biomes",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/wildernessodysseyapi/DefaultLargeBiomes.java"
+        ]
       }
     }
   ],
