@@ -285,14 +285,27 @@
       "path": "~/Commands"
     },
     {
-      "name": "DefaultLargeBiomes",
+      "name": "DefaultWorldType",
       "type": "code",
       "compiles": false,
       "locked_code": true,
-      "registry_name": "default_large_biomes",
+      "registry_name": "default_world_type",
       "metadata": {
         "files": [
-          "src/main/java/net/mcreator/wildernessodysseyapi/DefaultLargeBiomes.java"
+          "src/main/java/net/mcreator/wildernessodysseyapi/DefaultWorldType.java"
+        ]
+      },
+      "path": "~/DefaultWorldType"
+    },
+    {
+      "name": "ClientConfig",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "client_config",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/wildernessodysseyapi/ClientConfig.java"
         ]
       }
     }
@@ -402,6 +415,10 @@
       },
       {
         "name": "Nether in overworld",
+        "children": []
+      },
+      {
+        "name": "DefaultWorldType",
         "children": []
       }
     ]
