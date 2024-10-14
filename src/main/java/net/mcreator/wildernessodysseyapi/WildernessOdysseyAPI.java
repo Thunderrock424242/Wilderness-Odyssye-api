@@ -1,5 +1,6 @@
 package net.mcreator.wildernessodysseyapi;
 
+import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
@@ -15,6 +16,8 @@ import org.apache.logging.log4j.Logger;
 import net.mcreator.wildernessodysseyapi.command.BanCommand;
 import net.mcreator.wildernessodysseyapi.command.ClearItemsCommand;
 import net.mcreator.wildernessodysseyapi.command.AdminCommand;
+import net.mcreator.wildernessodysseyapi.command.HealCommand;
+import net.mcreator.wildernessodysseyapi.command.DimensionTPCommand;
 
 import java.util.Set;
 import java.util.concurrent.Executors;
@@ -56,8 +59,7 @@ public class WildernessOdysseyAPI {
         NeoForge.EVENT_BUS.register(this);
         NeoForge.EVENT_BUS.register(ModWhitelistChecker.class);
 
-        // Register configuration
-        ConfigGenerator.register();
+        // Register configuration (wip)
 
         // Load config settings
         loadConfig();

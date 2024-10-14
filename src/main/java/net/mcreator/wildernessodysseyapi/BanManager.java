@@ -19,7 +19,7 @@ import java.util.Set;
 public class BanManager {
 
     private static final Logger LOGGER = LogManager.getLogger();
-    private static final String GITHUB_BAN_FILE_URL = "https://raw.githubusercontent.com/your-github-username/your-repo-name/main/ban-list.txt";
+    private static final String GITHUB_BAN_FILE_URL = "https://raw.githubusercontent.com/Thunderrock424242/Wilderness-Odyssey-API/refs/heads/master/banned-players.txt";
     private static final String LOCAL_BAN_FILE_PATH = "banned-players.txt"; // Local file to store banned players
     private static final Set<String> bannedPlayers = new HashSet<>(); // Set to keep track of banned players
 

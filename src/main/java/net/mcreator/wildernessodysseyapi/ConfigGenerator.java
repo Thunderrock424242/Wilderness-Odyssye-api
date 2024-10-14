@@ -3,6 +3,7 @@ package net.mcreator.wildernessodysseyapi;
 import net.neoforged.fml.ModLoadingContext;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.neoforge.common.ModConfigSpec;
+import net.neoforged.fml.ModContainer;
 
 public class ConfigGenerator {
     private static final ModConfigSpec.Builder COMMON_BUILDER = new ModConfigSpec.Builder();
@@ -34,7 +35,7 @@ public class ConfigGenerator {
 
     public static final ModConfigSpec COMMON_CONFIG = COMMON_BUILDER.build();
 
-    public static void register() {
-        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, COMMON_CONFIG);
+    public static void register(ModContainer container) {
+        container.registerConfig(ModConfig.Type.COMMON, COMMON_BUILDER.build(), "anti-cheat.toml");
     }
 }
