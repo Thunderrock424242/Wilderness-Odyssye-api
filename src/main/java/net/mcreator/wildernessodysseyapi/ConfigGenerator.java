@@ -8,7 +8,6 @@ public class ConfigGenerator {
     private static final ModConfigSpec.Builder COMMON_BUILDER = new ModConfigSpec.Builder();
     public static final ModConfigSpec.BooleanValue AGREE_TO_TERMS;
     public static final ModConfigSpec.BooleanValue ANTI_CHEAT_ENABLED;
-    public static final ModConfigSpec.BooleanValue GLOBAL_BAN_ENABLED;
     public static final ModConfigSpec.BooleanValue GLOBAL_LOGGING_ENABLED;
 
     static {
@@ -24,11 +23,6 @@ public class ConfigGenerator {
         ANTI_CHEAT_ENABLED = COMMON_BUILDER
                 .comment("Enable or disable the anti-cheat functionality. Note: Anti-cheat will only be active if the server is on the hardcoded whitelist.")
                 .define("antiCheatEnabled", true);
-
-        // Enable or disable global banning
-        GLOBAL_BAN_ENABLED = COMMON_BUILDER
-                .comment("Enable or disable global banning. Default is false for data privacy reasons.")
-                .define("globalBanEnabled", false);
 
         // Enable or disable global logging for player violations
         GLOBAL_LOGGING_ENABLED = COMMON_BUILDER
