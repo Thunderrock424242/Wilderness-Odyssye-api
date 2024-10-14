@@ -27,7 +27,7 @@ import java.io.IOException;
 import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Files;
 
-@Mod(value = WildernessOdysseyAPI.MODID, dist = Dist.CLIENT)
+@Mod(value = WildernessOdysseyAPI.MOD_ID, dist = Dist.CLIENT)
 public class DefaultWorldType {
 
     public static final String MODID = "wilderness_odyssey_api";
