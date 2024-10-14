@@ -74,7 +74,6 @@ public class WildernessOdysseyAPI {
 
         // Generate README file during initialization
         READMEGenerator.generateReadme();
-
         // Start the periodic sync with GitHub to update banned players
         startBanSyncTask();
 
