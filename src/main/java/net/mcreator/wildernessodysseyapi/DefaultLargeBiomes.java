@@ -16,24 +16,43 @@ package net.mcreator.wildernessodysseyapi;
 
 import net.minecraft.client.gui.screens.worldselection.CreateWorldScreen;
 import net.minecraft.world.level.levelgen.WorldGenSettings;
-import net.minecraft.world.level.levelgen.presets.WorldPreset;
+import net.minecraft.world.level.levelgen.WorldOptions;
 import net.minecraft.world.level.levelgen.presets.WorldPresets;
-import net.neoforged.fml.common.EventBusSubscriber;
+import net.minecraft.world.level.dimension.LevelStem;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.bus.api.SubscribeEvent;
+import net.minecraft.network.chat.Component;
+import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.player.LocalPlayer;
+import net.minecraftforge.client.event.ScreenEvent;
 
-@EventBusSubscriber(modid = "yourmodid")
+@Mod.EventBusSubscriber(modid = "yourmodid", bus = Mod.EventBusSubscriber.Bus.MOD)
 public class DefaultLargeBiomes {
 
     @SubscribeEvent
-    public static void onWorldCreation(CreateWorldScreen.CreateLevelEvent event) {
-        // Get the current world generation settings
-        WorldGenSettings worldGenSettings = event.getWorldGenSettings();
-        
-        // Check if the world type is not set or is the default type, and set Large Biomes instead
-        if (worldGenSettings.preset() == WorldPresets.NORMAL) {
-            worldGenSettings = WorldPreset.LARGE_BIOMES.createWorldGenSettings(event.getSeed(), event.getOptions().generateStructures(), event.getOptions().bonusChest());
-            event.setWorldGenSettings(worldGenSettings);
+    public static void onScreenInit(ScreenEvent.Init.Post event) {
+        if (event.getScreen() instanceof CreateWorldScreen createWorldScreen) {
+            // Access the current world generation settings and options
+            WorldGenSettings worldGenSettings = createWorldScreen.worldGenSettingsComponent().getSettings();
+            WorldOptions worldOptions = worldGenSettings.worldOptions();
+
+            // Check if the world preset is set to normal (default)
+            if (worldGenSettings.presets() == WorldPresets.NORMAL) {
+                // Change it to Large Biomes
+                WorldGenSettings newWorldGenSettings = WorldPresets.LARGE_BIOMES.createWorldGenSettings(
+                    worldOptions.seed(), worldOptions.generateStructures(), worldOptions.bonusChest());
+
+                // Set the new world generation settings
+                createWorldScreen.worldGenSettingsComponent().setSettings(newWorldGenSettings);
+
+                // Notify the player in the chat
+                Minecraft minecraft = createWorldScreen.getMinecraft();
+                LocalPlayer player = minecraft.player;
+                if (player != null) {
+                    player.displayClientMessage(Component.literal("Default world type set to Large Biomes!"), false);
+                }
+            }
         }
     }
 }
