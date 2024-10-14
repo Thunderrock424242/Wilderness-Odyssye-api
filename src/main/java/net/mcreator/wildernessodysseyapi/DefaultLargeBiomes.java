@@ -14,26 +14,25 @@
 */
 package net.mcreator.wildernessodysseyapi;
 
-import net.minecraft.world.level.biome.BiomeSourceSettings;
-import net.minecraft.world.level.levelgen.WorldGenSettings;
 import net.minecraft.client.gui.screens.worldselection.CreateWorldScreen;
-import net.neoforged.bus.api.SubscribeEvent;
+import net.minecraft.world.level.levelgen.WorldGenSettings;
+import net.minecraft.world.level.levelgen.presets.WorldPreset;
+import net.minecraft.world.level.levelgen.presets.WorldPresets;
 import net.neoforged.fml.common.Mod;
+import net.neoforged.bus.api.SubscribeEvent;
 
 @Mod.EventBusSubscriber(modid = "modid", bus = Mod.EventBusSubscriber.Bus.MOD)
-public class ForceLargeBiomes {
+public class DefaultLargeBiomes {
 
     @SubscribeEvent
-    public static void onWorldCreation(CreateWorldScreen.Event event) {
-        // Force Large Biomes by default
+    public static void onWorldCreation(CreateWorldScreen.CreateLevelEvent event) {
+        // Get the current world generation settings
         WorldGenSettings worldGenSettings = event.getWorldGenSettings();
-        BiomeSourceSettings biomeSourceSettings = worldGenSettings.worldType().biomeSource();
-
-        // Force large biomes and lock other options
-        biomeSourceSettings.setLargeBiomes(true);
-
-        // Optionally disable other world type options from appearing
-        // Set a flag or modify UI elements to disable the world type selection menu
-        event.setWorldGenSettings(worldGenSettings);
+        
+        // Check if the world type is not set or is the default type, and set Large Biomes instead
+        if (worldGenSettings.preset() == WorldPresets.NORMAL) {
+            worldGenSettings = WorldPreset.LARGE_BIOMES.createWorldGenSettings(event.getSeed(), event.getOptions().generateStructures(), event.getOptions().bonusChest());
+            event.setWorldGenSettings(worldGenSettings);
+        }
     }
 }
