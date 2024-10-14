@@ -75,3 +75,5 @@ public class ChangelogGenerator
         }
     }
 }
+
+/// credits go to https://github.com/Momo-Softworks/Cold-Sweat/blob/1.20.1-FG/src/main/java/ChangelogGenerator.java
