@@ -285,14 +285,14 @@
       "path": "~/Commands"
     },
     {
-      "name": "ForceLargeBiomes",
+      "name": "DefaultLargeBiomes",
       "type": "code",
       "compiles": false,
       "locked_code": true,
-      "registry_name": "force_large_biomes",
+      "registry_name": "default_large_biomes",
       "metadata": {
         "files": [
-          "src/main/java/net/mcreator/wildernessodysseyapi/ForceLargeBiomes.java"
+          "src/main/java/net/mcreator/wildernessodysseyapi/DefaultLargeBiomes.java"
         ]
       }
     }
