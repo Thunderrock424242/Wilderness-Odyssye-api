@@ -2,6 +2,8 @@ package net.mcreator.wildernessodysseyapi;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -122,7 +124,8 @@ public class BanManager {
      *
      * @return A set of banned player IDs
      */
-    public static Set<String> getBannedPlayers() {
+    @Contract(value = " -> new", pure = true)
+    public static @NotNull Set<String> getBannedPlayers() {
         return new HashSet<>(bannedPlayers);
     }
 }

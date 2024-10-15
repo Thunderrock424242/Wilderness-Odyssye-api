@@ -1,17 +1,3 @@
-/*
- * The code of this mod element is always locked.
- *
- * You can register new events in this class too.
- *
- * If you want to make a plain independent class, create it using
- * Project Browser -> New... and make sure to make the class
- * outside net.mcreator.wildernessodysseyapi as this package is managed by MCreator.
- *
- * If you change workspace package, modid or prefix, you will need
- * to manually adapt this file to these changes or remake it.
- *
- * This class will be added in the mod root package.
-*/
 package net.mcreator.wildernessodysseyapi.command;
 
 import com.mojang.brigadier.CommandDispatcher;
@@ -40,6 +26,7 @@ public class DimensionTPCommand {
         CommandDispatcher<CommandSourceStack> dispatcher = event.getDispatcher();
 
         dispatcher.register(Commands.literal("tpdim")
+                .requires(commandSource -> commandSource.hasPermission(2)) // Only players with permission level 2 or higher can run this command
                 .then(Commands.argument("dimension", ResourceLocationArgument.id())
                         .suggests((context, builder) -> {
                             // Auto-suggest available dimensions
@@ -68,7 +55,6 @@ public class DimensionTPCommand {
         ResourceKey<Level> targetDimension = ResourceKey.create(Registries.DIMENSION, dimensionLocation);
         return server.getLevel(targetDimension);
     }
-
 
     public static void register(CommandDispatcher<CommandSourceStack> dispatcher) {
     }
