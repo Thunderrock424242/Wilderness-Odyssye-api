@@ -9,6 +9,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.entity.RelativeMovement;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.level.Level;
@@ -17,6 +18,8 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.minecraft.server.MinecraftServer;
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
+
+import java.util.EnumSet;
 
 @EventBusSubscriber(modid = "yourmodid")
 public class DimensionTPCommand {
@@ -39,7 +42,7 @@ public class DimensionTPCommand {
 
                             if (targetWorld != null) {
                                 Player player = context.getSource().getPlayerOrException();
-                                player.teleportTo(targetWorld, player.getX(), player.getY(), player.getZ(), player.getYRot(), player.getXRot());
+                                player.teleportTo(targetWorld, player.getX(), player.getY(), player.getZ(), EnumSet.noneOf(RelativeMovement.class), player.getYRot(), player.getXRot());
                                 player.displayClientMessage(Component.literal("Teleported to dimension: " + dimensionLocation.toString()), true);
                                 return 1;
                             } else {
