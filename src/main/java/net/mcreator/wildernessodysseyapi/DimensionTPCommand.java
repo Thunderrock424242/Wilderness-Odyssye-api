@@ -25,6 +25,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.level.Level;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -64,9 +65,10 @@ public class DimensionTPCommand {
     }
 
     private static ServerLevel getDimensionByName(ResourceLocation dimensionLocation, MinecraftServer server) {
-        ResourceKey<ServerLevel> targetDimension = ResourceKey.create((ResourceKey<? extends net.minecraft.core.Registry<ServerLevel>>) Registries.DIMENSION, dimensionLocation);
+        ResourceKey<Level> targetDimension = ResourceKey.create(Registries.DIMENSION, dimensionLocation);
         return server.getLevel(targetDimension);
     }
+
 
     public static void register(CommandDispatcher<CommandSourceStack> dispatcher) {
     }
