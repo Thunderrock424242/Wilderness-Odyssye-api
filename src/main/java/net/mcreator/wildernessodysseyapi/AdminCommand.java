@@ -5,7 +5,6 @@ import com.mojang.brigadier.arguments.BoolArgumentType;
 import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.context.CommandContext;
-import net.mcreator.wildernessodysseyapi.EntityOutlineRenderer;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.network.chat.Component;
@@ -46,7 +45,7 @@ public class AdminCommand {
             try {
                 ServerPlayer player = source.getPlayerOrException();
                 player.setGameMode(GameType.SPECTATOR);
-                EntityOutlineRenderer.addPlayerWithGlowingEffect(player.getUUID()); // Add player to see glowing effect
+                ///EntityOutlineRenderer.addPlayerWithGlowingEffect(player.getUUID()); // Add player to see glowing effect
                 showPlayers(source);
                 source.sendSuccess(() -> Component.literal("Admin mode enabled: All players are now visible, and you are in spectate mode."), false);
             } catch (CommandSyntaxException e) {
@@ -56,7 +55,7 @@ public class AdminCommand {
             try {
                 ServerPlayer player = source.getPlayerOrException();
                 player.setGameMode(GameType.SURVIVAL); // Reset the player to survival or their original game mode
-                EntityOutlineRenderer.removePlayerWithGlowingEffect(player.getUUID()); // Remove player from glowing effect
+                ///EntityOutlineRenderer.removePlayerWithGlowingEffect(player.getUUID()); // Remove player from glowing effect
                 hidePlayers(source);
                 source.sendSuccess(() -> Component.literal("Admin mode disabled: Players visibility reset."), false);
             } catch (CommandSyntaxException e) {
