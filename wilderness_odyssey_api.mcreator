@@ -96,19 +96,6 @@
       "path": "~/Procedures"
     },
     {
-      "name": "EntityOutlineRenderer",
-      "type": "code",
-      "compiles": true,
-      "locked_code": true,
-      "registry_name": "entity_outline_renderer",
-      "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/wildernessoddesyapi/EntityOutlineRenderer.java"
-        ]
-      },
-      "path": "~/tools and hacks "
-    },
-    {
       "name": "AdminCommand",
       "type": "code",
       "compiles": true,
@@ -274,7 +261,7 @@
     {
       "name": "DimensionTPCommand",
       "type": "code",
-      "compiles": false,
+      "compiles": true,
       "locked_code": true,
       "registry_name": "dimension_tp_command",
       "metadata": {
