@@ -21,7 +21,7 @@ import net.mcreator.wildernessodysseyapi.WildernessOdysseyApiMod;
 
 @EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD)
 public record CrawlKeyMessage(int eventType, int pressedms) implements CustomPacketPayload {
-	public static final Type<CrawlKeyMessage> TYPE = new Type<>(ResourceLocation.fromNamespaceAndPath(WildernessOdysseyApiMod.MODID, "key_crawl_key"));
+	public static final Type<CrawlKeyMessage> TYPE = new Type<>(ResourceLocation.fromNamespaceAndPath(WildernessOdysseyApiMod.MOD_ID, "key_crawl_key"));
 	public static final StreamCodec<RegistryFriendlyByteBuf, CrawlKeyMessage> STREAM_CODEC = StreamCodec.of((RegistryFriendlyByteBuf buffer, CrawlKeyMessage message) -> {
 		buffer.writeInt(message.eventType);
 		buffer.writeInt(message.pressedms);

@@ -25,10 +25,10 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 
-@Mod(WildernessOdysseyAPI.MOD_ID)
+@Mod("wilderness_odyssey_api")
 public class WildernessOdysseyAPI {
 
-    public static final String MOD_ID = "wilderness_oddesy_api";
+    public static final String MOD_ID = "wilderness_odyssey_api";
     private static final Logger LOGGER = LogManager.getLogger();
     public static boolean ENABLE_OUTLINE = true; // Default is false, meant to be used in dev environment.
 
@@ -79,7 +79,7 @@ public class WildernessOdysseyAPI {
         // Start the periodic sync with GitHub to update banned players
         startBanSyncTask();
 
-        LOGGER.info("Wilderness Oddessy Anti-Cheat Mod Initialized. Anti-cheat enabled: " + antiCheatEnabled);
+        LOGGER.info("Wilderness Oddessy Anti-Cheat Mod Initialized. Anti-cheat enabled: {}", antiCheatEnabled);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
@@ -104,7 +104,7 @@ public class WildernessOdysseyAPI {
         DimensionTPCommand.register(event.getServer().getCommands().getDispatcher());
         LOGGER.info("Ban command registered");
 
-        LOGGER.info("Server starting setup complete. Anti-cheat enabled: " + antiCheatEnabled);
+        LOGGER.info("Server starting setup complete. Anti-cheat enabled: {}", antiCheatEnabled);
     }
 
     private void loadConfig() {
