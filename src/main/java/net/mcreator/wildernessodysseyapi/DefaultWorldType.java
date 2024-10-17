@@ -30,7 +30,7 @@ import java.nio.file.Files;
 @Mod(value = WildernessOdysseyAPI.MOD_ID, dist = Dist.CLIENT)
 public class DefaultWorldType {
 
-    public static final String MODID = "wilderness_odyssey_api";
+    public static final String MODID = "WildernessOdysseyAPI";
     public static final Logger LOGGER = LogManager.getLogger();
 
     public DefaultWorldType(ModContainer modContainer) {

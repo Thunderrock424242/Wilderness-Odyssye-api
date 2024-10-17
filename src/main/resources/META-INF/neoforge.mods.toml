@@ -15,21 +15,24 @@ description="this is a mod made for the modpack wilderness odessy."
 # End of user code block mod configuration
 
 [[dependencies.wilderness_odyssey_api]]
-    modId="neoforge"
-    type="required"
-    versionRange="[21.1.65,)"
-    ordering="AFTER"
-    side="BOTH"
+modId="neoforge"
+type="required"
+versionRange="[21.1.65,)"
+ordering="AFTER"
+side="BOTH"
 
 [[dependencies.wilderness_odyssey_api]]
-    modId="minecraft"
-    type="required"
-    versionRange="[1.21.1]"
-    ordering="AFTER"
-    side="BOTH"
+modId="minecraft"
+type="required"
+versionRange="[1.21.1]"
+ordering="AFTER"
+side="BOTH"
 
 
 
+
+[[mixins]]
+    config="mixins.wilderness_odyssey_api.json"
 
 # Start of user code block dependencies configuration
 # End of user code block dependencies configuration
