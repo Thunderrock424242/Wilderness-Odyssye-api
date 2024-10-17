@@ -51,7 +51,6 @@ public class WildernessOdysseyAPI {
         modBus.register(this);
 
         // Register mod lifecycle events
-        modBus.addListener(this::commonSetup);
         modBus.addListener(this::clientSetup);
         modBus.addListener(this::onLoadComplete);
 
@@ -80,10 +79,6 @@ public class WildernessOdysseyAPI {
         startBanSyncTask();
 
         LOGGER.info("Wilderness Oddessy Anti-Cheat Mod Initialized. Anti-cheat enabled: {}", antiCheatEnabled);
-    }
-
-    private void commonSetup(final FMLCommonSetupEvent event) {
-        LOGGER.info("Common setup complete");
     }
 
     private void clientSetup(final FMLClientSetupEvent event) {
