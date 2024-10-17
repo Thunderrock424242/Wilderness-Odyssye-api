@@ -27,22 +27,22 @@ import java.io.IOException;
 import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Files;
 
-@Mod(value = WildernessOdysseyAPI.MOD_ID, dist = Dist.CLIENT)
+@Mod("WildernessOdysseyAPI")
 public class DefaultWorldType {
 
-    public static final String MODID = "WildernessOdysseyAPI";
+    public static final String MOD_ID = "WildernessOdysseyAPI";
     public static final Logger LOGGER = LogManager.getLogger();
 
     public DefaultWorldType(ModContainer modContainer) {
         try {
             Files.createDirectory(ClientConfig.CONFIG_PATH);
         } catch (FileAlreadyExistsException e) {
-            DefaultWorldType.LOGGER.debug("Config directory " + DefaultWorldType.MODID + " already exists. Skip creating.");
+            DefaultWorldType.LOGGER.debug("Config directory " + DefaultWorldType.MOD_ID + " already exists. Skip creating.");
         } catch (IOException e) {
-            DefaultWorldType.LOGGER.error("Failed to create " + DefaultWorldType.MODID + " config directory", e);
+            DefaultWorldType.LOGGER.error("Failed to create " + DefaultWorldType.MOD_ID + " config directory", e);
         }
 
-        modContainer.registerConfig(ModConfig.Type.CLIENT, ClientConfig.CLIENT_SPEC, DefaultWorldType.MODID + "/client-config.toml");
+        modContainer.registerConfig(ModConfig.Type.CLIENT, ClientConfig.CLIENT_SPEC, DefaultWorldType.MOD_ID + "/client-config.toml");
         modContainer.registerExtensionPoint(IConfigScreenFactory.class, ConfigurationScreen::new);
     }
 }
