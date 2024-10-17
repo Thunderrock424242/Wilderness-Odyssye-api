@@ -402,10 +402,6 @@
         ]
       },
       {
-        "name": "Nether in overworld",
-        "children": []
-      },
-      {
         "name": "DefaultWorldType",
         "children": []
       }
