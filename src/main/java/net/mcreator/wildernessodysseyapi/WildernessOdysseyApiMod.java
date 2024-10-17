@@ -31,7 +31,7 @@ import java.util.ArrayList;
 @Mod("wilderness_odyssey_api")
 public class WildernessOdysseyApiMod {
 	public static final Logger LOGGER = LogManager.getLogger(WildernessOdysseyApiMod.class);
-	public static final String MODID = "wilderness_odyssey_api";
+	public static final String MOD_ID = "wilderness_odyssey_api";
 
 	public WildernessOdysseyApiMod(IEventBus modEventBus) {
 		// Start of user code block mod constructor
@@ -62,7 +62,7 @@ public class WildernessOdysseyApiMod {
 
 	@SuppressWarnings({"rawtypes", "unchecked"})
 	private void registerNetworking(final RegisterPayloadHandlersEvent event) {
-		final PayloadRegistrar registrar = event.registrar(MODID);
+		final PayloadRegistrar registrar = event.registrar(MOD_ID);
 		MESSAGES.forEach((id, networkMessage) -> registrar.playBidirectional(id, ((NetworkMessage) networkMessage).reader(), ((NetworkMessage) networkMessage).handler()));
 		networkingRegistered = true;
 	}
