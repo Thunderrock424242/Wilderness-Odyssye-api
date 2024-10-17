@@ -27,10 +27,10 @@ import java.io.IOException;
 import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Files;
 
-@Mod("WildernessOdysseyAPI")
+@Mod("wilderness_odyssey_api")
 public class DefaultWorldType {
 
-    public static final String MOD_ID = "WildernessOdysseyAPI";
+    public static final String MOD_ID = "wilderness_odyssey_api";
     public static final Logger LOGGER = LogManager.getLogger();
 
     public DefaultWorldType(ModContainer modContainer) {

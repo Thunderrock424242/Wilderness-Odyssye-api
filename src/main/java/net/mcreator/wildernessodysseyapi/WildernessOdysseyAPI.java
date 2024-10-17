@@ -46,13 +46,12 @@ public class WildernessOdysseyAPI {
     // Scheduled Executor for periodic checks
     private final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
 
-    public WildernessOdysseyAPI() {
-        IEventBus modBus = NeoForge.EVENT_BUS;
-        modBus.register(this);
+    public WildernessOdysseyAPI(IEventBus modEventBus) {
+        modEventBus.register(this);
 
         // Register mod lifecycle events
-        modBus.addListener(this::clientSetup);
-        modBus.addListener(this::onLoadComplete);
+        modEventBus.addListener(this::clientSetup);
+        modEventBus.addListener(this::onLoadComplete);
 
         // Register server events
         NeoForge.EVENT_BUS.register(this);
