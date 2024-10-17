@@ -33,7 +33,7 @@ public class ClientConfig {
         CLIENT = specPair.getLeft();
     }
 
-    public static final Path CONFIG_PATH = Paths.get(FMLPaths.CONFIGDIR.get().toAbsolutePath().toString(), DefaultWorldType.MODID);
+    public static final Path CONFIG_PATH = Paths.get(FMLPaths.CONFIGDIR.get().toAbsolutePath().toString(), DefaultWorldType.MOD_ID);
     public static final ClientConfig CLIENT;
     public static final ModConfigSpec CLIENT_SPEC;
 
