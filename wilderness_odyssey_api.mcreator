@@ -296,18 +296,6 @@
         ]
       },
       "path": "~/DefaultWorldType"
-    },
-    {
-      "name": "Nj",
-      "type": "command",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "nj",
-      "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/wildernessodysseyapi/command/NjCommand.java"
-        ]
-      }
     }
   ],
   "variable_elements": [
