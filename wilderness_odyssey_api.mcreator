@@ -217,7 +217,7 @@
           "src/main/java/net/mcreator/wildernessodysseyapi/WildernessOdysseyAPI.java"
         ]
       },
-      "path": "~/Anti Cheat/build errros /Main Mod Class"
+      "path": "~/Main Mod Class"
     },
     {
       "name": "BanCommand",
@@ -296,6 +296,18 @@
         ]
       },
       "path": "~/DefaultWorldType"
+    },
+    {
+      "name": "Nj",
+      "type": "command",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "nj",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/wildernessodysseyapi/command/NjCommand.java"
+        ]
+      }
     }
   ],
   "variable_elements": [
@@ -392,17 +404,16 @@
           },
           {
             "name": "build errros ",
-            "children": [
-              {
-                "name": "Main Mod Class",
-                "children": []
-              }
-            ]
+            "children": []
           }
         ]
       },
       {
         "name": "DefaultWorldType",
+        "children": []
+      },
+      {
+        "name": "Main Mod Class",
         "children": []
       }
     ]
