@@ -13,7 +13,7 @@ public class PlayerJumpMixin {
     private void modifyJumpHeight(CallbackInfo info) {
         Player player = (Player) (Object) this;
         // Example of modifying the jump height
-        float customJumpFactor = 2.0F; // Double the jump height
+        float customJumpFactor = 1.0F; // Double the jump height
         player.setDeltaMovement(player.getDeltaMovement().x, 0.42D * customJumpFactor, player.getDeltaMovement().z);
         info.cancel(); // Cancel the original jump behavior
     }
