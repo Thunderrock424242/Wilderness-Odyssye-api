@@ -308,18 +308,6 @@
           "src/main/java/net/mcreator/wildernessodysseyapi/mixins/HungerMixin.java"
         ]
       }
-    },
-    {
-      "name": "PlayerJump",
-      "type": "mixin",
-      "compiles": true,
-      "locked_code": true,
-      "registry_name": "player_jump",
-      "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/wildernessodysseyapi/mixins/PlayerJumpMixin.java"
-        ]
-      }
     }
   ],
   "variable_elements": [

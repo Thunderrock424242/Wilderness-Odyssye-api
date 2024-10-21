@@ -3,8 +3,7 @@
   "package": "net.mcreator.wildernessodysseyapi.mixins",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
-    "HungerMixin",
-    "PlayerJumpMixin"
+    "HungerMixin"
   ],
   "client": [],
   "minVersion": "0.8"
