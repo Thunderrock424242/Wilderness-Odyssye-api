@@ -9,15 +9,23 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(FoodData.class)
 public class HungerMixin {
 
+    private int tickCounter = 0; // Custom counter for managing slower hunger drain
+
     @Inject(method = "tick", at = @At("HEAD"), cancellable = true)
     private void modifyHungerDrain(CallbackInfo info) {
         FoodData foodData = (FoodData) (Object) this;
+        tickCounter++;
 
-        // Example: Increase hunger drain by 1.5x
+        // Example: Slow down hunger drain by reducing its frequency
         if (foodData.getFoodLevel() > 0) {
-            int drainRate = foodData.getFoodLevel() > 10 ? 2 : 3; // Different rates based on current level
-            foodData.setFoodLevel(foodData.getFoodLevel() - drainRate);
-            info.cancel(); // Cancel original hunger drain to apply custom logic
+            int slowerRate = foodData.getFoodLevel() > 10 ? 1 : 2; // Different rates based on current level
+
+            // Adjust hunger drain frequency (e.g., once every 5 ticks)
+            if (tickCounter >= 5) {
+                foodData.setFoodLevel(foodData.getFoodLevel() - slowerRate);
+                tickCounter = 0; // Reset the counter after draining
+                info.cancel(); // Cancel the original hunger drain logic
+            }
         }
     }
 }
