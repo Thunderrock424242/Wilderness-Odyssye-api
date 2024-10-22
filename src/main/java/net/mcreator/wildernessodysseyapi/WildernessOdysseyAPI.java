@@ -18,6 +18,7 @@ import net.mcreator.wildernessodysseyapi.command.ClearItemsCommand;
 import net.mcreator.wildernessodysseyapi.command.AdminCommand;
 import net.mcreator.wildernessodysseyapi.command.HealCommand;
 import net.mcreator.wildernessodysseyapi.command.DimensionTPCommand;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Set;
 import java.util.concurrent.Executors;
@@ -88,8 +89,7 @@ public class WildernessOdysseyAPI {
         LOGGER.info("Load complete");
     }
 
-    @SubscribeEvent
-    public void onServerStarting(ServerStartingEvent event) {
+    public void onServerStartingEvent(@NotNull ServerStartingEvent event) {
         // Register ban command
         BanCommand.register(event.getServer().getCommands().getDispatcher());
         ClearItemsCommand.register(event.getServer().getCommands().getDispatcher());

@@ -31,8 +31,6 @@ side="BOTH"
 
 
 
-[[mixins]]
-    config="mixins.wilderness_odyssey_api.json"
 
 # Start of user code block dependencies configuration
 # End of user code block dependencies configuration
