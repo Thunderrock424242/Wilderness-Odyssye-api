@@ -27,12 +27,26 @@ import java.io.IOException;
 import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Files;
 
+/**
+ * The type Default world type.
+ */
 @Mod("wilderness_odyssey_api")
 public class DefaultWorldType {
 
+    /**
+     * The constant MOD_ID.
+     */
     public static final String MOD_ID = "wilderness_odyssey_api";
+    /**
+     * The constant LOGGER.
+     */
     public static final Logger LOGGER = LogManager.getLogger();
 
+    /**
+     * Instantiates a new Default world type.
+     *
+     * @param modContainer the mod container
+     */
     public DefaultWorldType(ModContainer modContainer) {
         try {
             Files.createDirectory(ClientConfig.CONFIG_PATH);

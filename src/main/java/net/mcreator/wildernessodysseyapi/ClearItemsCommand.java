@@ -13,9 +13,17 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.phys.AABB;
 import java.util.List;
-import java.util.function.Supplier; 
+import java.util.function.Supplier;
 
+/**
+ * The type Clear items command.
+ */
 public class ClearItemsCommand {
+    /**
+     * Register.
+     *
+     * @param dispatcher the dispatcher
+     */
     public static void register(CommandDispatcher<CommandSourceStack> dispatcher) {
         dispatcher.register(
             LiteralArgumentBuilder.<CommandSourceStack>literal("clearitems")

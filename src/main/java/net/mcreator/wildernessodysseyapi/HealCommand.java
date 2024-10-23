@@ -20,7 +20,15 @@ import net.minecraft.commands.Commands;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.network.chat.Component;
 
+/**
+ * The type Heal command.
+ */
 public class HealCommand {
+    /**
+     * Register.
+     *
+     * @param dispatcher the dispatcher
+     */
     public static void register(CommandDispatcher<CommandSourceStack> dispatcher) {
         dispatcher.register(Commands.literal("heal").executes(context -> {
             Player player = context.getSource().getPlayerOrException();

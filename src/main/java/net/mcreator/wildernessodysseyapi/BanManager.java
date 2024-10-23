@@ -18,6 +18,9 @@ import java.util.HashSet;
 import java.util.Scanner;
 import java.util.Set;
 
+/**
+ * The type Ban manager.
+ */
 public class BanManager {
 
     private static final Logger LOGGER = LogManager.getLogger();

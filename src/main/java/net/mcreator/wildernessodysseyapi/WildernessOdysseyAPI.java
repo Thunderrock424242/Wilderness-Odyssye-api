@@ -26,11 +26,29 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 
+/**
+ * The type Wilderness odyssey api.
+ */
 @Mod("wilderness_odyssey_api")
 public class WildernessOdysseyAPI {
 
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     */
+    public static void main(String[] args) {
+
+    }
+
+    /**
+     * The constant MOD_ID.
+     */
     public static final String MOD_ID = "wilderness_odyssey_api";
     private static final Logger LOGGER = LogManager.getLogger();
+    /**
+     * The constant ENABLE_OUTLINE.
+     */
     public static boolean ENABLE_OUTLINE = true; // Default is false, meant to be used in dev environment.
 
     // Hardcoded Server Whitelist - Only these servers can use the anti-cheat feature
@@ -40,14 +58,25 @@ public class WildernessOdysseyAPI {
             "server-id-3"
     );
 
-    // Configuration flags
+    /**
+     * The constant antiCheatEnabled.
+     */
+// Configuration flags
     public static boolean antiCheatEnabled;
+    /**
+     * The constant globalLoggingEnabled.
+     */
     public static boolean globalLoggingEnabled;
 
     // Scheduled Executor for periodic checks
     private final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
 
-    public WildernessOdysseyAPI(IEventBus modEventBus) {
+    /**
+     * Instantiates a new Wilderness odyssey api.
+     *
+     * @param modEventBus the mod event bus
+     */
+    public WildernessOdysseyAPI(@NotNull IEventBus modEventBus) {
         modEventBus.register(this);
 
         // Register mod lifecycle events
@@ -89,6 +118,11 @@ public class WildernessOdysseyAPI {
         LOGGER.info("Load complete");
     }
 
+    /**
+     * On server starting event.
+     *
+     * @param event the event
+     */
     public void onServerStartingEvent(@NotNull ServerStartingEvent event) {
         // Register ban command
         BanCommand.register(event.getServer().getCommands().getDispatcher());
@@ -118,6 +152,11 @@ public class WildernessOdysseyAPI {
         }, 0, 10, TimeUnit.MINUTES);
     }
 
+    /**
+     * Is global logging enabled boolean.
+     *
+     * @return the boolean
+     */
     public static boolean isGlobalLoggingEnabled() {
         return globalLoggingEnabled;
     }

@@ -25,6 +25,9 @@ import org.apache.commons.lang3.tuple.Pair;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+/**
+ * The type Client config.
+ */
 public class ClientConfig {
 
     static {
@@ -33,13 +36,33 @@ public class ClientConfig {
         CLIENT = specPair.getLeft();
     }
 
+    /**
+     * The constant CONFIG_PATH.
+     */
     public static final Path CONFIG_PATH = Paths.get(FMLPaths.CONFIGDIR.get().toAbsolutePath().toString(), DefaultWorldType.MOD_ID);
+    /**
+     * The constant CLIENT.
+     */
     public static final ClientConfig CLIENT;
+    /**
+     * The constant CLIENT_SPEC.
+     */
     public static final ModConfigSpec CLIENT_SPEC;
 
+    /**
+     * The World type name.
+     */
     public static ModConfigSpec.ConfigValue<String> worldTypeName;
+    /**
+     * The Flat map settings.
+     */
     public static ModConfigSpec.ConfigValue<String> flatMapSettings;
 
+    /**
+     * Instantiates a new Client config.
+     *
+     * @param builder the builder
+     */
     ClientConfig(ModConfigSpec.Builder builder) {
         builder.push("world-preset");
         worldTypeName = builder
@@ -51,6 +74,11 @@ public class ClientConfig {
         builder.pop();
     }
 
+    /**
+     * Gets key.
+     *
+     * @return the key
+     */
     public static ResourceKey<WorldPreset> getKey() {
         ResourceLocation location = ResourceLocation.tryParse(worldTypeName.get());
         return ResourceKey.create(Registries.WORLD_PRESET, location == null ? ResourceLocation.withDefaultNamespace("normal") : location);

@@ -29,6 +29,9 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * The type Logger.
+ */
 public class Logger {
 
     private static final String GITHUB_REPO_OWNER = "your-github-username";
@@ -46,6 +49,12 @@ public class Logger {
         scheduler.scheduleAtFixedRate(Logger::batchProcessLogs, 5, 5, TimeUnit.MINUTES);
     }
 
+    /**
+     * Log flagged player.
+     *
+     * @param playerName the player name
+     * @param action     the action
+     */
     public static void logFlaggedPlayer(String playerName, String action) {
         String logEntry = "ServerID: " + SERVER_ID + " | Player: " + playerName + " - Action: " + action + "\n";
         synchronized (logQueue) {

@@ -31,6 +31,9 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+/**
+ * The type Mod whitelist checker.
+ */
 @EventBusSubscriber(modid = "yourmodid")
 public class ModWhitelistChecker {
 
@@ -38,6 +41,11 @@ public class ModWhitelistChecker {
     private static final Set<String> RESOURCE_PACK_BLACKLIST = Set.of("malicious_pack_1", "cheat_resource_pack");
     private static final String LOCAL_LOG_FILE_PATH = "logs/anticheat-violations.log";
 
+    /**
+     * On player login.
+     *
+     * @param event the event
+     */
     @SubscribeEvent
     public static void onPlayerLogin(PlayerEvent.PlayerLoggedInEvent event) {
         if (!WildernessOdysseyAPI.antiCheatEnabled) {

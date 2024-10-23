@@ -18,10 +18,16 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
+/**
+ * The type Readme generator.
+ */
 public class READMEGenerator {
 
     private static final String README_FILE_PATH = "README.md";
 
+    /**
+     * Generate readme.
+     */
     public static void generateReadme() {
         File readmeFile = new File(README_FILE_PATH);
 

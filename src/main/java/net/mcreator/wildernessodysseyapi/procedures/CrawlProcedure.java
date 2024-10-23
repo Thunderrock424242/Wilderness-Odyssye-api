@@ -12,14 +12,27 @@ import net.mcreator.wildernessodysseyapi.network.WildernessOdysseyApiModVariable
 
 import javax.annotation.Nullable;
 
+/**
+ * The type Crawl procedure.
+ */
 @EventBusSubscriber
 public class CrawlProcedure {
-	@SubscribeEvent
+    /**
+     * On player tick.
+     *
+     * @param event the event
+     */
+    @SubscribeEvent
 	public static void onPlayerTick(PlayerTickEvent.Post event) {
 		execute(event, event.getEntity());
 	}
 
-	public static void execute(Entity entity) {
+    /**
+     * Execute.
+     *
+     * @param entity the entity
+     */
+    public static void execute(Entity entity) {
 		execute(null, entity);
 	}
 

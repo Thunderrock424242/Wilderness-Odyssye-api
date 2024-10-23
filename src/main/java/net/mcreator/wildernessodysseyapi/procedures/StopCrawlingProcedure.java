@@ -4,8 +4,16 @@ import net.minecraft.world.entity.Entity;
 
 import net.mcreator.wildernessodysseyapi.network.WildernessOdysseyApiModVariables;
 
+/**
+ * The type Stop crawling procedure.
+ */
 public class StopCrawlingProcedure {
-	public static void execute(Entity entity) {
+    /**
+     * Execute.
+     *
+     * @param entity the entity
+     */
+    public static void execute(Entity entity) {
 		if (entity == null)
 			return;
 		if (entity.getData(WildernessOdysseyApiModVariables.PLAYER_VARIABLES).Is_player_crawling) {

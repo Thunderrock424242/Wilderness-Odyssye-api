@@ -17,12 +17,20 @@ import java.util.*;
 
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 
+/**
+ * The type Admin command.
+ */
 public class AdminCommand {
 
     private static boolean adminModeEnabled = false;
     private static final String WARNINGS_FILE_PATH = "warnings.dat";
     private static HashMap<UUID, List<String>> warnings = new HashMap<>();
 
+    /**
+     * Register.
+     *
+     * @param dispatcher the dispatcher
+     */
     public static void register(CommandDispatcher<CommandSourceStack> dispatcher) {
         loadWarnings();
 

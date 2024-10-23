@@ -420,7 +420,7 @@
     "dependants": [],
     "mcreatorDependencies": [],
     "currentGenerator": "neoforge-1.21.1",
-    "credits": "Created using mod maker MCreator but i codded all the parts to the mod",
+    "credits": "Created using mod maker MCreator and intelij",
     "modElementsPackage": "net.mcreator.wildernessodysseyapi"
   },
   "mcreatorVersion": 202400342716

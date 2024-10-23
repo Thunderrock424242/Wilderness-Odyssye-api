@@ -7,7 +7,7 @@ modId="wilderness_odyssey_api"
 version="0.9.9"
 displayName="Wilderness Odyssey API"
 displayURL="https://mcreator.net"
-credits="Created using mod maker MCreator but i codded all the parts to the mod"
+credits="Created using mod maker MCreator and intelij"
 authors="thunderrock424242"
 description="this is a mod made for the modpack wilderness odessy."
 
@@ -31,6 +31,8 @@ side="BOTH"
 
 
 
+[[mixins]]
+    config="mixins.wilderness_odyssey_api.json"
 
 # Start of user code block dependencies configuration
 # End of user code block dependencies configuration

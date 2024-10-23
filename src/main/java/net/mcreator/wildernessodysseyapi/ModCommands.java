@@ -9,9 +9,17 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 
+/**
+ * The type Mod commands.
+ */
 @EventBusSubscriber(modid = "yourmodid")
 public class ModCommands {
 
+    /**
+     * On server starting.
+     *
+     * @param event the event
+     */
     @SubscribeEvent
     public static void onServerStarting(ServerStartingEvent event) {
         registerCommands(event.getServer().getCommands().getDispatcher());

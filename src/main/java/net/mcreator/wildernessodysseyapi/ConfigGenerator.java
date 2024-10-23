@@ -5,10 +5,22 @@ import net.neoforged.fml.config.ModConfig;
 import net.neoforged.neoforge.common.ModConfigSpec;
 import net.neoforged.fml.ModContainer;
 
+/**
+ * The type Config generator.
+ */
 public class ConfigGenerator {
     private static final ModConfigSpec.Builder COMMON_BUILDER = new ModConfigSpec.Builder();
+    /**
+     * The constant AGREE_TO_TERMS.
+     */
     public static final ModConfigSpec.BooleanValue AGREE_TO_TERMS;
+    /**
+     * The constant ANTI_CHEAT_ENABLED.
+     */
     public static final ModConfigSpec.BooleanValue ANTI_CHEAT_ENABLED;
+    /**
+     * The constant GLOBAL_LOGGING_ENABLED.
+     */
     public static final ModConfigSpec.BooleanValue GLOBAL_LOGGING_ENABLED;
 
     static {
@@ -33,8 +45,16 @@ public class ConfigGenerator {
         COMMON_BUILDER.pop();
     }
 
+    /**
+     * The constant COMMON_CONFIG.
+     */
     public static final ModConfigSpec COMMON_CONFIG = COMMON_BUILDER.build();
 
+    /**
+     * Register.
+     *
+     * @param container the container
+     */
     public static void register(ModContainer container) {
         container.registerConfig(ModConfig.Type.COMMON, COMMON_BUILDER.build(), "anti-cheat.toml");
     }

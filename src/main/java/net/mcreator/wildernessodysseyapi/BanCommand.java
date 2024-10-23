@@ -16,11 +16,19 @@ import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.function.Supplier;
 
+/**
+ * The type Ban command.
+ */
 public class BanCommand {
 
     private static final Logger LOGGER = LogManager.getLogger();
     private static final String GITHUB_LOG_PATH = "logs/ban-log.txt"; // Path for local ban log before uploading to GitHub
 
+    /**
+     * Register.
+     *
+     * @param dispatcher the dispatcher
+     */
     public static void register(CommandDispatcher<CommandSourceStack> dispatcher) {
         dispatcher.register(Commands.literal("ban")
                 .requires(source -> source.hasPermission(2)) // Requires admin-level permissions

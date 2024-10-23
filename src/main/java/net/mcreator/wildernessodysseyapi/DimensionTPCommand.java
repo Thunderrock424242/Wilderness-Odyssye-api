@@ -21,9 +21,17 @@ import net.neoforged.neoforge.event.RegisterCommandsEvent;
 
 import java.util.EnumSet;
 
+/**
+ * The type Dimension tp command.
+ */
 @EventBusSubscriber(modid = "yourmodid")
 public class DimensionTPCommand {
 
+    /**
+     * Register commands.
+     *
+     * @param event the event
+     */
     @SubscribeEvent
     public static void registerCommands(RegisterCommandsEvent event) {
         CommandDispatcher<CommandSourceStack> dispatcher = event.getDispatcher();
@@ -59,6 +67,11 @@ public class DimensionTPCommand {
         return server.getLevel(targetDimension);
     }
 
+    /**
+     * Register.
+     *
+     * @param dispatcher the dispatcher
+     */
     public static void register(CommandDispatcher<CommandSourceStack> dispatcher) {
     }
 }
