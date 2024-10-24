@@ -67,7 +67,7 @@ public class ClientConfig {
         builder.push("world-preset");
         worldTypeName = builder
                 .comment("Type in the name from the world type which should be selected by default.")
-                .define("world-preset", "minecraft:normal", String.class::isInstance);
+                .define("world-preset", "minecraft:large_biomes", String.class::isInstance);
         flatMapSettings = builder
                 .comment("Type in a valid generation setting for flat world type.", "Only works if world-type if 'minecraft:flat'.")
                 .define("flat-settings", "minecraft:bedrock,2*minecraft:dirt,minecraft:grass_block;minecraft:plains", String.class::isInstance);

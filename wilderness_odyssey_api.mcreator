@@ -403,6 +403,10 @@
       {
         "name": "Main Mod Class",
         "children": []
+      },
+      {
+        "name": "Mixins",
+        "children": []
       }
     ]
   },

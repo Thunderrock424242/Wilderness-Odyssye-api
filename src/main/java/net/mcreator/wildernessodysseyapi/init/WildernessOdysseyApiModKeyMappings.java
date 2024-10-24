@@ -18,15 +18,9 @@ import net.minecraft.client.KeyMapping;
 
 import net.mcreator.wildernessodysseyapi.network.CrawlKeyMessage;
 
-/**
- * The type Wilderness odyssey api mod key mappings.
- */
 @EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD, value = {Dist.CLIENT})
 public class WildernessOdysseyApiModKeyMappings {
-    /**
-     * The constant CRAWL_KEY.
-     */
-    public static final KeyMapping CRAWL_KEY = new KeyMapping("key.wilderness_odyssey_api.crawl_key", GLFW.GLFW_KEY_C, "key.categories.movement") {
+	public static final KeyMapping CRAWL_KEY = new KeyMapping("key.wilderness_odyssey_api.crawl_key", GLFW.GLFW_KEY_C, "key.categories.movement") {
 		private boolean isDownOld = false;
 
 		@Override
@@ -46,27 +40,14 @@ public class WildernessOdysseyApiModKeyMappings {
 	};
 	private static long CRAWL_KEY_LASTPRESS = 0;
 
-    /**
-     * Register key mappings.
-     *
-     * @param event the event
-     */
-    @SubscribeEvent
+	@SubscribeEvent
 	public static void registerKeyMappings(RegisterKeyMappingsEvent event) {
 		event.register(CRAWL_KEY);
 	}
 
-    /**
-     * The type Key event listener.
-     */
-    @EventBusSubscriber({Dist.CLIENT})
+	@EventBusSubscriber({Dist.CLIENT})
 	public static class KeyEventListener {
-        /**
-         * On client tick.
-         *
-         * @param event the event
-         */
-        @SubscribeEvent
+		@SubscribeEvent
 		public static void onClientTick(ClientTickEvent.Post event) {
 			if (Minecraft.getInstance().screen == null) {
 				CRAWL_KEY.consumeClick();

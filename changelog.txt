@@ -9,6 +9,9 @@ Changed:
 Fixed:
 
 API Changes:
+* Bumped version to 0.9.9
+* some things don't work as intended that's why we are gonna at v 0.9.9
+!! server side support is broken as of 0.9.9
 
 
 

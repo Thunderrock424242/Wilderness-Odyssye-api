@@ -18,30 +18,14 @@ import net.mcreator.wildernessodysseyapi.WildernessOdysseyApiMod;
 
 import javax.annotation.Nullable;
 
-/**
- * The type Clear items procedure.
- */
 @EventBusSubscriber
 public class ClearItemsProcedure {
-    /**
-     * On player logged in.
-     *
-     * @param event the event
-     */
-    @SubscribeEvent
+	@SubscribeEvent
 	public static void onPlayerLoggedIn(PlayerEvent.PlayerLoggedInEvent event) {
 		execute(event, event.getEntity().level(), event.getEntity().getX(), event.getEntity().getY(), event.getEntity().getZ());
 	}
 
-    /**
-     * Execute.
-     *
-     * @param world the world
-     * @param x     the x
-     * @param y     the y
-     * @param z     the z
-     */
-    public static void execute(LevelAccessor world, double x, double y, double z) {
+	public static void execute(LevelAccessor world, double x, double y, double z) {
 		execute(null, world, x, y, z);
 	}
 
