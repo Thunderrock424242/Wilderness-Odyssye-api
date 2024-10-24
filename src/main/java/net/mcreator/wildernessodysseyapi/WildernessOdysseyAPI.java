@@ -27,7 +27,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * The type Wilderness odyssey api.
  */
-@Mod("wilderness_odyssey_api")
+
 public class WildernessOdysseyAPI {
 
     /**
