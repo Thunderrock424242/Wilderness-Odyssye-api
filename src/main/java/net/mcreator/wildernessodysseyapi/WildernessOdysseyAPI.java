@@ -2,11 +2,9 @@ package net.mcreator.wildernessodysseyapi;
 
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
-import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLLoadCompleteEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
-import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.bus.api.IEventBus;
 import org.apache.logging.log4j.LogManager;
@@ -74,14 +72,14 @@ public class WildernessOdysseyAPI {
     /**
      * Instantiates a new Wilderness odyssey api.
      *
-     * @param modEventBus the mod event bus
+     * @param modBus the mod event bus
      */
-    public WildernessOdysseyAPI(@NotNull IEventBus modEventBus) {
-        modEventBus.register(this);
+    public WildernessOdysseyAPI(@NotNull IEventBus modBus) {
+        modBus.register(this);
 
         // Register mod lifecycle events
-        modEventBus.addListener(this::clientSetup);
-        modEventBus.addListener(this::onLoadComplete);
+        modBus.addListener(this::clientSetup);
+        modBus.addListener(this::onLoadComplete);
 
         // Register server events
         NeoForge.EVENT_BUS.register(this);
